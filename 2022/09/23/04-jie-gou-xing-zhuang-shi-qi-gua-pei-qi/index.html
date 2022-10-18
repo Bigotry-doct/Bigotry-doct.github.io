@@ -1,0 +1,2053 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="04-结构型-装饰器-适配器, Zbiao | 多吃一点">
+    <meta name="description" content="一、装饰器模式通过一个demo来理解装饰器模式。
+1、Demo案例-咖啡订单项目1、星巴克订单需求
+咖啡种类/单品咖啡：Espresso(意大利浓咖啡)、ShortBlack、LongBlack(美式咖啡)、Decaf(无因咖啡)
+调料：M">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>04-结构型-装饰器-适配器 | Zbiao | 多吃一点</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+    
+
+
+    <!-- bg-cover style     -->
+
+
+
+<link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+<link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+<link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+<link rel="stylesheet" type="text/css" href="/css/matery.css">
+<link rel="stylesheet" type="text/css" href="/css/my.css">
+<link rel="stylesheet" type="text/css" href="/css/dark.css" media="none" onload="if(media!='all')media='all'">
+
+
+
+
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+    <link rel="stylesheet" href="/css/post.css">
+
+
+
+
+    
+
+
+
+    <script src="/libs/jquery/jquery-3.6.0.min.js"></script>
+
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">Zbiao | 多吃一点</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+  <li>
+    <a href="javascript:;" class="waves-effect waves-light" onclick="switchNightMode()" title="深色/浅色模式" >
+      <i id="sum-moon-icon" class="fas fa-sun" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">Zbiao | 多吃一点</div>
+        <div class="logo-desc">
+            
+             
+            
+        </div>
+    </div>
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+        <li><div class="divider"></div></li>
+        <li>
+            <a href="https://github.com/blinkfox/hexo-theme-matery" class="waves-effect waves-light" target="_blank">
+                <i class="fab fa-github-square fa-fw"></i>Fork Me
+            </a>
+        </li>
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+            <style>
+    .nav-transparent .github-corner {
+        display: none !important;
+    }
+
+    .github-corner {
+        position: absolute;
+        z-index: 10;
+        top: 0;
+        right: 0;
+        border: 0;
+        transform: scale(1.1);
+    }
+
+    .github-corner svg {
+        color: #0f9d58;
+        fill: #fff;
+        height: 64px;
+        width: 64px;
+    }
+
+    .github-corner:hover .octo-arm {
+        animation: a 0.56s ease-in-out;
+    }
+
+    .github-corner .octo-arm {
+        animation: none;
+    }
+
+    @keyframes a {
+        0%,
+        to {
+            transform: rotate(0);
+        }
+        20%,
+        60% {
+            transform: rotate(-25deg);
+        }
+        40%,
+        80% {
+            transform: rotate(10deg);
+        }
+    }
+</style>
+
+<a href="https://github.com/blinkfox/hexo-theme-matery" class="github-corner tooltipped hide-on-med-and-down" target="_blank"
+   data-tooltip="Fork Me" data-position="left" data-delay="50">
+    <svg viewBox="0 0 250 250" aria-hidden="true">
+        <path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"></path>
+        <path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2"
+              fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"></path>
+        <path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z"
+              fill="currentColor" class="octo-body"></path>
+    </svg>
+</a>
+        
+    </nav>
+
+</header>
+
+    
+<script src="/libs/cryptojs/crypto-js.min.js"></script>
+<script>
+    (function() {
+        let pwd = '';
+        if (pwd && pwd.length > 0) {
+            if (pwd !== CryptoJS.SHA256(prompt('请输入访问本文章的密码')).toString(CryptoJS.enc.Hex)) {
+                alert('密码错误，将返回主页！');
+                location.href = '/';
+            }
+        }
+    })();
+</script>
+
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/15.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">04-结构型-装饰器-适配器</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                <span class="chip bg-color">设计模式</span>
+                            </a>
+                        
+                            <a href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B/">
+                                <span class="chip bg-color">结构型</span>
+                            </a>
+                        
+                            <a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/">
+                                <span class="chip bg-color">装饰器</span>
+                            </a>
+                        
+                            <a href="/tags/%E9%80%82%E9%85%8D%E5%99%A8/">
+                                <span class="chip bg-color">适配器</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                设计模式
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2022-09-23
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2022-09-27
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.6k
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
+                    31 分
+                </div>
+                
+
+                
+                    <div id="busuanzi_container_page_pv" class="info-break-policy">
+                        <i class="far fa-eye fa-fw"></i>阅读次数:&nbsp;&nbsp;
+                        <span id="busuanzi_value_page_pv"></span>
+                    </div>
+				
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.min.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="一、装饰器模式"><a href="#一、装饰器模式" class="headerlink" title="一、装饰器模式"></a>一、装饰器模式</h1><p>通过一个demo来理解装饰器模式。</p>
+<h2 id="1、Demo案例-咖啡订单项目"><a href="#1、Demo案例-咖啡订单项目" class="headerlink" title="1、Demo案例-咖啡订单项目"></a>1、Demo案例-咖啡订单项目</h2><h3 id="1、星巴克订单需求"><a href="#1、星巴克订单需求" class="headerlink" title="1、星巴克订单需求"></a>1、星巴克订单需求</h3><ol>
+<li>咖啡种类/单品咖啡：Espresso(意大利浓咖啡)、ShortBlack、LongBlack(美式咖啡)、Decaf(无因咖啡)</li>
+<li>调料：Milk、Soy(豆浆)、Chocolate</li>
+<li>要求在扩展新的咖啡种类时，具有良好的扩展性、改动方便、维护方便</li>
+<li>使用 OO 的来计算不同种类咖啡的费用: 客户可以点单品咖啡，也可以单品咖啡+调料组合。</li>
+</ol>
+<h3 id="2、方案一"><a href="#2、方案一" class="headerlink" title="2、方案一"></a>2、方案一</h3><p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165413830.png" alt="方案1"></p>
+<ol>
+<li>Drink 是一个抽象类，表示饮料</li>
+<li>des就是对咖啡的描述, 比如咖啡的名字 </li>
+<li>cost() 方法就是计算费用，Drink 类中做成一个抽象方法</li>
+<li>Decaf 就是单品咖啡， 继承Drink, 并实现cost</li>
+<li>Espress &amp;&amp; Milk 就是单品咖啡+调料， 这个组合很多</li>
+<li><code>问题</code>：这样设计，会有很多类，当我们增加一个单品咖啡，或者一个新的调料， 类的数量就会倍增，就会出现类爆炸</li>
+</ol>
+<h3 id="3、方案二"><a href="#3、方案二" class="headerlink" title="3、方案二"></a>3、方案二</h3><p>前面分析到方案 1 因为咖啡单品+调料组合会造成类的倍增，因此可以做改进，将调料内置到 Drink 类，这样就不会造成类数量过多。从而提高项目的维护性(如图)</p>
+<p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165735491.png" alt="方案2"></p>
+<ol>
+<li>方案 2 可以控制类的数量，不至于造成很多的类</li>
+<li>在增加或者删除调料种类时，代码的维护量很大</li>
+<li>考虑到用户可以添加多份调料时，可以将 hasMilk 返回一个对应 int</li>
+<li>考虑使用 <strong>装饰者</strong> 模式</li>
+</ol>
+<blockquote>
+<p>注意：装饰器模式是对功能的增强，而不是附加新的功能。代理模式才是附加新的功能。</p>
+</blockquote>
+<h3 id="4、装饰器模式代码"><a href="#4、装饰器模式代码" class="headerlink" title="4、装饰器模式代码"></a>4、装饰器模式代码</h3><p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926170746201.png" alt="装饰器模式"></p>
+<h4 id="1、Drink【抽象类-主体Component】"><a href="#1、Drink【抽象类-主体Component】" class="headerlink" title="1、Drink【抽象类-主体Component】"></a>1、Drink【抽象类-主体Component】</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Drink</span> <span class="token punctuation">&#123;</span>
+
+   <span class="token keyword">public</span> <span class="token class-name">String</span> des<span class="token punctuation">;</span> <span class="token comment">// 描述</span>
+   <span class="token keyword">private</span> <span class="token keyword">float</span> price <span class="token operator">=</span> <span class="token number">0.0f</span><span class="token punctuation">;</span>
+   <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getDes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">return</span> des<span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setDes</span><span class="token punctuation">(</span><span class="token class-name">String</span> des<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>des <span class="token operator">=</span> des<span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+   <span class="token keyword">public</span> <span class="token keyword">float</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">return</span> price<span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setPrice</span><span class="token punctuation">(</span><span class="token keyword">float</span> price<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>price <span class="token operator">=</span> price<span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+   
+   <span class="token comment">//计算费用的抽象方法</span>
+   <span class="token comment">//子类来实现</span>
+   <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">float</span> <span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2、Decorator"><a href="#2、Decorator" class="headerlink" title="2、Decorator"></a>2、Decorator</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Decorator</span> <span class="token keyword">extends</span> <span class="token class-name">Drink</span> <span class="token punctuation">&#123;</span>
+   <span class="token keyword">private</span> <span class="token class-name">Drink</span> obj<span class="token punctuation">;</span>
+   
+   <span class="token keyword">public</span> <span class="token class-name">Decorator</span><span class="token punctuation">(</span><span class="token class-name">Drink</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">//组合</span>
+      <span class="token comment">// TODO Auto-generated constructor stub</span>
+      <span class="token keyword">this</span><span class="token punctuation">.</span>obj <span class="token operator">=</span> obj<span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+   
+   <span class="token annotation punctuation">@Override</span>
+   <span class="token keyword">public</span> <span class="token keyword">float</span> <span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// TODO Auto-generated method stub</span>
+      <span class="token comment">// getPrice 自己价格</span>
+      <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> obj<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+   
+   <span class="token annotation punctuation">@Override</span>
+   <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">getDes</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// TODO Auto-generated method stub</span>
+      <span class="token comment">// obj.getDes() 输出被装饰者的信息</span>
+      <span class="token keyword">return</span> des <span class="token operator">+</span> <span class="token string">" "</span> <span class="token operator">+</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" &amp;&amp; "</span> <span class="token operator">+</span> obj<span class="token punctuation">.</span><span class="token function">getDes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+   
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3、Coffee"><a href="#3、Coffee" class="headerlink" title="3、Coffee"></a>3、Coffee</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Coffee</span> <span class="token keyword">extends</span> <span class="token class-name">Drink</span> <span class="token punctuation">&#123;</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">float</span> <span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// TODO Auto-generated method stub</span>
+    <span class="token keyword">return</span> <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>单品类</p>
+</blockquote>
+<h4 id="4、ShortBlack"><a href="#4、ShortBlack" class="headerlink" title="4、ShortBlack"></a>4、ShortBlack</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ShortBlack</span> <span class="token keyword">extends</span> <span class="token class-name">Coffee</span><span class="token punctuation">&#123;</span>
+   
+   <span class="token keyword">public</span> <span class="token class-name">ShortBlack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">setDes</span><span class="token punctuation">(</span><span class="token string">" shortblack "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setPrice</span><span class="token punctuation">(</span><span class="token number">4.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5、LongBlack"><a href="#5、LongBlack" class="headerlink" title="5、LongBlack"></a>5、LongBlack</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LongBlack</span> <span class="token keyword">extends</span> <span class="token class-name">Coffee</span> <span class="token punctuation">&#123;</span>
+
+   <span class="token keyword">public</span> <span class="token class-name">LongBlack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">setDes</span><span class="token punctuation">(</span><span class="token string">" longblack "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setPrice</span><span class="token punctuation">(</span><span class="token number">5.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="6、DeCaf"><a href="#6、DeCaf" class="headerlink" title="6、DeCaf"></a>6、DeCaf</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DeCaf</span> <span class="token keyword">extends</span> <span class="token class-name">Coffee</span> <span class="token punctuation">&#123;</span>
+
+   <span class="token keyword">public</span> <span class="token class-name">DeCaf</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">setDes</span><span class="token punctuation">(</span><span class="token string">" 无因咖啡 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setPrice</span><span class="token punctuation">(</span><span class="token number">1.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="7、Espresso"><a href="#7、Espresso" class="headerlink" title="7、Espresso"></a>7、Espresso</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Espresso</span> <span class="token keyword">extends</span> <span class="token class-name">Coffee</span> <span class="token punctuation">&#123;</span>
+   
+   <span class="token keyword">public</span> <span class="token class-name">Espresso</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token function">setDes</span><span class="token punctuation">(</span><span class="token string">" 意大利咖啡 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setPrice</span><span class="token punctuation">(</span><span class="token number">6.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>调味品类</p>
+</blockquote>
+<h4 id="8、Chocolate"><a href="#8、Chocolate" class="headerlink" title="8、Chocolate"></a>8、Chocolate</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//具体的Decorator， 这里就是调味品</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Chocolate</span> <span class="token keyword">extends</span> <span class="token class-name">Decorator</span> <span class="token punctuation">&#123;</span>
+
+   <span class="token keyword">public</span> <span class="token class-name">Chocolate</span><span class="token punctuation">(</span><span class="token class-name">Drink</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">super</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setDes</span><span class="token punctuation">(</span><span class="token string">" 巧克力 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setPrice</span><span class="token punctuation">(</span><span class="token number">3.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 调味品 的价格</span>
+   <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="9、Milk"><a href="#9、Milk" class="headerlink" title="9、Milk"></a>9、Milk</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Milk</span> <span class="token keyword">extends</span> <span class="token class-name">Decorator</span> <span class="token punctuation">&#123;</span>
+
+   <span class="token keyword">public</span> <span class="token class-name">Milk</span><span class="token punctuation">(</span><span class="token class-name">Drink</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">super</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// TODO Auto-generated constructor stub</span>
+      <span class="token function">setDes</span><span class="token punctuation">(</span><span class="token string">" 牛奶 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setPrice</span><span class="token punctuation">(</span><span class="token number">2.0f</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 
+   <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="10、Soy"><a href="#10、Soy" class="headerlink" title="10、Soy"></a>10、Soy</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Soy</span> <span class="token keyword">extends</span> <span class="token class-name">Decorator</span><span class="token punctuation">&#123;</span>
+
+   <span class="token keyword">public</span> <span class="token class-name">Soy</span><span class="token punctuation">(</span><span class="token class-name">Drink</span> obj<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">super</span><span class="token punctuation">(</span>obj<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token comment">// TODO Auto-generated constructor stub</span>
+      <span class="token function">setDes</span><span class="token punctuation">(</span><span class="token string">" 豆浆  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token function">setPrice</span><span class="token punctuation">(</span><span class="token number">1.5f</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<blockquote>
+<p>主类调试</p>
+</blockquote>
+<h4 id="11、CoffeeBar"><a href="#11、CoffeeBar" class="headerlink" title="11、CoffeeBar"></a>11、CoffeeBar</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CoffeeBar</span> <span class="token punctuation">&#123;</span>
+
+   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// TODO Auto-generated method stub</span>
+      <span class="token comment">// 装饰者模式下的订单：2份巧克力+一份牛奶的LongBlack</span>
+
+      <span class="token comment">// 1. 点一份 LongBlack</span>
+      <span class="token class-name">Drink</span> order <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">LongBlack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"费用1="</span> <span class="token operator">+</span> order<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"描述="</span> <span class="token operator">+</span> order<span class="token punctuation">.</span><span class="token function">getDes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 2. order 加入一份牛奶</span>
+      order <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Milk</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order 加入一份牛奶 费用 ="</span> <span class="token operator">+</span> order<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order 加入一份牛奶 描述 = "</span> <span class="token operator">+</span> order<span class="token punctuation">.</span><span class="token function">getDes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 3. order 加入一份巧克力</span>
+
+      order <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Chocolate</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order 加入一份牛奶 加入一份巧克力  费用 ="</span> <span class="token operator">+</span> order<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order 加入一份牛奶 加入一份巧克力 描述 = "</span> <span class="token operator">+</span> order<span class="token punctuation">.</span><span class="token function">getDes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token comment">// 3. order 加入一份巧克力</span>
+
+      order <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Chocolate</span><span class="token punctuation">(</span>order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order 加入一份牛奶 加入2份巧克力   费用 ="</span> <span class="token operator">+</span> order<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order 加入一份牛奶 加入2份巧克力 描述 = "</span> <span class="token operator">+</span> order<span class="token punctuation">.</span><span class="token function">getDes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"==========================="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      <span class="token class-name">Drink</span> order2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DeCaf</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order2 无因咖啡  费用 ="</span> <span class="token operator">+</span> order2<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order2 无因咖啡 描述 = "</span> <span class="token operator">+</span> order2<span class="token punctuation">.</span><span class="token function">getDes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      order2 <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Milk</span><span class="token punctuation">(</span>order2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order2 无因咖啡 加入一份牛奶  费用 ="</span> <span class="token operator">+</span> order2<span class="token punctuation">.</span><span class="token function">cost</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"order2 无因咖啡 加入一份牛奶 描述 = "</span> <span class="token operator">+</span> order2<span class="token punctuation">.</span><span class="token function">getDes</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+   
+   <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="2、装饰者模式原理"><a href="#2、装饰者模式原理" class="headerlink" title="2、装饰者模式原理"></a>2、装饰者模式原理</h2><p>装饰者模式：动态的将新功能附加到对象上。在对象功能扩展方面，它比继承更 有弹性，装饰者模式也体现了开闭原则(ocp)</p>
+<ol>
+<li><p>装饰者模式就像打包一个快递</p>
+<p>主体：比如：陶瓷、衣服 (Component) // 被装饰者</p>
+<p>包装：比如：报纸填充、塑料泡沫、纸板、木板(Decorator)</p>
+</li>
+<li><p>Component 主体：比如类似前面的 Drink</p>
+</li>
+<li><p>ConcreteComponent 和 Decorator</p>
+<p>ConcreteComponent：具体的主体， 比如前面的各个单品咖啡</p>
+<p>Decorator: 装饰者，比如各调料</p>
+</li>
+<li><p>在Component 与 ConcreteComponent 之间，如果 ConcreteComponent 类很多,还可以设计一个缓冲层，将 共有的部分提取出来，抽象层一个类</p>
+</li>
+</ol>
+<h2 id="3、Java-IO-类的用法"><a href="#3、Java-IO-类的用法" class="headerlink" title="3、Java IO 类的用法"></a>3、Java IO 类的用法</h2><p>Java IO 类库非常庞大和复杂，有几十个类，负责 IO 数据的读取和写入。如果对 Java IO 类做一下分类，我们可以从下面两个维度将它划分为四类。具体如下所示：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>字节流</th>
+<th>字符流</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>输入流</td>
+<td>InputStream</td>
+<td>Reader</td>
+</tr>
+<tr>
+<td>输出流</td>
+<td>OutputStream</td>
+<td>Writer</td>
+</tr>
+</tbody></table>
+<p>针对不同的读取和写入场景，Java IO 又在这四个父类基础之上，扩展出了很多子类。具体如下所示：</p>
+<p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926174459489.png"></p>
+<p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926175005022.png"></p>
+<blockquote>
+<p>说明</p>
+<ol>
+<li>InputStream 是抽象类, 类似我们前面讲的 Drink</li>
+<li>FileInputStream 是 InputStream 子类，类似我们前面的 DeCaf, LongBlack</li>
+<li>FilterInputStream 是 InputStream 子类：类似我们前面 的 Decorator 修饰者</li>
+<li>DataInputStream 是 FilterInputStream 子类，具体的修饰者，类似前面的 Milk, Soy 等</li>
+<li>FilterInputStream 类 有 protected volatile InputStream in; 即含被装饰者</li>
+<li>分析得出在jdk 的io体系中，就是使用装饰者模式</li>
+</ol>
+</blockquote>
+<p>打开文件 test.txt，从中读取数据。其中，InputStream 是一个抽象类，FileInputStream 是专门用来读取文件流的子类。BufferedInputStream 是一个支持带缓存功能的数据读取类，可以提高数据读取的效率。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">InputStream</span> in <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"/user/test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">InputStream</span> bin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">128</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>bin<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//...</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>初看上面的代码，会觉得 Java IO 的用法比较麻烦，需要先创建一个 FileInputStream 对象，然后再传递给 BufferedInputStream 对象来使用。我在想，Java IO 为什么不设计一个继承 FileInputStream 并且支持缓存的 BufferedFileInputStream 类呢？这样我们就可以像下面的代码中这样，直接创建一个 BufferedFileInputStream 类对象，打开文件读取数据，用起来岂不是更加简单？</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">InputStream</span> bin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedFileInputStream</span><span class="token punctuation">(</span><span class="token string">"/user/test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">byte</span><span class="token punctuation">[</span><span class="token number">128</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
+<span class="token keyword">while</span> <span class="token punctuation">(</span>bin<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span> <span class="token operator">!=</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//...</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="4、基于继承的设计方案"><a href="#4、基于继承的设计方案" class="headerlink" title="4、基于继承的设计方案"></a>4、基于继承的设计方案</h2><p>如果 InputStream 只有一个子类 FileInputStream 的话，那我们在 FileInputStream 基础之上，再设计一个孙子类 BufferedFileInputStream，也算是可以接受的，毕竟继承结构还算简单。但实际上，继承 InputStream 的子类有很多。我们需要给每一个 InputStream 的子类，再继续派生支持缓存读取的子类。</p>
+<p>除了支持缓存读取之外，如果我们还需要对功能进行其他方面的增强，比如下面的 DataInputStream 类，支持按照基本数据类型（int、boolean、long 等）来读取数据。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">FileInputStream</span> in <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"/user/test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">DataInputStream</span> din <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataInputStream</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> data <span class="token operator">=</span> din<span class="token punctuation">.</span><span class="token function">readInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<p>在这种情况下，如果我们继续按照继承的方式来实现的话，就需要再继续派生出 DataFileInputStream、DataPipedInputStream 等类。如果我们还需要既支持缓存、又支持按照基本类型读取数据的类，那就要再继续派生出 BufferedDataFileInputStream、BufferedDataPipedInputStream 等 n 多类。这还只是附加了两个增强功能，如果我们需要附加更多的增强功能，那就会导致组合爆炸，类继承结构变得无比复杂，代码既不好扩展，也不好维护。这也是我们不推荐使用继承的原因。</p>
+<h2 id="5、基于装饰器模式的设计方案"><a href="#5、基于装饰器模式的设计方案" class="headerlink" title="5、基于装饰器模式的设计方案"></a>5、基于装饰器模式的设计方案</h2><p>前面提到“组合优于继承”，可以“使用组合来替代继承”。针对刚刚的继承结构过于复杂的问题，可以通过将继承关系改为组合关系来解决。下面的代码展示了 Java IO 的这种设计思路。以下是简化了的代码。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>io<span class="token punctuation">.</span></span><span class="token class-name">IOException</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">InputStream</span> <span class="token punctuation">&#123;</span>
+  <span class="token comment">// ...</span>
+  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token keyword">byte</span> b<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token function">read</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> b<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token keyword">byte</span> b<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> off<span class="token punctuation">,</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">skip</span><span class="token punctuation">(</span><span class="token keyword">long</span> n<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">available</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">mark</span><span class="token punctuation">(</span><span class="token keyword">int</span> readlimit<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">throw</span> <span class="token keyword">new</span> <span class="token class-name">IOException</span><span class="token punctuation">(</span><span class="token string">"mark/reset not supported"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">markSupported</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> <span class="token boolean">false</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BufferedInputStream</span> <span class="token keyword">extends</span> <span class="token class-name">InputStream</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">protected</span> <span class="token keyword">volatile</span> <span class="token class-name">InputStream</span> in<span class="token punctuation">;</span>
+
+  <span class="token keyword">protected</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token class-name">InputStream</span> in<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>in <span class="token operator">=</span> in<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token comment">// ...实现基于缓存的读数据接口...</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DataInputStream</span> <span class="token keyword">extends</span> <span class="token class-name">InputStream</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">protected</span> <span class="token keyword">volatile</span> <span class="token class-name">InputStream</span> in<span class="token punctuation">;</span>
+
+  <span class="token keyword">protected</span> <span class="token class-name">DataInputStream</span><span class="token punctuation">(</span><span class="token class-name">InputStream</span> in<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>in <span class="token operator">=</span> in<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token comment">// ...实现读取基本类型数据的接口</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>看了上面的代码，可能会问，那装饰器模式就是简单的“用组合替代继承”吗？当然不是。从 Java IO 的设计来看，装饰器模式相对于简单的组合关系，还有两个比较特殊的地方。</p>
+<p><strong>第一个比较特殊的地方是：装饰器类和原始类继承同样的父类，这样我们可以对原始类“嵌套”多个装饰器类。</strong>比如，下面这样一段代码，我们对 FileInputStream 嵌套了两个装饰器类：BufferedInputStream 和 DataInputStream，让它既支持缓存读取，又支持按照基本数据类型来读取数据。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">InputStream</span> in <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">FileInputStream</span><span class="token punctuation">(</span><span class="token string">"/user/test.txt"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">InputStream</span> bin <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span>in<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token class-name">DataInputStream</span> din <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DataInputStream</span><span class="token punctuation">(</span>bin<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">int</span> data <span class="token operator">=</span> din<span class="token punctuation">.</span><span class="token function">readInt</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><strong>第二个比较特殊的地方是：装饰器类是对功能的增强，这也是装饰器模式应用场景的一个重要特点。</strong>实际上，符合“组合关系”这种代码结构的设计模式有很多，比如之前讲过的代理模式、桥接模式，还有现在的装饰器模式。尽管它们的代码结构很相似，但是每种设计模式的意图是不同的。就拿比较相似的代理模式和装饰器模式来说吧，代理模式中，<code>代理类附加的是跟原始类无关的功能</code>，而在装饰器模式中，<code>装饰器类附加的是跟原始类相关的增强功能</code>。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 代理模式的代码结构(下面的接口也可以替换成抽象类)</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IA</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">A</span> impelements <span class="token constant">IA</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+        <span class="token comment">//... </span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">AProxy</span> impements <span class="token constant">IA</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">IA</span> a<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">AProxy</span><span class="token punctuation">(</span><span class="token class-name">IA</span> a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 新添加的代理逻辑</span>
+        a<span class="token punctuation">.</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 新添加的代理逻辑</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 装饰器模式的代码结构(下面的接口也可以替换成抽象类)</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IA</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">A</span> impelements <span class="token constant">IA</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+        <span class="token comment">//... </span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ADecorator</span> impements <span class="token constant">IA</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">IA</span> a<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token class-name">ADecorator</span><span class="token punctuation">(</span><span class="token class-name">IA</span> a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 功能增强代码</span>
+        a<span class="token punctuation">.</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 功能增强代码</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<ol>
+<li>实际上，如果去查看 JDK 的源码，会发现BufferedInputStream、DataInputStream 并非继承自 InputStream，而是另外一个叫 FilterInputStream 的类。那这又是出于什么样的设计意图，才引入这样一个类呢？</li>
+<li>再重新来看一下 BufferedInputStream 类的代码。InputStream 是一个抽象类而非接口，而且它的大部分函数（比如 read()、available()）都有默认实现，按理来说，我们只需要在 BufferedInputStream 类中重新实现那些需要增加缓存功能的函数就可以了，其他函数继承 InputStream 的默认实现。但实际上，这样做是行不通的。</li>
+<li>对于即便是不需要增加缓存功能的函数来说，BufferedInputStream 还是必须把它重新实现一遍，简单包裹对 InputStream 对象的函数调用。具体的代码示例如下所示。如果不重新实现，那 BufferedInputStream 类就无法将最终读取数据的任务，委托给传递进来的 InputStream 对象来完成。</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BufferedInputStream</span> <span class="token keyword">extends</span> <span class="token class-name">InputStream</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">volatile</span> <span class="token class-name">InputStream</span> in<span class="token punctuation">;</span>
+
+    <span class="token keyword">protected</span> <span class="token class-name">BufferedInputStream</span><span class="token punctuation">(</span><span class="token class-name">InputStream</span> in<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>in <span class="token operator">=</span> in<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+	<span class="token comment">// f()函数不需要增强，只是重新调用一下InputStream in对象的f()</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+        in<span class="token punctuation">.</span><span class="token function">f</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>实际上，DataInputStream 也存在跟 BufferedInputStream 同样的问题。为了避免代码重复，Java IO 抽象出了一个装饰器父类 FilterInputStream，代码实现如下所示。InputStream 的所有的装饰器类（BufferedInputStream、DataInputStream）都继承自这个装饰器父类。这样，装饰器类只需要实现它需要增强的方法就可以了，其他方法继承装饰器父类的默认实现。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">FilterInputStream</span> <span class="token keyword">extends</span> <span class="token class-name">InputStream</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">protected</span> <span class="token keyword">volatile</span> <span class="token class-name">InputStream</span> in<span class="token punctuation">;</span>
+
+    <span class="token keyword">protected</span> <span class="token class-name">FilterInputStream</span><span class="token punctuation">(</span><span class="token class-name">InputStream</span> in<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>in <span class="token operator">=</span> in<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> in<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token keyword">byte</span> b<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span> 
+        <span class="token keyword">return</span> <span class="token function">read</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> b<span class="token punctuation">.</span>length<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">read</span><span class="token punctuation">(</span><span class="token keyword">byte</span> b<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token keyword">int</span> off<span class="token punctuation">,</span> <span class="token keyword">int</span> len<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> in<span class="token punctuation">.</span><span class="token function">read</span><span class="token punctuation">(</span>b<span class="token punctuation">,</span> off<span class="token punctuation">,</span> len<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">long</span> <span class="token function">skip</span><span class="token punctuation">(</span><span class="token keyword">long</span> n<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> in<span class="token punctuation">.</span><span class="token function">skip</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">available</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> in<span class="token punctuation">.</span><span class="token function">available</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        in<span class="token punctuation">.</span><span class="token function">close</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">mark</span><span class="token punctuation">(</span><span class="token keyword">int</span> readlimit<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        in<span class="token punctuation">.</span><span class="token function">mark</span><span class="token punctuation">(</span>readlimit<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">synchronized</span> <span class="token keyword">void</span> <span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">IOException</span> <span class="token punctuation">&#123;</span>
+        in<span class="token punctuation">.</span><span class="token function">reset</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">markSupported</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> in<span class="token punctuation">.</span><span class="token function">markSupported</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h1 id="二、适配器模式"><a href="#二、适配器模式" class="headerlink" title="二、适配器模式"></a>二、适配器模式</h1><p>适配器模式(Adapter Pattern)将某个类的接口转换成客户端期望的另一个接口表示，<strong>主的目的是兼容性</strong>，让原本因接口不匹配不能一起工作的两个类可以协同工作。其别名为包装器(Wrapper) 。适配器模式属于结构型模式。主要分为三类：<strong>类适配器模式、对象适配器模式、接口适配器模式</strong></p>
+<h2 id="1、Demo案例-充电器"><a href="#1、Demo案例-充电器" class="headerlink" title="1、Demo案例-充电器"></a>1、Demo案例-充电器</h2><p>基本介绍：Adapter 类，通过继承 src 类，实现 dst 类接口，完成 src-&gt;dst 的适配。</p>
+<ul>
+<li>以生活中充电器的例子来讲解适配器，充电器本身相当于 Adapter，220V 交流电相当于 src (即被适配者)，我们 的目 dst(即 目标)是 5V 直流电</li>
+</ul>
+<h3 id="1、类适配器代码实现"><a href="#1、类适配器代码实现" class="headerlink" title="1、类适配器代码实现"></a>1、类适配器代码实现</h3><h4 id="1、Voltage220V"><a href="#1、Voltage220V" class="headerlink" title="1、Voltage220V"></a>1、Voltage220V</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//被适配的类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Voltage220V</span> <span class="token punctuation">&#123;</span>
+   <span class="token comment">//输出220V的电压</span>
+   <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">output220V</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">int</span> src <span class="token operator">=</span> <span class="token number">220</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"电压="</span> <span class="token operator">+</span> src <span class="token operator">+</span> <span class="token string">"伏"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">return</span> src<span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2、IVoltage5V"><a href="#2、IVoltage5V" class="headerlink" title="2、IVoltage5V"></a>2、IVoltage5V</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//适配接口</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">IVoltage5V</span> <span class="token punctuation">&#123;</span>
+   <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">output5V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3、Phone"><a href="#3、Phone" class="headerlink" title="3、Phone"></a>3、Phone</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Phone</span> <span class="token punctuation">&#123;</span>
+
+   <span class="token comment">//充电</span>
+   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">charging</span><span class="token punctuation">(</span><span class="token class-name">IVoltage5V</span> iVoltage5V<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">if</span><span class="token punctuation">(</span>iVoltage5V<span class="token punctuation">.</span><span class="token function">output5V</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"电压为5V, 可以充电~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>iVoltage5V<span class="token punctuation">.</span><span class="token function">output5V</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">5</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+         <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"电压大于5V, 不能充电~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+   <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="4、VoltageAdapter"><a href="#4、VoltageAdapter" class="headerlink" title="4、VoltageAdapter"></a>4、VoltageAdapter</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">//适配器类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">VoltageAdapter</span> <span class="token keyword">extends</span> <span class="token class-name">Voltage220V</span> <span class="token keyword">implements</span> <span class="token class-name">IVoltage5V</span> <span class="token punctuation">&#123;</span>
+
+   <span class="token annotation punctuation">@Override</span>
+   <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">output5V</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// TODO Auto-generated method stub</span>
+      <span class="token comment">//获取到220V电压</span>
+      <span class="token keyword">int</span> srcV <span class="token operator">=</span> <span class="token function">output220V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token keyword">int</span> dstV <span class="token operator">=</span> srcV <span class="token operator">/</span> <span class="token number">44</span> <span class="token punctuation">;</span> <span class="token comment">//转成 5v</span>
+      <span class="token keyword">return</span> dstV<span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="5、Client"><a href="#5、Client" class="headerlink" title="5、Client"></a>5、Client</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">&#123;</span>
+
+   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token comment">// TODO Auto-generated method stub</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" === 类适配器模式 ===="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token class-name">Phone</span> phone <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Phone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      phone<span class="token punctuation">.</span><span class="token function">charging</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">VoltageAdapter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+   <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h3 id="2、对象适配器实现"><a href="#2、对象适配器实现" class="headerlink" title="2、对象适配器实现"></a>2、对象适配器实现</h3><p>基本思路和类的适配器模式相同，只是将 Adapter 类作修改，不是继承 src 类，而是持有 src 类的实例，以解决 兼容性的问题。 即：持有 src 类，实现 dst 类接口，完成 src-&gt;dst 的适配 ，在系统中尽量使用<strong>关联关系（聚合，组合）来替代继承</strong>关系。</p>
+<p>上面的例子代码基本没用什么改变，改变的只有以下两个类</p>
+<h4 id="1、VoltageAdapter"><a href="#1、VoltageAdapter" class="headerlink" title="1、VoltageAdapter"></a>1、VoltageAdapter</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 适配器类</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">VoltageAdapter</span> <span class="token keyword">implements</span> <span class="token class-name">IVoltage5V</span> <span class="token punctuation">&#123;</span>
+
+  <span class="token keyword">private</span> <span class="token class-name">Voltage220V</span> voltage220V<span class="token punctuation">;</span> <span class="token comment">// 关联关系-聚合</span>
+
+  <span class="token comment">// 通过构造器，传入一个 Voltage220V 实例</span>
+  <span class="token keyword">public</span> <span class="token class-name">VoltageAdapter</span><span class="token punctuation">(</span><span class="token class-name">Voltage220V</span> voltage220v<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">this</span><span class="token punctuation">.</span>voltage220V <span class="token operator">=</span> voltage220v<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token annotation punctuation">@Override</span>
+  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">output5V</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">int</span> dst <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token keyword">null</span> <span class="token operator">!=</span> voltage220V<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token keyword">int</span> src <span class="token operator">=</span> voltage220V<span class="token punctuation">.</span><span class="token function">output220V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 获取220V 电压</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"使用对象适配器，进行适配~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      dst <span class="token operator">=</span> src <span class="token operator">/</span> <span class="token number">44</span><span class="token punctuation">;</span>
+      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"适配完成，输出的电压为="</span> <span class="token operator">+</span> dst<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">return</span> dst<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="2、Client"><a href="#2、Client" class="headerlink" title="2、Client"></a>2、Client</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">&#123;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// TODO Auto-generated method stub</span>
+    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" === 对象适配器模式 ===="</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token class-name">Phone</span> phone <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Phone</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    phone<span class="token punctuation">.</span><span class="token function">charging</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">VoltageAdapter</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Voltage220V</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+
+<h2 id="2、适配器模式的原理与实现"><a href="#2、适配器模式的原理与实现" class="headerlink" title="2、适配器模式的原理与实现"></a>2、适配器模式的原理与实现</h2><p>适配器模式(Adapter Pattern)将某个类的接口转换成客户端期望的另一个接口表示，主要目的是兼容性，让原本因接口不匹配不能一起工作的两个类可以协同 工作。其别名为包装器(Wrapper)</p>
+<p>适配器模式有两种实现方式：类适配器和对象适配器。其中，类适配器使用继承关系来实现，对象适配器使用组合关系来实现。具体的代码实现如下所示。其中，ITarget 表示要转化成的接口定义。Adaptee 是一组不兼容 ITarget 接口定义的接口，Adaptor 将 Adaptee 转化成一组符合 ITarget 接口定义的接口。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 类适配器: 基于继承</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ITarget</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">fc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Adaptee</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fa</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+        <span class="token comment">//... </span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fb</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//... </span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">//... </span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Adaptor</span> <span class="token keyword">extends</span> <span class="token class-name">Adaptee</span> <span class="token keyword">implements</span> <span class="token class-name">ITarget</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">fa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//...重新实现f2()...</span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 这里fc()不需要实现，直接继承自Adaptee，这是跟对象适配器最大的不同点</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 对象适配器：基于组合</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ITarget</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">void</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">fc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Adaptee</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fa</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//... </span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fb</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//... </span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
+        <span class="token comment">//... </span>
+    <span class="token punctuation">&#125;</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Adaptor</span> <span class="token keyword">implements</span> <span class="token class-name">ITarget</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">Adaptee</span> adaptee<span class="token punctuation">;</span>
+
+    <span class="token keyword">public</span> <span class="token class-name">Adaptor</span><span class="token punctuation">(</span><span class="token class-name">Adaptee</span> adaptee<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>adaptee <span class="token operator">=</span> adaptee<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        adaptee<span class="token punctuation">.</span><span class="token function">fa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//委托给Adaptee</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">f2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//...重新实现f2()...</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fc</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        adaptee<span class="token punctuation">.</span><span class="token function">fc</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>针对这两种实现方式，在实际的开发中，到底该如何选择使用哪一种呢？判断的标准主要有两个，一个是 Adaptee 接口的个数，另一个是 Adaptee 和 ITarget 的契合程度。</p>
+<ul>
+<li>如果 Adaptee 接口并不多，那两种实现方式都可以。</li>
+<li>如果 Adaptee 接口很多，而且 Adaptee 和 ITarget 接口定义大部分都相同，那我们推荐使用类适配器，因为 Adaptor 复用父类 Adaptee 的接口，比起对象适配器的实现方式，Adaptor 的代码量要少一些。</li>
+<li>如果 Adaptee 接口很多，而且 Adaptee 和 ITarget 接口定义大部分都不相同，那我们推荐使用对象适配器，因为组合结构相对于继承更加灵活。</li>
+</ul>
+<h2 id="3、适配器模式应用场景"><a href="#3、适配器模式应用场景" class="headerlink" title="3、适配器模式应用场景"></a>3、适配器模式应用场景</h2><p>一般来说，适配器模式可以看作一种“补偿模式”，用来补救设计上的缺陷。应用这种模式算是“无奈之举”。如果在设计初期，我们就能协调规避接口不兼容的问题，那这种模式就没有应用的机会了。</p>
+<h3 id="1、封装有缺陷的接口设计"><a href="#1、封装有缺陷的接口设计" class="headerlink" title="1、封装有缺陷的接口设计"></a>1、封装有缺陷的接口设计</h3><p>假设我们依赖的外部系统在接口设计方面有缺陷（比如包含大量静态方法），引入之后会影响到我们自身代码的可测试性。为了隔离设计上的缺陷，我们希望对外部系统提供的接口进行二次封装，抽象出更好的接口设计，这个时候就可以使用适配器模式了。</p>
+<p>比如下面的例子：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CD</span> <span class="token punctuation">&#123;</span> <span class="token comment">//这个类来自外部sdk，我们无权修改它的代码</span>
+    <span class="token comment">//...</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">staticFunction1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">//... &#125;</span>
+        
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">uglyNamingFunction2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">//... &#125;</span>
+        
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">tooManyParamsFunction3</span><span class="token punctuation">(</span><span class="token keyword">int</span> paramA<span class="token punctuation">,</span> <span class="token keyword">int</span> paramB<span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">//... &#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">lowPerformanceFunction4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">//... &#125;</span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 使用适配器模式进行重构</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ITarget</span> <span class="token punctuation">&#123;</span>
+
+    <span class="token keyword">void</span> <span class="token function">function1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">function2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">fucntion3</span><span class="token punctuation">(</span><span class="token class-name">ParamsWrapperDefinition</span> paramsWrapper<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">void</span> <span class="token function">function4</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//...</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 注意：适配器类的命名不一定非得末尾带Adaptor</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CDAdaptor</span> <span class="token keyword">extends</span> <span class="token class-name">CD</span> <span class="token keyword">implements</span> <span class="token class-name">ITarget</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">//...</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">function1</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">staticFunction1</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">function2</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">uglyNamingFucntion2</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">function3</span><span class="token punctuation">(</span><span class="token class-name">ParamsWrapperDefinition</span> paramsWrapper<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> 
+        <span class="token keyword">super</span><span class="token punctuation">.</span><span class="token function">tooManyParamsFunction3</span><span class="token punctuation">(</span>paramsWrapper<span class="token punctuation">.</span><span class="token function">getParamA</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">function4</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">//...reimplement it...</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2、统一多个类的接口设计"><a href="#2、统一多个类的接口设计" class="headerlink" title="2、统一多个类的接口设计"></a>2、统一多个类的接口设计</h3><ol>
+<li>某个功能的实现依赖多个外部系统（或者说类）。通过适配器模式，将它们的接口适配为统一的接口定义，然后我们就可以使用多态的特性来复用代码逻辑。具体还是举个例子来解释一下。</li>
+<li>假设我们的系统要对用户输入的文本内容做敏感词过滤，为了提高过滤的召回率，我们引入了多款第三方敏感词过滤系统，依次对用户输入的内容进行过滤，过滤掉尽可能多的敏感词。但是，每个系统提供的过滤接口都是不同的。这就意味着我们没法复用一套逻辑来调用各个系统。这个时候，我们就可以使用适配器模式，将所有系统的接口适配为统一的接口定义，这样我们可以复用调用敏感词过滤的代码。</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">ArrayList</span></span><span class="token punctuation">;</span>
+<span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span></span><span class="token class-name">List</span></span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ASensitiveWordsFilter</span> <span class="token punctuation">&#123;</span> <span class="token comment">// A敏感词过滤系统提供的接口</span>
+  <span class="token comment">// text是原始文本，函数输出用***替换敏感词之后的文本</span>
+  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">filterSexyWords</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">filterPoliticalWords</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BSensitiveWordsFilter</span> <span class="token punctuation">&#123;</span> <span class="token comment">// B敏感词过滤系统提供的接口</span>
+  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">filter</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CSensitiveWordsFilter</span> <span class="token punctuation">&#123;</span> <span class="token comment">// C敏感词过滤系统提供的接口</span>
+  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">filter</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">,</span> <span class="token class-name">String</span> mask<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// ...</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 未使用适配器模式之前的代码：代码的可测试性、扩展性不好</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RiskManagement</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">private</span> <span class="token class-name">ASensitiveWordsFilter</span> aFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ASensitiveWordsFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">private</span> <span class="token class-name">BSensitiveWordsFilter</span> bFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BSensitiveWordsFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">private</span> <span class="token class-name">CSensitiveWordsFilter</span> cFilter <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CSensitiveWordsFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">filterSensitiveWords</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> maskedText <span class="token operator">=</span> aFilter<span class="token punctuation">.</span><span class="token function">filterSexyWords</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    maskedText <span class="token operator">=</span> aFilter<span class="token punctuation">.</span><span class="token function">filterPoliticalWords</span><span class="token punctuation">(</span>maskedText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    maskedText <span class="token operator">=</span> bFilter<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>maskedText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    maskedText <span class="token operator">=</span> cFilter<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>maskedText<span class="token punctuation">,</span> <span class="token string">"***"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> maskedText<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 使用适配器模式进行改造</span>
+<span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">ISensitiveWordsFilter</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 统一接口定义</span>
+  <span class="token class-name">String</span> <span class="token function">filter</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ASensitiveWordsFilterAdaptor</span> <span class="token keyword">implements</span> <span class="token class-name">ISensitiveWordsFilter</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">private</span> <span class="token class-name">ASensitiveWordsFilter</span> aFilter<span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">filter</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> maskedText <span class="token operator">=</span> aFilter<span class="token punctuation">.</span><span class="token function">filterSexyWords</span><span class="token punctuation">(</span>text<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    maskedText <span class="token operator">=</span> aFilter<span class="token punctuation">.</span><span class="token function">filterPoliticalWords</span><span class="token punctuation">(</span>maskedText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">return</span> maskedText<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// ...省略BSensitiveWordsFilterAdaptor、CSensitiveWordsFilterAdaptor...</span>
+<span class="token comment">// 扩展性更好，更加符合开闭原则，如果添加一个新的敏感词过滤系统，</span>
+<span class="token comment">// 这个类完全不需要改动；而且基于接口而非实现编程，代码的可测试性更好。</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">RiskManagement</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">private</span> <span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">ISensitiveWordsFilter</span><span class="token punctuation">></span></span> filters <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayList</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addSensitiveWordsFilter</span><span class="token punctuation">(</span><span class="token class-name">ISensitiveWordsFilter</span> filter<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    filters<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>filter<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">filterSensitiveWords</span><span class="token punctuation">(</span><span class="token class-name">String</span> text<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">String</span> maskedText <span class="token operator">=</span> text<span class="token punctuation">;</span>
+    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">ISensitiveWordsFilter</span> filter <span class="token operator">:</span> filters<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      maskedText <span class="token operator">=</span> filter<span class="token punctuation">.</span><span class="token function">filter</span><span class="token punctuation">(</span>maskedText<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token keyword">return</span> maskedText<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3、替换依赖的外部系统"><a href="#3、替换依赖的外部系统" class="headerlink" title="3、替换依赖的外部系统"></a>3、替换依赖的外部系统</h3><p>当我们把项目中依赖的一个外部系统替换为另一个外部系统的时候，利用适配器模式，可以减少对代码的改动。具体的代码示例如下所示：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 外部系统A</span>
+<span class="token keyword">public</span>  <span class="token keyword">interface</span>  <span class="token class-name">IA</span>  <span class="token punctuation">&#123;</span>
+<span class="token comment">//...</span>
+  <span class="token keyword">void</span>  <span class="token function">fa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token keyword">public</span>  <span class="token keyword">class</span>  <span class="token class-name">A</span>  <span class="token keyword">implements</span>  <span class="token class-name">IA</span>  <span class="token punctuation">&#123;</span>
+<span class="token comment">//...</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span>  <span class="token function">fa</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span> 
+    <span class="token comment">//... </span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 在我们的项目中，外部系统A的使用示例</span>
+<span class="token keyword">public</span>  <span class="token keyword">class</span>  <span class="token class-name">Demo</span>  <span class="token punctuation">&#123;</span>
+  <span class="token keyword">private</span> <span class="token class-name">IA</span> a<span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token class-name">Demo</span><span class="token punctuation">(</span><span class="token class-name">IA</span> a<span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+  <span class="token comment">//... </span>
+
+<span class="token punctuation">&#125;</span>
+
+<span class="token class-name">Demo</span> d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Demo</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">// 将外部系统A替换成外部系统B</span>
+<span class="token keyword">public</span>  <span class="token keyword">class</span>  <span class="token class-name">BAdaptor</span>  implemnts  <span class="token constant">IA</span>  <span class="token punctuation">&#123;</span>
+  <span class="token keyword">private</span> <span class="token class-name">B</span> b<span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token class-name">BAdaptor</span><span class="token punctuation">(</span><span class="token class-name">B</span> b<span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>b<span class="token operator">=</span> b<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span>  <span class="token keyword">void</span>  <span class="token function">fa</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span>
+  <span class="token comment">//...</span>
+    b<span class="token punctuation">.</span><span class="token function">fb</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 借助BAdaptor，Demo的代码中，调用IA接口的地方都无需改动，</span>
+<span class="token comment">// 只需要将BAdaptor如下注入到Demo即可。</span>
+<span class="token class-name">Demo</span> d <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Demo</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">BAdaptor</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">B</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4、兼容老版本接口"><a href="#4、兼容老版本接口" class="headerlink" title="4、兼容老版本接口"></a>4、兼容老版本接口</h3><ol>
+<li>在做版本升级的时候，对于一些要废弃的接口，我们不直接将其删除，而是暂时保留，并且标注为 deprecated，并将内部实现逻辑委托为新的接口实现。这样做的好处是，让使用它的项目有个过渡期，而不是强制进行代码修改。这也可以粗略地看作适配器模式的一个应用场景。同样，还是通过一个例子，来进一步解释一下。</li>
+<li>JDK1.0 中包含一个遍历集合容器的类 Enumeration。JDK2.0 对这个类进行了重构，将它改名为 Iterator 类，并且对它的代码实现做了优化。但是考虑到如果将 Enumeration 直接从 JDK2.0 中删除，那使用 JDK1.0 的项目如果切换到 JDK2.0，代码就会编译不通过。为了避免这种情况的发生，我们必须把项目中所有使用到 Enumeration 的地方，都修改为使用 Iterator 才行。</li>
+<li>单独一个项目做 Enumeration 到 Iterator 的替换，勉强还能接受。但是，使用 Java 开发的项目太多了，一次 JDK 的升级，导致所有的项目不做代码修改就会编译报错，这显然是不合理的。这就是我们经常所说的不兼容升级。为了做到兼容使用低版本 JDK 的老代码，我们可以暂时保留 Enumeration 类，并将其实现替换为直接调用 Itertor。代码示例如下所示：</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span>  <span class="token keyword">class</span>  <span class="token class-name">Collections</span>  <span class="token punctuation">&#123;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">static</span> <span class="token class-name">Emueration</span> <span class="token function">emumeration</span><span class="token punctuation">(</span><span class="token keyword">final</span> <span class="token class-name">Collection</span> c<span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span>  <span class="token keyword">new</span> <span class="token class-name">Enumeration</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token class-name">Iterator</span> i <span class="token operator">=</span> c<span class="token punctuation">.</span><span class="token function">iterator</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+      <span class="token keyword">public</span> <span class="token keyword">boolean</span> <span class="token function">hasMoreElments</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> i<span class="token punctuation">.</span><span class="token function">hashNext</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+      <span class="token punctuation">&#125;</span>
+
+      <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">nextElement</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span>
+        <span class="token keyword">return</span> i<span class="token punctuation">.</span><span class="token function">next</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
+      <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="5、适配不同格式的数据"><a href="#5、适配不同格式的数据" class="headerlink" title="5、适配不同格式的数据"></a>5、适配不同格式的数据</h3><p>前面我们讲到，适配器模式主要用于接口的适配，实际上，它还可以用在不同格式的数据之间的适配。比如，把从不同征信系统拉取的不同格式的征信数据，统一为相同的格式，以方便存储和使用。再比如，Java 中的 Arrays.asList() 也可以看作一种数据适配器，将数组类型的数据转化为集合容器类型。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">List</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">></span></span> stooges <span class="token operator">=</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">asList</span><span class="token punctuation">(</span><span class="token string">"Larry"</span><span class="token punctuation">,</span> <span class="token string">"Moe"</span><span class="token punctuation">,</span> <span class="token string">"Curly"</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="6、适配器模式在-Java-日志中的应用-Slf4j"><a href="#6、适配器模式在-Java-日志中的应用-Slf4j" class="headerlink" title="6、适配器模式在 Java 日志中的应用(Slf4j)"></a>6、适配器模式在 Java 日志中的应用(Slf4j)</h3><ol>
+<li>Java 中有很多日志框架，在项目开发中，我们常常用它们来打印日志信息。其中，比较常用的有 log4j、logback，以及 JDK 提供的 JUL(java.util.logging) 和 Apache 的 JCL(Jakarta Commons Logging) 等。</li>
+<li>大部分日志框架都提供了相似的功能，比如按照不同级别（debug、info、warn、erro……）打印日志等，但它们却并没有实现统一的接口。这主要可能是历史的原因，它不像 JDBC 那样，一开始就制定了数据库操作的接口规范。</li>
+<li>如果我们只是开发一个自己用的项目，那用什么日志框架都可以，log4j、logback 随便选一个就好。但是，如果我们开发的是一个集成到其他系统的组件、框架、类库等，那日志框架的选择就没那么随意了。</li>
+<li>比如，项目中用到的某个组件使用 log4j 来打印日志，而我们项目本身使用的是 logback。将组件引入到项目之后，我们的项目就相当于有了两套日志打印框架。每种日志框架都有自己特有的配置方式。所以，我们要针对每种日志框架编写不同的配置文件（比如，日志存储的文件地址、打印日志的格式）。如果引入多个组件，每个组件使用的日志框架都不一样，那日志本身的管理工作就变得非常复杂。所以，为了解决这个问题，我们需要统一日志打印框架。</li>
+<li>如果是做 Java 开发的，那 Slf4j 这个日志框架肯定不陌生，它相当于 JDBC 规范，提供了一套打印日志的统一接口规范。不过，它只定义了接口，并没有提供具体的实现，需要配合其他日志框架（log4j、logback……）来使用。</li>
+<li>不仅如此，Slf4j 的出现晚于 JUL、JCL、log4j 等日志框架，所以，这些日志框架也不可能牺牲掉版本兼容性，将接口改造成符合 Slf4j 接口规范。Slf4j 也事先考虑到了这个问题，所以，它不仅仅提供了统一的接口定义，还提供了针对不同日志框架的适配器。对不同日志框架的接口进行二次封装，适配成统一的 Slf4j 接口定义。具体的代码示例如下所示：</li>
+</ol>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// slf4j统一的接口定义</span>
+<span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>slf4j</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span>  <span class="token keyword">interface</span> <span class="token class-name">Logger</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">boolean</span> <span class="token function">isTraceEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg1<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> argArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">trace</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">,</span> <span class="token class-name">Throwable</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">boolean</span> <span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg1<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">[</span><span class="token punctuation">]</span> argArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">,</span> <span class="token class-name">Throwable</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//...省略info、warn、error等一堆接口</span>
+<span class="token punctuation">&#125;</span>
+
+
+<span class="token comment">// log4j日志框架的适配器</span>
+<span class="token comment">// Log4jLoggerAdapter实现了LocationAwareLogger接口，</span>
+<span class="token comment">// 其中LocationAwareLogger继承自Logger接口，</span>
+<span class="token comment">// 也就相当于Log4jLoggerAdapter实现了Logger接口。</span>
+<span class="token keyword">package</span> <span class="token namespace">org<span class="token punctuation">.</span>slf4j<span class="token punctuation">.</span>impl</span><span class="token punctuation">;</span>
+<span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">Log4jLoggerAdapter</span> <span class="token keyword">extends</span> <span class="token class-name">MarkerIgnoringBase</span>
+        <span class="token keyword">implements</span> <span class="token class-name">LocationAwareLogger</span><span class="token punctuation">,</span> <span class="token class-name">Serializable</span> <span class="token punctuation">&#123;</span>
+
+  <span class="token keyword">final</span> <span class="token keyword">transient</span> <span class="token class-name"><span class="token namespace">org<span class="token punctuation">.</span>apache<span class="token punctuation">.</span>log4j<span class="token punctuation">.</span></span>Logger</span> logger<span class="token punctuation">;</span> <span class="token comment">// log4j</span>
+
+  <span class="token keyword">public</span>  <span class="token keyword">boolean</span> <span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">return</span> logger<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    logger<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">FQCN</span><span class="token punctuation">,</span> <span class="token class-name">Level</span><span class="token punctuation">.</span><span class="token constant">DEBUG</span><span class="token punctuation">,</span> msg<span class="token punctuation">,</span> <span class="token keyword">null</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token class-name">FormattingTuple</span> ft <span class="token operator">=</span> <span class="token class-name">MessageFormatter</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>format<span class="token punctuation">,</span> arg<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      logger<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">FQCN</span><span class="token punctuation">,</span> <span class="token class-name">Level</span><span class="token punctuation">.</span><span class="token constant">DEBUG</span><span class="token punctuation">,</span> ft<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ft<span class="token punctuation">.</span><span class="token function">getThrowable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg1<span class="token punctuation">,</span> <span class="token class-name">Object</span> arg2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token class-name">FormattingTuple</span> ft <span class="token operator">=</span> <span class="token class-name">MessageFormatter</span><span class="token punctuation">.</span><span class="token function">format</span><span class="token punctuation">(</span>format<span class="token punctuation">,</span> arg1<span class="token punctuation">,</span> arg2<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      logger<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">FQCN</span><span class="token punctuation">,</span> <span class="token class-name">Level</span><span class="token punctuation">.</span><span class="token constant">DEBUG</span><span class="token punctuation">,</span> ft<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ft<span class="token punctuation">.</span><span class="token function">getThrowable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> format<span class="token punctuation">,</span> <span class="token class-name">Object</span>\<span class="token punctuation">[</span>\<span class="token punctuation">]</span> argArray<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>logger<span class="token punctuation">.</span><span class="token function">isDebugEnabled</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+      <span class="token class-name">FormattingTuple</span> ft <span class="token operator">=</span> <span class="token class-name">MessageFormatter</span><span class="token punctuation">.</span><span class="token function">arrayFormat</span><span class="token punctuation">(</span>format<span class="token punctuation">,</span> argArray<span class="token punctuation">)</span><span class="token punctuation">;</span>
+      logger<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">FQCN</span><span class="token punctuation">,</span> <span class="token class-name">Level</span><span class="token punctuation">.</span><span class="token constant">DEBUG</span><span class="token punctuation">,</span> ft<span class="token punctuation">.</span><span class="token function">getMessage</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span> ft<span class="token punctuation">.</span><span class="token function">getThrowable</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+  <span class="token punctuation">&#125;</span>
+
+  <span class="token keyword">public</span>  <span class="token keyword">void</span> <span class="token function">debug</span><span class="token punctuation">(</span><span class="token class-name">String</span> msg<span class="token punctuation">,</span> <span class="token class-name">Throwable</span> t<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    logger<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token constant">FQCN</span><span class="token punctuation">,</span> <span class="token class-name">Level</span><span class="token punctuation">.</span><span class="token constant">DEBUG</span><span class="token punctuation">,</span> msg<span class="token punctuation">,</span> t<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+
+<span class="token comment">//...省略一堆接口的实现...</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>所以，在开发业务系统或者开发框架、组件的时候，我们统一使用 Slf4j 提供的接口来编写打印日志的代码，具体使用哪种日志框架实现（log4j、logback……），是可以动态地指定的（使用 Java 的 SPI 技术），只需要将相应的 SDK 导入到项目中即可。</p>
+<h2 id="4、代理、桥接、装饰器、适配器-4-种设计模式的区别"><a href="#4、代理、桥接、装饰器、适配器-4-种设计模式的区别" class="headerlink" title="4、代理、桥接、装饰器、适配器 4 种设计模式的区别"></a>4、代理、桥接、装饰器、适配器 4 种设计模式的区别</h2><ol>
+<li>代理、桥接、装饰器、适配器，这 4 种模式是比较常用的结构型设计模式。它们的代码结构非常相似。笼统来说，它们都可以称为 Wrapper 模式，也就是通过 Wrapper 类二次封装原始类。</li>
+<li>尽管代码结构相似，但这 4 种设计模式的用意完全不同，也就是说要解决的问题、应用场景不同，这也是它们的主要区别。</li>
+</ol>
+<ul>
+<li>代理模式：在不改变原始类接口的条件下，为原始类定义一个代理类，主要目的是控制访问，而非加强功能，这是它跟装饰器模式最大的不同。</li>
+<li>桥接模式：目的是将接口部分和实现部分分离，从而让它们可以较为容易、也相对独立地加以改变。</li>
+<li>装饰者模式：在不改变原始类接口的情况下，对原始类功能进行增强，并且支持多个装饰器的嵌套使用。</li>
+<li>适配器模式：是一种事后的补救策略。适配器提供跟原始类不同的接口，而代理模式、装饰器模式提供的都是跟原始类相同的接口。</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">Zhai Biao</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="http://example.com/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/">http://example.com/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">Zhai Biao</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                                    <span class="chip bg-color">设计模式</span>
+                                </a>
+                            
+                                <a href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B/">
+                                    <span class="chip bg-color">结构型</span>
+                                </a>
+                            
+                                <a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/">
+                                    <span class="chip bg-color">装饰器</span>
+                                </a>
+                            
+                                <a href="/tags/%E9%80%82%E9%85%8D%E5%99%A8/">
+                                    <span class="chip bg-color">适配器</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="05-结构型-门面-组合-享元">
+                        
+                        <span class="card-title">05-结构型-门面-组合-享元</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2022-09-27
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B/">
+                        <span class="chip bg-color">结构型</span>
+                    </a>
+                    
+                    <a href="/tags/%E9%97%A8%E9%9D%A2/">
+                        <span class="chip bg-color">门面</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BB%84%E5%90%88/">
+                        <span class="chip bg-color">组合</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BA%AB%E5%85%83/">
+                        <span class="chip bg-color">享元</span>
+                    </a>
+                    
+                    <a href="/tags/%E5%A4%96%E8%A7%82/">
+                        <span class="chip bg-color">外观</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="03-结构型-代理-桥接">
+                        
+                        <span class="card-title">03-结构型-代理-桥接</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2022-09-23
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="post-category">
+                                    设计模式
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">
+                        <span class="chip bg-color">设计模式</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B/">
+                        <span class="chip bg-color">结构型</span>
+                    </a>
+                    
+                    <a href="/tags/%E4%BB%A3%E7%90%86/">
+                        <span class="chip bg-color">代理</span>
+                    </a>
+                    
+                    <a href="/tags/%E6%A1%A5%E6%8E%A5/">
+                        <span class="chip bg-color">桥接</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+
+  <!-- 是否加载使用自带的 prismjs. -->
+  <script type="text/javascript" src="/libs/prism/prism.min.js"></script>
+
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h1, h2, h3, h4'
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="/libs/aplayer/Meting.min.js"></script>
+
+    
+
+    <div class="container row center-align"
+         style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2022</span>
+            
+            <a href="/about" target="_blank">Zhai Biao</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+                &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
+                        class="white-color">95.9k</span>
+            
+            
+            
+                
+            
+            
+                <span id="busuanzi_container_site_pv">
+                &nbsp;|&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;
+                    <span id="busuanzi_value_site_pv" class="white-color"></span>
+            </span>
+            
+            
+                <span id="busuanzi_container_site_uv">
+                &nbsp;|&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;
+                    <span id="busuanzi_value_site_uv" class="white-color"></span>
+            </span>
+            
+            <br>
+
+            <!-- 运行天数提醒. -->
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+    <a href="https://github.com/Bigotry-zb" class="tooltipped" target="_blank" data-tooltip="访问我的GitHub" data-position="top" data-delay="50">
+        <i class="fab fa-github"></i>
+    </a>
+
+
+
+    <a href="mailto:1923613738@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=1923613738" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 1923613738" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 白天和黑夜主题 -->
+<div class="stars-con">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>  
+</div>
+
+<script>
+    function switchNightMode() {
+        $('<div class="Cuteen_DarkSky"><div class="Cuteen_DarkPlanet"></div></div>').appendTo($('body')),
+        setTimeout(function () {
+            $('body').hasClass('DarkMode') 
+            ? ($('body').removeClass('DarkMode'), localStorage.setItem('isDark', '0'), $('#sum-moon-icon').removeClass("fa-sun").addClass('fa-moon')) 
+            : ($('body').addClass('DarkMode'), localStorage.setItem('isDark', '1'), $('#sum-moon-icon').addClass("fa-sun").removeClass('fa-moon')),
+            
+            setTimeout(function () {
+            $('.Cuteen_DarkSky').fadeOut(1e3, function () {
+                $(this).remove()
+            })
+            }, 2e3)
+        })
+    }
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    
+
+    
+
+    <!-- 雪花特效 -->
+     
+        <script type="text/javascript">
+            // 只在桌面版网页启用特效
+            var windowWidth = $(window).width();
+            if (windowWidth > 768) {
+                document.write('<script type="text/javascript" src="/libs/others/snow.js"><\/script>');
+            }
+        </script>
+    
+
+    <!-- 鼠标星星特效 -->
+    
+
+     
+        <script src="https://ssl.captcha.qq.com/TCaptcha.js"></script>
+        <script src="/libs/others/TencentCaptcha.js"></script>
+        <button id="TencentCaptcha" data-appid="xxxxxxxxxx" data-cbfn="callback" type="button" hidden></button>
+    
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+    <!--腾讯兔小巢-->
+    
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
