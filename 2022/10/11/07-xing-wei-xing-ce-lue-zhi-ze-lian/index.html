@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zb-CN" data-default-color-scheme=auto>
 
 
 
@@ -13,22 +13,22 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Zhai Biao">
+  <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、策略模式【常用】1、Demo案例-鸭子问题编写鸭子项目，具体要求如下:   有各种鸭子(比如 野鸭、北京鸭、水鸭等， 鸭子有各种行为，比如 叫、飞行等)  显示鸭子的信息  1、传统方式解决鸭子问题代码实现1、Duckpublic abstract class Duck &amp;#123;     public Duck() &amp;#123;        &amp;#125;     public abstr">
+    <meta name="description" content="一、策略模式【常用】1、Demo案例-鸭子问题编写鸭子项目，具体要求如下:   有各种鸭子(比如 野鸭、北京鸭、水鸭等， 鸭子有各种行为，比如 叫、飞行等)  显示鸭子的信息  1、传统方式解决鸭子问题代码实现1、Duck123456789101112131415161718192021public abstract class Duck &amp;#123;   public Duck() &amp;#123;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="07-行为型-策略-职责链">
 <meta property="og:url" content="http://example.com/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
-<meta property="og:description" content="一、策略模式【常用】1、Demo案例-鸭子问题编写鸭子项目，具体要求如下:   有各种鸭子(比如 野鸭、北京鸭、水鸭等， 鸭子有各种行为，比如 叫、飞行等)  显示鸭子的信息  1、传统方式解决鸭子问题代码实现1、Duckpublic abstract class Duck &amp;#123;     public Duck() &amp;#123;        &amp;#125;     public abstr">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:description" content="一、策略模式【常用】1、Demo案例-鸭子问题编写鸭子项目，具体要求如下:   有各种鸭子(比如 野鸭、北京鸭、水鸭等， 鸭子有各种行为，比如 叫、飞行等)  显示鸭子的信息  1、传统方式解决鸭子问题代码实现1、Duck123456789101112131415161718192021public abstract class Duck &amp;#123;   public Duck() &amp;#123;">
+<meta property="og:locale" content="zb_CN">
 <meta property="og:image" content="http://example.com/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/image-20221012163252938.png">
 <meta property="og:image" content="http://example.com/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/image-20221012162105114.png">
 <meta property="og:image" content="http://example.com/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/image-20221012180753720.png">
 <meta property="article:published_time" content="2022-10-11T08:39:59.000Z">
-<meta property="article:modified_time" content="2022-10-12T12:47:37.586Z">
-<meta property="article:author" content="Zhai Biao">
+<meta property="article:modified_time" content="2022-10-19T03:35:32.308Z">
+<meta property="article:author" content="John Doe">
 <meta property="article:tag" content="设计模式">
 <meta property="article:tag" content="策略">
 <meta property="article:tag" content="职责链">
@@ -82,7 +82,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -123,7 +123,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>ZBiao</strong>
+      <strong>ZBiao&#39; Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -143,7 +143,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                Home
               </a>
             </li>
           
@@ -155,7 +155,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                Archives
               </a>
             </li>
           
@@ -167,7 +167,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                Categories
               </a>
             </li>
           
@@ -179,7 +179,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                Tags
               </a>
             </li>
           
@@ -191,7 +191,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                About
               </a>
             </li>
           
@@ -218,7 +218,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -236,7 +236,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-10-11 16:39" pubdate>
-          2022年10月11日 下午
+          October 11, 2022 pm
         </time>
       </span>
     
@@ -247,7 +247,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          13k 字
+          14k words
         
       </span>
     
@@ -258,7 +258,7 @@
         
         
         
-          109 分钟
+          119 mins
         
       </span>
     
@@ -268,7 +268,7 @@
       
         <span id="busuanzi_container_page_pv" style="display: none">
           <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
+          <span id="busuanzi_value_page_pv"></span> views
         </span>
         
       
@@ -296,6 +296,130 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="设计模式"
+        id="heading-301a19970448f8e4f27ddae7a7d415fe" role="tab" data-toggle="collapse" href="#collapse-301a19970448f8e4f27ddae7a7d415fe"
+        aria-expanded="true"
+      >
+        设计模式
+        <span class="list-group-count">(9)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-301a19970448f8e4f27ddae7a7d415fe"
+           role="tabpanel" aria-labelledby="heading-301a19970448f8e4f27ddae7a7d415fe">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/09/21/01-chuang-jian-xing-dan-li/" title="01-创建型-单例"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">01-创建型-单例</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/" title="02-创建型-工厂&amp;建造者&amp;原型"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">02-创建型-工厂&amp;建造者&amp;原型</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">03-结构型-代理-桥接</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/" title="04-结构型-装饰器-适配器"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">04-结构型-装饰器-适配器</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">05-结构型-门面-组合-享元</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/" title="06-行为型-观察者-模板"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">06-行为型-观察者-模板</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">07-行为型-策略-职责链</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">08-行为型-状态-迭代器</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/21/she-ji-mo-shi-gai-shu/" title="设计模式概述"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">设计模式概述</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -314,77 +438,13 @@
 <li>有各种鸭子(比如 野鸭、北京鸭、水鸭等， 鸭子有各种行为，比如 叫、飞行等) </li>
 <li>显示鸭子的信息</li>
 </ol>
-<h3 id="1、传统方式解决鸭子问题代码实现"><a href="#1、传统方式解决鸭子问题代码实现" class="headerlink" title="1、传统方式解决鸭子问题代码实现"></a>1、传统方式解决鸭子问题代码实现</h3><h4 id="1、Duck"><a href="#1、Duck" class="headerlink" title="1、Duck"></a>1、Duck</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Duck</span> <span class="token punctuation">&#123;</span>
+<h3 id="1、传统方式解决鸭子问题代码实现"><a href="#1、传统方式解决鸭子问题代码实现" class="headerlink" title="1、传统方式解决鸭子问题代码实现"></a>1、传统方式解决鸭子问题代码实现</h3><h4 id="1、Duck"><a href="#1、Duck" class="headerlink" title="1、Duck"></a>1、Duck</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Duck</span> &#123;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-title function_">Duck</span><span class="hljs-params">()</span> &#123;<br>   <br>   &#125;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span>;<span class="hljs-comment">//显示鸭子信息</span><br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quack</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;鸭子嘎嘎叫~~&quot;</span>);<br>   &#125;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swim</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;鸭子会游泳~~&quot;</span>);<br>   &#125;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;鸭子会飞翔~~~&quot;</span>);<br>   &#125;<br>   <br>&#125;<br></code></pre></td></tr></table></figure>
 
-   <span class="token keyword">public</span> <span class="token class-name">Duck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-   
-   <span class="token punctuation">&#125;</span>
+<h4 id="2、PekingDuck"><a href="#2、PekingDuck" class="headerlink" title="2、PekingDuck"></a>2、PekingDuck</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PekingDuck</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Duck</span> &#123;<br><br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot;~~北京鸭~~~&quot;</span>);<br>   &#125;<br>   <br>   <span class="hljs-comment">//因为北京鸭不能飞翔，因此需要重写fly</span><br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot;北京鸭不能飞翔&quot;</span>);<br>   &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
-   <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//显示鸭子信息</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"鸭子嘎嘎叫~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">swim</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"鸭子会游泳~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"鸭子会飞翔~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="3、ToyDuck"><a href="#3、ToyDuck" class="headerlink" title="3、ToyDuck"></a>3、ToyDuck</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ToyDuck</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Duck</span>&#123;<br><br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot;玩具鸭&quot;</span>);<br>   &#125;<br><br>   <span class="hljs-comment">//需要重写父类的所有方法</span><br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quack</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;玩具鸭不能叫~~&quot;</span>);<br>   &#125;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swim</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;玩具鸭不会游泳~~&quot;</span>);<br>   &#125;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;玩具鸭不会飞翔~~~&quot;</span>);<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="2、PekingDuck"><a href="#2、PekingDuck" class="headerlink" title="2、PekingDuck"></a>2、PekingDuck</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PekingDuck</span> <span class="token keyword">extends</span> <span class="token class-name">Duck</span> <span class="token punctuation">&#123;</span>
-
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"~~北京鸭~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token comment">//因为北京鸭不能飞翔，因此需要重写fly</span>
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"北京鸭不能飞翔"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="3、ToyDuck"><a href="#3、ToyDuck" class="headerlink" title="3、ToyDuck"></a>3、ToyDuck</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ToyDuck</span> <span class="token keyword">extends</span> <span class="token class-name">Duck</span><span class="token punctuation">&#123;</span>
-
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"玩具鸭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-
-   <span class="token comment">//需要重写父类的所有方法</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"玩具鸭不能叫~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">swim</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"玩具鸭不会游泳~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"玩具鸭不会飞翔~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="4、WildDuck"><a href="#4、WildDuck" class="headerlink" title="4、WildDuck"></a>4、WildDuck</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WildDuck</span> <span class="token keyword">extends</span> <span class="token class-name">Duck</span> <span class="token punctuation">&#123;</span>
-
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 这是野鸭 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="4、WildDuck"><a href="#4、WildDuck" class="headerlink" title="4、WildDuck"></a>4、WildDuck</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WildDuck</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Duck</span> &#123;<br><br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot; 这是野鸭 &quot;</span>);<br>   &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="5、问题"><a href="#5、问题" class="headerlink" title="5、问题"></a>5、问题</h4><p>那么问题来了</p>
 <ol>
@@ -396,161 +456,25 @@
 <p>解决思路 ==策略模式== </p>
 <h3 id="2、策略模式解决鸭子问题代码实现"><a href="#2、策略模式解决鸭子问题代码实现" class="headerlink" title="2、策略模式解决鸭子问题代码实现"></a>2、策略模式解决鸭子问题代码实现</h3><p>思路分析：</p>
 <p>分别封装行为接口，实现算法族，超类里放行为接口对象，在子类里具体 设定行为对象。原则就是：分离变化部分，封装接口，基于接口编程各种功能。此模 式让行为的变化独立于算法的使用者</p>
-<h4 id="1、FlyBehavior"><a href="#1、FlyBehavior" class="headerlink" title="1、FlyBehavior"></a>1、FlyBehavior</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">FlyBehavior</span> <span class="token punctuation">&#123;</span>
-   
-   <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 子类具体实现</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="1、FlyBehavior"><a href="#1、FlyBehavior" class="headerlink" title="1、FlyBehavior"></a>1、FlyBehavior</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">FlyBehavior</span> &#123;<br>   <br>   <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span>; <span class="hljs-comment">// 子类具体实现</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="2、GoodFlyBehavior"><a href="#2、GoodFlyBehavior" class="headerlink" title="2、GoodFlyBehavior"></a>2、GoodFlyBehavior</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">GoodFlyBehavior</span> <span class="token keyword">implements</span> <span class="token class-name">FlyBehavior</span> <span class="token punctuation">&#123;</span>
+<h4 id="2、GoodFlyBehavior"><a href="#2、GoodFlyBehavior" class="headerlink" title="2、GoodFlyBehavior"></a>2、GoodFlyBehavior</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">GoodFlyBehavior</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">FlyBehavior</span> &#123;<br><br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot; 飞翔技术高超 ~~~&quot;</span>);<br>   &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 飞翔技术高超 ~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
+<h4 id="3、BadFlyBehavior"><a href="#3、BadFlyBehavior" class="headerlink" title="3、BadFlyBehavior"></a>3、BadFlyBehavior</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">BadFlyBehavior</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">FlyBehavior</span> &#123;<br><br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot; 飞翔技术一般 &quot;</span>);<br>   &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="4、NoFlyBehavior"><a href="#4、NoFlyBehavior" class="headerlink" title="4、NoFlyBehavior"></a>4、NoFlyBehavior</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">NoFlyBehavior</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">FlyBehavior</span>&#123;<br><br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot; 不会飞翔  &quot;</span>);<br>   &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="3、BadFlyBehavior"><a href="#3、BadFlyBehavior" class="headerlink" title="3、BadFlyBehavior"></a>3、BadFlyBehavior</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">BadFlyBehavior</span> <span class="token keyword">implements</span> <span class="token class-name">FlyBehavior</span> <span class="token punctuation">&#123;</span>
+<h4 id="5、QuackBehavior"><a href="#5、QuackBehavior" class="headerlink" title="5、QuackBehavior"></a>5、QuackBehavior</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">interface</span> <span class="hljs-title class_">QuackBehavior</span> &#123;<br>   <span class="hljs-keyword">void</span> <span class="hljs-title function_">quack</span><span class="hljs-params">()</span>;<span class="hljs-comment">//子类实现</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 飞翔技术一般 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
+<h4 id="6、Duck"><a href="#6、Duck" class="headerlink" title="6、Duck"></a>6、Duck</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Duck</span> &#123;<br><br>   <span class="hljs-comment">//属性, 策略接口</span><br>   FlyBehavior flyBehavior;<br>   <span class="hljs-comment">//其它属性&lt;-&gt;策略接口</span><br>   QuackBehavior quackBehavior;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-title function_">Duck</span><span class="hljs-params">()</span> &#123;<br>   <br>   &#125;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span>;<span class="hljs-comment">//显示鸭子信息</span><br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quack</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;鸭子嘎嘎叫~~&quot;</span>);<br>   &#125;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swim</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;鸭子会游泳~~&quot;</span>);<br>   &#125;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">fly</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">//改进</span><br>      <span class="hljs-keyword">if</span>(flyBehavior != <span class="hljs-literal">null</span>) &#123;<br>         flyBehavior.fly();<br>      &#125;<br>   &#125;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setFlyBehavior</span><span class="hljs-params">(FlyBehavior flyBehavior)</span> &#123;<br>      <span class="hljs-built_in">this</span>.flyBehavior = flyBehavior;<br>   &#125;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setQuackBehavior</span><span class="hljs-params">(QuackBehavior quackBehavior)</span> &#123;<br>      <span class="hljs-built_in">this</span>.quackBehavior = quackBehavior;<br>   &#125;<br>   <br>&#125;<br></code></pre></td></tr></table></figure>
 
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="7、PekingDuck"><a href="#7、PekingDuck" class="headerlink" title="7、PekingDuck"></a>7、PekingDuck</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PekingDuck</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Duck</span> &#123;<br><br>   <span class="hljs-comment">//假如北京鸭可以飞翔，但是飞翔技术一般</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-title function_">PekingDuck</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>      flyBehavior = <span class="hljs-keyword">new</span> <span class="hljs-title class_">BadFlyBehavior</span>();<br>      <br>   &#125;<br>   <br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot;~~北京鸭~~~&quot;</span>);<br>   &#125;<br>   <br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="4、NoFlyBehavior"><a href="#4、NoFlyBehavior" class="headerlink" title="4、NoFlyBehavior"></a>4、NoFlyBehavior</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">NoFlyBehavior</span> <span class="token keyword">implements</span> <span class="token class-name">FlyBehavior</span><span class="token punctuation">&#123;</span>
+<h4 id="8、ToyDuck"><a href="#8、ToyDuck" class="headerlink" title="8、ToyDuck"></a>8、ToyDuck</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ToyDuck</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Duck</span>&#123;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-title function_">ToyDuck</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>      flyBehavior = <span class="hljs-keyword">new</span> <span class="hljs-title class_">NoFlyBehavior</span>();<br>   &#125;<br>   <br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot;玩具鸭&quot;</span>);<br>   &#125;<br><br>   <span class="hljs-comment">//需要重写父类的所有方法</span><br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">quack</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;玩具鸭不能叫~~&quot;</span>);<br>   &#125;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">swim</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;玩具鸭不会游泳~~&quot;</span>);<br>   &#125;<br>   <br>&#125;<br></code></pre></td></tr></table></figure>
 
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 不会飞翔  "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
+<h4 id="9、WildDuck"><a href="#9、WildDuck" class="headerlink" title="9、WildDuck"></a>9、WildDuck</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WildDuck</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Duck</span> &#123;<br>   <br>   <span class="hljs-comment">//构造器，传入FlyBehavor 的对象</span><br>   <span class="hljs-keyword">public</span>  <span class="hljs-title function_">WildDuck</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>      flyBehavior = <span class="hljs-keyword">new</span> <span class="hljs-title class_">GoodFlyBehavior</span>();<br>   &#125;<br>   <br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      System.out.println(<span class="hljs-string">&quot; 这是野鸭 &quot;</span>);<br>   &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="5、QuackBehavior"><a href="#5、QuackBehavior" class="headerlink" title="5、QuackBehavior"></a>5、QuackBehavior</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">interface</span> <span class="token class-name">QuackBehavior</span> <span class="token punctuation">&#123;</span>
-   <span class="token keyword">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//子类实现</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="6、Duck"><a href="#6、Duck" class="headerlink" title="6、Duck"></a>6、Duck</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Duck</span> <span class="token punctuation">&#123;</span>
-
-   <span class="token comment">//属性, 策略接口</span>
-   <span class="token class-name">FlyBehavior</span> flyBehavior<span class="token punctuation">;</span>
-   <span class="token comment">//其它属性&lt;->策略接口</span>
-   <span class="token class-name">QuackBehavior</span> quackBehavior<span class="token punctuation">;</span>
-   
-   <span class="token keyword">public</span> <span class="token class-name">Duck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-   
-   <span class="token punctuation">&#125;</span>
-
-   <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//显示鸭子信息</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"鸭子嘎嘎叫~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">swim</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"鸭子会游泳~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">//改进</span>
-      <span class="token keyword">if</span><span class="token punctuation">(</span>flyBehavior <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-         flyBehavior<span class="token punctuation">.</span><span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token punctuation">&#125;</span>
-   <span class="token punctuation">&#125;</span>
-
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setFlyBehavior</span><span class="token punctuation">(</span><span class="token class-name">FlyBehavior</span> flyBehavior<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>flyBehavior <span class="token operator">=</span> flyBehavior<span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setQuackBehavior</span><span class="token punctuation">(</span><span class="token class-name">QuackBehavior</span> quackBehavior<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token keyword">this</span><span class="token punctuation">.</span>quackBehavior <span class="token operator">=</span> quackBehavior<span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="7、PekingDuck"><a href="#7、PekingDuck" class="headerlink" title="7、PekingDuck"></a>7、PekingDuck</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PekingDuck</span> <span class="token keyword">extends</span> <span class="token class-name">Duck</span> <span class="token punctuation">&#123;</span>
-
-   <span class="token comment">//假如北京鸭可以飞翔，但是飞翔技术一般</span>
-   <span class="token keyword">public</span> <span class="token class-name">PekingDuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated constructor stub</span>
-      flyBehavior <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">BadFlyBehavior</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"~~北京鸭~~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="8、ToyDuck"><a href="#8、ToyDuck" class="headerlink" title="8、ToyDuck"></a>8、ToyDuck</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ToyDuck</span> <span class="token keyword">extends</span> <span class="token class-name">Duck</span><span class="token punctuation">&#123;</span>
-
-   <span class="token keyword">public</span> <span class="token class-name">ToyDuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated constructor stub</span>
-      flyBehavior <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">NoFlyBehavior</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"玩具鸭"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-
-   <span class="token comment">//需要重写父类的所有方法</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">quack</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"玩具鸭不能叫~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">swim</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"玩具鸭不会游泳~~"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="9、WildDuck"><a href="#9、WildDuck" class="headerlink" title="9、WildDuck"></a>9、WildDuck</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">WildDuck</span> <span class="token keyword">extends</span> <span class="token class-name">Duck</span> <span class="token punctuation">&#123;</span>
-   
-   <span class="token comment">//构造器，传入FlyBehavor 的对象</span>
-   <span class="token keyword">public</span>  <span class="token class-name">WildDuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated constructor stub</span>
-      flyBehavior <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">GoodFlyBehavior</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-   
-   <span class="token annotation punctuation">@Override</span>
-   <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">display</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 这是野鸭 "</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="10、Client"><a href="#10、Client" class="headerlink" title="10、Client"></a>10、Client</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">&#123;</span>
-
-   <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// TODO Auto-generated method stub</span>
-      <span class="token class-name">WildDuck</span> wildDuck <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WildDuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      wildDuck<span class="token punctuation">.</span><span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token comment">//</span>
-      
-      <span class="token class-name">ToyDuck</span> toyDuck <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ToyDuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      toyDuck<span class="token punctuation">.</span><span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      
-      <span class="token class-name">PekingDuck</span> pekingDuck <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PekingDuck</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      pekingDuck<span class="token punctuation">.</span><span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      
-      <span class="token comment">//动态改变某个对象的行为, 北京鸭 不能飞</span>
-      pekingDuck<span class="token punctuation">.</span><span class="token function">setFlyBehavior</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">NoFlyBehavior</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"北京鸭的实际飞翔能力"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      pekingDuck<span class="token punctuation">.</span><span class="token function">fly</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="10、Client"><a href="#10、Client" class="headerlink" title="10、Client"></a>10、Client</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Client</span> &#123;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      <span class="hljs-type">WildDuck</span> <span class="hljs-variable">wildDuck</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">WildDuck</span>();<br>      wildDuck.fly();<span class="hljs-comment">//</span><br>      <br>      <span class="hljs-type">ToyDuck</span> <span class="hljs-variable">toyDuck</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ToyDuck</span>();<br>      toyDuck.fly();<br>      <br>      <span class="hljs-type">PekingDuck</span> <span class="hljs-variable">pekingDuck</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PekingDuck</span>();<br>      pekingDuck.fly();<br>      <br>      <span class="hljs-comment">//动态改变某个对象的行为, 北京鸭 不能飞</span><br>      pekingDuck.setFlyBehavior(<span class="hljs-keyword">new</span> <span class="hljs-title class_">NoFlyBehavior</span>());<br>      System.out.println(<span class="hljs-string">&quot;北京鸭的实际飞翔能力&quot;</span>);<br>      pekingDuck.fly();<br>   &#125;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>结果如下：</p>
 <p><img src="/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/image-20221012163252938.png" srcset="/img/loading.gif" lazyload></p>
@@ -562,59 +486,7 @@
 <p><img src="/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/image-20221012162105114.png" srcset="/img/loading.gif" lazyload></p>
 <p>从上图可以看到，客户context 有成员变量strategy或者其他的策略接口 ,至于需要使用到哪个策略，我们可以在构造器中指定。</p>
 <h2 id="3、策略模式在JDK-Arrays-应用"><a href="#3、策略模式在JDK-Arrays-应用" class="headerlink" title="3、策略模式在JDK-Arrays 应用"></a>3、策略模式在JDK-Arrays 应用</h2><p>举个例子</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Strategy</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token number">9</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">8</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">3</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// 说明</span>
-        <span class="token comment">// 1. 实现了 Comparator 接口（策略接口） , 匿名类对象 new Comparator&lt;Integer>()&#123;..&#125;</span>
-        <span class="token comment">// 2. 对象 new Comparator&lt;Integer>()&#123;..&#125; 就是实现了策略接口的对象</span>
-        <span class="token comment">// 3. public int compare(Integer o1, Integer o2)&#123;&#125; 指定具体的处理方式</span>
-        <span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span> comparator <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Comparator</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Integer</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">compare</span><span class="token punctuation">(</span><span class="token class-name">Integer</span> o1<span class="token punctuation">,</span> <span class="token class-name">Integer</span> o2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">if</span> <span class="token punctuation">(</span>o1 <span class="token operator">></span> o2<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                    <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                    <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-                <span class="token punctuation">&#125;</span>
-            <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-
-        <span class="token comment">// 说明</span>
-      <span class="token comment">/*
-       * public static &lt;T> void sort(T[] a, Comparator&lt;? super T> c) &#123;
-              if (c == null) &#123;
-                  sort(a); //默认方法
-              &#125; else &#123;
-                  if (LegacyMergeSort.userRequested)
-                      legacyMergeSort(a, c); //使用策略对象c
-                  else
-                     // 使用策略对象c
-                      TimSort.sort(a, 0, a.length, c, null, 0, 0);
-              &#125;
-          &#125;
-       */</span>
-        <span class="token comment">// 方式1</span>
-        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>data<span class="token punctuation">,</span> comparator<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// ????????</span>
-
-
-        <span class="token comment">//方式2- lambda 表达式</span>
-        <span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> data2 <span class="token operator">=</span> <span class="token punctuation">&#123;</span> <span class="token number">19</span><span class="token punctuation">,</span> <span class="token number">11</span><span class="token punctuation">,</span> <span class="token number">12</span><span class="token punctuation">,</span> <span class="token number">18</span><span class="token punctuation">,</span> <span class="token number">14</span><span class="token punctuation">,</span> <span class="token number">13</span> <span class="token punctuation">&#125;</span><span class="token punctuation">;</span>
-
-        <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>data2<span class="token punctuation">,</span> <span class="token punctuation">(</span>var1<span class="token punctuation">,</span> var2<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span><span class="token punctuation">(</span>var1<span class="token punctuation">.</span><span class="token function">compareTo</span><span class="token punctuation">(</span>var2<span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-                <span class="token keyword">return</span> <span class="token number">1</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"data2="</span> <span class="token operator">+</span> <span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span>data2<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Strategy</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        Integer[] data = &#123; <span class="hljs-number">9</span>, <span class="hljs-number">1</span>, <span class="hljs-number">2</span>, <span class="hljs-number">8</span>, <span class="hljs-number">4</span>, <span class="hljs-number">3</span> &#125;;<br><br>        <span class="hljs-comment">// 说明</span><br>        <span class="hljs-comment">// 1. 实现了 Comparator 接口（策略接口） , 匿名类对象 new Comparator&lt;Integer&gt;()&#123;..&#125;</span><br>        <span class="hljs-comment">// 2. 对象 new Comparator&lt;Integer&gt;()&#123;..&#125; 就是实现了策略接口的对象</span><br>        <span class="hljs-comment">// 3. public int compare(Integer o1, Integer o2)&#123;&#125; 指定具体的处理方式</span><br>        Comparator&lt;Integer&gt; comparator = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Comparator</span>&lt;Integer&gt;() &#123;<br>            <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">compare</span><span class="hljs-params">(Integer o1, Integer o2)</span> &#123;<br>                <span class="hljs-keyword">if</span> (o1 &gt; o2) &#123;<br>                    <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>                &#125; <span class="hljs-keyword">else</span> &#123;<br>                    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>                &#125;<br>            &#125;;<br>        &#125;;<br><br>        <span class="hljs-comment">// 说明</span><br>      <span class="hljs-comment">/*</span><br><span class="hljs-comment">       * public static &lt;T&gt; void sort(T[] a, Comparator&lt;? super T&gt; c) &#123;</span><br><span class="hljs-comment">              if (c == null) &#123;</span><br><span class="hljs-comment">                  sort(a); //默认方法</span><br><span class="hljs-comment">              &#125; else &#123;</span><br><span class="hljs-comment">                  if (LegacyMergeSort.userRequested)</span><br><span class="hljs-comment">                      legacyMergeSort(a, c); //使用策略对象c</span><br><span class="hljs-comment">                  else</span><br><span class="hljs-comment">                     // 使用策略对象c</span><br><span class="hljs-comment">                      TimSort.sort(a, 0, a.length, c, null, 0, 0);</span><br><span class="hljs-comment">              &#125;</span><br><span class="hljs-comment">          &#125;</span><br><span class="hljs-comment">       */</span><br>        <span class="hljs-comment">// 方式1</span><br>        Arrays.sort(data, comparator);<br><br>        System.out.println(Arrays.toString(data)); <span class="hljs-comment">// ????????</span><br><br><br>        <span class="hljs-comment">//方式2- lambda 表达式</span><br>        Integer[] data2 = &#123; <span class="hljs-number">19</span>, <span class="hljs-number">11</span>, <span class="hljs-number">12</span>, <span class="hljs-number">18</span>, <span class="hljs-number">14</span>, <span class="hljs-number">13</span> &#125;;<br><br>        Arrays.sort(data2, (var1, var2) -&gt; &#123;<br>            <span class="hljs-keyword">if</span>(var1.compareTo(var2) &gt; <span class="hljs-number">0</span>) &#123;<br>                <span class="hljs-keyword">return</span> -<span class="hljs-number">1</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;<br>            &#125;<br>        &#125;);<br><br>        System.out.println(<span class="hljs-string">&quot;data2=&quot;</span> + Arrays.toString(data2));<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <ol>
 <li>上述用两种方式实现策略模式，方式1是以Comparator为接口，实现compare方法来完成具体实现</li>
@@ -643,150 +515,19 @@
 <li>传统方式的问题分析 : 客户端这里会使用到 分支判断(比如 switch) 来对不同的采购请求处理， 这样就存在如下问题 (1) 如果各个级别的人员审批金额发生变化，在客户端的也需要变化 (2) 客户端必须明确的知道有多少个审批级别和访问</li>
 <li>这样对一个采购请求进行处理 和 Approver (审批人) 就存在强耦合关系，不利于代码的扩展和维护</li>
 </ol>
-<h3 id="2、职责链模式方案代码"><a href="#2、职责链模式方案代码" class="headerlink" title="2、职责链模式方案代码"></a>2、职责链模式方案代码</h3><h4 id="1、Approver【抽象类】"><a href="#1、Approver【抽象类】" class="headerlink" title="1、Approver【抽象类】"></a>1、Approver【抽象类】</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">Approver</span> <span class="token punctuation">&#123;</span>
+<h3 id="2、职责链模式方案代码"><a href="#2、职责链模式方案代码" class="headerlink" title="2、职责链模式方案代码"></a>2、职责链模式方案代码</h3><h4 id="1、Approver【抽象类】"><a href="#1、Approver【抽象类】" class="headerlink" title="1、Approver【抽象类】"></a>1、Approver【抽象类】</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Approver</span> &#123;<br><br>  Approver approver; <span class="hljs-comment">// 下一个处理者</span><br>  String name; <span class="hljs-comment">// 名字</span><br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">Approver</span><span class="hljs-params">(String name)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>    <span class="hljs-built_in">this</span>.name = name;<br>  &#125;<br><br>  <span class="hljs-comment">// 下一个处理者</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setApprover</span><span class="hljs-params">(Approver approver)</span> &#123;<br>    <span class="hljs-built_in">this</span>.approver = approver;<br>  &#125;<br><br>  <span class="hljs-comment">// 处理审批请求的方法，得到一个请求, 处理是子类完成，因此该方法做成抽象</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processRequest</span><span class="hljs-params">(PurchaseRequest purchaseRequest)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-  <span class="token class-name">Approver</span> approver<span class="token punctuation">;</span> <span class="token comment">// 下一个处理者</span>
-  <span class="token class-name">String</span> name<span class="token punctuation">;</span> <span class="token comment">// 名字</span>
+<h4 id="2、PurchaseRequest"><a href="#2、PurchaseRequest" class="headerlink" title="2、PurchaseRequest"></a>2、PurchaseRequest</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 请求类</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PurchaseRequest</span> &#123;<br><br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">type</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <span class="hljs-comment">// 请求类型</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> <span class="hljs-variable">price</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.0f</span>; <span class="hljs-comment">// 请求金额</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>  <span class="hljs-comment">// 构造器</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">PurchaseRequest</span><span class="hljs-params">(<span class="hljs-type">int</span> type, <span class="hljs-type">float</span> price, <span class="hljs-type">int</span> id)</span> &#123;<br>    <span class="hljs-built_in">this</span>.type = type;<br>    <span class="hljs-built_in">this</span>.price = price;<br>    <span class="hljs-built_in">this</span>.id = id;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getType</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> type;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-title function_">getPrice</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> price;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> <span class="hljs-title function_">getId</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-keyword">return</span> id;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-  <span class="token keyword">public</span> <span class="token class-name">Approver</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated constructor stub</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> name<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
+<h4 id="3、DepartmentApprover"><a href="#3、DepartmentApprover" class="headerlink" title="3、DepartmentApprover"></a>3、DepartmentApprover</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 教学主任</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DepartmentApprover</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Approver</span> &#123;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">DepartmentApprover</span><span class="hljs-params">(String name)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>    <span class="hljs-built_in">super</span>(name);<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processRequest</span><span class="hljs-params">(PurchaseRequest purchaseRequest)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated method stub</span><br>    <span class="hljs-keyword">if</span> (purchaseRequest.getPrice() &lt;= <span class="hljs-number">5000</span>) &#123;<br>      System.out.println(<span class="hljs-string">&quot; 请求编号 id= &quot;</span> + purchaseRequest.getId() + <span class="hljs-string">&quot; 被 &quot;</span> + <span class="hljs-built_in">this</span>.name + <span class="hljs-string">&quot; 处理&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      approver.processRequest(purchaseRequest);<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-  <span class="token comment">// 下一个处理者</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setApprover</span><span class="token punctuation">(</span><span class="token class-name">Approver</span> approver<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>approver <span class="token operator">=</span> approver<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
+<h4 id="4、CollegeApprover"><a href="#4、CollegeApprover" class="headerlink" title="4、CollegeApprover"></a>4、CollegeApprover</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 院长</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CollegeApprover</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Approver</span> &#123;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">CollegeApprover</span><span class="hljs-params">(String name)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>    <span class="hljs-built_in">super</span>(name);<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processRequest</span><span class="hljs-params">(PurchaseRequest purchaseRequest)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated method stub</span><br>    <span class="hljs-keyword">if</span> (purchaseRequest.getPrice() &gt; <span class="hljs-number">5000</span> &amp;&amp; purchaseRequest.getPrice() &lt;= <span class="hljs-number">10000</span>) &#123;<br>      System.out.println(<span class="hljs-string">&quot; 请求编号 id= &quot;</span> + purchaseRequest.getId() + <span class="hljs-string">&quot; 被 &quot;</span> + <span class="hljs-built_in">this</span>.name + <span class="hljs-string">&quot; 处理&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      approver.processRequest(purchaseRequest);<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-  <span class="token comment">// 处理审批请求的方法，得到一个请求, 处理是子类完成，因此该方法做成抽象</span>
-  <span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">void</span> <span class="token function">processRequest</span><span class="token punctuation">(</span><span class="token class-name">PurchaseRequest</span> purchaseRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="5、ViceSchoolMasterApprover"><a href="#5、ViceSchoolMasterApprover" class="headerlink" title="5、ViceSchoolMasterApprover"></a>5、ViceSchoolMasterApprover</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 副校长</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ViceSchoolMasterApprover</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Approver</span> &#123;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">ViceSchoolMasterApprover</span><span class="hljs-params">(String name)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>    <span class="hljs-built_in">super</span>(name);<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processRequest</span><span class="hljs-params">(PurchaseRequest purchaseRequest)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated method stub</span><br>    <span class="hljs-keyword">if</span> (purchaseRequest.getPrice() &gt; <span class="hljs-number">10000</span> &amp;&amp; purchaseRequest.getPrice() &lt;= <span class="hljs-number">30000</span>) &#123;<br>      System.out.println(<span class="hljs-string">&quot; 请求编号 id= &quot;</span> + purchaseRequest.getId() + <span class="hljs-string">&quot; 被 &quot;</span> + <span class="hljs-built_in">this</span>.name + <span class="hljs-string">&quot; 处理&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      approver.processRequest(purchaseRequest);<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h4 id="2、PurchaseRequest"><a href="#2、PurchaseRequest" class="headerlink" title="2、PurchaseRequest"></a>2、PurchaseRequest</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 请求类</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">PurchaseRequest</span> <span class="token punctuation">&#123;</span>
+<h4 id="6、SchoolMasterApprover"><a href="#6、SchoolMasterApprover" class="headerlink" title="6、SchoolMasterApprover"></a>6、SchoolMasterApprover</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 校长</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SchoolMasterApprover</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Approver</span> &#123;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-title function_">SchoolMasterApprover</span><span class="hljs-params">(String name)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>    <span class="hljs-built_in">super</span>(name);<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">processRequest</span><span class="hljs-params">(PurchaseRequest purchaseRequest)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated method stub</span><br>    <span class="hljs-keyword">if</span> (purchaseRequest.getPrice() &gt; <span class="hljs-number">30000</span>) &#123;<br>      System.out.println(<span class="hljs-string">&quot; 请求编号 id= &quot;</span> + purchaseRequest.getId() + <span class="hljs-string">&quot; 被 &quot;</span> + <span class="hljs-built_in">this</span>.name + <span class="hljs-string">&quot; 处理&quot;</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      approver.processRequest(purchaseRequest);<br>    &#125;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-  <span class="token keyword">private</span> <span class="token keyword">int</span> type <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 请求类型</span>
-  <span class="token keyword">private</span> <span class="token keyword">float</span> price <span class="token operator">=</span> <span class="token number">0.0f</span><span class="token punctuation">;</span> <span class="token comment">// 请求金额</span>
-  <span class="token keyword">private</span> <span class="token keyword">int</span> id <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-  <span class="token comment">// 构造器</span>
-  <span class="token keyword">public</span> <span class="token class-name">PurchaseRequest</span><span class="token punctuation">(</span><span class="token keyword">int</span> type<span class="token punctuation">,</span> <span class="token keyword">float</span> price<span class="token punctuation">,</span> <span class="token keyword">int</span> id<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>type <span class="token operator">=</span> type<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>price <span class="token operator">=</span> price<span class="token punctuation">;</span>
-    <span class="token keyword">this</span><span class="token punctuation">.</span>id <span class="token operator">=</span> id<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getType</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> type<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">float</span> <span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> price<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">int</span> <span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">return</span> id<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="3、DepartmentApprover"><a href="#3、DepartmentApprover" class="headerlink" title="3、DepartmentApprover"></a>3、DepartmentApprover</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 教学主任</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">DepartmentApprover</span> <span class="token keyword">extends</span> <span class="token class-name">Approver</span> <span class="token punctuation">&#123;</span>
-
-  <span class="token keyword">public</span> <span class="token class-name">DepartmentApprover</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated constructor stub</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processRequest</span><span class="token punctuation">(</span><span class="token class-name">PurchaseRequest</span> purchaseRequest<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated method stub</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">5000</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 请求编号 id= "</span> <span class="token operator">+</span> purchaseRequest<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" 被 "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" 处理"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-      approver<span class="token punctuation">.</span><span class="token function">processRequest</span><span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="4、CollegeApprover"><a href="#4、CollegeApprover" class="headerlink" title="4、CollegeApprover"></a>4、CollegeApprover</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 院长</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">CollegeApprover</span> <span class="token keyword">extends</span> <span class="token class-name">Approver</span> <span class="token punctuation">&#123;</span>
-
-  <span class="token keyword">public</span> <span class="token class-name">CollegeApprover</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated constructor stub</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processRequest</span><span class="token punctuation">(</span><span class="token class-name">PurchaseRequest</span> purchaseRequest<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated method stub</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">5000</span> <span class="token operator">&amp;&amp;</span> purchaseRequest<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">10000</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 请求编号 id= "</span> <span class="token operator">+</span> purchaseRequest<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" 被 "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" 处理"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-      approver<span class="token punctuation">.</span><span class="token function">processRequest</span><span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="5、ViceSchoolMasterApprover"><a href="#5、ViceSchoolMasterApprover" class="headerlink" title="5、ViceSchoolMasterApprover"></a>5、ViceSchoolMasterApprover</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 副校长</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">ViceSchoolMasterApprover</span> <span class="token keyword">extends</span> <span class="token class-name">Approver</span> <span class="token punctuation">&#123;</span>
-
-  <span class="token keyword">public</span> <span class="token class-name">ViceSchoolMasterApprover</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated constructor stub</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processRequest</span><span class="token punctuation">(</span><span class="token class-name">PurchaseRequest</span> purchaseRequest<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated method stub</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">10000</span> <span class="token operator">&amp;&amp;</span> purchaseRequest<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&lt;=</span> <span class="token number">30000</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 请求编号 id= "</span> <span class="token operator">+</span> purchaseRequest<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" 被 "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" 处理"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-      approver<span class="token punctuation">.</span><span class="token function">processRequest</span><span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="6、SchoolMasterApprover"><a href="#6、SchoolMasterApprover" class="headerlink" title="6、SchoolMasterApprover"></a>6、SchoolMasterApprover</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 校长</span>
-<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">SchoolMasterApprover</span> <span class="token keyword">extends</span> <span class="token class-name">Approver</span> <span class="token punctuation">&#123;</span>
-
-  <span class="token keyword">public</span> <span class="token class-name">SchoolMasterApprover</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated constructor stub</span>
-    <span class="token keyword">super</span><span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">processRequest</span><span class="token punctuation">(</span><span class="token class-name">PurchaseRequest</span> purchaseRequest<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated method stub</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">.</span><span class="token function">getPrice</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">30000</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">" 请求编号 id= "</span> <span class="token operator">+</span> purchaseRequest<span class="token punctuation">.</span><span class="token function">getId</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token string">" 被 "</span> <span class="token operator">+</span> <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">" 处理"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-      approver<span class="token punctuation">.</span><span class="token function">processRequest</span><span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<h4 id="7、Client"><a href="#7、Client" class="headerlink" title="7、Client"></a>7、Client</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">Client</span> <span class="token punctuation">&#123;</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// TODO Auto-generated method stub</span>
-    <span class="token comment">// 创建一个请求</span>
-    <span class="token class-name">PurchaseRequest</span> purchaseRequest <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">PurchaseRequest</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">4000</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// 创建相关的审批人</span>
-    <span class="token class-name">DepartmentApprover</span> departmentApprover <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">DepartmentApprover</span><span class="token punctuation">(</span><span class="token string">"张主任"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">CollegeApprover</span> collegeApprover <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">CollegeApprover</span><span class="token punctuation">(</span><span class="token string">"李院长"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">ViceSchoolMasterApprover</span> viceSchoolMasterApprover <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ViceSchoolMasterApprover</span><span class="token punctuation">(</span><span class="token string">"王副校"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">SchoolMasterApprover</span> schoolMasterApprover <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">SchoolMasterApprover</span><span class="token punctuation">(</span><span class="token string">"B校长"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    <span class="token comment">// 需要将各个审批级别的下一个设置好 (处理人构成环形: )</span>
-    departmentApprover<span class="token punctuation">.</span><span class="token function">setApprover</span><span class="token punctuation">(</span>collegeApprover<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    collegeApprover<span class="token punctuation">.</span><span class="token function">setApprover</span><span class="token punctuation">(</span>viceSchoolMasterApprover<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    viceSchoolMasterApprover<span class="token punctuation">.</span><span class="token function">setApprover</span><span class="token punctuation">(</span>schoolMasterApprover<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    schoolMasterApprover<span class="token punctuation">.</span><span class="token function">setApprover</span><span class="token punctuation">(</span>departmentApprover<span class="token punctuation">)</span><span class="token punctuation">;</span>
-
-    departmentApprover<span class="token punctuation">.</span><span class="token function">processRequest</span><span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    viceSchoolMasterApprover<span class="token punctuation">.</span><span class="token function">processRequest</span><span class="token punctuation">(</span>purchaseRequest<span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="7、Client"><a href="#7、Client" class="headerlink" title="7、Client"></a>7、Client</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Client</span> &#123;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-comment">// TODO Auto-generated method stub</span><br>    <span class="hljs-comment">// 创建一个请求</span><br>    <span class="hljs-type">PurchaseRequest</span> <span class="hljs-variable">purchaseRequest</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">PurchaseRequest</span>(<span class="hljs-number">1</span>, <span class="hljs-number">4000</span>, <span class="hljs-number">1</span>);<br><br>    <span class="hljs-comment">// 创建相关的审批人</span><br>    <span class="hljs-type">DepartmentApprover</span> <span class="hljs-variable">departmentApprover</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">DepartmentApprover</span>(<span class="hljs-string">&quot;张主任&quot;</span>);<br>    <span class="hljs-type">CollegeApprover</span> <span class="hljs-variable">collegeApprover</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CollegeApprover</span>(<span class="hljs-string">&quot;李院长&quot;</span>);<br>    <span class="hljs-type">ViceSchoolMasterApprover</span> <span class="hljs-variable">viceSchoolMasterApprover</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ViceSchoolMasterApprover</span>(<span class="hljs-string">&quot;王副校&quot;</span>);<br>    <span class="hljs-type">SchoolMasterApprover</span> <span class="hljs-variable">schoolMasterApprover</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SchoolMasterApprover</span>(<span class="hljs-string">&quot;B校长&quot;</span>);<br><br>    <span class="hljs-comment">// 需要将各个审批级别的下一个设置好 (处理人构成环形: )</span><br>    departmentApprover.setApprover(collegeApprover);<br>    collegeApprover.setApprover(viceSchoolMasterApprover);<br>    viceSchoolMasterApprover.setApprover(schoolMasterApprover);<br>    schoolMasterApprover.setApprover(departmentApprover);<br><br>    departmentApprover.processRequest(purchaseRequest);<br>    viceSchoolMasterApprover.processRequest(purchaseRequest);<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h2 id="2、职责链模式工作原理"><a href="#2、职责链模式工作原理" class="headerlink" title="2、职责链模式工作原理"></a>2、职责链模式工作原理</h2><ol>
 <li>职责链模式（Chain of Responsibility Pattern）,  又叫 责任链模式，为请求创建了一个接收者 对象的链(简单示意图)。这种模式对请求的 发送者和接收者进行解耦。 </li>
@@ -800,89 +541,19 @@
 <h2 id="3、Servlet-Filter"><a href="#3、Servlet-Filter" class="headerlink" title="3、Servlet Filter"></a>3、Servlet Filter</h2><p>Servlet Filter 是 Java Servlet 规范中定义的组件，翻译成中文就是过滤器，它可以实现对 HTTP 请求的过滤功能，比如鉴权、限流、记录日志、验证参数等等。因为它是 Servlet 规范的一部分，所以，只要是支持 Servlet 的 Web 容器（比如，Tomcat、Jetty 等），都支持过滤器功能。</p>
 <p><img src="/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/image-20221012180753720.png" srcset="/img/loading.gif" lazyload></p>
 <p>在实际项目中 Servlet Filter的使用 。一个简单的示例代码，如下所示。添加一个过滤器，只需要定义一个实现 javax.servlet.Filter 接口的过滤器类，并且将它配置在 web.xml 配置文件中。Web 容器启动的时候，会读取 web.xml 中的配置，创建过滤器对象。当有请求到来的时候，会先经过过滤器，然后才由 Servlet 来处理。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">LogFilter</span> <span class="token keyword">implements</span> <span class="token class-name">Filter</span> <span class="token punctuation">&#123;</span>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">LogFilter</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">Filter</span> &#123;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">init</span><span class="hljs-params">(FilterConfig filterConfig)</span> <span class="hljs-keyword">throws</span> ServletException &#123;<br>    <span class="hljs-comment">// 在创建Filter时自动调用，</span><br>    <span class="hljs-comment">// 其中filterConfig包含这个Filter的配置参数，比如name之类的（从配置文件中读取的）</span><br><br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doFilter</span><span class="hljs-params">(ServletRequest request, ServletResponse response, FilterChain chain)</span><br>      <span class="hljs-keyword">throws</span> IOException, ServletException &#123;<br>    System.out.println(<span class="hljs-string">&quot;拦截客户端发送来的请求.&quot;</span>);<br>    chain.doFilter(request, response);<br>    System.out.println(<span class="hljs-string">&quot;拦截发送给客户端的响应.&quot;</span>);<br>  &#125;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">destroy</span><span class="hljs-params">()</span> &#123;<br>    <span class="hljs-comment">// 在销毁Filter时自动调用</span><br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token class-name">FilterConfig</span> filterConfig<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">ServletException</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 在创建Filter时自动调用，</span>
-    <span class="token comment">// 其中filterConfig包含这个Filter的配置参数，比如name之类的（从配置文件中读取的）</span>
-
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">ServletResponse</span> response<span class="token punctuation">,</span> <span class="token class-name">FilterChain</span> chain<span class="token punctuation">)</span>
-      <span class="token keyword">throws</span> <span class="token class-name">IOException</span><span class="token punctuation">,</span> <span class="token class-name">ServletException</span> <span class="token punctuation">&#123;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"拦截客户端发送来的请求."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    chain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"拦截发送给客户端的响应."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">destroy</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// 在销毁Filter时自动调用</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
-<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup">// 在web.xml配置文件中如下配置：
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>logFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-class</span><span class="token punctuation">></span></span>com.zb.cd.LogFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-class</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-mapping</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>filter-name</span><span class="token punctuation">></span></span>logFilter<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-name</span><span class="token punctuation">></span></span>
-    <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>url-pattern</span><span class="token punctuation">></span></span>/*<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>url-pattern</span><span class="token punctuation">></span></span>
-<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>filter-mapping</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs xml">// 在web.xml配置文件中如下配置：<br><span class="hljs-tag">&lt;<span class="hljs-name">filter</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>logFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-class</span>&gt;</span>com.zb.cd.LogFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-class</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">filter</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">filter-mapping</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">filter-name</span>&gt;</span>logFilter<span class="hljs-tag">&lt;/<span class="hljs-name">filter-name</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">url-pattern</span>&gt;</span>/*<span class="hljs-tag">&lt;/<span class="hljs-name">url-pattern</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">filter-mapping</span>&gt;</span><br></code></pre></td></tr></table></figure>
 
 <ol>
 <li>从刚刚的示例代码中可以发现，添加过滤器非常方便，不需要修改任何代码，定义一个实现 javax.servlet.Filter 的类，再改改配置就搞定了，完全符合开闭原则。那 Servlet Filter 是如何做到如此好的扩展性的呢？它利用的就是职责链模式。</li>
 <li>职责链模式的实现包含处理器接口（IHandler）或抽象类（Handler），以及处理器链（HandlerChain）。对应到 Servlet Filter，javax.servlet.Filter 就是处理器接口，FilterChain 就是处理器链。接下来重点来看 FilterChain 是如何实现的。</li>
 <li>不过，Servlet 只是一个规范，并不包含具体的实现，所以，Servlet 中的 FilterChain 只是一个接口定义。具体的实现类由遵从 Servlet 规范的 Web 容器来提供，比如，ApplicationFilterChain 类就是 Tomcat 提供的 FilterChain 的实现类，源码如下所示。</li>
 </ol>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">final</span> <span class="token keyword">class</span> <span class="token class-name">ApplicationFilterChain</span> <span class="token keyword">implements</span> <span class="token class-name">FilterChain</span> <span class="token punctuation">&#123;</span>
-  <span class="token keyword">private</span> <span class="token keyword">int</span> pos <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> <span class="token comment">// 当前执行到了哪个filter</span>
-  <span class="token keyword">private</span> <span class="token keyword">int</span> n<span class="token punctuation">;</span> <span class="token comment">// filter的个数</span>
-  <span class="token keyword">private</span> <span class="token class-name">ApplicationFilterConfig</span><span class="token punctuation">[</span><span class="token punctuation">]</span> filters<span class="token punctuation">;</span>
-  <span class="token keyword">private</span> <span class="token class-name">Servlet</span> servlet<span class="token punctuation">;</span>
-
-  <span class="token annotation punctuation">@Override</span>
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doFilter</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">ServletResponse</span> response<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-      <span class="token class-name">ApplicationFilterConfig</span> filterConfig <span class="token operator">=</span> filters<span class="token punctuation">[</span>pos<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-      <span class="token class-name">Filter</span> filter <span class="token operator">=</span> filterConfig<span class="token punctuation">.</span><span class="token function">getFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-      filter<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">,</span> <span class="token keyword">this</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-      <span class="token comment">// filter都处理完毕后，执行servlet</span>
-      servlet<span class="token punctuation">.</span><span class="token function">service</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-  <span class="token punctuation">&#125;</span>
-
-  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">addFilter</span><span class="token punctuation">(</span><span class="token class-name">ApplicationFilterConfig</span> filterConfig<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token class-name">ApplicationFilterConfig</span> filter <span class="token operator">:</span> filters<span class="token punctuation">)</span> <span class="token keyword">if</span> <span class="token punctuation">(</span>filter <span class="token operator">==</span> filterConfig<span class="token punctuation">)</span> <span class="token keyword">return</span><span class="token punctuation">;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>n <span class="token operator">==</span> filters<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span> <span class="token comment">// 扩容</span>
-      <span class="token class-name">ApplicationFilterConfig</span><span class="token punctuation">[</span><span class="token punctuation">]</span> newFilters <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ApplicationFilterConfig</span><span class="token punctuation">[</span>n <span class="token operator">+</span> <span class="token constant">INCREMENT</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-      <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">arraycopy</span><span class="token punctuation">(</span>filters<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> newFilters<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-      filters <span class="token operator">=</span> newFilters<span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    filters<span class="token punctuation">[</span>n<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> filterConfig<span class="token punctuation">;</span>
-  <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">final</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ApplicationFilterChain</span> <span class="hljs-keyword">implements</span> <span class="hljs-title class_">FilterChain</span> &#123;<br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> <span class="hljs-variable">pos</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; <span class="hljs-comment">// 当前执行到了哪个filter</span><br>  <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> n; <span class="hljs-comment">// filter的个数</span><br>  <span class="hljs-keyword">private</span> ApplicationFilterConfig[] filters;<br>  <span class="hljs-keyword">private</span> Servlet servlet;<br><br>  <span class="hljs-meta">@Override</span><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">doFilter</span><span class="hljs-params">(ServletRequest request, ServletResponse response)</span> &#123;<br>    <span class="hljs-keyword">if</span> (pos &lt; n) &#123;<br>      <span class="hljs-type">ApplicationFilterConfig</span> <span class="hljs-variable">filterConfig</span> <span class="hljs-operator">=</span> filters[pos++];<br>      <span class="hljs-type">Filter</span> <span class="hljs-variable">filter</span> <span class="hljs-operator">=</span> filterConfig.getFilter();<br>      filter.doFilter(request, response, <span class="hljs-built_in">this</span>);<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>      <span class="hljs-comment">// filter都处理完毕后，执行servlet</span><br>      servlet.service(request, response);<br>    &#125;<br>  &#125;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">addFilter</span><span class="hljs-params">(ApplicationFilterConfig filterConfig)</span> &#123;<br>    <span class="hljs-keyword">for</span> (ApplicationFilterConfig filter : filters) <span class="hljs-keyword">if</span> (filter == filterConfig) <span class="hljs-keyword">return</span>;<br>    <span class="hljs-keyword">if</span> (n == filters.length) &#123; <span class="hljs-comment">// 扩容</span><br>      ApplicationFilterConfig[] newFilters = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ApplicationFilterConfig</span>[n + INCREMENT];<br>      System.arraycopy(filters, <span class="hljs-number">0</span>, newFilters, <span class="hljs-number">0</span>, n);<br>      filters = newFilters;<br>    &#125;<br>    filters[n++] = filterConfig;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>ApplicationFilterChain 中的 doFilter() 函数的代码实现比较有技巧，实际上是一个递归调用。可以用每个 Filter（比如 LogFilter）的 doFilter() 的代码实现，直接替换 ApplicationFilterChain 的第 12 行代码，可以看出是递归调用。如下所示。</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
-<span class="token keyword">public</span>  <span class="token keyword">void</span>  <span class="token function">doFilter</span><span class="token punctuation">(</span><span class="token class-name">ServletRequest</span> request<span class="token punctuation">,</span> <span class="token class-name">ServletResponse</span> response<span class="token punctuation">)</span>  <span class="token punctuation">&#123;</span>
-    <span class="token keyword">if</span> <span class="token punctuation">(</span>pos <span class="token operator">&lt;</span> n<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-        <span class="token class-name">ApplicationFilterConfig</span> filterConfig <span class="token operator">=</span> filters<span class="token punctuation">[</span>pos<span class="token operator">++</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-        <span class="token class-name">Filter</span> filter <span class="token operator">=</span> filterConfig<span class="token punctuation">.</span><span class="token function">getFilter</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        <span class="token comment">//filter.doFilter(request, response, this);</span>
-        <span class="token comment">//把filter.doFilter的代码实现展开替换到这里</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"拦截客户端发送来的请求."</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        chain<span class="token punctuation">.</span><span class="token function">doFilter</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// chain就是this</span>
-        <span class="token class-name">System</span><span class="token punctuation">.</span>out<span class="token punctuation">.</span><span class="token function">println</span><span class="token punctuation">(</span><span class="token string">"拦截发送给客户端的响应."</span><span class="token punctuation">)</span>
-    <span class="token punctuation">&#125;</span> <span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-        <span class="token comment">// filter都处理完毕后，执行servlet</span>
-        servlet<span class="token punctuation">.</span><span class="token function">service</span><span class="token punctuation">(</span>request<span class="token punctuation">,</span> response<span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-meta">@Override</span><br><span class="hljs-keyword">public</span>  <span class="hljs-keyword">void</span>  <span class="hljs-title function_">doFilter</span><span class="hljs-params">(ServletRequest request, ServletResponse response)</span>  &#123;<br>    <span class="hljs-keyword">if</span> (pos &lt; n) &#123;<br>        <span class="hljs-type">ApplicationFilterConfig</span> <span class="hljs-variable">filterConfig</span> <span class="hljs-operator">=</span> filters[pos++];<br>        <span class="hljs-type">Filter</span> <span class="hljs-variable">filter</span> <span class="hljs-operator">=</span> filterConfig.getFilter();<br>        <span class="hljs-comment">//filter.doFilter(request, response, this);</span><br>        <span class="hljs-comment">//把filter.doFilter的代码实现展开替换到这里</span><br>        System.out.println(<span class="hljs-string">&quot;拦截客户端发送来的请求.&quot;</span>);<br>        chain.doFilter(request, response); <span class="hljs-comment">// chain就是this</span><br>        System.out.println(<span class="hljs-string">&quot;拦截发送给客户端的响应.&quot;</span>)<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        <span class="hljs-comment">// filter都处理完毕后，执行servlet</span><br>        servlet.service(request, response);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>这样实现主要是为了在一个 doFilter() 方法中，支持双向拦截，既能拦截客户端发送来的请求，也能拦截发送给客户端的响应。</p>
 
@@ -940,26 +611,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
-          <div>Zhai Biao</div>
+          <div>Author</div>
+          <div>John Doe</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年10月11日</div>
+          <div>Posted on</div>
+          <div>October 11, 2022</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -982,7 +653,7 @@
                       <a href="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">08-行为型-状态-迭代器</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -991,7 +662,7 @@
                     
                       <a href="/2022/10/09/c-an-he-qiao/" title="C-《安河桥》">
                         <span class="hidden-mobile">C-《安河桥》</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -1010,7 +681,7 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -1065,7 +736,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -1073,7 +744,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -1101,16 +772,16 @@
   
     
       <span id="busuanzi_container_site_pv" style="display: none">
-        总访问量 
+        Views: 
         <span id="busuanzi_value_site_pv"></span>
-         次
+        
       </span>
     
     
       <span id="busuanzi_container_site_uv" style="display: none">
-        总访客数 
+        Visitors: 
         <span id="busuanzi_value_site_uv"></span>
-         人
+        
       </span>
     
     
@@ -1285,7 +956,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>

@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zb-CN" data-default-color-scheme=auto>
 
 
 
@@ -13,7 +13,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Zhai Biao">
+  <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
     <meta name="description" content="贪心算法贪心算法基础知识无套路 大体思路： 求局部最优，进而求全局最优 贪心算法一般分为如下四步：  将问题分解为若干个子问题 找出适合的贪心策略 求解每一个子问题的最优解 将局部最优解堆叠成全局最优解  分发饼干个人思路：将两个数组排序，然后饼干那个一一对应孩子的胃口，若是饼干小了，直接饼干后移，若是孩子小了，仍然直接给出，count+1  但还有种反向操作，先给大的，后给小的；尽可能多的满足孩">
@@ -22,11 +22,11 @@
 <meta property="og:url" content="http://example.com/2022/09/16/tan-xin-suan-fa/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="贪心算法贪心算法基础知识无套路 大体思路： 求局部最优，进而求全局最优 贪心算法一般分为如下四步：  将问题分解为若干个子问题 找出适合的贪心策略 求解每一个子问题的最优解 将局部最优解堆叠成全局最优解  分发饼干个人思路：将两个数组排序，然后饼干那个一一对应孩子的胃口，若是饼干小了，直接饼干后移，若是孩子小了，仍然直接给出，count+1  但还有种反向操作，先给大的，后给小的；尽可能多的满足孩">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="zb_CN">
 <meta property="og:image" content="http://example.com/2022/09/16/tan-xin-suan-fa/Typora文件/Typora图片/image-20220621143453592.png">
 <meta property="article:published_time" content="2022-09-16T09:51:26.000Z">
-<meta property="article:modified_time" content="2022-09-16T09:53:30.545Z">
-<meta property="article:author" content="Zhai Biao">
+<meta property="article:modified_time" content="2022-10-19T03:34:28.229Z">
+<meta property="article:author" content="John Doe">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:image" content="http://example.com/2022/09/16/tan-xin-suan-fa/Typora文件/Typora图片/image-20220621143453592.png">
@@ -78,7 +78,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -119,7 +119,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>ZBiao</strong>
+      <strong>ZBiao&#39; Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -139,7 +139,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                Home
               </a>
             </li>
           
@@ -151,7 +151,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                Archives
               </a>
             </li>
           
@@ -163,7 +163,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                Categories
               </a>
             </li>
           
@@ -175,7 +175,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                Tags
               </a>
             </li>
           
@@ -187,7 +187,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                About
               </a>
             </li>
           
@@ -214,7 +214,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -232,7 +232,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-09-16 17:51" pubdate>
-          2022年9月16日 下午
+          September 16, 2022 pm
         </time>
       </span>
     
@@ -243,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          4.9k 字
+          4.9k words
         
       </span>
     
@@ -254,7 +254,7 @@
         
         
         
-          41 分钟
+          42 mins
         
       </span>
     
@@ -264,7 +264,7 @@
       
         <span id="busuanzi_container_page_pv" style="display: none">
           <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
+          <span id="busuanzi_value_page_pv"></span> views
         </span>
         
       
@@ -292,6 +292,121 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="算法"
+        id="heading-046a899ee7a6ec88d370211a518c9e80" role="tab" data-toggle="collapse" href="#collapse-046a899ee7a6ec88d370211a518c9e80"
+        aria-expanded="true"
+      >
+        算法
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-046a899ee7a6ec88d370211a518c9e80"
+           role="tabpanel" aria-labelledby="heading-046a899ee7a6ec88d370211a518c9e80">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/13/v2-ha-xi-biao/" title="v2-哈希表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">v2-哈希表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/08/v2-shu-zu/" title="v2-数组"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">v2-数组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/er-cha-shu/" title="二叉树"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">二叉树</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/dong-tai-gui-hua/" title="动态规划"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">动态规划</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/dan-diao-zhan/" title="单调栈"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">单调栈</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/hui-su-suan-fa/" title="回溯算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">回溯算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/tan-xin-suan-fa/" title="贪心算法"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">贪心算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/21/lian-biao/" title="链表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">链表</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -321,10 +436,7 @@
 <h2 id="摆动序列"><a href="#摆动序列" class="headerlink" title="摆动序列"></a>摆动序列</h2><p>序列还可以删除，一定要注意这一点</p>
 <p>摆动序列可以转化为求峰值和谷底，求出一个峰值或谷底结果就加一</p>
 <p>result初始化为1，是因为如果初始化0的话，就没有考虑到边界，初始化为1就体现了已经处理左边界</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token punctuation">(</span>curDiff <span class="token operator">></span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> preDiff <span class="token operator">&lt;=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">||</span> <span class="token punctuation">(</span>curDiff <span class="token operator">&lt;</span> <span class="token number">0</span> <span class="token operator">&amp;&amp;</span> preDiff <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-	count<span class="token operator">++</span><span class="token punctuation">;</span>
-	preDiff <span class="token operator">=</span> curDiff<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span> ((curDiff &gt; <span class="hljs-number">0</span> &amp;&amp; preDiff &lt;= <span class="hljs-number">0</span>) || (curDiff &lt; <span class="hljs-number">0</span> &amp;&amp; preDiff &gt;= <span class="hljs-number">0</span>)) &#123;<br>	count++;<br>	preDiff = curDiff;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>pre处写&lt;=   、 &gt;=  是因为要考虑初始化情况，因为pre初始化为0，所以不管当前大于还是小于，都符合</p>
 <p>同时序列还可以删除，这一点体现在pre = cur的放置位置，放在if里面，意思是只找峰值或谷底，而不去管边界；若是放到if外面，意思是每次都要进行处理，很明显，本题我们要选择放在if里面</p>
@@ -344,11 +456,7 @@
 <p>我在想：是否可以像以前那样，定义一个cur，一个pre；找谷峰和谷底，但这样极难实现，或者说就不可以实现</p>
 <p>卡哥是通过计算两天之间的差值，只记录正值即可，并相加；</p>
 <p>还有一种的DP,暂时不考虑</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> prices<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>prices<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> prices<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                sum <span class="token operator">+=</span> prices<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> prices<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-            <span class="token punctuation">&#125;</span>
-        <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; prices.length - <span class="hljs-number">1</span>; i++) &#123;<br>            <span class="hljs-keyword">if</span> (prices[i + <span class="hljs-number">1</span>] - prices[i] &gt; <span class="hljs-number">0</span>) &#123;<br>                sum += prices[i + <span class="hljs-number">1</span>] - prices[i];<br>            &#125;<br>        &#125;<br></code></pre></td></tr></table></figure>
 
 <p>我被秀一脸</p>
 <h2 id="跳跃游戏"><a href="#跳跃游戏" class="headerlink" title="跳跃游戏"></a>跳跃游戏</h2><p>回溯？</p>
@@ -401,12 +509,7 @@
 <blockquote>
 <p>注意：从小到大：o1 - o2;从大到小：o2 - o1</p>
 </blockquote>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>people<span class="token punctuation">,</span> <span class="token punctuation">(</span>a<span class="token punctuation">,</span> b<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token punctuation">&#123;</span>
-            <span class="token keyword">if</span> <span class="token punctuation">(</span>a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">==</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-                <span class="token keyword">return</span> a<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">-</span> b<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment">//从小到大</span>
-            <span class="token keyword">else</span>
-                <span class="token keyword">return</span> b<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">-</span> a<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>   <span class="token comment">//从大到小</span>
-        <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java">Arrays.sort(people, (a, b) -&gt; &#123;<br>            <span class="hljs-keyword">if</span> (a[<span class="hljs-number">0</span>] == b[<span class="hljs-number">0</span>])<br>                <span class="hljs-keyword">return</span> a[<span class="hljs-number">1</span>] - b[<span class="hljs-number">1</span>];   <span class="hljs-comment">//从小到大</span><br>            <span class="hljs-keyword">else</span><br>                <span class="hljs-keyword">return</span> b[<span class="hljs-number">0</span>] - a[<span class="hljs-number">0</span>];   <span class="hljs-comment">//从大到小</span><br>        &#125;);<br></code></pre></td></tr></table></figure>
 
 <p>==插入操作==</p>
 <p>使用LinkedList.add(index, value)方法进行插入，第一个参数是插入位置</p>
@@ -415,7 +518,7 @@
 <h2 id="用最少数量的箭引爆气球"><a href="#用最少数量的箭引爆气球" class="headerlink" title="用最少数量的箭引爆气球"></a>用最少数量的箭引爆气球</h2><p>数组第一个数组进行排序，从小到大；从结尾出判断，若下面有有数组在这个区间，则将这个区间一同删去（或者说往后遍历）</p>
 <p>思路跟卡哥一样，只是实现是个问题</p>
 <p>首先是排序，二维数组经典排序（从小到大）：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Arrays</span><span class="token punctuation">.</span><span class="token function">sort</span><span class="token punctuation">(</span>points<span class="token punctuation">,</span> <span class="token punctuation">(</span>o1<span class="token punctuation">,</span> o2<span class="token punctuation">)</span> <span class="token operator">-></span> <span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">compare</span><span class="token punctuation">(</span>o1<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> o2<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs java">Arrays.sort(points, (o1, o2) -&gt; Integer.compare(o1[<span class="hljs-number">0</span>], o2[<span class="hljs-number">0</span>]));<br></code></pre></td></tr></table></figure>
 
 <p>实现：从1处开始遍历，判断上一个的结尾和下一个的开头是否有交集，若无交集，直接count++;若有交集，则更新下一个的右边界，更新为上一个和下一个的最小值，最后返回。</p>
 <h2 id="无重叠区间"><a href="#无重叠区间" class="headerlink" title="无重叠区间"></a>无重叠区间</h2><p>初步思路：仍然是排序，从小到大排序，若是开端相同，则默认删掉结尾长的那个数组；留下来是下一个的开端大于等于上一个的结尾；若是下一个开端小于上一个结尾，说明有重叠，则直接更新下一个结尾。</p>
@@ -443,12 +546,7 @@
 <p>贪心解法：局部最优：首先若是str[i - 1] &gt;  str[i]的话，证明前一位数大，则将str[i-1]–,并让str[i] = 9，这样就可保证局部最大；全局最优：遍历，即可达到全局最优。</p>
 <p>问题在于，是从前往后遍历还是从后往前遍历。当然是从后往前遍历，因为从前往后遍历的时候，比如332，  332 -&gt; 329，Out。从后往前遍历，332 -&gt; 329 -&gt; 299</p>
 <p>本题用到的java方法</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 整形转string</span>
-<span class="token class-name">String</span> s <span class="token operator">=</span> <span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>n<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// 字符串转字符数组</span>
-<span class="token keyword">char</span><span class="token punctuation">[</span><span class="token punctuation">]</span> chars <span class="token operator">=</span> s<span class="token punctuation">.</span><span class="token function">toCharArray</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">// 先转字符串再转整形</span>
-<span class="token class-name">Integer</span><span class="token punctuation">.</span><span class="token function">parseInt</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">.</span><span class="token function">valueOf</span><span class="token punctuation">(</span>chars<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 整形转string</span><br><span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> String.valueOf(n);<br><span class="hljs-comment">// 字符串转字符数组</span><br><span class="hljs-type">char</span>[] chars = s.toCharArray();<br><span class="hljs-comment">// 先转字符串再转整形</span><br>Integer.parseInt(String.valueOf(chars));<br></code></pre></td></tr></table></figure>
 
 <p>以下都可转string</p>
 <p><img src="/2022/09/16/tan-xin-suan-fa/Typora文件\Typora图片\image-20220621143453592.png" srcset="/img/loading.gif" lazyload alt="image-20220621143453592"></p>
@@ -542,26 +640,26 @@
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
-          <div>Zhai Biao</div>
+          <div>Author</div>
+          <div>John Doe</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年9月16日</div>
+          <div>Posted on</div>
+          <div>September 16, 2022</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -584,7 +682,7 @@
                       <a href="/2022/09/19/docker-xue-xi/" title="Docker学习笔记">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Docker学习笔记</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -593,7 +691,7 @@
                     
                       <a href="/2022/09/16/hui-su-suan-fa/" title="回溯算法">
                         <span class="hidden-mobile">回溯算法</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -612,7 +710,7 @@
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -667,7 +765,7 @@
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -675,7 +773,7 @@
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -703,16 +801,16 @@
   
     
       <span id="busuanzi_container_site_pv" style="display: none">
-        总访问量 
+        Views: 
         <span id="busuanzi_value_site_pv"></span>
-         次
+        
       </span>
     
     
       <span id="busuanzi_container_site_uv" style="display: none">
-        总访客数 
+        Visitors: 
         <span id="busuanzi_value_site_uv"></span>
-         人
+        
       </span>
     
     
@@ -887,7 +985,7 @@
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>

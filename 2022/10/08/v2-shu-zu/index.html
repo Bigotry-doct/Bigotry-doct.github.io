@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zb-CN" data-default-color-scheme=auto>
 
 
 
@@ -13,20 +13,20 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Zhai Biao">
+  <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、理论基础定义：数组是存放在连续内存空间上的相同类型数据的集合。 需要注意两点：  数组下标从0开始 数组内存空间的地址是连续的  针对二维数组在内存空间的地址是否连续，不同的编程语言的内存管理不同。在C++中二维数组是连续分布的。但在java中二维数组不是连续分布的。 java中的二维数组可能是如下排列方式：  基本方法： int[] nums &#x3D; new int[n]; int len &#x3D;">
+    <meta name="description" content="一、理论基础定义：数组是存放在连续内存空间上的相同类型数据的集合。 需要注意两点：  数组下标从0开始 数组内存空间的地址是连续的  针对二维数组在内存空间的地址是否连续，不同的编程语言的内存管理不同。在C++中二维数组是连续分布的。但在java中二维数组不是连续分布的。 java中的二维数组可能是如下排列方式：  基本方法： 123int[] nums &#x3D; new int[n];int len">
 <meta property="og:type" content="article">
 <meta property="og:title" content="v2-数组">
 <meta property="og:url" content="http://example.com/2022/10/08/v2-shu-zu/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
-<meta property="og:description" content="一、理论基础定义：数组是存放在连续内存空间上的相同类型数据的集合。 需要注意两点：  数组下标从0开始 数组内存空间的地址是连续的  针对二维数组在内存空间的地址是否连续，不同的编程语言的内存管理不同。在C++中二维数组是连续分布的。但在java中二维数组不是连续分布的。 java中的二维数组可能是如下排列方式：  基本方法： int[] nums &#x3D; new int[n]; int len &#x3D;">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:description" content="一、理论基础定义：数组是存放在连续内存空间上的相同类型数据的集合。 需要注意两点：  数组下标从0开始 数组内存空间的地址是连续的  针对二维数组在内存空间的地址是否连续，不同的编程语言的内存管理不同。在C++中二维数组是连续分布的。但在java中二维数组不是连续分布的。 java中的二维数组可能是如下排列方式：  基本方法： 123int[] nums &#x3D; new int[n];int len">
+<meta property="og:locale" content="zb_CN">
 <meta property="og:image" content="http://example.com/2022/10/08/v2-shu-zu/image-20221008165054951.png">
 <meta property="article:published_time" content="2022-10-08T08:44:16.000Z">
-<meta property="article:modified_time" content="2022-10-13T02:15:39.243Z">
-<meta property="article:author" content="Zhai Biao">
+<meta property="article:modified_time" content="2022-10-19T03:35:11.420Z">
+<meta property="article:author" content="John Doe">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="数组">
 <meta name="twitter:card" content="summary_large_image">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -120,7 +120,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>ZBiao</strong>
+      <strong>ZBiao&#39; Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -140,7 +140,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                Home
               </a>
             </li>
           
@@ -152,7 +152,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                Archives
               </a>
             </li>
           
@@ -164,7 +164,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                Categories
               </a>
             </li>
           
@@ -176,7 +176,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                Tags
               </a>
             </li>
           
@@ -188,7 +188,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                About
               </a>
             </li>
           
@@ -215,7 +215,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -233,7 +233,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-10-08 16:44" pubdate>
-          2022年10月8日 下午
+          October 8, 2022 pm
         </time>
       </span>
     
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.7k 字
+          2.7k words
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          23 分钟
+          23 mins
         
       </span>
     
@@ -265,7 +265,7 @@
       
         <span id="busuanzi_container_page_pv" style="display: none">
           <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
+          <span id="busuanzi_value_page_pv"></span> views
         </span>
         
       
@@ -293,6 +293,121 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="算法"
+        id="heading-046a899ee7a6ec88d370211a518c9e80" role="tab" data-toggle="collapse" href="#collapse-046a899ee7a6ec88d370211a518c9e80"
+        aria-expanded="true"
+      >
+        算法
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-046a899ee7a6ec88d370211a518c9e80"
+           role="tabpanel" aria-labelledby="heading-046a899ee7a6ec88d370211a518c9e80">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/13/v2-ha-xi-biao/" title="v2-哈希表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">v2-哈希表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/08/v2-shu-zu/" title="v2-数组"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">v2-数组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/er-cha-shu/" title="二叉树"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">二叉树</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/dong-tai-gui-hua/" title="动态规划"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">动态规划</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/dan-diao-zhan/" title="单调栈"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">单调栈</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/hui-su-suan-fa/" title="回溯算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">回溯算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/tan-xin-suan-fa/" title="贪心算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">贪心算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/21/lian-biao/" title="链表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">链表</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -316,9 +431,7 @@
 <p>java中的二维数组可能是如下排列方式：</p>
 <p><img src="/2022/10/08/v2-shu-zu/image-20221008165054951.png" srcset="/img/loading.gif" lazyload></p>
 <p>基本方法：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> nums <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>n<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> len <span class="token operator">=</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span>    <span class="token comment">// 长度</span>
-nums<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>  <span class="token comment">// 取值</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] nums = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[n];<br><span class="hljs-type">int</span> <span class="hljs-variable">len</span> <span class="hljs-operator">=</span> nums.length;    <span class="hljs-comment">// 长度</span><br>nums[i];  <span class="hljs-comment">// 取值</span><br></code></pre></td></tr></table></figure>
 
 
 
@@ -354,11 +467,7 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
 <p>当然时间复杂度比较高，O(n*2)</p>
 <h3 id="2、双指针法"><a href="#2、双指针法" class="headerlink" title="2、双指针法"></a>2、双指针法</h3><p>维持两个指针，一个快一个慢，for循环一次，若不为目标值，将fast所在位置的元素赋值给slow所在位置的元素，同时往后进一位</p>
 <p>代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">for</span> <span class="token punctuation">(</span>fast <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> fast <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">;</span> fast<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-   <span class="token keyword">if</span><span class="token punctuation">(</span>nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span> <span class="token operator">!=</span> val<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-       nums<span class="token punctuation">[</span>slow<span class="token operator">++</span><span class="token punctuation">]</span> <span class="token operator">=</span> nums<span class="token punctuation">[</span>fast<span class="token punctuation">]</span><span class="token punctuation">;</span>
-   <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">for</span> (fast = <span class="hljs-number">0</span>; fast &lt; nums.length; fast++) &#123;<br>   <span class="hljs-keyword">if</span>(nums[fast] != val) &#123;<br>       nums[slow++] = nums[fast];<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="3、相关题目推荐-1"><a href="#3、相关题目推荐-1" class="headerlink" title="3、相关题目推荐"></a>3、相关题目推荐</h3><ul>
 <li>26.删除排序数组中的重复项</li>
@@ -371,15 +480,7 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
 <p>当然时间复杂度是比较高的，O(n*2)</p>
 <h3 id="2、滑动窗口"><a href="#2、滑动窗口" class="headerlink" title="2、滑动窗口"></a>2、滑动窗口</h3><p>定义两个指针start和end，并记录sum，若是sum &lt; target，就将end往后++；若是sum &gt;= target，就将start++，并对sum和size做相应操作</p>
 <p>代码如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">while</span> <span class="token punctuation">(</span>end <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     sum <span class="token operator">+=</span> nums<span class="token punctuation">[</span>end<span class="token punctuation">]</span><span class="token punctuation">;</span>
-     <span class="token keyword">while</span> <span class="token punctuation">(</span>sum <span class="token operator">>=</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     	min <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>min<span class="token punctuation">,</span> end <span class="token operator">-</span> start <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        sum <span class="token operator">-=</span> nums<span class="token punctuation">[</span>start<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        start<span class="token operator">++</span><span class="token punctuation">;</span>
-     <span class="token punctuation">&#125;</span>
-     end<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (end &lt; nums.length) &#123;<br>     sum += nums[end];<br>     <span class="hljs-keyword">while</span> (sum &gt;= target) &#123;<br>     	min = Math.min(min, end - start + <span class="hljs-number">1</span>);<br>        sum -= nums[start];<br>        start++;<br>     &#125;<br>     end++;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="3、相关题目推荐-2"><a href="#3、相关题目推荐-2" class="headerlink" title="3、相关题目推荐"></a>3、相关题目推荐</h3><ul>
 <li><a target="_blank" rel="noopener" href="https://leetcode.cn/problems/fruit-into-baskets/">904.水果成篮(opens new window)</a></li>
@@ -387,51 +488,17 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
 </ul>
 <h3 id="4、滑动窗口总结"><a href="#4、滑动窗口总结" class="headerlink" title="4、滑动窗口总结"></a>4、滑动窗口总结</h3><p>滑动窗口有最小滑动窗口模板和最大滑动窗口模板，具体要求看题目要求</p>
 <p>最小滑动窗口模板：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> len<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    判断<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span>是否满足条件
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>满足条件<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        不断更新结果<span class="token punctuation">(</span>注意在<span class="token keyword">while</span>内更新！<span class="token punctuation">)</span>
-        i <span class="token operator">+=</span> <span class="token number">1</span> （最大程度的压缩i，使得滑窗尽可能的小）
-    <span class="token punctuation">&#125;</span>
-    j <span class="token operator">+=</span> <span class="token number">1</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (j &lt; len)&#123;<br>    判断[i, j]是否满足条件<br>    <span class="hljs-keyword">while</span> (满足条件)&#123;<br>        不断更新结果(注意在<span class="hljs-keyword">while</span>内更新！)<br>        i += <span class="hljs-number">1</span> （最大程度的压缩i，使得滑窗尽可能的小）<br>    &#125;<br>    j += <span class="hljs-number">1</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>如：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">while</span> <span class="token punctuation">(</span>end <span class="token operator">&lt;</span> nums<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     sum <span class="token operator">+=</span> nums<span class="token punctuation">[</span>end<span class="token punctuation">]</span><span class="token punctuation">;</span>
-     <span class="token keyword">while</span> <span class="token punctuation">(</span>sum <span class="token operator">>=</span> target<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     	min <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>min<span class="token punctuation">,</span> end <span class="token operator">-</span> start <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-        sum <span class="token operator">-=</span> nums<span class="token punctuation">[</span>start<span class="token punctuation">]</span><span class="token punctuation">;</span>
-        start<span class="token operator">++</span><span class="token punctuation">;</span>
-     <span class="token punctuation">&#125;</span>
-     end<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (end &lt; nums.length) &#123;<br>     sum += nums[end];<br>     <span class="hljs-keyword">while</span> (sum &gt;= target) &#123;<br>     	min = Math.min(min, end - start + <span class="hljs-number">1</span>);<br>        sum -= nums[start];<br>        start++;<br>     &#125;<br>     end++;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>代表题目为209</p>
 <p>最大滑动窗口模板：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">while</span> <span class="token punctuation">(</span>j <span class="token operator">&lt;</span> len<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-    判断<span class="token punctuation">[</span>i<span class="token punctuation">,</span> j<span class="token punctuation">]</span>是否满足条件
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>不满足条件<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
-        i <span class="token operator">+=</span> <span class="token number">1</span> （最大程度的压缩i，使得滑窗尽可能的小）
-    <span class="token punctuation">&#125;</span>
-    不断更新结果<span class="token punctuation">(</span>注意在<span class="token keyword">while</span>内更新！<span class="token punctuation">)</span>
-    j <span class="token operator">+=</span> <span class="token number">1</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (j &lt; len)&#123;<br>    判断[i, j]是否满足条件<br>    <span class="hljs-keyword">while</span> (不满足条件)&#123;<br>        i += <span class="hljs-number">1</span> （最大程度的压缩i，使得滑窗尽可能的小）<br>    &#125;<br>    不断更新结果(注意在<span class="hljs-keyword">while</span>内更新！)<br>    j += <span class="hljs-number">1</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>如：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">while</span> <span class="token punctuation">(</span>right <span class="token operator">&lt;</span> fruits<span class="token punctuation">.</span>length<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">getOrDefault</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>right<span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    <span class="token keyword">while</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">size</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">></span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-    <span class="token comment">// count为水果最大数目，当map大小超过2时，滑窗需前移left;</span>
-       map<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">,</span> map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-       <span class="token keyword">if</span> <span class="token punctuation">(</span>map<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-            map<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>fruits<span class="token punctuation">[</span>left<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-       <span class="token punctuation">&#125;</span>
-       left<span class="token operator">++</span><span class="token punctuation">;</span>
-    <span class="token punctuation">&#125;</span>
-    count <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>count<span class="token punctuation">,</span> right <span class="token operator">-</span> left <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-    right<span class="token operator">++</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (right &lt; fruits.length) &#123;<br>    map.put(fruits[right], map.getOrDefault(fruits[right], <span class="hljs-number">0</span>) + <span class="hljs-number">1</span>);<br>    <span class="hljs-keyword">while</span> (map.size() &gt; <span class="hljs-number">2</span>) &#123;<br>    <span class="hljs-comment">// count为水果最大数目，当map大小超过2时，滑窗需前移left;</span><br>       map.put(fruits[left], map.get(fruits[left]) - <span class="hljs-number">1</span>);<br>       <span class="hljs-keyword">if</span> (map.get(fruits[left]) == <span class="hljs-number">0</span>) &#123;<br>            map.remove(fruits[left]);<br>       &#125;<br>       left++;<br>    &#125;<br>    count = Math.max(count, right - left + <span class="hljs-number">1</span>);<br>    right++;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>代表题目为904</p>
 <h2 id="4、59-螺旋矩阵II"><a href="#4、59-螺旋矩阵II" class="headerlink" title="4、59.螺旋矩阵II"></a>4、59.螺旋矩阵II</h2><p>正确解决二分法是坚持循环不变量原则，这道题也是一样，要么一直左闭右开，要么一直左闭右闭。</p>
@@ -506,26 +573,26 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
-          <div>Zhai Biao</div>
+          <div>Author</div>
+          <div>John Doe</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年10月8日</div>
+          <div>Posted on</div>
+          <div>October 8, 2022</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -548,7 +615,7 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
                       <a href="/2022/10/09/c-cheng-du/" title="C-《成都》">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">C-《成都》</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -557,7 +624,7 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
                     
                       <a href="/2022/09/27/du-shu-bi-ji/" title="读书笔记">
                         <span class="hidden-mobile">读书笔记</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -576,7 +643,7 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -631,7 +698,7 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -639,7 +706,7 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -667,16 +734,16 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
   
     
       <span id="busuanzi_container_site_pv" style="display: none">
-        总访问量 
+        Views: 
         <span id="busuanzi_value_site_pv"></span>
-         次
+        
       </span>
     
     
       <span id="busuanzi_container_site_uv" style="display: none">
-        总访客数 
+        Visitors: 
         <span id="busuanzi_value_site_uv"></span>
-         人
+        
       </span>
     
     
@@ -851,7 +918,7 @@ nums<span class="token punctuation">[</span>i<span class="token punctuation">]</
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>

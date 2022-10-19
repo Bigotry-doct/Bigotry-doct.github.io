@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zb-CN" data-default-color-scheme=auto>
 
 
 
@@ -13,7 +13,7 @@
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
   <meta name="theme-color" content="#2f4154">
-  <meta name="author" content="Zhai Biao">
+  <meta name="author" content="John Doe">
   <meta name="keywords" content="">
   
     <meta name="description" content="一、为何要用Docker?1、什么是Docker?Docker 使用 Google 公司推出的 Go 语言  进行开发实现，基于 Linux 内核 的cgroup，namespace，以及 AUFS 类的 UnionFS 等技术，对进程进行封装隔离，属于操作系统层面的虚拟化技术。 由于隔离的进程独立于宿主和其它的隔离的进 程，因此也称其为容器。Docker 最初实现是基于 LXC. Docker">
@@ -22,10 +22,10 @@
 <meta property="og:url" content="http://example.com/2022/09/19/docker-xue-xi/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="一、为何要用Docker?1、什么是Docker?Docker 使用 Google 公司推出的 Go 语言  进行开发实现，基于 Linux 内核 的cgroup，namespace，以及 AUFS 类的 UnionFS 等技术，对进程进行封装隔离，属于操作系统层面的虚拟化技术。 由于隔离的进程独立于宿主和其它的隔离的进 程，因此也称其为容器。Docker 最初实现是基于 LXC. Docker">
-<meta property="og:locale" content="zh_CN">
+<meta property="og:locale" content="zb_CN">
 <meta property="article:published_time" content="2022-09-19T13:42:13.000Z">
-<meta property="article:modified_time" content="2022-10-18T13:21:39.696Z">
-<meta property="article:author" content="Zhai Biao">
+<meta property="article:modified_time" content="2022-10-19T03:34:43.024Z">
+<meta property="article:author" content="John Doe">
 <meta property="article:tag" content="docker">
 <meta property="article:tag" content="image">
 <meta property="article:tag" content="dockerfile">
@@ -79,7 +79,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -120,7 +120,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>ZBiao</strong>
+      <strong>ZBiao&#39; Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -140,7 +140,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
-                首页
+                Home
               </a>
             </li>
           
@@ -152,7 +152,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
-                归档
+                Archives
               </a>
             </li>
           
@@ -164,7 +164,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
-                分类
+                Categories
               </a>
             </li>
           
@@ -176,7 +176,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
-                标签
+                Tags
               </a>
             </li>
           
@@ -188,7 +188,7 @@
             <li class="nav-item">
               <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
-                关于
+                About
               </a>
             </li>
           
@@ -215,7 +215,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -233,7 +233,7 @@
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
         <time datetime="2022-09-19 21:42" pubdate>
-          2022年9月19日 晚上
+          September 19, 2022 pm
         </time>
       </span>
     
@@ -244,7 +244,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          5.5k 字
+          5.6k words
         
       </span>
     
@@ -255,7 +255,7 @@
         
         
         
-          46 分钟
+          48 mins
         
       </span>
     
@@ -265,7 +265,7 @@
       
         <span id="busuanzi_container_page_pv" style="display: none">
           <i class="iconfont icon-eye" aria-hidden="true"></i>
-          <span id="busuanzi_value_page_pv"></span> 次
+          <span id="busuanzi_value_page_pv"></span> views
         </span>
         
       
@@ -293,6 +293,67 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Linux"
+        id="heading-edc9f0a5a5d57797bf68e37364743831" role="tab" data-toggle="collapse" href="#collapse-edc9f0a5a5d57797bf68e37364743831"
+        aria-expanded="true"
+      >
+        Linux
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-edc9f0a5a5d57797bf68e37364743831"
+           role="tabpanel" aria-labelledby="heading-edc9f0a5a5d57797bf68e37364743831">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/09/19/docker-xue-xi/" title="Docker学习笔记"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">Docker学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/18/nohup-shi-me-dong-xi/" title="nohup什么东西？"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">nohup什么东西？</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -339,140 +400,100 @@
 </ul>
 <h4 id="Docker-网络"><a href="#Docker-网络" class="headerlink" title="Docker 网络"></a>Docker 网络</h4><p>Docker 容器之间的网络交互，可以使用<code>端口映射</code>的方式，其他容器可以直接通过端口实现。除该方式外还有一个<code>容器连接（linking）系统</code>也可以达到容器交互。（本文中 node 连接 mongodb 使用的是端口映射的方式）</p>
 <p>关于Docker 网络模块，容器连接详情推荐这篇文章: <a target="_blank" rel="noopener" href="https://juejin.cn/post/6844903756920782855">Docker的网络模式详解</a></p>
-<h3 id="4、Docker的常用命令（常用）"><a href="#4、Docker的常用命令（常用）" class="headerlink" title="4、Docker的常用命令（常用）"></a>4、Docker的常用命令（常用）</h3><h4 id="镜像常用命令"><a href="#镜像常用命令" class="headerlink" title="镜像常用命令"></a>镜像常用命令</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> pull <span class="token punctuation">[</span>镜像名称:版本<span class="token punctuation">]</span> 拉取镜像
-<span class="token function">docker</span> images  镜像列表
-<span class="token function">docker</span> rmi <span class="token punctuation">[</span>镜像名称:版本<span class="token punctuation">]</span> 删除镜像
-<span class="token function">docker</span> <span class="token function">history</span> <span class="token punctuation">[</span>镜像名称<span class="token punctuation">]</span> 镜像操作记录
-<span class="token function">docker</span> tag <span class="token punctuation">[</span>镜像名称:版本<span class="token punctuation">]</span><span class="token punctuation">[</span>新镜像名称:新版本<span class="token punctuation">]</span>
-<span class="token function">docker</span> inspect <span class="token punctuation">[</span>镜像名称:版本<span class="token punctuation">]</span> 查看镜像详细
-<span class="token function">docker</span> search <span class="token punctuation">[</span>关键字<span class="token punctuation">]</span> 搜索镜像
-<span class="token function">docker</span> login 镜像登陆<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4、Docker的常用命令（常用）"><a href="#4、Docker的常用命令（常用）" class="headerlink" title="4、Docker的常用命令（常用）"></a>4、Docker的常用命令（常用）</h3><h4 id="镜像常用命令"><a href="#镜像常用命令" class="headerlink" title="镜像常用命令"></a>镜像常用命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker pull [镜像名称:版本] 拉取镜像<br>docker images  镜像列表<br>docker rmi [镜像名称:版本] 删除镜像<br>docker <span class="hljs-built_in">history</span> [镜像名称] 镜像操作记录<br>docker tag [镜像名称:版本][新镜像名称:新版本]<br>docker inspect [镜像名称:版本] 查看镜像详细<br>docker search [关键字] 搜索镜像<br>docker login 镜像登陆<br></code></pre></td></tr></table></figure>
 
-<h4 id="容器常用命令"><a href="#容器常用命令" class="headerlink" title="容器常用命令"></a>容器常用命令</h4><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> <span class="token function">ps</span> <span class="token parameter variable">-a</span> 容器列表<span class="token punctuation">(</span>所有容器<span class="token punctuation">)</span>
-<span class="token function">docker</span> <span class="token function">ps</span>  查看所有<span class="token punctuation">(</span>运行的<span class="token punctuation">)</span>容器
-<span class="token function">docker</span> <span class="token builtin class-name">exec</span> <span class="token parameter variable">-ti</span> <span class="token operator">&lt;</span>id<span class="token operator">></span> <span class="token function">bash</span>  以 <span class="token function">bash</span> 命令进入容器内
-<span class="token function">docker</span> run <span class="token parameter variable">-ti</span> <span class="token parameter variable">--name</span> <span class="token punctuation">[</span>容器名称<span class="token punctuation">]</span><span class="token punctuation">[</span>镜像名称:版本<span class="token punctuation">]</span> <span class="token function">bash</span> 启动容器并进入
-<span class="token function">docker</span> logs 查看容器日志
-<span class="token function">docker</span> <span class="token function">top</span> <span class="token operator">&lt;</span>container_id<span class="token operator">></span> 查看容器最近的一个进程
-<span class="token function">docker</span> run <span class="token parameter variable">-ti</span> <span class="token parameter variable">--name</span> <span class="token punctuation">[</span>容器名称<span class="token punctuation">]</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:80 <span class="token punctuation">[</span>镜像名称:版本<span class="token punctuation">]</span> <span class="token function">bash</span>  端口映射
-<span class="token function">docker</span> <span class="token function">rm</span> <span class="token operator">&lt;</span>container_id<span class="token operator">></span> 删除容器
-<span class="token function">docker</span> stop <span class="token operator">&lt;</span>container_id<span class="token operator">></span> 停止容器
-<span class="token function">docker</span> start <span class="token operator">&lt;</span>container_id<span class="token operator">></span> 开启容器
-<span class="token function">docker</span> restart <span class="token operator">&lt;</span>container_id<span class="token operator">></span> 重启容器
-<span class="token function">docker</span> inspect <span class="token operator">&lt;</span>container_id<span class="token operator">></span> 查看容器详情
-<span class="token function">docker</span> commit <span class="token punctuation">[</span>容器名称<span class="token punctuation">]</span> my_image:v1.0  容器提交为新的镜像	<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h4 id="容器常用命令"><a href="#容器常用命令" class="headerlink" title="容器常用命令"></a>容器常用命令</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker ps -a 容器列表(所有容器)<br>docker ps  查看所有(运行的)容器<br>docker <span class="hljs-built_in">exec</span> -ti &lt;<span class="hljs-built_in">id</span>&gt; bash  以 bash 命令进入容器内<br>docker run -ti --name [容器名称][镜像名称:版本] bash 启动容器并进入<br>docker logs 查看容器日志<br>docker top &lt;container_id&gt; 查看容器最近的一个进程<br>docker run -ti --name [容器名称] -p 8080:80 [镜像名称:版本] bash  端口映射<br>docker <span class="hljs-built_in">rm</span> &lt;container_id&gt; 删除容器<br>docker stop &lt;container_id&gt; 停止容器<br>docker start &lt;container_id&gt; 开启容器<br>docker restart &lt;container_id&gt; 重启容器<br>docker inspect &lt;container_id&gt; 查看容器详情<br>docker commit [容器名称] my_image:v1.0  容器提交为新的镜像	<br></code></pre></td></tr></table></figure>
 
 <h4 id="DockerFile常用命令"><a href="#DockerFile常用命令" class="headerlink" title="DockerFile常用命令"></a>DockerFile常用命令</h4><p>见第六节</p>
 <h2 id="二、CentOs-7-上Docker安装部署"><a href="#二、CentOs-7-上Docker安装部署" class="headerlink" title="二、CentOs 7 上Docker安装部署"></a>二、CentOs 7 上Docker安装部署</h2><h3 id="1、若是以前安装过docker，先执行以下步骤"><a href="#1、若是以前安装过docker，先执行以下步骤" class="headerlink" title="1、若是以前安装过docker，先执行以下步骤"></a>1、若是以前安装过docker，先执行以下步骤</h3><ol>
 <li><p>更新yum包（生产环境中慎重）</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token parameter variable">-y</span> update<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y update<br></code></pre></td></tr></table></figure>
 
 <p>此命令不是必须，有服务器重启一下服务器</p>
 </li>
 <li><p>卸载旧版本</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum remove <span class="token function">docker</span>  docker-common docker-selinux docker-engine<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum remove docker  docker-common docker-selinux docker-engine<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h3 id="2、安装docker的详细步骤"><a href="#2、安装docker的详细步骤" class="headerlink" title="2、安装docker的详细步骤"></a>2、安装docker的详细步骤</h3><ol>
 <li><p>首先安装需要的软件包</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> <span class="token parameter variable">-y</span> yum-utils device-mapper-persistent-data lvm2<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install -y yum-utils device-mapper-persistent-data lvm2<br></code></pre></td></tr></table></figure></li>
 <li><p>设置yum源，我使用的是阿里仓库</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo<br></code></pre></td></tr></table></figure></li>
 <li><p>选择docker版本并安装<br>查看可用的版本：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum list docker-ce <span class="token parameter variable">--showduplicates</span> <span class="token operator">|</span> <span class="token function">sort</span> <span class="token parameter variable">-r</span>                 <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum list docker-ce --showduplicates | <span class="hljs-built_in">sort</span> -r                 <br></code></pre></td></tr></table></figure>
 
 <p>选择一个版本并安装：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token function">install</span> docker-ce-版本号<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum install docker-ce-版本号<br></code></pre></td></tr></table></figure>
 
 <p>我安装的是:</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">yum <span class="token parameter variable">-y</span> <span class="token function">install</span> docker-ce-18.03.1.ce<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">yum -y install docker-ce-18.03.1.ce<br></code></pre></td></tr></table></figure></li>
 <li><p>启动docker并设置开机自启</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">systemctl start <span class="token function">docker</span>
-systemctl <span class="token builtin class-name">enable</span> <span class="token function">docker</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">systemctl start docker<br>systemctl <span class="hljs-built_in">enable</span> docker<br></code></pre></td></tr></table></figure></li>
 </ol>
 <h2 id="三、image文件"><a href="#三、image文件" class="headerlink" title="三、image文件"></a>三、image文件</h2><p><strong>Docker 把应用程序及其依赖，打包在 image 文件里面。</strong>只有通过这个文件，才能生成 Docker 容器。image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。</p>
 <p>image 是二进制文件。实际开发中，一个 image 文件往往通过继承另一个 image 文件，加上一些个性化设置而生成。举例来说，你可以在 Ubuntu 的 image 基础上，往里面加入 Apache 服务器，形成你的 image。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 列出本机的所有 image 文件。</span>
-<span class="token function">docker</span> image <span class="token function">ls</span>
-
-<span class="token comment"># 删除 image 文件</span>
-<span class="token function">docker</span> image <span class="token function">rm</span> <span class="token punctuation">[</span>imageName<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 列出本机的所有 image 文件。</span><br>docker image <span class="hljs-built_in">ls</span><br><br><span class="hljs-comment"># 删除 image 文件</span><br>docker image <span class="hljs-built_in">rm</span> [imageName]<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>image 文件是通用的，一台机器的 image 文件拷贝到另一台机器，照样可以使用。一般来说，为了节省时间，我们应该尽量使用别人制作好的 image 文件，而不是自己制作。即使要定制，也应该基于别人的 image 文件进行加工，而不是从零开始制作。</p>
 <p>为了方便共享，image 文件制作完成后，可以上传到网上的仓库。Docker 的官方仓库 <a target="_blank" rel="noopener" href="https://hub.docker.com/">Docker Hub</a> 是最重要、最常用的 image 仓库。</p>
 <h2 id="四、实例：“Hello-world”"><a href="#四、实例：“Hello-world”" class="headerlink" title="四、实例：“Hello world”"></a>四、实例：“Hello world”</h2><p>通过最简单的“Hello world”实例感受一下image文件</p>
 <p>首先，运行下面的命令，将 image 文件从仓库抓取到本地。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> image pull library/hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker image pull library/hello-world<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>上面代码中，<code>docker image pull</code>是抓取 image 文件的命令。<code>library/hello-world</code>是 image 文件在仓库里面的位置，其中<code>library</code>是 image 文件所在的组，<code>hello-world</code>是 image 文件的名字。</p>
 <p>由于 Docker 官方提供的 image 文件，都放在<a target="_blank" rel="noopener" href="https://hub.docker.com/r/library/"><code>library</code></a>组里面，所以它的是默认组，可以省略。因此，上面的命令可以写成下面这样。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> image pull hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker image pull hello-world<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>抓取成功以后，就可以在本机看到这个 image 文件了。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> image <span class="token function">ls</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker image <span class="hljs-built_in">ls</span><br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>现在，运行这个 image 文件。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run hello-world<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker container run hello-world<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p><code>docker container run</code>命令会从 image 文件，生成一个正在运行的容器实例。</p>
 <p>注意，<code>docker container run</code>命令具有自动抓取 image 文件的功能。如果发现本地没有指定的 image 文件，就会从仓库自动抓取。因此，前面的<code>docker image pull</code>命令并不是必需的步骤。</p>
 <p>如果运行成功，你会在屏幕上读到下面的输出。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run hello-world
-
-Hello from Docker<span class="token operator">!</span>
-This message shows that your installation appears to be working correctly.
-
-<span class="token punctuation">..</span>. <span class="token punctuation">..</span>.<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker container run hello-world<br><br>Hello from Docker!<br>This message shows that your installation appears to be working correctly.<br><br>... ...<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>输出这段提示以后，<code>hello world</code>就会停止运行，容器自动终止。</p>
 <p>有些容器不会自动终止，因为提供的是服务。比如，安装运行 Ubuntu 的 image，就可以在命令行体验 Ubuntu 系统。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container run <span class="token parameter variable">-it</span> ubuntu <span class="token function">bash</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker container run -it ubuntu bash<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>对于那些不会自动终止的容器，必须使用<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/container_kill/"><code>docker container kill</code></a> 命令手动终止。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">kill</span> <span class="token punctuation">[</span>containID<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker container <span class="hljs-built_in">kill</span> [containID]<br></code></pre></td></tr></table></figure>
 </blockquote>
 <h2 id="五、容器文件"><a href="#五、容器文件" class="headerlink" title="五、容器文件"></a>五、容器文件</h2><p><strong>image 文件生成的容器实例，本身也是一个文件，称为容器文件。</strong>也就是说，一旦容器生成，就会同时存在两个文件： image 文件和容器文件。而且关闭容器并不会删除容器文件，只是容器停止运行而已。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 列出本机正在运行的容器</span>
-$ <span class="token function">docker</span> container <span class="token function">ls</span>
-
-<span class="token comment"># 列出本机所有容器，包括终止运行的容器</span>
-$ <span class="token function">docker</span> container <span class="token function">ls</span> <span class="token parameter variable">--all</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 列出本机正在运行的容器</span><br>$ docker container <span class="hljs-built_in">ls</span><br><br><span class="hljs-comment"># 列出本机所有容器，包括终止运行的容器</span><br>$ docker container <span class="hljs-built_in">ls</span> --all<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>上面命令的输出结果之中，包括容器的 ID。很多地方都需要提供这个 ID，比如上一节终止容器运行的<code>docker container kill</code>命令。</p>
 <p>终止运行的容器文件，依然会占据硬盘空间，可以使用<a target="_blank" rel="noopener" href="https://docs.docker.com/engine/reference/commandline/container_rm/"><code>docker container rm</code></a>命令删除。</p>
 <blockquote>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">$ <span class="token function">docker</span> container <span class="token function">rm</span> <span class="token punctuation">[</span>containerID<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">$ docker container <span class="hljs-built_in">rm</span> [containerID]<br></code></pre></td></tr></table></figure>
 </blockquote>
 <p>运行上面的命令之后，再使用<code>docker container ls --all</code>命令，就会发现被删除的容器文件已经消失了。</p>
-<h2 id="六、Dockerfile部署Spring-Boot-项目"><a href="#六、Dockerfile部署Spring-Boot-项目" class="headerlink" title="六、Dockerfile部署Spring Boot 项目"></a>六、Dockerfile部署Spring Boot 项目</h2><h3 id="1、将已有的spring-boot-项目打包"><a href="#1、将已有的spring-boot-项目打包" class="headerlink" title="1、将已有的spring boot 项目打包"></a>1、将已有的spring boot 项目打包</h3><h3 id="2、在linux中创建一个文件夹，例如我创建为-root-docker-test-jar01"><a href="#2、在linux中创建一个文件夹，例如我创建为-root-docker-test-jar01" class="headerlink" title="2、在linux中创建一个文件夹，例如我创建为 /root/docker_test/jar01"></a>2、在linux中创建一个文件夹，例如我创建为 /root/docker_test/jar01</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkdir</span> /root/docker_test/jar01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h2 id="六、Dockerfile部署Spring-Boot-项目"><a href="#六、Dockerfile部署Spring-Boot-项目" class="headerlink" title="六、Dockerfile部署Spring Boot 项目"></a>六、Dockerfile部署Spring Boot 项目</h2><h3 id="1、将已有的spring-boot-项目打包"><a href="#1、将已有的spring-boot-项目打包" class="headerlink" title="1、将已有的spring boot 项目打包"></a>1、将已有的spring boot 项目打包</h3><h3 id="2、在linux中创建一个文件夹，例如我创建为-root-docker-test-jar01"><a href="#2、在linux中创建一个文件夹，例如我创建为-root-docker-test-jar01" class="headerlink" title="2、在linux中创建一个文件夹，例如我创建为 /root/docker_test/jar01"></a>2、在linux中创建一个文件夹，例如我创建为 /root/docker_test/jar01</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">mkdir</span> /root/docker_test/jar01<br></code></pre></td></tr></table></figure>
 
 <h3 id="3、将jar包上传到linux文件夹中"><a href="#3、将jar包上传到linux文件夹中" class="headerlink" title="3、将jar包上传到linux文件夹中"></a>3、将jar包上传到linux文件夹中</h3><p>利用MobaxTerm将jar包上传到jar01中</p>
-<h3 id="4、编写DockerFile文件"><a href="#4、编写DockerFile文件" class="headerlink" title="4、编写DockerFile文件"></a>4、编写DockerFile文件</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 基于java镜像创建新镜像</span>
-FROM openjdk:11
-<span class="token comment"># 作者</span>
-MAINTAINER zbiao
-<span class="token comment"># 将jar包添加到容器中并更名为app.jar</span>
-ADD  demo-helloworld.jar app.jar
-<span class="token comment"># 运行jar包</span>
-ENTRYPOINT <span class="token punctuation">[</span><span class="token string">"java"</span>,<span class="token string">"-jar"</span>,<span class="token string">"app.jar"</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h3 id="4、编写DockerFile文件"><a href="#4、编写DockerFile文件" class="headerlink" title="4、编写DockerFile文件"></a>4、编写DockerFile文件</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-comment"># 基于java镜像创建新镜像</span><br>FROM openjdk:11<br><span class="hljs-comment"># 作者</span><br>MAINTAINER zbiao<br><span class="hljs-comment"># 将jar包添加到容器中并更名为app.jar</span><br>ADD  demo-helloworld.jar app.jar<br><span class="hljs-comment"># 运行jar包</span><br>ENTRYPOINT [<span class="hljs-string">&quot;java&quot;</span>,<span class="hljs-string">&quot;-jar&quot;</span>,<span class="hljs-string">&quot;app.jar&quot;</span>]<br></code></pre></td></tr></table></figure>
 
 <p>ADD 后面是源文件，再后面才是目标文件</p>
 <blockquote>
 <p>注意：ADD、COPY 指令用法一样，唯一不同的是 ADD 支持将归档文件（tar, gzip, bzip2, etc）做提取和解压操作。还有需要注意的是，COPY 指令需要复制的目录一定要放在 Dockerfile 文件的同级目录下。</p>
 </blockquote>
 <p>参考：<a target="_blank" rel="noopener" href="http://lpxz.work/2022/07/04/Docker%20%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/#%E5%B8%B8%E7%94%A8%E8%BD%AF%E4%BB%B6-%E6%9C%8D%E5%8A%A1%E5%AE%89%E8%A3%85%E9%83%A8%E7%BD%B2-updating%E2%80%A6">LPxz的个人博客</a></p>
-<h3 id="5、制作镜像"><a href="#5、制作镜像" class="headerlink" title="5、制作镜像"></a>5、制作镜像</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> build <span class="token parameter variable">-t</span> zbdemo <span class="token builtin class-name">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="5、制作镜像"><a href="#5、制作镜像" class="headerlink" title="5、制作镜像"></a>5、制作镜像</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker build -t zbdemo .<br></code></pre></td></tr></table></figure>
 
 <p>注意是在jar01目录下</p>
-<h3 id="6、启动容器"><a href="#6、启动容器" class="headerlink" title="6、启动容器"></a>6、启动容器</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">docker</span> run <span class="token parameter variable">-d</span> <span class="token parameter variable">-p</span> <span class="token number">8080</span>:8080 <span class="token parameter variable">--name</span> zbdemo03 zbdemo:latest<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<h3 id="6、启动容器"><a href="#6、启动容器" class="headerlink" title="6、启动容器"></a>6、启动容器</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash">docker run -d -p 8080:8080 --name zbdemo03 zbdemo:latest<br></code></pre></td></tr></table></figure>
 
 <p>命令参数：</p>
 <ul>
@@ -481,10 +502,7 @@ ENTRYPOINT <span class="token punctuation">[</span><span class="token string">"j
 <li>-name：容器命名</li>
 </ul>
 <p>启动后可通过 <code>docker ps</code> 查看正在运行的容器：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">[</span>root@VM-8-10-centos jar01<span class="token punctuation">]</span><span class="token comment"># docker ps</span>
-CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS                    NAMES
-618cf8b1a0a8        zbdemo:latest       <span class="token string">"java -jar app.jar"</span>   <span class="token number">14</span> minutes ago      Up <span class="token number">13</span> minutes       <span class="token number">0.0</span>.0.0:8080-<span class="token operator">></span><span class="token number">8080</span>/tcp   zbdemo04
-45d6deb5444a        zbdemo:latest       <span class="token string">"java -jar app.jar"</span>   <span class="token number">16</span> minutes ago      Up <span class="token number">16</span> minutes       <span class="token number">0.0</span>.0.0:8082-<span class="token operator">></span><span class="token number">8082</span>/tcp   zbdemo03<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs bash">[root@VM-8-10-centos jar01]<span class="hljs-comment"># docker ps</span><br>CONTAINER ID        IMAGE               COMMAND               CREATED             STATUS              PORTS                    NAMES<br>618cf8b1a0a8        zbdemo:latest       <span class="hljs-string">&quot;java -jar app.jar&quot;</span>   14 minutes ago      Up 13 minutes       0.0.0.0:8080-&gt;8080/tcp   zbdemo04<br>45d6deb5444a        zbdemo:latest       <span class="hljs-string">&quot;java -jar app.jar&quot;</span>   16 minutes ago      Up 16 minutes       0.0.0.0:8082-&gt;8082/tcp   zbdemo03<br></code></pre></td></tr></table></figure>
 
 <h3 id="7、查看启动日志"><a href="#7、查看启动日志" class="headerlink" title="7、查看启动日志"></a>7、查看启动日志</h3><p>我们可以通过 <code>docker logs name</code> 查看指定容器的日志，后面name为容器名，如zbdemo03</p>
 <h3 id="8、DockerFile配置参数"><a href="#8、DockerFile配置参数" class="headerlink" title="8、DockerFile配置参数"></a>8、DockerFile配置参数</h3><p>FROM：FROM 是构建镜像的基础源镜像，该 Image 文件继承官方的 node image。</p>
@@ -553,26 +571,26 @@ CONTAINER ID        IMAGE               COMMAND               CREATED           
     <div class="license-meta">
       
         <div class="license-meta-item">
-          <div>作者</div>
-          <div>Zhai Biao</div>
+          <div>Author</div>
+          <div>John Doe</div>
         </div>
       
       
         <div class="license-meta-item license-meta-date">
-          <div>发布于</div>
-          <div>2022年9月19日</div>
+          <div>Posted on</div>
+          <div>September 19, 2022</div>
         </div>
       
       
       
         <div class="license-meta-item">
-          <div>许可协议</div>
+          <div>Licensed under</div>
           <div>
             
               
               
                 <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
-                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                  <span class="hint--top hint--rounded" aria-label="BY - Attribution">
                     <i class="iconfont icon-by"></i>
                   </span>
                 </a>
@@ -595,7 +613,7 @@ CONTAINER ID        IMAGE               COMMAND               CREATED           
                       <a href="/2022/09/20/test/" title="Test">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">Test</span>
-                        <span class="visible-mobile">上一篇</span>
+                        <span class="visible-mobile">Previous</span>
                       </a>
                     
                   </article>
@@ -604,7 +622,7 @@ CONTAINER ID        IMAGE               COMMAND               CREATED           
                     
                       <a href="/2022/09/16/tan-xin-suan-fa/" title="贪心算法">
                         <span class="hidden-mobile">贪心算法</span>
-                        <span class="visible-mobile">下一篇</span>
+                        <span class="visible-mobile">Next</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
                     
@@ -623,7 +641,7 @@ CONTAINER ID        IMAGE               COMMAND               CREATED           
       
   <aside class="sidebar" style="margin-left: -1rem">
     <div id="toc">
-  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;Table of Contents</p>
   <div class="toc-body" id="toc-body"></div>
 </div>
 
@@ -678,7 +696,7 @@ CONTAINER ID        IMAGE               COMMAND               CREATED           
   <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Search</h4>
         <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -686,7 +704,7 @@ CONTAINER ID        IMAGE               COMMAND               CREATED           
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <input type="text" id="local-search-input" class="form-control validate">
-          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+          <label data-error="x" data-success="v" for="local-search-input">Keyword</label>
         </div>
         <div class="list-group" id="local-search-result"></div>
       </div>
@@ -714,16 +732,16 @@ CONTAINER ID        IMAGE               COMMAND               CREATED           
   
     
       <span id="busuanzi_container_site_pv" style="display: none">
-        总访问量 
+        Views: 
         <span id="busuanzi_value_site_pv"></span>
-         次
+        
       </span>
     
     
       <span id="busuanzi_container_site_uv" style="display: none">
-        总访客数 
+        Visitors: 
         <span id="busuanzi_value_site_uv"></span>
-         人
+        
       </span>
     
     
@@ -898,7 +916,7 @@ CONTAINER ID        IMAGE               COMMAND               CREATED           
   
 
   <noscript>
-    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+    <div class="noscript-warning">Blog works best with JavaScript enabled</div>
   </noscript>
 </body>
 </html>
