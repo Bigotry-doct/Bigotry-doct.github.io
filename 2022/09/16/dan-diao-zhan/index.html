@@ -25,7 +25,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/09/16/dan-diao-zhan/Typora文件/Typora图片/image-20220915111659905.png">
 <meta property="article:published_time" content="2022-09-16T09:51:01.000Z">
-<meta property="article:modified_time" content="2022-09-16T09:54:05.699Z">
+<meta property="article:modified_time" content="2022-10-19T02:31:08.023Z">
 <meta property="article:author" content="Zhai Biao">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
@@ -71,6 +71,7 @@
 
   
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
 
 
 
@@ -242,7 +243,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          2.9k 字
         
       </span>
     
@@ -291,6 +292,121 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="算法"
+        id="heading-046a899ee7a6ec88d370211a518c9e80" role="tab" data-toggle="collapse" href="#collapse-046a899ee7a6ec88d370211a518c9e80"
+        aria-expanded="true"
+      >
+        算法
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-046a899ee7a6ec88d370211a518c9e80"
+           role="tabpanel" aria-labelledby="heading-046a899ee7a6ec88d370211a518c9e80">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/13/v2-ha-xi-biao/" title="v2-哈希表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">v2-哈希表</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/08/v2-shu-zu/" title="v2-数组"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">v2-数组</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/er-cha-shu/" title="二叉树"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">二叉树</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/dong-tai-gui-hua/" title="动态规划"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">动态规划</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/dan-diao-zhan/" title="单调栈"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">单调栈</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/hui-su-suan-fa/" title="回溯算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">回溯算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/16/tan-xin-suan-fa/" title="贪心算法"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">贪心算法</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/09/21/lian-biao/" title="链表"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">链表</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -322,18 +438,7 @@
 <h2 id="下一个更大元素I"><a href="#下一个更大元素I" class="headerlink" title="下一个更大元素I"></a>下一个更大元素I</h2><p>首先想到暴力解法，外层遍历nums1，内层遍历nums2，当然可以，时间复杂度是O(n*2)</p>
 <p>也可使用单调栈</p>
 <p>我是这么想的，先用“每日温度”的思路，把nums2寻找右侧第一个比自己大的元素的位置找到，然后再遍历num1。可以一试；NO，到最后给res赋值的时候，找不到nums2的具体位置</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">if</span><span class="token punctuation">(</span>nums2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">&lt;=</span> nums2<span class="token punctuation">[</span>stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>    <span class="token comment">//  小于等于，继续往里放</span>
-     stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token keyword">else</span> <span class="token punctuation">&#123;</span>
-     <span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> nums2<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> nums2<span class="token punctuation">[</span>stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-           <span class="token keyword">if</span> <span class="token punctuation">(</span>hashMap<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>nums2<span class="token punctuation">[</span>stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-                  <span class="token class-name">Integer</span> index <span class="token operator">=</span> hashMap<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>nums2<span class="token punctuation">[</span>stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">//先取出nums2的下标，再赋值给nums1</span>
-                  res<span class="token punctuation">[</span>index<span class="token punctuation">]</span> <span class="token operator">=</span> nums2<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-           <span class="token punctuation">&#125;</span>
-           stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-     <span class="token punctuation">&#125;</span>
-     stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">if</span>(nums2[i] &lt;= nums2[stack.peek()])    <span class="hljs-comment">//  小于等于，继续往里放</span><br>     stack.push(i);<br><span class="hljs-keyword">else</span> &#123;<br>     <span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; nums2[i] &gt; nums2[stack.peek()]) &#123;<br>           <span class="hljs-keyword">if</span> (hashMap.containsKey(nums2[stack.peek()])) &#123;<br>                  <span class="hljs-type">Integer</span> <span class="hljs-variable">index</span> <span class="hljs-operator">=</span> hashMap.get(nums2[stack.peek()]); <span class="hljs-comment">//先取出nums2的下标，再赋值给nums1</span><br>                  res[index] = nums2[i];<br>           &#125;<br>           stack.pop();<br>     &#125;<br>     stack.push(i);<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>重点是第6、7行的代码</p>
 <p>目的是nums1要从nums2中取出数；比如下面的nums[1],   nums[1] = 1,计算nums2中1的右边第一个大的元素，返回的是nums2[1]而不是下标1</p>
@@ -354,23 +459,7 @@
 <p>从右向左遍历：maxRight[i] = max(height[i], maxRight[i + 1]);</p>
 <p>最后求和</p>
 <p>本题动态规划最简单</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> maxleft <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>height<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> maxright <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token keyword">int</span><span class="token punctuation">[</span>height<span class="token punctuation">.</span>length<span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">int</span> sum <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
-maxleft<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">=</span> height<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-maxright<span class="token punctuation">[</span>height<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span> <span class="token operator">=</span> height<span class="token punctuation">[</span>height<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">1</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> height<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     maxleft<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxleft<span class="token punctuation">[</span>i <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> height<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">2</span><span class="token punctuation">;</span> i <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">;</span> i<span class="token operator">--</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     maxright<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">max</span><span class="token punctuation">(</span>maxright<span class="token punctuation">[</span>i <span class="token operator">+</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">,</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">for</span> <span class="token punctuation">(</span><span class="token keyword">int</span> i <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span> i <span class="token operator">&lt;</span> height<span class="token punctuation">.</span>length<span class="token punctuation">;</span> i<span class="token operator">++</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     <span class="token keyword">int</span> area <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>maxleft<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> maxright<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">-</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">;</span>
-     <span class="token keyword">if</span> <span class="token punctuation">(</span>area <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
-          sum <span class="token operator">+=</span> area<span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span>
-<span class="token keyword">return</span> sum<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-type">int</span>[] maxleft = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[height.length];<br><span class="hljs-type">int</span>[] maxright = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[height.length];<br><span class="hljs-type">int</span> <span class="hljs-variable">sum</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>maxleft[<span class="hljs-number">0</span>] = height[<span class="hljs-number">0</span>];<br>maxright[height.length - <span class="hljs-number">1</span>] = height[height.length - <span class="hljs-number">1</span>];<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; height.length; i++) &#123;<br>     maxleft[i] = Math.max(maxleft[i - <span class="hljs-number">1</span>], height[i]);<br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> height.length - <span class="hljs-number">2</span>; i &gt;= <span class="hljs-number">0</span>; i--) &#123;<br>     maxright[i] = Math.max(maxright[i + <span class="hljs-number">1</span>], height[i]);<br>&#125;<br><span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; height.length; i++) &#123;<br>     <span class="hljs-type">int</span> <span class="hljs-variable">area</span> <span class="hljs-operator">=</span> Math.min(maxleft[i], maxright[i]) - height[i];<br>     <span class="hljs-keyword">if</span> (area &gt; <span class="hljs-number">0</span>)<br>          sum += area;<br>&#125;<br><span class="hljs-keyword">return</span> sum;<br></code></pre></td></tr></table></figure>
 
 
 
@@ -381,17 +470,7 @@ maxright<span class="token punctuation">[</span>height<span class="token punctua
 <blockquote>
 <p>关键代码：</p>
 </blockquote>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">while</span> <span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">&amp;&amp;</span> height<span class="token punctuation">[</span>i<span class="token punctuation">]</span> <span class="token operator">></span> height<span class="token punctuation">[</span>stacktop<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
-     <span class="token keyword">int</span> bottom <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">pop</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//先把底柱的编号取出</span>
-     <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>stack<span class="token punctuation">.</span><span class="token function">isEmpty</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>   <span class="token comment">//若是栈不为空的话，进行操作</span>
-          <span class="token keyword">int</span> min <span class="token operator">=</span> <span class="token class-name">Math</span><span class="token punctuation">.</span><span class="token function">min</span><span class="token punctuation">(</span>height<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">,</span> height<span class="token punctuation">[</span>stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token comment">//取出左边和右边的最小值，注意左柱为弹出</span>
-          <span class="token keyword">int</span> area <span class="token operator">=</span> <span class="token punctuation">(</span>min <span class="token operator">-</span> height<span class="token punctuation">[</span>bottom<span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">*</span> <span class="token punctuation">(</span>i <span class="token operator">-</span> stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment">// 求面积</span>
-          <span class="token keyword">if</span> <span class="token punctuation">(</span>area <span class="token operator">></span> <span class="token number">0</span><span class="token punctuation">)</span>
-                sum <span class="token operator">+=</span> area<span class="token punctuation">;</span>
-          stacktop <span class="token operator">=</span> stack<span class="token punctuation">.</span><span class="token function">peek</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//注意：左柱并没有弹出，而是更新栈顶元素，接着判断，因为是while</span>
-     <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-stack<span class="token punctuation">.</span><span class="token function">push</span><span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">//最后再将当前元素进栈，进行下一次循环</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">while</span> (!stack.isEmpty() &amp;&amp; height[i] &gt; height[stacktop]) &#123;<br>     <span class="hljs-type">int</span> <span class="hljs-variable">bottom</span> <span class="hljs-operator">=</span> stack.pop();    <span class="hljs-comment">//先把底柱的编号取出</span><br>     <span class="hljs-keyword">if</span> (!stack.isEmpty()) &#123;   <span class="hljs-comment">//若是栈不为空的话，进行操作</span><br>          <span class="hljs-type">int</span> <span class="hljs-variable">min</span> <span class="hljs-operator">=</span> Math.min(height[i], height[stack.peek()]);    <span class="hljs-comment">//取出左边和右边的最小值，注意左柱为弹出</span><br>          <span class="hljs-type">int</span> <span class="hljs-variable">area</span> <span class="hljs-operator">=</span> (min - height[bottom]) * (i - stack.peek() - <span class="hljs-number">1</span>);  <span class="hljs-comment">// 求面积</span><br>          <span class="hljs-keyword">if</span> (area &gt; <span class="hljs-number">0</span>)<br>                sum += area;<br>          stacktop = stack.peek();   <span class="hljs-comment">//注意：左柱并没有弹出，而是更新栈顶元素，接着判断，因为是while</span><br>     &#125;<br>&#125;<br>stack.push(i);   <span class="hljs-comment">//最后再将当前元素进栈，进行下一次循环</span><br></code></pre></td></tr></table></figure>
 
 <h2 id="柱状图中最大的矩形"><a href="#柱状图中最大的矩形" class="headerlink" title="柱状图中最大的矩形"></a>柱状图中最大的矩形</h2><p>感觉这类题动态规划可能好一点？</p>
 <p>本题跟接雨水那道题类似，只不过本题换成了求当前柱子左右两边第一个小于该柱子的柱子</p>

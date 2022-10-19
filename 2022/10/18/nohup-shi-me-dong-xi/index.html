@@ -16,17 +16,17 @@
   <meta name="author" content="Zhai Biao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="所以nohup是什么东西？ nohup是英语 no hangup 的缩写，是不挂断的意思，也就是指程序不退出，用在系统后台不挂断地运行命令，退出终端不会影响程序的运行。 在工作中，我们可能经常要在服务器上跑程序，有可能要跑的程序耗时很长，需要运行一段时间，我们希望即使关闭终端，程序不受影响，继续运行。在Linux中的nohup命令可以达到这种效果。 命令语法nohup 命令 参数 nohup 选项">
+    <meta name="description" content="所以nohup是什么东西？ nohup是英语 no hangup 的缩写，是不挂断的意思，也就是指程序不退出，用在系统后台不挂断地运行命令，退出终端不会影响程序的运行。 在工作中，我们可能经常要在服务器上跑程序，有可能要跑的程序耗时很长，需要运行一段时间，我们希望即使关闭终端，程序不受影响，继续运行。在Linux中的nohup命令可以达到这种效果。 命令语法12nohup 命令 参数nohup 选">
 <meta property="og:type" content="article">
 <meta property="og:title" content="nohup什么东西？">
 <meta property="og:url" content="http://example.com/2022/10/18/nohup-shi-me-dong-xi/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
-<meta property="og:description" content="所以nohup是什么东西？ nohup是英语 no hangup 的缩写，是不挂断的意思，也就是指程序不退出，用在系统后台不挂断地运行命令，退出终端不会影响程序的运行。 在工作中，我们可能经常要在服务器上跑程序，有可能要跑的程序耗时很长，需要运行一段时间，我们希望即使关闭终端，程序不受影响，继续运行。在Linux中的nohup命令可以达到这种效果。 命令语法nohup 命令 参数 nohup 选项">
+<meta property="og:description" content="所以nohup是什么东西？ nohup是英语 no hangup 的缩写，是不挂断的意思，也就是指程序不退出，用在系统后台不挂断地运行命令，退出终端不会影响程序的运行。 在工作中，我们可能经常要在服务器上跑程序，有可能要跑的程序耗时很长，需要运行一段时间，我们希望即使关闭终端，程序不受影响，继续运行。在Linux中的nohup命令可以达到这种效果。 命令语法12nohup 命令 参数nohup 选">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://example.com/2022/10/18/nohup-shi-me-dong-xi/image-20221018215614795.png">
 <meta property="og:image" content="http://example.com/2022/10/18/nohup-shi-me-dong-xi/image-20221018215918762.png">
 <meta property="article:published_time" content="2022-10-18T13:21:23.000Z">
-<meta property="article:modified_time" content="2022-10-18T14:02:01.724Z">
+<meta property="article:modified_time" content="2022-10-19T02:30:59.373Z">
 <meta property="article:author" content="Zhai Biao">
 <meta property="article:tag" content="Linux">
 <meta property="article:tag" content="nohup">
@@ -73,6 +73,7 @@
 
   
 <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
 
 
 
@@ -293,6 +294,67 @@
   <div class="row nomargin-x">
     <div class="side-col d-none d-lg-block col-lg-2">
       
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="Linux"
+        id="heading-edc9f0a5a5d57797bf68e37364743831" role="tab" data-toggle="collapse" href="#collapse-edc9f0a5a5d57797bf68e37364743831"
+        aria-expanded="true"
+      >
+        Linux
+        <span class="list-group-count">(2)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-edc9f0a5a5d57797bf68e37364743831"
+           role="tabpanel" aria-labelledby="heading-edc9f0a5a5d57797bf68e37364743831">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/09/19/docker-xue-xi/" title="Docker学习笔记"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">Docker学习笔记</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/18/nohup-shi-me-dong-xi/" title="nohup什么东西？"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">nohup什么东西？</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
 
     </div>
 
@@ -309,28 +371,22 @@
                 <p>所以nohup是什么东西？</p>
 <p><code>nohup</code>是英语 no hangup 的缩写，是不挂断的意思，也就是指程序不退出，用在系统后台不挂断地运行命令，退出终端不会影响程序的运行。</p>
 <p>在工作中，我们可能经常要在服务器上跑程序，有可能要跑的程序耗时很长，需要运行一段时间，我们希望即使关闭终端，程序不受影响，继续运行。在Linux中的<code>nohup</code>命令可以达到这种效果。</p>
-<h2 id="命令语法"><a href="#命令语法" class="headerlink" title="命令语法"></a>命令语法</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> 命令 参数
-<span class="token function">nohup</span> 选项<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<h2 id="命令语法"><a href="#命令语法" class="headerlink" title="命令语法"></a>命令语法</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> 命令 参数<br><span class="hljs-built_in">nohup</span> 选项<br></code></pre></td></tr></table></figure>
 
 <p>说明：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token parameter variable">--help</span>     <span class="token comment"># 显示此帮助信息并退出</span>
-<span class="token parameter variable">--version</span>  <span class="token comment"># 显示版本信息并退出</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">--<span class="hljs-built_in">help</span>     <span class="hljs-comment"># 显示此帮助信息并退出</span><br>--version  <span class="hljs-comment"># 显示版本信息并退出</span><br></code></pre></td></tr></table></figure>
 
 
 
 <h2 id="Demo案例"><a href="#Demo案例" class="headerlink" title="Demo案例"></a>Demo案例</h2><p>准备一个test.py程序，功能是每隔2秒会输出”hello nohup!”：</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">import</span> time 
-
-<span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token string">"hello nohup!"</span><span class="token punctuation">)</span>
-    time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs python"><span class="hljs-keyword">import</span> time <br><br><span class="hljs-keyword">while</span> <span class="hljs-literal">True</span>:<br>    <span class="hljs-built_in">print</span>(<span class="hljs-string">&quot;hello nohup!&quot;</span>)<br>    time.sleep(<span class="hljs-number">2</span>)<br></code></pre></td></tr></table></figure>
 
 <p>然后使用<code>nohup python3 test.py</code>运行。</p>
 <p>使用nohup命令时，程序的输出会默认重定向到一个nohup.out文件下。若是想要输出到指定的文件，则可以另外指定输出文件。</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> python3 test.py <span class="token operator">></span> out.txt<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> python3 test.py &gt; out.txt<br></code></pre></td></tr></table></figure>
 
 <p>但是现在还做不到让程序在后台运行，如果想要让程序在后台运行的话，可以加上 &amp; </p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> python3 test.py <span class="token operator">></span> out.txt <span class="token operator">&amp;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> python3 test.py &gt; out.txt &amp; <br></code></pre></td></tr></table></figure>
 
 <p>此时关掉终端再重新打开，使用ps命令查看一下进程，发现程序还在运行。</p>
 <p>这里如果想要把标准错误和标准输出都重定向到指定的out.txt文件中，可以使用<code>2&gt;&amp;1</code>符号，<code>2&gt;&amp;1</code>符号的意思是将将标准错误 2 重定向到标准输出 &amp;1。</p>
@@ -340,31 +396,24 @@
 <li>2 stderr (standard error，标准错误输出)</li>
 </ul>
 <p>具体详情见：<a href>2&gt;&amp;1到底是什么意思？</a></p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">nohup</span> python3 test.py <span class="token operator">></span> out.txt <span class="token operator"><span class="token file-descriptor important">2</span>></span><span class="token file-descriptor important">&amp;1</span> <span class="token operator">&amp;</span> <span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">nohup</span> python3 test.py &gt; out.txt 2&gt;&amp;1 &amp; <br></code></pre></td></tr></table></figure>
 
 <p><code>nohup</code>命令结合<code>&amp;</code>符号可以使进程在后台运行，即使关闭了终端依然不受影响。</p>
 <p>那么如何结束进程呢？</p>
 <h2 id="kill"><a href="#kill" class="headerlink" title="kill"></a>kill</h2><p>执行一个<code>kill</code>命令时，实际上是发送了一个信号给系统，让它去结束掉一些不正常的应用进程。 可以使用<code>kill -l</code>命令看到所有信号的列表：</p>
 <p><img src="/2022/10/18/nohup-shi-me-dong-xi/image-20221018215614795.png" srcset="/img/loading.gif" lazyload></p>
 <p>下面是一些常用信号的含义：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span>SIGHUP 终端线路挂断，终止进程
-<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>SIGINT 中断进程（同 Ctrl + C）
-<span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>SIGQUIT 退出进程（同 Ctrl + <span class="token punctuation">\</span>）
-<span class="token punctuation">(</span><span class="token number">15</span><span class="token punctuation">)</span>SIGTERM 终止进程
-<span class="token punctuation">(</span><span class="token number">9</span><span class="token punctuation">)</span>SIGKILL 强制终止进程
-<span class="token punctuation">(</span><span class="token number">18</span><span class="token punctuation">)</span>SIGCONT 继续（与SIGSTOP相反， fg/bg命令）
-<span class="token punctuation">(</span><span class="token number">19</span><span class="token punctuation">)</span>SIGSTOP 暂停（同 Ctrl + Z）<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs bash">(1)SIGHUP 终端线路挂断，终止进程<br>(2)SIGINT 中断进程（同 Ctrl + C）<br>(3)SIGQUIT 退出进程（同 Ctrl + \）<br>(15)SIGTERM 终止进程<br>(9)SIGKILL 强制终止进程<br>(18)SIGCONT 继续（与SIGSTOP相反， <span class="hljs-built_in">fg</span>/bg命令）<br>(19)SIGSTOP 暂停（同 Ctrl + Z）<br></code></pre></td></tr></table></figure>
 
 <p>常用到的有15 和 9</p>
 <p>(15)SIGTERM：也就是执行<code>kill -15 pid</code>命令，这里”-15”即代表SIGTERM信号。<br> 注意：SIGTERM是默认选项，也就是说执行<code>kill pid</code>和<code>kill -15 pid</code>是等价的。<br> 执行此指令时操作系统会发送一个SIGTERM信号给对应的程序，当程序接收到该信号后，可以用一段时间来正常关闭，一般会先保存进度并释放资源，然后再停止，也就是不一定会立即停止进程，比如程序正在等待IO，可能就不会立马停止运行。也就是说，(15)SIGTERM信号不是强制停止，是可以被忽略的。</p>
 <p>(9)SIGKILL：也就是执行<code>kill -9 pid</code>命令，这里”-9”即代表SIGKILL信号。<br> 是必杀信号，此信号强制进程立即停止运行。程序不能忽略此信号，而未保存的进度将会丢失，从而可能会影响服务的再次启动，此命令应该慎用。</p>
 <p>kill语法：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">kill</span> 信号或选项 pid<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs bash"><span class="hljs-built_in">kill</span> 信号或选项 pid<br></code></pre></td></tr></table></figure>
 
 <p>默认信号（当没有指定的时候）是SIGTERM。当它不起作用时，可以使用<code>kill -9 pid</code>命令来强制kill掉一个进程。</p>
 <p>应用的pid可以使用以下的命令查看：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">ps</span> <span class="token parameter variable">-ef</span>
-<span class="token function">ps</span> <span class="token parameter variable">-aux</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs bash">ps -ef<br>ps -aux<br></code></pre></td></tr></table></figure>
 
 <p>二者都可以查看到pid</p>
 <p><img src="/2022/10/18/nohup-shi-me-dong-xi/image-20221018215918762.png" srcset="/img/loading.gif" lazyload></p>
@@ -387,7 +436,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/noHup/" class="category-chain-item">noHup</a>
+  <a href="/categories/Linux/" class="category-chain-item">Linux</a>
   
   
 
