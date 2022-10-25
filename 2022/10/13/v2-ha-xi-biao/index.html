@@ -27,7 +27,7 @@
 <meta property="og:image" content="http://example.com/2022/10/13/v2-ha-xi-biao/image-20221013103638804.png">
 <meta property="og:image" content="http://example.com/2022/10/13/v2-ha-xi-biao/image-20221013103733434.png">
 <meta property="article:published_time" content="2022-10-13T02:17:34.000Z">
-<meta property="article:modified_time" content="2022-10-19T03:35:07.508Z">
+<meta property="article:modified_time" content="2022-10-25T06:56:38.266Z">
 <meta property="article:author" content="Zbiao">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="哈希表">
@@ -122,7 +122,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>ZBiao&#39; Blog</strong>
+      <strong>ZBiao&#39;s Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -246,7 +246,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          789 字
+          3.7k 字
         
       </span>
     
@@ -257,7 +257,7 @@
         
         
         
-          7 分钟
+          31 分钟
         
       </span>
     
@@ -445,6 +445,76 @@
 <li>map</li>
 </ul>
 <h2 id="4、常用方法"><a href="#4、常用方法" class="headerlink" title="4、常用方法"></a>4、常用方法</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">// 是否包含关键字</span><br>map.containsKey(keys);<br><span class="hljs-comment">// 添加关键字和值</span><br>map.put(keys, value);<br><span class="hljs-comment">// 获取所有键的值</span><br>map.values();<br><br><span class="hljs-comment">// 字符串转字符数组</span><br><span class="hljs-type">String</span> <span class="hljs-variable">str</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;string&quot;</span>;<br><span class="hljs-type">char</span>[] ch = str.toCharArray();<br><span class="hljs-comment">// 字符数组转字符串</span><br><span class="hljs-type">String</span> <span class="hljs-variable">keys</span> <span class="hljs-operator">=</span> String.valueOf(ch);<br></code></pre></td></tr></table></figure>
+
+
+
+<h1 id="二、经典题"><a href="#二、经典题" class="headerlink" title="二、经典题"></a>二、经典题</h1><h2 id="1、数组中只出现一次的两个数字"><a href="#1、数组中只出现一次的两个数字" class="headerlink" title="1、数组中只出现一次的两个数字"></a>1、数组中只出现一次的两个数字</h2><p>牛客原题链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/389fc1c3d3be4479a154f63f495abff8?tpId=295&tqId=745&ru=/exam/oj&qru=/ta/format-top101/question-ranking&sourceUrl=/exam/oj"><strong>BM52</strong> <strong>数组中只出现一次的两个数字</strong></a></p>
+<h3 id="1、方法一：哈希表"><a href="#1、方法一：哈希表" class="headerlink" title="1、方法一：哈希表"></a>1、方法一：哈希表</h3><p>看到题目，很容易想到用一个哈希表来记录每个数出现的次数，并得到只出现一次的数字</p>
+<p>具体思路如下：</p>
+<p>1、创建一个哈希表</p>
+<p>2、当数组元素没有在哈希表中成为key的时候，put进哈希表，当已存在的时候，则remove掉。</p>
+<p>3、最后哈希表中剩下的key就是只出现一次的数字</p>
+<p>4、遍历key然后返回结果</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] FindNumsAppearOnce (<span class="hljs-type">int</span>[] array) &#123;<br>        <span class="hljs-comment">// write code here</span><br>        <span class="hljs-comment">// 用于返回结果</span><br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">2</span>];<br>        <span class="hljs-comment">// 创建一个哈希表</span><br>        HashMap&lt;Integer,Object&gt; set = <span class="hljs-keyword">new</span> <span class="hljs-title class_">HashMap</span>&lt;&gt;();<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; array.length; i++)&#123;<br>            <span class="hljs-comment">// 如果已经被当作key了，那就直接remove掉</span><br>            <span class="hljs-keyword">if</span>(set.containsKey(array[i]))&#123;<br>                set.remove(array[i],<span class="hljs-literal">null</span>);<br>            &#125;<span class="hljs-keyword">else</span>&#123;<br>                <span class="hljs-comment">// 否则就添加进去</span><br>                set.put(array[i],<span class="hljs-literal">null</span>);<br>            &#125;<br>        &#125;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-comment">// 最后拿出来放进返回结果的数组中进行返回</span><br>        <span class="hljs-keyword">for</span>(Integer num:set.keySet())&#123;<br>            res[i++] = num;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<p>当然，时间复杂度和空间复杂度都是O(n)，但是这道题要求是空间复杂度为O(1)，So?</p>
+<h3 id="2、方法二：双指针法"><a href="#2、方法二：双指针法" class="headerlink" title="2、方法二：双指针法"></a>2、方法二：双指针法</h3><p>双指针法的前提是要数组有序，可以用Arrays.sort来对数组进行排序。定义两个指针，若是后一个元素和当前元素不等，说明什么？<code>说明前一个元素只出现了一次</code>。这句话有歧义，可能有人会说我从 1, 1, 2中的第二个位置的1和2进行比较，就说明不了1只出现了一次。这个问题如何解决？很好办，只需要从0开始遍历即可，若是出现后一个元素和当前元素相等，就直接将指针后移两位。这样就解决问题了。</p>
+<p>具体思路如下：</p>
+<ol>
+<li>对原始数组进行排序</li>
+<li>遍历数组，若是 i + 1 等于数组的长度 或者 下一个元素不等于当前元素，就将  i 存入返回数组中，并后移一位；否则后移两位</li>
+</ol>
+<blockquote>
+<p>注意，若是 i + 1 等于数组的长度，说明此时i已经是最后一个元素，直接放入返回数组中即可</p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] FindNumsAppearOnce (<span class="hljs-type">int</span>[] array) &#123;<br>        <span class="hljs-comment">// write code here</span><br>        <span class="hljs-comment">//   双指针法</span><br>        <span class="hljs-type">int</span>[] res = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">2</span>];<br>        Arrays.sort(array);<br>        <span class="hljs-type">int</span> <span class="hljs-variable">two</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; array.length; i++) &#123;<br>            <span class="hljs-keyword">if</span> (i + <span class="hljs-number">1</span> == array.length || array[i + <span class="hljs-number">1</span>] != array[i]) &#123;<br>                res[two] = array[i];<br>                two++;<br>            &#125;   <br>            <span class="hljs-keyword">else</span><br>                i++;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="3、方法三：位运算"><a href="#3、方法三：位运算" class="headerlink" title="3、方法三：位运算"></a>3、<code>方法三：位运算</code></h3><p>先来了解一下什么叫异或运算</p>
+<p>异或运算是基于二进制的位运算，采用符号XOR或者^来表示，运算规则是就与二进制，如果是同值取0、异值取1。</p>
+<p><code>异或运算的性质</code>：</p>
+<ol>
+<li>交换律 可以任意交换运算因子，结果不变。</li>
+<li>结合律 （a^b）^c=a^(a^c)</li>
+<li>对于任何数x，都有x^x=0,x^0=x,同自己求异或运算为0，同0求异或运算结果为自己</li>
+<li>自反性，A^B^B=A^0=A。这个性质可以用来求哪一个数为一个</li>
+</ol>
+<p>这道题运用的就是第四个性质，自反性</p>
+<blockquote>
+<p>举个例子：</p>
+<p>4 ⊕ 4 = 0，将4化为二进制为 0100</p>
+<p>所以 0100</p>
+<p>异或 0100</p>
+<p>得到 0000</p>
+<p>4 ⊕ 4 ⊕ 5 = 5</p>
+<p>则 0100</p>
+<p> 0100</p>
+<p> 0101</p>
+<p>得到 0101</p>
+<p>我们可以看到上面的运算过程，因为4=4，两者相等异或结果为0。所以0异或任意数都等于任意数。</p>
+</blockquote>
+<p>所以，当只有一个出现了一次的数字的时候，则只需要将全部数进行异或运算，运算结果就剩下了那个只出现一次的数字了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] singleNumber(<span class="hljs-type">int</span>[] nums) &#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">x</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> num : nums)  <span class="hljs-comment">// 1. 遍历 nums 执行异或运算</span><br>        x ^= num;<br>    <span class="hljs-keyword">return</span> x;            <span class="hljs-comment">// 2. 返回出现一次的数字 x</span><br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>问题来了：上述的思想是多个数中找到只出现一次的数字，但是本题是找两个，比如输入 1,4,1,6。最后剩下4⊕6。怎么办？</p>
+<p>那就进行分组嘛，分成两个组。</p>
+<p>但是分组的依据是什么呢？先来看看按奇数偶数分，按奇数偶数分不难实现，只需要将其 &amp;1 即可，原理是奇数的最低位一定是1，偶数的最低位一定是0。但是也不能保证只出现一次的数字正好是一奇一偶，或许人家是两个奇数两个偶数呢？所以按奇数偶数的分法不可行。</p>
+<p>确定分组依据之前，先看一个小例子，比如要区分0100和0110，也就是4和6，怎么区分呢？可以从最低位刚开始不同的位置区分，0100⊕0110 = 0010，那么可以用0010来区分。异或运算<code>正好</code>用的上。</p>
+<p>那么问题就变的很简单，具体思路如下：</p>
+<ol>
+<li>先将全部数进行异或运算，得出最终结果</li>
+<li>找到可以充当分组的数</li>
+<li>分组，同时求出出现一次的数字</li>
+<li>进行非降序排列</li>
+</ol>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-type">int</span>[] FindNumsAppearOnce (<span class="hljs-type">int</span>[] array) &#123;<br>        <span class="hljs-comment">// write code here</span><br>    <br>        <span class="hljs-comment">// 先将全部数进行异或运算，得出最终结果</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : array) &#123;<br>            temp ^= num;<br>        &#125;<br>    <br>        <span class="hljs-comment">// 找到那个可以充当分组去进行与运算的数</span><br>        <span class="hljs-comment">// 从最低位开始找起</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">mask</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br>        <span class="hljs-keyword">while</span> ((tmp &amp; mask) == <span class="hljs-number">0</span>) &#123;<br>            mask &lt;&lt;= <span class="hljs-number">1</span>;<br>        &#125;<br>    <br>        <span class="hljs-comment">// 进行分组，分成两组，转换为两组 求出现一次的数字 去求</span><br>        <span class="hljs-type">int</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> num : array) &#123;<br>            <span class="hljs-keyword">if</span> ((num &amp; mask) == <span class="hljs-number">0</span>) &#123;<br>                a ^= num;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                b ^= num;<br>            &#125;<br>        &#125;<br>    <br>        <span class="hljs-comment">// 因为题目要求小的数放前面，所以这一做个判断</span><br>        <span class="hljs-keyword">if</span> (a &gt; b) &#123;<br>            <span class="hljs-type">int</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> a;<br>            a = b;<br>            b = c;<br>        &#125;<br>        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[] &#123;a, b&#125;;<br>    &#125;<br></code></pre></td></tr></table></figure>
+
+<blockquote>
+<p>第14行的 &lt;&lt; 符号，左移运算符。效果：通过从右侧推入零并让最左边的位脱落来向左移动。比如9 &lt;&lt; 1 等同于 1001 &lt;&lt; 1 ，结果就是0010，换做十进制也就是2</p>
+</blockquote>
+<p>上述的第30到32行的代码，也可以用异或来实现a和b数值的交换。<code>这也是异或性质的运用。</code></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs java">a = a ^ b    <span class="hljs-comment">// a = a ^ b</span><br>b = a ^ b    <span class="hljs-comment">// b = a ^ b ^ b ,  ==&gt; b = a</span><br>a = a ^ b    <span class="hljs-comment">// a = a ^ b ^ a ,  ==&gt; a = b</span><br></code></pre></td></tr></table></figure>
 
 
                 
