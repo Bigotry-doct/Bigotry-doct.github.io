@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid5.png">
-  <link rel="icon" href="/img/fluid5.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/myblogs/img/fluid5.png">
+  <link rel="icon" href="/myblogs/img/fluid5.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,13 +19,13 @@
     <meta name="description" content="一、状态模式状态模式（State Pattern）：它主要用来解决对象在多种状态转换时，需要对外 输出不同的行为的问题。状态和行为是一一对应的，状态之间可以相互转换。 当一个对象的内在状态改变时，允许改变其行为，这个对象看起来像是改变了 其类。 1、Demo案例-抽奖活动问题 需求   假如每参加一次这个活动要 扣除用户50积分，中奖概率 是10%   奖品数量固定，抽完就不能 抽奖  活动有四个">
 <meta property="og:type" content="article">
 <meta property="og:title" content="08-行为型-状态-迭代器">
-<meta property="og:url" content="http://example.com/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/index.html">
+<meta property="og:url" content="https://bigotry-zb.gitee.io/myblogs/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="一、状态模式状态模式（State Pattern）：它主要用来解决对象在多种状态转换时，需要对外 输出不同的行为的问题。状态和行为是一一对应的，状态之间可以相互转换。 当一个对象的内在状态改变时，允许改变其行为，这个对象看起来像是改变了 其类。 1、Demo案例-抽奖活动问题 需求   假如每参加一次这个活动要 扣除用户50积分，中奖概率 是10%   奖品数量固定，抽完就不能 抽奖  活动有四个">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="http://example.com/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210047466.png">
-<meta property="og:image" content="http://example.com/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012211016481.png">
-<meta property="og:image" content="http://example.com/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210214155.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210047466.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012211016481.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210214155.png">
 <meta property="article:published_time" content="2022-10-12T12:57:31.000Z">
 <meta property="article:modified_time" content="2022-10-19T03:35:36.035Z">
 <meta property="article:author" content="Zbiao">
@@ -33,7 +33,7 @@
 <meta property="article:tag" content="状态">
 <meta property="article:tag" content="迭代器">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="http://example.com/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210047466.png">
+<meta name="twitter:image" content="https://bigotry-zb.gitee.io/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210047466.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -63,12 +63,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/myblogs/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/myblogs/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/myblogs/css/highlight-dark.css" />
   
 
 
@@ -82,15 +82,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/myblogs/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblogs/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="/myblogs/js/utils.js" ></script>
+  <script  src="/myblogs/js/color-schema.js" ></script>
   
 
   
@@ -122,7 +122,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/myblogs/">
       <strong>ZBiao&#39;s Blog</strong>
     </a>
 
@@ -141,7 +141,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/myblogs/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -153,7 +153,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/myblogs/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -165,7 +165,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/myblogs/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -177,7 +177,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/myblogs/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -189,7 +189,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/myblogs/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -218,7 +218,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
+     style="background: url('/myblogs/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -330,7 +330,7 @@
     
       
       
-        <a href="/2022/09/21/01-chuang-jian-xing-dan-li/" title="01-创建型-单例"
+        <a href="/myblogs/2022/09/21/01-chuang-jian-xing-dan-li/" title="01-创建型-单例"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">01-创建型-单例</span>
@@ -339,7 +339,7 @@
     
       
       
-        <a href="/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/" title="02-创建型-工厂&amp;建造者&amp;原型"
+        <a href="/myblogs/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/" title="02-创建型-工厂&amp;建造者&amp;原型"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">02-创建型-工厂&amp;建造者&amp;原型</span>
@@ -348,7 +348,7 @@
     
       
       
-        <a href="/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接"
+        <a href="/myblogs/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">03-结构型-代理-桥接</span>
@@ -357,7 +357,7 @@
     
       
       
-        <a href="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/" title="04-结构型-装饰器-适配器"
+        <a href="/myblogs/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/" title="04-结构型-装饰器-适配器"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">04-结构型-装饰器-适配器</span>
@@ -366,7 +366,7 @@
     
       
       
-        <a href="/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元"
+        <a href="/myblogs/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">05-结构型-门面-组合-享元</span>
@@ -375,7 +375,7 @@
     
       
       
-        <a href="/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/" title="06-行为型-观察者-模板"
+        <a href="/myblogs/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/" title="06-行为型-观察者-模板"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">06-行为型-观察者-模板</span>
@@ -384,7 +384,7 @@
     
       
       
-        <a href="/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链"
+        <a href="/myblogs/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">07-行为型-策略-职责链</span>
@@ -393,7 +393,7 @@
     
       
       
-        <a href="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器"
+        <a href="/myblogs/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">08-行为型-状态-迭代器</span>
@@ -402,7 +402,7 @@
     
       
       
-        <a href="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/" title="09-行为型-命令-解释器-中介"
+        <a href="/myblogs/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/" title="09-行为型-命令-解释器-中介"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">09-行为型-命令-解释器-中介</span>
@@ -411,7 +411,7 @@
     
       
       
-        <a href="/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者"
+        <a href="/myblogs/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">10-行为型-备忘录-访问者</span>
@@ -420,7 +420,7 @@
     
       
       
-        <a href="/2022/09/21/she-ji-mo-shi-gai-shu/" title="设计模式概述"
+        <a href="/myblogs/2022/09/21/she-ji-mo-shi-gai-shu/" title="设计模式概述"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">设计模式概述</span>
@@ -462,9 +462,9 @@
 <li>活动有四个状态: 可以抽奖、 不能抽奖、发放奖品和奖品 领完 </li>
 <li>活动的四个状态转换关系图 </li>
 </ol>
-<p><img src="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210047466.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210047466.png" srcset="/myblogs/img/loading.gif" lazyload></p>
 <p>状态模式解决该问题类图：</p>
-<p><img src="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012211016481.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012211016481.png" srcset="/myblogs/img/loading.gif" lazyload></p>
 <h3 id="1、State"><a href="#1、State" class="headerlink" title="1、State"></a>1、State</h3><p>状态抽象类</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">State</span> &#123;<br>   <br>   <span class="hljs-comment">// 扣除积分 - 50</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">deductMoney</span><span class="hljs-params">()</span>;<br><br>    <span class="hljs-comment">// 是否抽中奖品</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-type">boolean</span> <span class="hljs-title function_">raffle</span><span class="hljs-params">()</span>;<br><br>    <span class="hljs-comment">// 发放奖品</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span>  <span class="hljs-keyword">void</span> <span class="hljs-title function_">dispensePrize</span><span class="hljs-params">()</span>;<br><br>&#125;<br></code></pre></td></tr></table></figure>
 
@@ -490,7 +490,7 @@
 
 
 <h2 id="2、状态模式原理"><a href="#2、状态模式原理" class="headerlink" title="2、状态模式原理"></a>2、状态模式原理</h2><p>类图如下：</p>
-<p><img src="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210214155.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/image-20221012210214155.png" srcset="/myblogs/img/loading.gif" lazyload></p>
 <blockquote>
 <p>说明</p>
 </blockquote>
@@ -607,7 +607,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">设计模式</a>
+  <a href="/myblogs/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">设计模式</a>
   
   
 
@@ -622,11 +622,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        <a href="/myblogs/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
       
-        <a href="/tags/%E7%8A%B6%E6%80%81/">#状态</a>
+        <a href="/myblogs/tags/%E7%8A%B6%E6%80%81/">#状态</a>
       
-        <a href="/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/">#迭代器</a>
+        <a href="/myblogs/tags/%E8%BF%AD%E4%BB%A3%E5%99%A8/">#迭代器</a>
       
     </div>
   
@@ -639,7 +639,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>08-行为型-状态-迭代器</div>
-      <div>http://example.com/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/</div>
+      <div>https://bigotry-zb.gitee.io/myblogs/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/</div>
     </div>
     <div class="license-meta">
       
@@ -683,7 +683,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/13/v2-ha-xi-biao/" title="v2-哈希表">
+                      <a href="/myblogs/2022/10/13/v2-ha-xi-biao/" title="v2-哈希表">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">v2-哈希表</span>
                         <span class="visible-mobile">上一篇</span>
@@ -693,7 +693,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链">
+                      <a href="/myblogs/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链">
                         <span class="hidden-mobile">07-行为型-策略-职责链</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -844,8 +844,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/myblogs/js/events.js" ></script>
+<script  src="/myblogs/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -867,7 +867,7 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/myblogs/js/img-lazyload.js" ></script>
   
 
 
@@ -966,7 +966,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/myblogs/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -974,7 +974,7 @@
 
 
   
-<script src="/js/diy/timeDate.js"></script>
+<script src="/myblogs/js/diy/timeDate.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
@@ -983,7 +983,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="/myblogs/js/boot.js" ></script>
 
 
   
