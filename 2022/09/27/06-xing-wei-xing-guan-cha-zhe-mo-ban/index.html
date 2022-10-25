@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblogs/img/fluid5.png">
-  <link rel="icon" href="/myblogs/img/fluid5.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid5.png">
+  <link rel="icon" href="/img/fluid5.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,11 +19,11 @@
     <meta name="description" content="一、观察者模式【常用】 23种设计模式分为创建型、结构型、行为型。创建型设计模式主要解决“对象的创建”问题，结构型设计模式主要解决“类或对象的组合或组装”问题，那行为型设计模式主要解决的就是“类或对象之间的交互”问题。 行为型设计模式比较多，有 11 个，几乎占了 23 种经典设计模式的一半。它们分别是：观察者模式、模板模式、策略模式、职责链模式、状态模式、迭代器模式、访问者模式、备忘录模式、命令">
 <meta property="og:type" content="article">
 <meta property="og:title" content="06-行为型-观察者-模板">
-<meta property="og:url" content="https://bigotry-zb.gitee.io/myblogs/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/index.html">
+<meta property="og:url" content="https://bigotry-zb.github.io.git/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="一、观察者模式【常用】 23种设计模式分为创建型、结构型、行为型。创建型设计模式主要解决“对象的创建”问题，结构型设计模式主要解决“类或对象的组合或组装”问题，那行为型设计模式主要解决的就是“类或对象之间的交互”问题。 行为型设计模式比较多，有 11 个，几乎占了 23 种经典设计模式的一半。它们分别是：观察者模式、模板模式、策略模式、职责链模式、状态模式、迭代器模式、访问者模式、备忘录模式、命令">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/image-20220930151033041.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/image-20220930151033041.png">
 <meta property="article:published_time" content="2022-09-27T11:57:44.000Z">
 <meta property="article:modified_time" content="2022-10-19T03:35:29.451Z">
 <meta property="article:author" content="Zbiao">
@@ -31,7 +31,7 @@
 <meta property="article:tag" content="观察者">
 <meta property="article:tag" content="模板">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bigotry-zb.gitee.io/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/image-20220930151033041.png">
+<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/image-20220930151033041.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -61,12 +61,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblogs/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblogs/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblogs/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -80,15 +80,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/myblogs/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblogs/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblogs/js/utils.js" ></script>
-  <script  src="/myblogs/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
   
@@ -120,7 +120,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblogs/">
+    <a class="navbar-brand" href="/">
       <strong>ZBiao&#39;s Blog</strong>
     </a>
 
@@ -139,7 +139,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -151,7 +151,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -163,7 +163,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -175,7 +175,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -187,7 +187,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -216,7 +216,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblogs/img/default3.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -328,7 +328,7 @@
     
       
       
-        <a href="/myblogs/2022/09/21/01-chuang-jian-xing-dan-li/" title="01-创建型-单例"
+        <a href="/2022/09/21/01-chuang-jian-xing-dan-li/" title="01-创建型-单例"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">01-创建型-单例</span>
@@ -337,7 +337,7 @@
     
       
       
-        <a href="/myblogs/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/" title="02-创建型-工厂&amp;建造者&amp;原型"
+        <a href="/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/" title="02-创建型-工厂&amp;建造者&amp;原型"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">02-创建型-工厂&amp;建造者&amp;原型</span>
@@ -346,7 +346,7 @@
     
       
       
-        <a href="/myblogs/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接"
+        <a href="/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">03-结构型-代理-桥接</span>
@@ -355,7 +355,7 @@
     
       
       
-        <a href="/myblogs/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/" title="04-结构型-装饰器-适配器"
+        <a href="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/" title="04-结构型-装饰器-适配器"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">04-结构型-装饰器-适配器</span>
@@ -364,7 +364,7 @@
     
       
       
-        <a href="/myblogs/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元"
+        <a href="/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">05-结构型-门面-组合-享元</span>
@@ -373,7 +373,7 @@
     
       
       
-        <a href="/myblogs/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/" title="06-行为型-观察者-模板"
+        <a href="/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/" title="06-行为型-观察者-模板"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">06-行为型-观察者-模板</span>
@@ -382,7 +382,7 @@
     
       
       
-        <a href="/myblogs/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链"
+        <a href="/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">07-行为型-策略-职责链</span>
@@ -391,7 +391,7 @@
     
       
       
-        <a href="/myblogs/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器"
+        <a href="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">08-行为型-状态-迭代器</span>
@@ -400,7 +400,7 @@
     
       
       
-        <a href="/myblogs/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/" title="09-行为型-命令-解释器-中介"
+        <a href="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/" title="09-行为型-命令-解释器-中介"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">09-行为型-命令-解释器-中介</span>
@@ -409,7 +409,7 @@
     
       
       
-        <a href="/myblogs/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者"
+        <a href="/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">10-行为型-备忘录-访问者</span>
@@ -418,7 +418,7 @@
     
       
       
-        <a href="/myblogs/2022/09/21/she-ji-mo-shi-gai-shu/" title="设计模式概述"
+        <a href="/2022/09/21/she-ji-mo-shi-gai-shu/" title="设计模式概述"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">设计模式概述</span>
@@ -460,7 +460,7 @@
 <li>提供温度、气压和湿度的接口</li>
 <li>测量数据更新时，要能实时的通知给第三方</li>
 </ol>
-<h3 id="1、方案一"><a href="#1、方案一" class="headerlink" title="1、方案一"></a>1、方案一</h3><p><img src="/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/image-20220930151033041.png" srcset="/myblogs/img/loading.gif" lazyload alt="传统设计方案"></p>
+<h3 id="1、方案一"><a href="#1、方案一" class="headerlink" title="1、方案一"></a>1、方案一</h3><p><img src="/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/image-20220930151033041.png" srcset="/img/loading.gif" lazyload alt="传统设计方案"></p>
 <h4 id="1、WeatherData"><a href="#1、WeatherData" class="headerlink" title="1、WeatherData"></a>1、WeatherData</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 类是核心</span><br><span class="hljs-comment"> * 1. 包含最新的天气情况信息 </span><br><span class="hljs-comment"> * 2. 含有 CurrentConditions 对象</span><br><span class="hljs-comment"> * 3. 当数据有更新时，就主动的调用   CurrentConditions对象update方法(含 display), 这样他们（接入方）就看到最新的信息</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">WeatherData</span> &#123;<br>   <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> temperatrue;<br>   <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> pressure;<br>   <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> humidity;<br>   <span class="hljs-keyword">private</span> CurrentConditions currentConditions;<br>   <span class="hljs-comment">//加入新的第三方</span><br><br>   <span class="hljs-keyword">public</span> <span class="hljs-title function_">WeatherData</span><span class="hljs-params">(CurrentConditions currentConditions)</span> &#123;<br>      <span class="hljs-built_in">this</span>.currentConditions = currentConditions;<br>   &#125;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-title function_">getTemperature</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-keyword">return</span> temperatrue;<br>   &#125;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-title function_">getPressure</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-keyword">return</span> pressure;<br>   &#125;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-title function_">getHumidity</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-keyword">return</span> humidity;<br>   &#125;<br><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">dataChange</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">//调用 接入方的 update</span><br>      currentConditions.update(getTemperature(), getPressure(), getHumidity());<br>   &#125;<br><br>   <span class="hljs-comment">//当数据有更新时，就调用 setData</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setData</span><span class="hljs-params">(<span class="hljs-type">float</span> temperature, <span class="hljs-type">float</span> pressure, <span class="hljs-type">float</span> humidity)</span> &#123;<br>      <span class="hljs-built_in">this</span>.temperatrue = temperature;<br>      <span class="hljs-built_in">this</span>.pressure = pressure;<br>      <span class="hljs-built_in">this</span>.humidity = humidity;<br>      <span class="hljs-comment">//调用dataChange， 将最新的信息 推送给 接入方 currentConditions</span><br>      dataChange();<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="2、CurrentConditions"><a href="#2、CurrentConditions" class="headerlink" title="2、CurrentConditions"></a>2、CurrentConditions</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 显示当前天气情况（可以理解成是气象站自己的网站）</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> */</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CurrentConditions</span> &#123;<br>   <span class="hljs-comment">// 温度，气压，湿度</span><br>   <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> temperature;<br>   <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> pressure;<br>   <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> humidity;<br><br>   <span class="hljs-comment">//更新 天气情况，是由 WeatherData 来调用，我使用推送模式</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">update</span><span class="hljs-params">(<span class="hljs-type">float</span> temperature, <span class="hljs-type">float</span> pressure, <span class="hljs-type">float</span> humidity)</span> &#123;<br>      <span class="hljs-built_in">this</span>.temperature = temperature;<br>      <span class="hljs-built_in">this</span>.pressure = pressure;<br>      <span class="hljs-built_in">this</span>.humidity = humidity;<br>      display();<br>   &#125;<br><br>   <span class="hljs-comment">//显示</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">display</span><span class="hljs-params">()</span> &#123;<br>      System.out.println(<span class="hljs-string">&quot;***Today mTemperature: &quot;</span> + temperature + <span class="hljs-string">&quot;***&quot;</span>);<br>      System.out.println(<span class="hljs-string">&quot;***Today mPressure: &quot;</span> + pressure + <span class="hljs-string">&quot;***&quot;</span>);<br>      System.out.println(<span class="hljs-string">&quot;***Today mHumidity: &quot;</span> + humidity + <span class="hljs-string">&quot;***&quot;</span>);<br>   &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -590,7 +590,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblogs/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">设计模式</a>
+  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">设计模式</a>
   
   
 
@@ -605,11 +605,11 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/myblogs/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
       
-        <a href="/myblogs/tags/%E8%A7%82%E5%AF%9F%E8%80%85/">#观察者</a>
+        <a href="/tags/%E8%A7%82%E5%AF%9F%E8%80%85/">#观察者</a>
       
-        <a href="/myblogs/tags/%E6%A8%A1%E6%9D%BF/">#模板</a>
+        <a href="/tags/%E6%A8%A1%E6%9D%BF/">#模板</a>
       
     </div>
   
@@ -622,7 +622,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>06-行为型-观察者-模板</div>
-      <div>https://bigotry-zb.gitee.io/myblogs/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/</div>
+      <div>https://bigotry-zb.github.io.git/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/</div>
     </div>
     <div class="license-meta">
       
@@ -666,7 +666,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblogs/2022/09/27/du-shu-bi-ji/" title="读书笔记">
+                      <a href="/2022/09/27/du-shu-bi-ji/" title="读书笔记">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">读书笔记</span>
                         <span class="visible-mobile">上一篇</span>
@@ -676,7 +676,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblogs/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元">
+                      <a href="/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元">
                         <span class="hidden-mobile">05-结构型-门面-组合-享元</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -827,8 +827,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblogs/js/events.js" ></script>
-<script  src="/myblogs/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -850,7 +850,7 @@
 
 
   
-    <script  src="/myblogs/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -949,7 +949,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblogs/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -957,7 +957,7 @@
 
 
   
-<script src="/myblogs/js/diy/timeDate.js"></script>
+<script src="/js/diy/timeDate.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
@@ -966,7 +966,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblogs/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
