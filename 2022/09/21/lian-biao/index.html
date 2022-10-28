@@ -16,12 +16,12 @@
   <meta name="author" content="Zbiao">
   <meta name="keywords" content="">
   
-    <meta name="description" content="一、理论1、链表类型1、单链表 2、双链表 3、循环链表循环链表可以用来解决约瑟夫环问题  2、链表存储方式数组在内存中是连续分布的，但链表在内存中不是连续分布的。 链表是通过指针域的指针来连接各个节点。所以链表的分配机制取决于操作系统的内存管理。 3、链表的定义12345678910111213141516171819202122public class ListNode &amp;#123;    &#x2F;">
+    <meta name="description" content="一、理论 1、链表类型 1、单链表  2、双链表  3、循环链表 循环链表可以用来解决约瑟夫环问题  2、链表存储方式 数组在内存中是连续分布的，但链表在内存中不是连续分布的。 链表是通过指针域的指针来连接各个节点。所以链表的分配机制取决于操作系统的内存管理。 3、链表的定义 12345678910111213141516171819202122public class ListNode &amp;#12">
 <meta property="og:type" content="article">
 <meta property="og:title" content="链表">
 <meta property="og:url" content="https://bigotry-zb.github.io.git/2022/09/21/lian-biao/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
-<meta property="og:description" content="一、理论1、链表类型1、单链表 2、双链表 3、循环链表循环链表可以用来解决约瑟夫环问题  2、链表存储方式数组在内存中是连续分布的，但链表在内存中不是连续分布的。 链表是通过指针域的指针来连接各个节点。所以链表的分配机制取决于操作系统的内存管理。 3、链表的定义12345678910111213141516171819202122public class ListNode &amp;#123;    &#x2F;">
+<meta property="og:description" content="一、理论 1、链表类型 1、单链表  2、双链表  3、循环链表 循环链表可以用来解决约瑟夫环问题  2、链表存储方式 数组在内存中是连续分布的，但链表在内存中不是连续分布的。 链表是通过指针域的指针来连接各个节点。所以链表的分配机制取决于操作系统的内存管理。 3、链表的定义 12345678910111213141516171819202122public class ListNode &amp;#12">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/21/lian-biao/image-20221011101058417.png">
 <meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/21/lian-biao/image-20221011101124093.png">
@@ -31,8 +31,9 @@
 <meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/21/lian-biao/image-20221011102001636.png">
 <meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/21/lian-biao/image-20220921114419429.png">
 <meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/21/lian-biao/image-20221013094802419.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/21/lian-biao/image-20221027112036683.png">
 <meta property="article:published_time" content="2022-09-21T03:14:54.000Z">
-<meta property="article:modified_time" content="2022-10-24T08:24:34.446Z">
+<meta property="article:modified_time" content="2022-10-27T08:33:45.407Z">
 <meta property="article:author" content="Zbiao">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="链表">
@@ -251,7 +252,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          2.8k 字
+          6.1k 字
         
       </span>
     
@@ -262,7 +263,7 @@
         
         
         
-          24 分钟
+          52 分钟
         
       </span>
     
@@ -428,34 +429,42 @@
             
               <div class="markdown-body">
                 
-                <h1 id="一、理论"><a href="#一、理论" class="headerlink" title="一、理论"></a>一、理论</h1><h2 id="1、链表类型"><a href="#1、链表类型" class="headerlink" title="1、链表类型"></a>1、链表类型</h2><h3 id="1、单链表"><a href="#1、单链表" class="headerlink" title="1、单链表"></a>1、单链表</h3><p><img src="/2022/09/21/lian-biao/image-20221011101058417.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="2、双链表"><a href="#2、双链表" class="headerlink" title="2、双链表"></a>2、双链表</h3><p><img src="/2022/09/21/lian-biao/image-20221011101124093.png" srcset="/img/loading.gif" lazyload></p>
-<h3 id="3、循环链表"><a href="#3、循环链表" class="headerlink" title="3、循环链表"></a>3、循环链表</h3><p>循环链表可以用来解决<code>约瑟夫环</code>问题</p>
-<p><img src="/2022/09/21/lian-biao/image-20221011101149273.png" srcset="/img/loading.gif" lazyload></p>
-<h2 id="2、链表存储方式"><a href="#2、链表存储方式" class="headerlink" title="2、链表存储方式"></a>2、链表存储方式</h2><p>数组在内存中是连续分布的，但链表在内存中不是连续分布的。</p>
+                <h1>一、理论</h1>
+<h2 id="1、链表类型">1、链表类型</h2>
+<h3 id="1、单链表">1、单链表</h3>
+<p><img src="/2022/09/21/lian-biao/image-20221011101058417.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3 id="2、双链表">2、双链表</h3>
+<p><img src="/2022/09/21/lian-biao/image-20221011101124093.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3 id="3、循环链表">3、循环链表</h3>
+<p>循环链表可以用来解决<code>约瑟夫环</code>问题</p>
+<p><img src="/2022/09/21/lian-biao/image-20221011101149273.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2 id="2、链表存储方式">2、链表存储方式</h2>
+<p>数组在内存中是连续分布的，但链表在内存中不是连续分布的。</p>
 <p>链表是通过指针域的指针来连接各个节点。所以链表的分配机制取决于操作系统的内存管理。</p>
-<h2 id="3、链表的定义"><a href="#3、链表的定义" class="headerlink" title="3、链表的定义"></a>3、链表的定义</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListNode</span> &#123;<br>    <span class="hljs-comment">// 结点的值</span><br>    <span class="hljs-type">int</span> val;<br><br>    <span class="hljs-comment">// 下一个结点</span><br>    ListNode next;<br><br>    <span class="hljs-comment">// 节点的构造函数(无参)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ListNode</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-comment">// 节点的构造函数(有一个参数)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ListNode</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> &#123;<br>        <span class="hljs-built_in">this</span>.val = val;<br>    &#125;<br><br>    <span class="hljs-comment">// 节点的构造函数(有两个参数)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ListNode</span><span class="hljs-params">(<span class="hljs-type">int</span> val, ListNode next)</span> &#123;<br>        <span class="hljs-built_in">this</span>.val = val;<br>        <span class="hljs-built_in">this</span>.next = next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-
-
-<h2 id="4、链表的基本操作"><a href="#4、链表的基本操作" class="headerlink" title="4、链表的基本操作"></a>4、链表的基本操作</h2><h3 id="1、删除节点"><a href="#1、删除节点" class="headerlink" title="1、删除节点"></a>1、删除节点</h3><p><img src="/2022/09/21/lian-biao/image-20221011101632656.png" srcset="/img/loading.gif" lazyload></p>
+<h2 id="3、链表的定义">3、链表的定义</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ListNode</span> &#123;<br>    <span class="hljs-comment">// 结点的值</span><br>    <span class="hljs-type">int</span> val;<br><br>    <span class="hljs-comment">// 下一个结点</span><br>    ListNode next;<br><br>    <span class="hljs-comment">// 节点的构造函数(无参)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ListNode</span><span class="hljs-params">()</span> &#123;<br>    &#125;<br><br>    <span class="hljs-comment">// 节点的构造函数(有一个参数)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ListNode</span><span class="hljs-params">(<span class="hljs-type">int</span> val)</span> &#123;<br>        <span class="hljs-built_in">this</span>.val = val;<br>    &#125;<br><br>    <span class="hljs-comment">// 节点的构造函数(有两个参数)</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">ListNode</span><span class="hljs-params">(<span class="hljs-type">int</span> val, ListNode next)</span> &#123;<br>        <span class="hljs-built_in">this</span>.val = val;<br>        <span class="hljs-built_in">this</span>.next = next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="4、链表的基本操作">4、链表的基本操作</h2>
+<h3 id="1、删除节点">1、删除节点</h3>
+<p><img src="/2022/09/21/lian-biao/image-20221011101632656.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>删除D节点，直接将C节点的next节点指向E即可。java有自己的内存回收机制，不用自己手动释放。</p>
-<h3 id="2、添加节点"><a href="#2、添加节点" class="headerlink" title="2、添加节点"></a>2、添加节点</h3><p><img src="/2022/09/21/lian-biao/image-20221011101738080.png" srcset="/img/loading.gif" lazyload></p>
+<h3 id="2、添加节点">2、添加节点</h3>
+<p><img src="/2022/09/21/lian-biao/image-20221011101738080.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>增加F节点，先将F节点的next指向D，再将C节点的next指向F。</p>
 <p>但是有一点需要注意，在C后增加节点，首先得找到C节点，找节点的复杂度是O(n)</p>
-<h2 id="5、链表与数组的性能对比"><a href="#5、链表与数组的性能对比" class="headerlink" title="5、链表与数组的性能对比"></a>5、链表与数组的性能对比</h2><p><img src="/2022/09/21/lian-biao/image-20221011102001636.png" srcset="/img/loading.gif" lazyload></p>
-<h1 id="二、翻转链表"><a href="#二、翻转链表" class="headerlink" title="二、翻转链表"></a>二、翻转链表</h1><h2 id="1、翻转整个链表"><a href="#1、翻转整个链表" class="headerlink" title="1、翻转整个链表"></a>1、翻转整个链表</h2><p>先上<code>本次</code>的链表定义</p>
+<h2 id="5、链表与数组的性能对比">5、链表与数组的性能对比</h2>
+<p><img src="/2022/09/21/lian-biao/image-20221011102001636.png" srcset="/img/loading.gif" lazyload alt></p>
+<h1>二、翻转链表</h1>
+<h2 id="1、翻转整个链表">1、翻转整个链表</h2>
+<p>先上<code>本次</code>的链表定义</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Node</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-type">int</span> value;<br>    <span class="hljs-keyword">public</span> Node next;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Node</span><span class="hljs-params">(<span class="hljs-type">int</span> data)</span> &#123;<br>        <span class="hljs-built_in">this</span>.value = data;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>1、双指针法</p>
 <p>只需要改变链表的next指向即可</p>
-<p><img src="/2022/09/21/lian-biao/image-20220921114419429.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/09/21/lian-biao/image-20220921114419429.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>首先定义cur节点，指向head；再定义pre指向null。</p>
 <p>pre节点是cur节点的前序节点</p>
 <p>先将cur.next节点保存在temp里，再进行翻转。保存在temp是为了防止下一个节点丢失。</p>
 <p>到最后cur为null时，pre为最后一个节点，此时返回pre即可。</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Node <span class="hljs-title function_">reverse</span><span class="hljs-params">(Node head)</span> &#123;<br>    <span class="hljs-type">Node</span> <span class="hljs-variable">pre</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-type">Node</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> head;<br>    <span class="hljs-type">Node</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> <span class="hljs-literal">null</span>;<br>    <span class="hljs-keyword">while</span> (cur != <span class="hljs-literal">null</span>) &#123;   <span class="hljs-comment">// 以下注释以1 2为例</span><br>        temp = cur.next;   <span class="hljs-comment">// temp指向2</span><br>        cur.next = pre;    <span class="hljs-comment">// 1 和 2 之间已经断链， 1 已经指向了pre，也就是空</span><br><br>        pre = cur;     <span class="hljs-comment">//  同时向后移</span><br>        cur = temp;<br>    &#125;<br>    <span class="hljs-keyword">return</span> pre;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>2、递归法</p>
 <p>递归法其实跟双指针法类似，每一步翻转都有三个过程：</p>
 <ol>
@@ -464,10 +473,9 @@
 <li>同时往后移</li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>    <span class="hljs-comment">//  其他代码</span><br>    <span class="hljs-type">Node</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> reverse(<span class="hljs-literal">null</span>, node1);    <span class="hljs-comment">// node1 为已定义好的链表的头结点</span><br>    <span class="hljs-keyword">while</span> (res != <span class="hljs-literal">null</span>) &#123;<br>        System.out.print(res.value + <span class="hljs-string">&quot; &quot;</span>);<br>        res = res.next;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> Node <span class="hljs-title function_">reverse</span><span class="hljs-params">(Node pre, Node cur)</span> &#123;<br>    <span class="hljs-keyword">if</span> (cur == <span class="hljs-literal">null</span>) &#123;<br>        <span class="hljs-keyword">return</span> pre;<br>    &#125;<br>    <span class="hljs-type">Node</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> cur.next;  <span class="hljs-comment">//记录下一个节点</span><br>    cur.next = pre;     <span class="hljs-comment">// 翻转</span><br><br>    <span class="hljs-keyword">return</span> reverse(cur, temp);   <span class="hljs-comment">//向后移</span><br>&#125;<br></code></pre></td></tr></table></figure>
-
-<h2 id="2、翻转部分链表"><a href="#2、翻转部分链表" class="headerlink" title="2、翻转部分链表"></a>2、翻转部分链表</h2><p>给定一个链表的头结点，给定m和n，要求翻转m到n之间的链表</p>
+<h2 id="2、翻转部分链表">2、翻转部分链表</h2>
+<p>给定一个链表的头结点，给定m和n，要求翻转m到n之间的链表</p>
 <p>思路：使用头插法</p>
 <ol>
 <li>首先找到m节点的前一个节点，定义为pre，这个pre就相当于头插法的头结点的前序节点</li>
@@ -476,18 +484,20 @@
 </ol>
 <p>代码如下：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">reverseBetween</span> <span class="hljs-params">(ListNode head, <span class="hljs-type">int</span> m, <span class="hljs-type">int</span> n)</span> &#123;<br>        <span class="hljs-comment">// write code here</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">res</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>        res.next = head;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> head;<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">pre</span> <span class="hljs-operator">=</span> res;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>; i &lt; m; i++) &#123;<br>            pre = cur;<br>            cur = cur.next;<br>        &#125;<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> m; i &lt; n; i++) &#123;<br>            <span class="hljs-type">ListNode</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> cur.next;<br>            cur.next = temp.next;<br><br>            temp.next = pre.next;<br>            pre.next = temp;<br>        &#125;<br>        <span class="hljs-keyword">return</span> res.next;<br>    &#125;<br></code></pre></td></tr></table></figure>
-
 <blockquote>
 <p>之所以定义res节点，是为了方便操作头结点，即当m为1时不用对头结点进行特殊处理</p>
 </blockquote>
-<h1 id="三、环形链表"><a href="#三、环形链表" class="headerlink" title="三、环形链表"></a>三、环形链表</h1><p>环形链表一共有两个问题，第一个问题是验证一个链表是否有环，第二个问题是找到环形链表的入口。</p>
+<h1>三、环形链表</h1>
+<p>环形链表一共有两个问题，第一个问题是验证一个链表是否有环，第二个问题是找到环形链表的入口。</p>
 <p>先来看第一个问题</p>
-<h2 id="1、验证链表是否有环"><a href="#1、验证链表是否有环" class="headerlink" title="1、验证链表是否有环"></a>1、验证链表是否有环</h2><p>判断链表是否有环，可以使用快慢指针法，定义一个fast，以及一个slow，slow每走一步，fast就走两步，若是有环的话，那么最终一定会相遇。</p>
+<h2 id="1、验证链表是否有环">1、验证链表是否有环</h2>
+<p>判断链表是否有环，可以使用快慢指针法，定义一个fast，以及一个slow，slow每走一步，fast就走两步，若是有环的话，那么最终一定会相遇。</p>
 <p>为什么？</p>
 <p>首先肯定是fast先进环，当slow进环时，slow走一步fast走两步，整体来看就是fast在追赶slow一步，那么只要有环，最终fast就一定会追上slow。</p>
-<h2 id="2、若有环，如何找到入口？"><a href="#2、若有环，如何找到入口？" class="headerlink" title="2、若有环，如何找到入口？"></a>2、若有环，如何找到入口？</h2><p>用公式来表示一下。</p>
+<h2 id="2、若有环，如何找到入口？">2、若有环，如何找到入口？</h2>
+<p>用公式来表示一下。</p>
 <p>假设从头结点到环形入口节点 的节点数为x。 环形入口节点到 fast指针与slow指针相遇节点 节点数为y。 从相遇节点 再到环形入口节点节点数为 z。 如图所示：</p>
-<p><img src="/2022/09/21/lian-biao/image-20221013094802419.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/09/21/lian-biao/image-20221013094802419.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>那么在相遇时，slow走了（x + y），fast走了(x + y + n * (y + z))。fast有可能在环内走了n圈。根据步长，可以看出fast走的距离是slow的二倍，即：</p>
 <p>2 * (x + y) = x + y + n * (y + z)</p>
 <p>两边消去一个 x + y：</p>
@@ -496,12 +506,57 @@
 <p>x = n * (y + z) - y</p>
 <p>整理之后就是：</p>
 <p>x = (n - 1) * (y + z) + z</p>
-<p>假设n = 1时，n = 1意味着fast在环内走了一圈就碰见slow了，这时候计算入口时(x = z)，只需要在他们相遇的节点处定义一个index1，在头结点处定义一个index2，令他们每次走一步，相遇即为入口节点。</p>
+<p>假设n = 1时，n = 1意味着fast在环内走了一圈就碰见slow了，这时候计算入口时(x = z)，<code>只需要在他们相遇的节点处定义一个index1，在头结点处定义一个index2，令他们每次走一步，相遇即为入口节点</code>。</p>
 <p>若是n &gt; 1时，fast指针在环形转n圈之后才遇到 slow指针。该问题也可简化为n = 1，其实本质上都一样，只不过index1在环内多转了几圈，然后碰到index2。</p>
 <blockquote>
 <p>有个疑问：那为什么在环中相遇时，slow走过的距离一定是x + y，而不是 x + 若干环的距离 + y 呢？</p>
 </blockquote>
 <p>因为当slow进环时，fast一定在环内，而fast和slow每走一次就相当于fast在靠近slow一步，所以当slow还没进入到下一次循环的时候，就会被fast追上。</p>
+<h1>四、经典题目</h1>
+<h2 id="1、合并k个已排序的链表">1、合并k个已排序的链表</h2>
+<p>原题链接：<a target="_blank" rel="noopener" href="https://www.nowcoder.com/practice/65cfde9e5b9b4cf2b6bafa5f3ef33fa6?tpId=295&amp;tqId=724&amp;ru=/exam/oj&amp;qru=/ta/format-top101/question-ranking&amp;sourceUrl=%2Fexam%2Foj">BM5 合并k个已排序的链表</a></p>
+<p>三种方法</p>
+<h3 id="1、方法一：借用辅助空间">1、方法一：借用辅助空间</h3>
+<p>思路：既然要合并k个链表，那么先定义一个list，将这些链表的值都存入进list，最后对list进行排序，然后一一取出并将其组成链表即可</p>
+<p>代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">mergeKLists</span><span class="hljs-params">(ArrayList&lt;ListNode&gt; lists)</span> &#123;<br>    	<span class="hljs-comment">// 定义虚拟头结点</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> dummy;<br>        ArrayList&lt;Integer&gt; array = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ArrayList</span>&lt;&gt;();<br>        <span class="hljs-type">int</span> <span class="hljs-variable">n</span> <span class="hljs-operator">=</span> lists.size();<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>            <span class="hljs-type">ListNode</span> <span class="hljs-variable">node</span> <span class="hljs-operator">=</span> lists.get(i);<br>            <span class="hljs-keyword">while</span> (node != <span class="hljs-literal">null</span>) &#123;<br>                array.add(node.val);<br>                node = node.next;<br>            &#125;<br>        &#125;<br>        Collections.sort(array);<br>        <span class="hljs-keyword">for</span> (<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; array.size(); i++) &#123;<br>            <span class="hljs-type">ListNode</span> <span class="hljs-variable">ccc</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(array.get(i));<br>            cur.next = ccc;<br>            cur = cur.next;<br>        &#125;<br>    	<span class="hljs-comment">// 最后返回虚拟头结点的下一个节点</span><br>        <span class="hljs-keyword">return</span> dummy.next;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>当然时间复杂度是比较高的，排序就需要O(n * log2n)</p>
+<h3 id="2、方法二：优先队列">2、方法二：优先队列</h3>
+<p>优先队列方法类似于双指针，都是从几个中选出最小的。优先队列是一种内置的基于堆排序的容器，分为大顶堆和小顶堆，小顶堆就是堆顶为最小的元素。本题采用小顶堆。</p>
+<p>使用优先队列时，必须要手动<code>重载比较方法</code>。因为容器内部的次序基于堆排序，因此每次插入元素时间复杂度都是O(log2n)，而每次取出堆顶元素都是直接取出。</p>
+<p>思路：</p>
+<ol>
+<li>遍历k个链表头，将不是空节点的节点放进优先队列</li>
+<li>优先队列弹出最小值，并且若弹出的节点的下一个节点不为空，就将下一个节点放进优先队列</li>
+</ol>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">mergeKLists</span><span class="hljs-params">(ArrayList&lt;ListNode&gt; lists)</span> &#123;<br>        <span class="hljs-comment">//小顶堆</span><br>        Queue&lt;ListNode&gt; pq = <span class="hljs-keyword">new</span> <span class="hljs-title class_">PriorityQueue</span>&lt;&gt;((v1, v2) -&gt; v1.val - v2.val);<br>        <span class="hljs-comment">//遍历所有链表第一个元素</span><br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">0</span>; i &lt; lists.size(); i++)&#123;<br>            <span class="hljs-comment">//不为空则加入小顶堆</span><br>            <span class="hljs-keyword">if</span>(lists.get(i) != <span class="hljs-literal">null</span>)<br>                pq.add(lists.get(i));<br>        &#125;<br>        <span class="hljs-comment">//加一个表头</span><br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(-<span class="hljs-number">1</span>);<br>        <span class="hljs-type">ListNode</span> <span class="hljs-variable">head</span> <span class="hljs-operator">=</span> dummy;<br>        <span class="hljs-comment">//直到小顶堆为空</span><br>        <span class="hljs-keyword">while</span>(!pq.isEmpty())&#123;<br>            <span class="hljs-comment">//取出最小的元素</span><br>            <span class="hljs-type">ListNode</span> <span class="hljs-variable">temp</span> <span class="hljs-operator">=</span> pq.poll();<br>            <span class="hljs-comment">//连接</span><br>            head.next = temp;<br>            head = head.next;<br>            <span class="hljs-comment">//每次取出链表的后一个元素加入小顶堆</span><br>            <span class="hljs-keyword">if</span>(temp.next != <span class="hljs-literal">null</span>)<br>                pq.add(temp.next);<br>        &#125;<br>        <span class="hljs-comment">//去掉表头</span><br>        <span class="hljs-keyword">return</span> dummy.next;<br>    &#125;<br></code></pre></td></tr></table></figure>
+<p>时间复杂度：O(n * log 2 * k)，每次加入优先队列排序需要O(log2k)</p>
+<h3 id="3、方法三：归并排序思想【推荐】">3、方法三：归并排序思想【推荐】</h3>
+<p>首先需要明确两个概念。</p>
+<p>1、双指针</p>
+<p>双指针指的是在遍历对象的过程中，不是普通的使用单个指针进行访问，而是使用两个指针（特殊情况甚至可以多个），两个指针或是同方向访问两个链表、或是同方向访问一个链表（快慢指针）、或是相反方向扫描（对撞指针），从而达到我们需要的目的。</p>
+<p>2、分治</p>
+<p>分治分治，分而治之。“分”指的是将一个大而复杂的问题划分成多个性质相同但是规模更小的子问题，子问题继续按照这样划分，直到问题可以被轻易解决；“治”指的是将子问题单独进行处理。经过分治后的子问题，需要将解进行合并才能得到原问题的解，因此整个分治过程经常用递归来实现。</p>
+<p>其实这道题也可以两两比较，只要遍历链表数组，取出开头的两个链表，按照上述思路合并，然后新链表再与后一个继续合并，如此循环，知道全部合并完成。但是，太浪费时间。</p>
+<p>可不可以直接归并的分治来做，而不是顺序遍历合并链表呢？可以！</p>
+<p>归并排序简单来说就是将一个数组每次划分成等长的两部分，对两部分进行排序即是子问题。对子问题继续划分，直到子问题只有1个元素。还原的时候呢，将每个子问题和它相邻的另一个子问题利用上述双指针的方式，1个与1个合并成2个，2个与2个合并成4个，因为这每个单独的子问题合并好的都是有序的，直到合并成原本长度的数组。</p>
+<p>对于这k个链表，就相当于上述合并阶段的k个子问题，需要划分为链表数量更少的子问题，直到每一组合并时是两两合并，然后继续往上合并，这个过程基于递归：</p>
+<ul>
+<li><strong>终止条件：</strong> 划分的时候直到左右区间相等或左边大于右边。</li>
+<li><strong>返回值：</strong> 每级返回已经合并好的子问题链表。</li>
+<li><strong>本级任务：</strong> 对半划分，将划分后的子问题合并成新的链表。</li>
+</ul>
+<p>简单画个图来帮助理解一下：</p>
+<p><img src="/2022/09/21/lian-biao/image-20221027112036683.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>若是有五个链表需要合并，分治就是右边的情况</p>
+<p>具体代码如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">//两个链表合并函数</span><br>   <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">Merge</span><span class="hljs-params">(ListNode list1, ListNode list2)</span> &#123;<br>       <span class="hljs-comment">//一个已经为空了，直接返回另一个</span><br>       <span class="hljs-keyword">if</span>(list1 == <span class="hljs-literal">null</span>)<br>           <span class="hljs-keyword">return</span> list2;<br>       <span class="hljs-keyword">if</span>(list2 == <span class="hljs-literal">null</span>)<br>           <span class="hljs-keyword">return</span> list1;<br>       <span class="hljs-comment">//加一个表头</span><br>       <span class="hljs-type">ListNode</span> <span class="hljs-variable">dummy</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ListNode</span>(<span class="hljs-number">0</span>);<br>       <span class="hljs-type">ListNode</span> <span class="hljs-variable">cur</span> <span class="hljs-operator">=</span> dummy;<br>       <span class="hljs-comment">//两个链表都要不为空</span><br>       <span class="hljs-keyword">while</span>(list1 != <span class="hljs-literal">null</span> &amp;&amp; list2 != <span class="hljs-literal">null</span>)&#123;<br>           <span class="hljs-comment">//取较小值的节点</span><br>           <span class="hljs-keyword">if</span>(list1.val &lt;= list2.val)&#123;<br>               cur.next = list1;<br>               <span class="hljs-comment">//只移动取值的指针</span><br>               list1 = list1.next;<br>           &#125;<span class="hljs-keyword">else</span>&#123;<br>               cur.next = list2;<br>               <span class="hljs-comment">//只移动取值的指针</span><br>               list2 = list2.next;<br>           &#125;<br>           <span class="hljs-comment">//指针后移</span><br>           cur = cur.next;<br>       &#125;<br>       <span class="hljs-comment">//哪个链表还有剩，直接连在后面</span><br>       <span class="hljs-keyword">if</span>(list1 != <span class="hljs-literal">null</span>)<br>           cur.next = list1;<br>       <span class="hljs-keyword">else</span><br>           cur.next = list2;<br>       <span class="hljs-comment">//返回值去掉表头</span><br>       <span class="hljs-keyword">return</span> dummy.next;<br>   &#125;<br>    <br>   <span class="hljs-comment">//划分合并区间函数</span><br>   ListNode <span class="hljs-title function_">divideMerge</span><span class="hljs-params">(ArrayList&lt;ListNode&gt; lists, <span class="hljs-type">int</span> left, <span class="hljs-type">int</span> right)</span>&#123;<br>       <span class="hljs-keyword">if</span>(left &gt; right)<br>           <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>       <span class="hljs-comment">//中间一个的情况</span><br>       <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(left == right)<br>           <span class="hljs-keyword">return</span> lists.get(left);<br>       <span class="hljs-comment">//从中间分成两段，再将合并好的两段合并</span><br>       <span class="hljs-type">int</span> <span class="hljs-variable">mid</span> <span class="hljs-operator">=</span> (left + right) / <span class="hljs-number">2</span>;<br>       <span class="hljs-keyword">return</span> Merge(divideMerge(lists, left, mid), divideMerge(lists, mid + <span class="hljs-number">1</span>, right));<br>   &#125;<br>    <br>   <span class="hljs-keyword">public</span> ListNode <span class="hljs-title function_">mergeKLists</span><span class="hljs-params">(ArrayList&lt;ListNode&gt; lists)</span> &#123;<br>       <span class="hljs-comment">//k个链表归并排序</span><br>       <span class="hljs-keyword">return</span> divideMerge(lists, <span class="hljs-number">0</span>, lists.size() - <span class="hljs-number">1</span>);<br>   &#125;<br></code></pre></td></tr></table></figure>
+<ul>
+<li>时间复杂度：O(nlog2k)</li>
+<li>空间复杂度：O(log2k)</li>
+</ul>
+<p>上述代码中的Merge()方法，可以直接用来对两个有序链表进行合并。</p>
 
                 
               </div>

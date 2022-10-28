@@ -1,0 +1,896 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid5.png">
+  <link rel="icon" href="/img/fluid5.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zbiao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1、运行时数据区概述及线程 1、概述 运行时数据区，也就是下图这部分，它是在类加载完成后的阶段  当我们通过前面的：类的加载 –&gt; 验证 –&gt; 准备 –&gt; 解析 –&gt; 初始化，这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区  类比一下也就是大厨做饭，我们把大厨后面的东西（切好的菜，刀，调料），比作是运行时数据区。而厨师可以类比于">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM-03-运行时数据区">
+<meta property="og:url" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/index.html">
+<meta property="og:site_name" content="Zbiao | 多吃一点">
+<meta property="og:description" content="1、运行时数据区概述及线程 1、概述 运行时数据区，也就是下图这部分，它是在类加载完成后的阶段  当我们通过前面的：类的加载 –&gt; 验证 –&gt; 准备 –&gt; 解析 –&gt; 初始化，这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区  类比一下也就是大厨做饭，我们把大厨后面的东西（切好的菜，刀，调料），比作是运行时数据区。而厨师可以类比于">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165118280.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165152827.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027170903919.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171302313.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171346233.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194012157.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194401567.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194950557.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195119590.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195216420.png">
+<meta property="article:published_time" content="2022-10-27T08:46:51.000Z">
+<meta property="article:modified_time" content="2022-10-27T12:32:43.604Z">
+<meta property="article:author" content="Zbiao">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="JVM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>JVM-03-运行时数据区 - Zbiao | 多吃一点</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ZBiao&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="JVM-03-运行时数据区"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2022-10-27 16:46" pubdate>
+          2022年10月27日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          5.5k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          47 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="JVM"
+        id="heading-18b5a217c4dad25662d3a05edb0e39d7" role="tab" data-toggle="collapse" href="#collapse-18b5a217c4dad25662d3a05edb0e39d7"
+        aria-expanded="true"
+      >
+        JVM
+        <span class="list-group-count">(3)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-18b5a217c4dad25662d3a05edb0e39d7"
+           role="tabpanel" aria-labelledby="heading-18b5a217c4dad25662d3a05edb0e39d7">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-01-JVM与Java体系结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-02-类加载子系统</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/" title="JVM-03-运行时数据区"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">JVM-03-运行时数据区</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JVM-03-运行时数据区</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h1>1、运行时数据区概述及线程</h1>
+<h2 id="1、概述">1、概述</h2>
+<p>运行时数据区，也就是下图这部分，它是在类加载完成后的阶段</p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>当我们通过前面的：类的加载 –&gt; 验证 –&gt; 准备 –&gt; 解析 –&gt; 初始化，这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区</p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165118280.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>类比一下也就是大厨做饭，我们把大厨后面的东西（切好的菜，刀，调料），比作是运行时数据区。而厨师可以类比于执行引擎，将通过准备的东西进行制作成精美的菜品。</p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165152827.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2 id="2、运行时数据区结构">2、运行时数据区结构</h2>
+<h3 id="1、运行时数据区和内存">1、运行时数据区和内存</h3>
+<ol>
+<li>内存是非常重要的系统资源，是硬盘和CPU的中间仓库及桥梁，承载着操作系统和应用程序的实时运行。JVM内存布局规定了Java在运行过程中内存申请、分配、管理的策略，保证了JVM的高效稳定运行。<strong>不同的JVM对于内存的划分方式和管理机制存在着部分差异</strong>。结合JVM虚拟机规范，来探讨一下经典的JVM内存布局。</li>
+<li>我们通过磁盘或者网络IO得到的数据，都需要先加载到内存中，然后CPU从内存中获取数据进行读取，也就是说内存充当了CPU和磁盘之间的桥梁</li>
+</ol>
+<p>下图源于阿里巴巴手册jdk8</p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027170903919.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3 id="2、线程的内存空间">2、线程的内存空间</h3>
+<ol>
+<li>Java虚拟机定义了若干种程序运行期间会使用到的运行时数据区：其中有一些会随着虚拟机启动而创建，随着虚拟机退出而销毁。另外一些则是与线程一一对应的，这些与线程对应的数据区域会随着线程开始和结束而创建和销毁。</li>
+<li>灰色的为单独线程私有的，红色的为多个线程共享的。即：
+<ul>
+<li>线程独有：独立包括程序计数器、栈、本地方法栈</li>
+<li>线程间共享：堆、堆外内存（永久代或元空间、代码缓存）</li>
+</ul>
+</li>
+</ol>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171302313.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3 id="3、Runtime类">3、Runtime类</h3>
+<p><strong>每个JVM只有一个Runtime实例</strong>。即为运行时环境，相当于内存结构的中间的那个框框：运行时环境（运行时数据区）。</p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171346233.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2 id="3、线程">3、线程</h2>
+<h3 id="1、JVM线程">1、JVM线程</h3>
+<ol>
+<li>线程是一个程序里的运行单元。JVM允许一个应用有多个线程并行的执行</li>
+<li>在Hotspot JVM里，每个线程都与操作系统的本地线程直接映射
+<ul>
+<li>当一个Java线程准备好执行以后，此时一个操作系统的本地线程也同时创建。Java线程执行终止后，本地线程也会回收</li>
+</ul>
+</li>
+<li>操作系统负责将线程安排调度到任何一个可用的CPU上。一旦本地线程初始化成功，它就会调用Java线程中的run()方法</li>
+</ol>
+<h3 id="2、JVM系统线程">2、JVM系统线程</h3>
+<ul>
+<li>如果使用jconsole或者是任何一个调试工具，都能看到在后台有许多线程在运行。这些后台线程不包括调用<code>public static void main(String[])</code>的main线程以及所有这个main线程自己创建的线程。</li>
+<li>这些主要的后台系统线程在Hotspot JVM里主要是以下几个（了解）：</li>
+</ul>
+<ol>
+<li><strong>虚拟机线程</strong>：这种线程的操作是需要JVM达到安全点才会出现。这些操作必须在不同的线程中发生的原因是他们都需要JVM达到安全点，这样堆才不会变化。这种线程的执行类型括”stop-the-world”的垃圾收集，线程栈收集，线程挂起以及偏向锁撤销</li>
+<li><strong>周期任务线程</strong>：这种线程是时间周期事件的体现（比如中断），他们一般用于周期性操作的调度执行</li>
+<li><strong>GC线程</strong>：这种线程对在JVM里不同种类的垃圾收集行为提供了支持</li>
+<li><strong>编译线程</strong>：这种线程在运行时会将字节码编译成到本地代码</li>
+<li><strong>信号调度线程</strong>：这种线程接收信号并发送给JVM，在它内部通过调用适当的方法进行处理</li>
+</ol>
+<h1>2、程序计数器(PC寄存器)</h1>
+<h2 id="1、PC寄存器介绍">1、PC寄存器介绍</h2>
+<blockquote>
+<p>官方文档网址：<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/jvms/se8/html/index.html">https://docs.oracle.com/javase/specs/jvms/se8/html/index.html</a></p>
+</blockquote>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194012157.png" srcset="/img/loading.gif" lazyload alt></p>
+<ol>
+<li>JVM中的程序计数寄存器（Program Counter Register）中，Register的命名源于CPU的寄存器，<strong>寄存器存储指令相关的现场信息</strong>。CPU只有把数据装载到寄存器才能够运行。</li>
+<li>这里，并非是广义上所指的物理寄存器，或许将其翻译为PC计数器（或指令计数器）会更加贴切（也称为程序钩子），并且也不容易引起一些不必要的误会。<code>JVM中的PC寄存器是对物理PC寄存器的一种抽象模拟</code>。</li>
+<li>它是一块很小的内存空间，几乎可以忽略不记。也是运行速度最快的存储区域。</li>
+<li>在JVM规范中，每个线程都有它自己的程序计数器，是线程私有的，生命周期与线程的生命周期保持一致。</li>
+<li>任何时间一个线程都只有一个方法在执行，也就是所谓的<strong>当前方法</strong>。程序计数器会存储当前线程正在执行的Java方法的JVM指令地址；或者，如果是在执行native方法，则是未指定值（undefned）。</li>
+<li>它是<strong>程序控制流</strong>的指示器，分支、循环、跳转、异常处理、线程恢复等基础功能都需要依赖这个计数器来完成。</li>
+<li>字节码解释器工作时就是通过改变这个计数器的值来选取下一条需要执行的字节码指令。</li>
+<li>它是<strong>唯一一个</strong>在Java虚拟机规范中没有规定任何OutofMemoryError（溢出）情况的区域。</li>
+</ol>
+<h2 id="2、PC寄存器的作用">2、PC寄存器的作用</h2>
+<p>PC寄存器用来存储指向下一条指令的地址，也即将要执行的指令代码。由执行引擎读取下一条指令，并执行该指令。</p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194401567.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2 id="3、例子">3、例子</h2>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PCRegisterTest</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">20</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> i + j;<br><br>        <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;abc&quot;</span>;<br>        System.out.println(i);<br>        System.out.println(k);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p>查看字节码</p>
+<blockquote>
+<p>看字节码的方法：<a target="_blank" rel="noopener" href="https://blog.csdn.net/21aspnet/article/details/88351875">https://blog.csdn.net/21aspnet/article/details/88351875</a></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs java">Classfile /F:/IDEAWorkSpaceSourceCode/JVMDemo/out/production/chapter04/com/atguigu/java/PCRegisterTest.<span class="hljs-keyword">class</span><br>  <span class="hljs-title class_">Last</span> modified <span class="hljs-number">2020</span>-<span class="hljs-number">11</span>-<span class="hljs-number">2</span>; size <span class="hljs-number">675</span> bytes<br>  MD5 checksum 53b3ef104479ec9e9b7ce5319e5881d3<br>  Compiled from <span class="hljs-string">&quot;PCRegisterTest.java&quot;</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">com</span>.atguigu.java.PCRegisterTest<br>  minor version: <span class="hljs-number">0</span><br>  major version: <span class="hljs-number">52</span><br>  flags: ACC_PUBLIC, ACC_SUPER<br>Constant pool:<br>   #<span class="hljs-number">1</span> = Methodref          #<span class="hljs-number">6.</span>#<span class="hljs-number">26</span>         <span class="hljs-comment">// java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br>   #<span class="hljs-number">2</span> = String             #<span class="hljs-number">27</span>            <span class="hljs-comment">// abc</span><br>   #<span class="hljs-number">3</span> = Fieldref           #<span class="hljs-number">28.</span>#<span class="hljs-number">29</span>        <span class="hljs-comment">// java/lang/System.out:Ljava/io/PrintStream;</span><br>   #<span class="hljs-number">4</span> = Methodref          #<span class="hljs-number">30.</span>#<span class="hljs-number">31</span>        <span class="hljs-comment">// java/io/PrintStream.println:(I)V</span><br>   #<span class="hljs-number">5</span> = Class              #<span class="hljs-number">32</span>            <span class="hljs-comment">// com/atguigu/java/PCRegisterTest</span><br>   #<span class="hljs-number">6</span> = Class              #<span class="hljs-number">33</span>            <span class="hljs-comment">// java/lang/Object</span><br>   #<span class="hljs-number">7</span> = Utf8               &lt;init&gt;<br>   #<span class="hljs-number">8</span> = Utf8               ()V<br>   #<span class="hljs-number">9</span> = Utf8               Code<br>  #<span class="hljs-number">10</span> = Utf8               LineNumberTable<br>  #<span class="hljs-number">11</span> = Utf8               LocalVariableTable<br>  #<span class="hljs-number">12</span> = Utf8               <span class="hljs-built_in">this</span><br>  #<span class="hljs-number">13</span> = Utf8               Lcom/atguigu/java/PCRegisterTest;<br>  #<span class="hljs-number">14</span> = Utf8               main<br>  #<span class="hljs-number">15</span> = Utf8               ([Ljava/lang/String;)V<br>  #<span class="hljs-number">16</span> = Utf8               args<br>  #<span class="hljs-number">17</span> = Utf8               [Ljava/lang/String;<br>  #<span class="hljs-number">18</span> = Utf8               i<br>  #<span class="hljs-number">19</span> = Utf8               I<br>  #<span class="hljs-number">20</span> = Utf8               j<br>  #<span class="hljs-number">21</span> = Utf8               k<br>  #<span class="hljs-number">22</span> = Utf8               s<br>  #<span class="hljs-number">23</span> = Utf8               Ljava/lang/String;<br>  #<span class="hljs-number">24</span> = Utf8               SourceFile<br>  #<span class="hljs-number">25</span> = Utf8               PCRegisterTest.java<br>  #<span class="hljs-number">26</span> = NameAndType        #<span class="hljs-number">7</span>:#<span class="hljs-number">8</span>          <span class="hljs-comment">// &quot;&lt;init&gt;&quot;:()V</span><br>  #<span class="hljs-number">27</span> = Utf8               abc<br>  #<span class="hljs-number">28</span> = Class              #<span class="hljs-number">34</span>            <span class="hljs-comment">// java/lang/System</span><br>  #<span class="hljs-number">29</span> = NameAndType        #<span class="hljs-number">35</span>:#<span class="hljs-number">36</span>        <span class="hljs-comment">// out:Ljava/io/PrintStream;</span><br>  #<span class="hljs-number">30</span> = Class              #<span class="hljs-number">37</span>            <span class="hljs-comment">// java/io/PrintStream</span><br>  #<span class="hljs-number">31</span> = NameAndType        #<span class="hljs-number">38</span>:#<span class="hljs-number">39</span>        <span class="hljs-comment">// println:(I)V</span><br>  #<span class="hljs-number">32</span> = Utf8               com/atguigu/java/PCRegisterTest<br>  #<span class="hljs-number">33</span> = Utf8               java/lang/Object<br>  #<span class="hljs-number">34</span> = Utf8               java/lang/System<br>  #<span class="hljs-number">35</span> = Utf8               out<br>  #<span class="hljs-number">36</span> = Utf8               Ljava/io/PrintStream;<br>  #<span class="hljs-number">37</span> = Utf8               java/io/PrintStream<br>  #<span class="hljs-number">38</span> = Utf8               println<br>  #<span class="hljs-number">39</span> = Utf8               (I)V<br>&#123;<br>  <span class="hljs-keyword">public</span> com.atguigu.java.PCRegisterTest();<br>    descriptor: ()V<br>    flags: ACC_PUBLIC<br>    Code:<br>      stack=<span class="hljs-number">1</span>, locals=<span class="hljs-number">1</span>, args_size=<span class="hljs-number">1</span><br>         <span class="hljs-number">0</span>: aload_0<br>         <span class="hljs-number">1</span>: invokespecial #<span class="hljs-number">1</span>                  <span class="hljs-comment">// Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br>         <span class="hljs-number">4</span>: <span class="hljs-keyword">return</span><br>      LineNumberTable:<br>        line <span class="hljs-number">7</span>: <span class="hljs-number">0</span><br>      LocalVariableTable:<br>        Start  Length  Slot  Name   Signature<br>            <span class="hljs-number">0</span>       <span class="hljs-number">5</span>     <span class="hljs-number">0</span>  <span class="hljs-built_in">this</span>   Lcom/atguigu/java/PCRegisterTest;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(java.lang.String[])</span>;<br>    descriptor: ([Ljava/lang/String;)V<br>    flags: ACC_PUBLIC, ACC_STATIC<br>    Code:<br>      stack=<span class="hljs-number">2</span>, locals=<span class="hljs-number">5</span>, args_size=<span class="hljs-number">1</span><br>         <span class="hljs-number">0</span>: bipush        <span class="hljs-number">10</span><br>         <span class="hljs-number">2</span>: istore_1<br>         <span class="hljs-number">3</span>: bipush        <span class="hljs-number">20</span><br>         <span class="hljs-number">5</span>: istore_2<br>         <span class="hljs-number">6</span>: iload_1<br>         <span class="hljs-number">7</span>: iload_2<br>         <span class="hljs-number">8</span>: iadd<br>         <span class="hljs-number">9</span>: istore_3<br>        <span class="hljs-number">10</span>: ldc           #<span class="hljs-number">2</span>                  <span class="hljs-comment">// String abc</span><br>        <span class="hljs-number">12</span>: astore        <span class="hljs-number">4</span><br>        <span class="hljs-number">14</span>: getstatic     #<span class="hljs-number">3</span>                  <span class="hljs-comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span><br>        <span class="hljs-number">17</span>: iload_1<br>        <span class="hljs-number">18</span>: invokevirtual #<span class="hljs-number">4</span>                  <span class="hljs-comment">// Method java/io/PrintStream.println:(I)V</span><br>        <span class="hljs-number">21</span>: getstatic     #<span class="hljs-number">3</span>                  <span class="hljs-comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span><br>        <span class="hljs-number">24</span>: iload_3<br>        <span class="hljs-number">25</span>: invokevirtual #<span class="hljs-number">4</span>                  <span class="hljs-comment">// Method java/io/PrintStream.println:(I)V</span><br>        <span class="hljs-number">28</span>: <span class="hljs-keyword">return</span><br>      LineNumberTable:<br>        line <span class="hljs-number">10</span>: <span class="hljs-number">0</span><br>        line <span class="hljs-number">11</span>: <span class="hljs-number">3</span><br>        line <span class="hljs-number">12</span>: <span class="hljs-number">6</span><br>        line <span class="hljs-number">14</span>: <span class="hljs-number">10</span><br>        line <span class="hljs-number">15</span>: <span class="hljs-number">14</span><br>        line <span class="hljs-number">16</span>: <span class="hljs-number">21</span><br>        line <span class="hljs-number">18</span>: <span class="hljs-number">28</span><br>      LocalVariableTable:<br>        Start  Length  Slot  Name   Signature<br>            <span class="hljs-number">0</span>      <span class="hljs-number">29</span>     <span class="hljs-number">0</span>  args   [Ljava/lang/String;<br>            <span class="hljs-number">3</span>      <span class="hljs-number">26</span>     <span class="hljs-number">1</span>     i   I<br>            <span class="hljs-number">6</span>      <span class="hljs-number">23</span>     <span class="hljs-number">2</span>     j   I<br>           <span class="hljs-number">10</span>      <span class="hljs-number">19</span>     <span class="hljs-number">3</span>     k   I<br>           <span class="hljs-number">14</span>      <span class="hljs-number">15</span>     <span class="hljs-number">4</span>     s   Ljava/lang/String;<br>&#125;<br>SourceFile: <span class="hljs-string">&quot;PCRegisterTest.java&quot;</span><br></code></pre></td></tr></table></figure>
+<p>左边的数字代表<strong>指令地址（指令偏移）</strong>，即 PC 寄存器中可能存储的值，然后执行引擎读取 PC 寄存器中的值，并执行该指令</p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194950557.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2 id="4、🔺两个注意点">4、🔺两个注意点</h2>
+<p><strong>使用PC寄存器存储字节码指令地址有什么用呢？<strong>或者问</strong>为什么使用 PC 寄存器来记录当前线程的执行地址呢？</strong></p>
+<ol>
+<li>因为CPU需要不停的切换各个线程，这时候切换回来以后，就得知道接着从哪开始继续执行</li>
+<li>JVM的字节码解释器就需要通过改变PC寄存器的值来明确下一条应该执行什么样的字节码指令</li>
+</ol>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195119590.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><strong>PC寄存器为什么被设定为私有的？</strong></p>
+<ol>
+<li>我们都知道所谓的多线程在一个特定的时间段内只会执行其中某一个线程的方法，CPU会不停地做任务切换，这样必然导致经常中断或恢复，如何保证分毫无差呢？<strong>为了能够准确地记录各个线程正在执行的当前字节码指令地址，最好的办法自然是为每一个线程都分配一个PC寄存器</strong>，这样一来各个线程之间便可以进行独立计算，从而不会出现相互干扰的情况。</li>
+<li>由于CPU时间片轮限制，众多线程在并发执行过程中，任何一个确定的时刻，一个处理器或者多核处理器中的一个内核，只会执行某个线程中的一条指令。</li>
+<li>这样必然导致经常中断或恢复，如何保证分毫无差呢？每个线程在创建后，都会产生自己的程序计数器和栈帧，程序计数器在各个线程之间互不影响。</li>
+</ol>
+<blockquote>
+<p>注意并行和并发，不是一个概念</p>
+<p>并行：  串行</p>
+<p>并发：  一个核，快速执行，看起来像并发</p>
+</blockquote>
+<h2 id="5、CPU时间片">5、CPU时间片</h2>
+<ol>
+<li>CPU时间片即CPU分配给各个程序的时间，每个线程被分配一个时间段，称作它的时间片。</li>
+<li>在宏观上：我们可以同时打开多个应用程序，每个程序并行不悖，同时运行。</li>
+<li>但在微观上：由于只有一个CPU，一次只能处理程序要求的一部分，如何处理公平，一种方法就是引入时间片，<strong>每个程序轮流执行</strong>。</li>
+</ol>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195216420.png" srcset="/img/loading.gif" lazyload alt></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JVM/" class="category-chain-item">JVM</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/">#java</a>
+      
+        <a href="/tags/JVM/">#JVM</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JVM-03-运行时数据区</div>
+      <div>https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zbiao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2022年10月27日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2022/10/28/c-ye-kong-zhong-zui-liang-de-xing/" title="C-《夜空中最亮的星》">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">C-《夜空中最亮的星》</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2022/10/25/emoji/" title="emoji">
+                        <span class="hidden-mobile">emoji</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/diy/timeDate.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
