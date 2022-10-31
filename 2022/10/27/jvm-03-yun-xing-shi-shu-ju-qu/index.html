@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid5.png">
-  <link rel="icon" href="/img/fluid5.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/myblogs/img/fluid5.png">
+  <link rel="icon" href="/myblogs/img/fluid5.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,28 +19,28 @@
     <meta name="description" content="1、运行时数据区概述及线程 1、概述 运行时数据区，也就是下图这部分，它是在类加载完成后的阶段  当我们通过前面的：类的加载 –&gt; 验证 –&gt; 准备 –&gt; 解析 –&gt; 初始化，这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区  类比一下也就是大厨做饭，我们把大厨后面的东西（切好的菜，刀，调料），比作是运行时数据区。而厨师可以类比于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM-03-运行时数据区">
-<meta property="og:url" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/index.html">
+<meta property="og:url" content="https://bigotry-zb.gitee.io/myblogs/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="1、运行时数据区概述及线程 1、概述 运行时数据区，也就是下图这部分，它是在类加载完成后的阶段  当我们通过前面的：类的加载 –&gt; 验证 –&gt; 准备 –&gt; 解析 –&gt; 初始化，这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区  类比一下也就是大厨做饭，我们把大厨后面的东西（切好的菜，刀，调料），比作是运行时数据区。而厨师可以类比于">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165118280.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165152827.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027170903919.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171302313.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171346233.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194012157.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194401567.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194950557.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195119590.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195216420.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165118280.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165152827.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027170903919.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171302313.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171346233.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194012157.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194401567.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194950557.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195119590.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195216420.png">
 <meta property="article:published_time" content="2022-10-27T08:46:51.000Z">
 <meta property="article:modified_time" content="2022-10-27T12:32:43.604Z">
 <meta property="article:author" content="Zbiao">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
+<meta name="twitter:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -70,12 +70,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/myblogs/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/myblogs/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/myblogs/css/highlight-dark.css" />
   
 
 
@@ -89,15 +89,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/myblogs/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblogs/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="/myblogs/js/utils.js" ></script>
+  <script  src="/myblogs/js/color-schema.js" ></script>
   
 
   
@@ -129,7 +129,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/myblogs/">
       <strong>ZBiao&#39;s Blog</strong>
     </a>
 
@@ -148,7 +148,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/myblogs/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -160,7 +160,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/myblogs/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -172,7 +172,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/myblogs/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -184,7 +184,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/myblogs/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -196,7 +196,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/myblogs/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -225,7 +225,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
+     style="background: url('/myblogs/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -337,7 +337,7 @@
     
       
       
-        <a href="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构"
+        <a href="/myblogs/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JVM-01-JVM与Java体系结构</span>
@@ -346,7 +346,7 @@
     
       
       
-        <a href="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统"
+        <a href="/myblogs/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JVM-02-类加载子系统</span>
@@ -355,7 +355,7 @@
     
       
       
-        <a href="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/" title="JVM-03-运行时数据区"
+        <a href="/myblogs/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/" title="JVM-03-运行时数据区"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">JVM-03-运行时数据区</span>
@@ -389,11 +389,11 @@
                 <h1>1、运行时数据区概述及线程</h1>
 <h2 id="1、概述">1、概述</h2>
 <p>运行时数据区，也就是下图这部分，它是在类加载完成后的阶段</p>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <p>当我们通过前面的：类的加载 –&gt; 验证 –&gt; 准备 –&gt; 解析 –&gt; 初始化，这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区</p>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165118280.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165118280.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <p>类比一下也就是大厨做饭，我们把大厨后面的东西（切好的菜，刀，调料），比作是运行时数据区。而厨师可以类比于执行引擎，将通过准备的东西进行制作成精美的菜品。</p>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165152827.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165152827.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <h2 id="2、运行时数据区结构">2、运行时数据区结构</h2>
 <h3 id="1、运行时数据区和内存">1、运行时数据区和内存</h3>
 <ol>
@@ -401,7 +401,7 @@
 <li>我们通过磁盘或者网络IO得到的数据，都需要先加载到内存中，然后CPU从内存中获取数据进行读取，也就是说内存充当了CPU和磁盘之间的桥梁</li>
 </ol>
 <p>下图源于阿里巴巴手册jdk8</p>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027170903919.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027170903919.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <h3 id="2、线程的内存空间">2、线程的内存空间</h3>
 <ol>
 <li>Java虚拟机定义了若干种程序运行期间会使用到的运行时数据区：其中有一些会随着虚拟机启动而创建，随着虚拟机退出而销毁。另外一些则是与线程一一对应的，这些与线程对应的数据区域会随着线程开始和结束而创建和销毁。</li>
@@ -412,10 +412,10 @@
 </ul>
 </li>
 </ol>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171302313.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171302313.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <h3 id="3、Runtime类">3、Runtime类</h3>
 <p><strong>每个JVM只有一个Runtime实例</strong>。即为运行时环境，相当于内存结构的中间的那个框框：运行时环境（运行时数据区）。</p>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171346233.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171346233.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <h2 id="3、线程">3、线程</h2>
 <h3 id="1、JVM线程">1、JVM线程</h3>
 <ol>
@@ -444,7 +444,7 @@
 <blockquote>
 <p>官方文档网址：<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/jvms/se8/html/index.html">https://docs.oracle.com/javase/specs/jvms/se8/html/index.html</a></p>
 </blockquote>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194012157.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194012157.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <ol>
 <li>JVM中的程序计数寄存器（Program Counter Register）中，Register的命名源于CPU的寄存器，<strong>寄存器存储指令相关的现场信息</strong>。CPU只有把数据装载到寄存器才能够运行。</li>
 <li>这里，并非是广义上所指的物理寄存器，或许将其翻译为PC计数器（或指令计数器）会更加贴切（也称为程序钩子），并且也不容易引起一些不必要的误会。<code>JVM中的PC寄存器是对物理PC寄存器的一种抽象模拟</code>。</li>
@@ -457,7 +457,7 @@
 </ol>
 <h2 id="2、PC寄存器的作用">2、PC寄存器的作用</h2>
 <p>PC寄存器用来存储指向下一条指令的地址，也即将要执行的指令代码。由执行引擎读取下一条指令，并执行该指令。</p>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194401567.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194401567.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <h2 id="3、例子">3、例子</h2>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">PCRegisterTest</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">i</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">j</span> <span class="hljs-operator">=</span> <span class="hljs-number">20</span>;<br>        <span class="hljs-type">int</span> <span class="hljs-variable">k</span> <span class="hljs-operator">=</span> i + j;<br><br>        <span class="hljs-type">String</span> <span class="hljs-variable">s</span> <span class="hljs-operator">=</span> <span class="hljs-string">&quot;abc&quot;</span>;<br>        System.out.println(i);<br>        System.out.println(k);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>查看字节码</p>
@@ -466,14 +466,14 @@
 </blockquote>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><code class="hljs java">Classfile /F:/IDEAWorkSpaceSourceCode/JVMDemo/out/production/chapter04/com/atguigu/java/PCRegisterTest.<span class="hljs-keyword">class</span><br>  <span class="hljs-title class_">Last</span> modified <span class="hljs-number">2020</span>-<span class="hljs-number">11</span>-<span class="hljs-number">2</span>; size <span class="hljs-number">675</span> bytes<br>  MD5 checksum 53b3ef104479ec9e9b7ce5319e5881d3<br>  Compiled from <span class="hljs-string">&quot;PCRegisterTest.java&quot;</span><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">com</span>.atguigu.java.PCRegisterTest<br>  minor version: <span class="hljs-number">0</span><br>  major version: <span class="hljs-number">52</span><br>  flags: ACC_PUBLIC, ACC_SUPER<br>Constant pool:<br>   #<span class="hljs-number">1</span> = Methodref          #<span class="hljs-number">6.</span>#<span class="hljs-number">26</span>         <span class="hljs-comment">// java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br>   #<span class="hljs-number">2</span> = String             #<span class="hljs-number">27</span>            <span class="hljs-comment">// abc</span><br>   #<span class="hljs-number">3</span> = Fieldref           #<span class="hljs-number">28.</span>#<span class="hljs-number">29</span>        <span class="hljs-comment">// java/lang/System.out:Ljava/io/PrintStream;</span><br>   #<span class="hljs-number">4</span> = Methodref          #<span class="hljs-number">30.</span>#<span class="hljs-number">31</span>        <span class="hljs-comment">// java/io/PrintStream.println:(I)V</span><br>   #<span class="hljs-number">5</span> = Class              #<span class="hljs-number">32</span>            <span class="hljs-comment">// com/atguigu/java/PCRegisterTest</span><br>   #<span class="hljs-number">6</span> = Class              #<span class="hljs-number">33</span>            <span class="hljs-comment">// java/lang/Object</span><br>   #<span class="hljs-number">7</span> = Utf8               &lt;init&gt;<br>   #<span class="hljs-number">8</span> = Utf8               ()V<br>   #<span class="hljs-number">9</span> = Utf8               Code<br>  #<span class="hljs-number">10</span> = Utf8               LineNumberTable<br>  #<span class="hljs-number">11</span> = Utf8               LocalVariableTable<br>  #<span class="hljs-number">12</span> = Utf8               <span class="hljs-built_in">this</span><br>  #<span class="hljs-number">13</span> = Utf8               Lcom/atguigu/java/PCRegisterTest;<br>  #<span class="hljs-number">14</span> = Utf8               main<br>  #<span class="hljs-number">15</span> = Utf8               ([Ljava/lang/String;)V<br>  #<span class="hljs-number">16</span> = Utf8               args<br>  #<span class="hljs-number">17</span> = Utf8               [Ljava/lang/String;<br>  #<span class="hljs-number">18</span> = Utf8               i<br>  #<span class="hljs-number">19</span> = Utf8               I<br>  #<span class="hljs-number">20</span> = Utf8               j<br>  #<span class="hljs-number">21</span> = Utf8               k<br>  #<span class="hljs-number">22</span> = Utf8               s<br>  #<span class="hljs-number">23</span> = Utf8               Ljava/lang/String;<br>  #<span class="hljs-number">24</span> = Utf8               SourceFile<br>  #<span class="hljs-number">25</span> = Utf8               PCRegisterTest.java<br>  #<span class="hljs-number">26</span> = NameAndType        #<span class="hljs-number">7</span>:#<span class="hljs-number">8</span>          <span class="hljs-comment">// &quot;&lt;init&gt;&quot;:()V</span><br>  #<span class="hljs-number">27</span> = Utf8               abc<br>  #<span class="hljs-number">28</span> = Class              #<span class="hljs-number">34</span>            <span class="hljs-comment">// java/lang/System</span><br>  #<span class="hljs-number">29</span> = NameAndType        #<span class="hljs-number">35</span>:#<span class="hljs-number">36</span>        <span class="hljs-comment">// out:Ljava/io/PrintStream;</span><br>  #<span class="hljs-number">30</span> = Class              #<span class="hljs-number">37</span>            <span class="hljs-comment">// java/io/PrintStream</span><br>  #<span class="hljs-number">31</span> = NameAndType        #<span class="hljs-number">38</span>:#<span class="hljs-number">39</span>        <span class="hljs-comment">// println:(I)V</span><br>  #<span class="hljs-number">32</span> = Utf8               com/atguigu/java/PCRegisterTest<br>  #<span class="hljs-number">33</span> = Utf8               java/lang/Object<br>  #<span class="hljs-number">34</span> = Utf8               java/lang/System<br>  #<span class="hljs-number">35</span> = Utf8               out<br>  #<span class="hljs-number">36</span> = Utf8               Ljava/io/PrintStream;<br>  #<span class="hljs-number">37</span> = Utf8               java/io/PrintStream<br>  #<span class="hljs-number">38</span> = Utf8               println<br>  #<span class="hljs-number">39</span> = Utf8               (I)V<br>&#123;<br>  <span class="hljs-keyword">public</span> com.atguigu.java.PCRegisterTest();<br>    descriptor: ()V<br>    flags: ACC_PUBLIC<br>    Code:<br>      stack=<span class="hljs-number">1</span>, locals=<span class="hljs-number">1</span>, args_size=<span class="hljs-number">1</span><br>         <span class="hljs-number">0</span>: aload_0<br>         <span class="hljs-number">1</span>: invokespecial #<span class="hljs-number">1</span>                  <span class="hljs-comment">// Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V</span><br>         <span class="hljs-number">4</span>: <span class="hljs-keyword">return</span><br>      LineNumberTable:<br>        line <span class="hljs-number">7</span>: <span class="hljs-number">0</span><br>      LocalVariableTable:<br>        Start  Length  Slot  Name   Signature<br>            <span class="hljs-number">0</span>       <span class="hljs-number">5</span>     <span class="hljs-number">0</span>  <span class="hljs-built_in">this</span>   Lcom/atguigu/java/PCRegisterTest;<br><br>  <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(java.lang.String[])</span>;<br>    descriptor: ([Ljava/lang/String;)V<br>    flags: ACC_PUBLIC, ACC_STATIC<br>    Code:<br>      stack=<span class="hljs-number">2</span>, locals=<span class="hljs-number">5</span>, args_size=<span class="hljs-number">1</span><br>         <span class="hljs-number">0</span>: bipush        <span class="hljs-number">10</span><br>         <span class="hljs-number">2</span>: istore_1<br>         <span class="hljs-number">3</span>: bipush        <span class="hljs-number">20</span><br>         <span class="hljs-number">5</span>: istore_2<br>         <span class="hljs-number">6</span>: iload_1<br>         <span class="hljs-number">7</span>: iload_2<br>         <span class="hljs-number">8</span>: iadd<br>         <span class="hljs-number">9</span>: istore_3<br>        <span class="hljs-number">10</span>: ldc           #<span class="hljs-number">2</span>                  <span class="hljs-comment">// String abc</span><br>        <span class="hljs-number">12</span>: astore        <span class="hljs-number">4</span><br>        <span class="hljs-number">14</span>: getstatic     #<span class="hljs-number">3</span>                  <span class="hljs-comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span><br>        <span class="hljs-number">17</span>: iload_1<br>        <span class="hljs-number">18</span>: invokevirtual #<span class="hljs-number">4</span>                  <span class="hljs-comment">// Method java/io/PrintStream.println:(I)V</span><br>        <span class="hljs-number">21</span>: getstatic     #<span class="hljs-number">3</span>                  <span class="hljs-comment">// Field java/lang/System.out:Ljava/io/PrintStream;</span><br>        <span class="hljs-number">24</span>: iload_3<br>        <span class="hljs-number">25</span>: invokevirtual #<span class="hljs-number">4</span>                  <span class="hljs-comment">// Method java/io/PrintStream.println:(I)V</span><br>        <span class="hljs-number">28</span>: <span class="hljs-keyword">return</span><br>      LineNumberTable:<br>        line <span class="hljs-number">10</span>: <span class="hljs-number">0</span><br>        line <span class="hljs-number">11</span>: <span class="hljs-number">3</span><br>        line <span class="hljs-number">12</span>: <span class="hljs-number">6</span><br>        line <span class="hljs-number">14</span>: <span class="hljs-number">10</span><br>        line <span class="hljs-number">15</span>: <span class="hljs-number">14</span><br>        line <span class="hljs-number">16</span>: <span class="hljs-number">21</span><br>        line <span class="hljs-number">18</span>: <span class="hljs-number">28</span><br>      LocalVariableTable:<br>        Start  Length  Slot  Name   Signature<br>            <span class="hljs-number">0</span>      <span class="hljs-number">29</span>     <span class="hljs-number">0</span>  args   [Ljava/lang/String;<br>            <span class="hljs-number">3</span>      <span class="hljs-number">26</span>     <span class="hljs-number">1</span>     i   I<br>            <span class="hljs-number">6</span>      <span class="hljs-number">23</span>     <span class="hljs-number">2</span>     j   I<br>           <span class="hljs-number">10</span>      <span class="hljs-number">19</span>     <span class="hljs-number">3</span>     k   I<br>           <span class="hljs-number">14</span>      <span class="hljs-number">15</span>     <span class="hljs-number">4</span>     s   Ljava/lang/String;<br>&#125;<br>SourceFile: <span class="hljs-string">&quot;PCRegisterTest.java&quot;</span><br></code></pre></td></tr></table></figure>
 <p>左边的数字代表<strong>指令地址（指令偏移）</strong>，即 PC 寄存器中可能存储的值，然后执行引擎读取 PC 寄存器中的值，并执行该指令</p>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194950557.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194950557.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <h2 id="4、🔺两个注意点">4、🔺两个注意点</h2>
 <p><strong>使用PC寄存器存储字节码指令地址有什么用呢？<strong>或者问</strong>为什么使用 PC 寄存器来记录当前线程的执行地址呢？</strong></p>
 <ol>
 <li>因为CPU需要不停的切换各个线程，这时候切换回来以后，就得知道接着从哪开始继续执行</li>
 <li>JVM的字节码解释器就需要通过改变PC寄存器的值来明确下一条应该执行什么样的字节码指令</li>
 </ol>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195119590.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195119590.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 <p><strong>PC寄存器为什么被设定为私有的？</strong></p>
 <ol>
 <li>我们都知道所谓的多线程在一个特定的时间段内只会执行其中某一个线程的方法，CPU会不停地做任务切换，这样必然导致经常中断或恢复，如何保证分毫无差呢？<strong>为了能够准确地记录各个线程正在执行的当前字节码指令地址，最好的办法自然是为每一个线程都分配一个PC寄存器</strong>，这样一来各个线程之间便可以进行独立计算，从而不会出现相互干扰的情况。</li>
@@ -491,7 +491,7 @@
 <li>在宏观上：我们可以同时打开多个应用程序，每个程序并行不悖，同时运行。</li>
 <li>但在微观上：由于只有一个CPU，一次只能处理程序要求的一部分，如何处理公平，一种方法就是引入时间片，<strong>每个程序轮流执行</strong>。</li>
 </ol>
-<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195216420.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195216420.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
 
                 
               </div>
@@ -510,7 +510,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/JVM/" class="category-chain-item">JVM</a>
+  <a href="/myblogs/categories/JVM/" class="category-chain-item">JVM</a>
   
   
 
@@ -525,9 +525,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/java/">#java</a>
+        <a href="/myblogs/tags/java/">#java</a>
       
-        <a href="/tags/JVM/">#JVM</a>
+        <a href="/myblogs/tags/JVM/">#JVM</a>
       
     </div>
   
@@ -540,7 +540,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JVM-03-运行时数据区</div>
-      <div>https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/</div>
+      <div>https://bigotry-zb.gitee.io/myblogs/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/</div>
     </div>
     <div class="license-meta">
       
@@ -584,7 +584,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/10/28/c-ye-kong-zhong-zui-liang-de-xing/" title="C-《夜空中最亮的星》">
+                      <a href="/myblogs/2022/10/28/c-ye-kong-zhong-zui-liang-de-xing/" title="C-《夜空中最亮的星》">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">C-《夜空中最亮的星》</span>
                         <span class="visible-mobile">上一篇</span>
@@ -594,7 +594,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/10/25/emoji/" title="emoji">
+                      <a href="/myblogs/2022/10/25/emoji/" title="emoji">
                         <span class="hidden-mobile">emoji</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -713,7 +713,7 @@
       <span class="beian-police">
         
           <span style="visibility: hidden; width: 0">|</span>
-          <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          <img src="/myblogs/img/police_beian.png" srcset="/myblogs/img/loading.gif" lazyload alt="police-icon"/>
         
         <span class="beian-police">陕ICP备2022012442号 - 1</span>
       </span>
@@ -743,8 +743,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/myblogs/js/events.js" ></script>
+<script  src="/myblogs/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -766,7 +766,7 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/myblogs/js/img-lazyload.js" ></script>
   
 
 
@@ -865,7 +865,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/myblogs/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -873,7 +873,7 @@
 
 
   
-<script src="/js/diy/timeDate.js"></script>
+<script src="/myblogs/js/diy/timeDate.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
@@ -882,7 +882,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="/myblogs/js/boot.js" ></script>
 
 
   

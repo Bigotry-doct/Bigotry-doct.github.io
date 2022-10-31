@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid5.png">
-  <link rel="icon" href="/img/fluid5.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/myblogs/img/fluid5.png">
+  <link rel="icon" href="/myblogs/img/fluid5.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,15 +19,15 @@
     <meta name="description" content="一、装饰器模式通过一个demo来理解装饰器模式。 1、Demo案例-咖啡订单项目1、星巴克订单需求 咖啡种类&#x2F;单品咖啡：Espresso(意大利浓咖啡)、ShortBlack、LongBlack(美式咖啡)、Decaf(无因咖啡) 调料：Milk、Soy(豆浆)、Chocolate 要求在扩展新的咖啡种类时，具有良好的扩展性、改动方便、维护方便 使用 OO 的来计算不同种类咖啡的费用: 客户可以点">
 <meta property="og:type" content="article">
 <meta property="og:title" content="04-结构型-装饰器-适配器">
-<meta property="og:url" content="https://bigotry-zb.github.io.git/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/index.html">
+<meta property="og:url" content="https://bigotry-zb.gitee.io/myblogs/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="一、装饰器模式通过一个demo来理解装饰器模式。 1、Demo案例-咖啡订单项目1、星巴克订单需求 咖啡种类&#x2F;单品咖啡：Espresso(意大利浓咖啡)、ShortBlack、LongBlack(美式咖啡)、Decaf(无因咖啡) 调料：Milk、Soy(豆浆)、Chocolate 要求在扩展新的咖啡种类时，具有良好的扩展性、改动方便、维护方便 使用 OO 的来计算不同种类咖啡的费用: 客户可以点">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165413830.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165735491.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926170746201.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926174459489.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926175005022.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165413830.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165735491.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926170746201.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926174459489.png">
+<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926175005022.png">
 <meta property="article:published_time" content="2022-09-23T09:27:14.000Z">
 <meta property="article:modified_time" content="2022-10-19T03:35:23.682Z">
 <meta property="article:author" content="Zbiao">
@@ -36,7 +36,7 @@
 <meta property="article:tag" content="装饰器">
 <meta property="article:tag" content="适配器">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165413830.png">
+<meta name="twitter:image" content="https://bigotry-zb.gitee.io/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165413830.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -66,12 +66,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/css/main.css" />
+<link  rel="stylesheet" href="/myblogs/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/myblogs/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/myblogs/css/highlight-dark.css" />
   
 
 
@@ -85,15 +85,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/myblogs/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblogs/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/js/utils.js" ></script>
-  <script  src="/js/color-schema.js" ></script>
+  <script  src="/myblogs/js/utils.js" ></script>
+  <script  src="/myblogs/js/color-schema.js" ></script>
   
 
   
@@ -125,7 +125,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/">
+    <a class="navbar-brand" href="/myblogs/">
       <strong>ZBiao&#39;s Blog</strong>
     </a>
 
@@ -144,7 +144,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/">
+              <a class="nav-link" href="/myblogs/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -156,7 +156,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/archives/">
+              <a class="nav-link" href="/myblogs/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -168,7 +168,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/categories/">
+              <a class="nav-link" href="/myblogs/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -180,7 +180,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/tags/">
+              <a class="nav-link" href="/myblogs/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -192,7 +192,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/about/">
+              <a class="nav-link" href="/myblogs/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -221,7 +221,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
+     style="background: url('/myblogs/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -333,7 +333,7 @@
     
       
       
-        <a href="/2022/09/21/01-chuang-jian-xing-dan-li/" title="01-创建型-单例"
+        <a href="/myblogs/2022/09/21/01-chuang-jian-xing-dan-li/" title="01-创建型-单例"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">01-创建型-单例</span>
@@ -342,7 +342,7 @@
     
       
       
-        <a href="/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/" title="02-创建型-工厂&amp;建造者&amp;原型"
+        <a href="/myblogs/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/" title="02-创建型-工厂&amp;建造者&amp;原型"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">02-创建型-工厂&amp;建造者&amp;原型</span>
@@ -351,7 +351,7 @@
     
       
       
-        <a href="/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接"
+        <a href="/myblogs/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">03-结构型-代理-桥接</span>
@@ -360,7 +360,7 @@
     
       
       
-        <a href="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/" title="04-结构型-装饰器-适配器"
+        <a href="/myblogs/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/" title="04-结构型-装饰器-适配器"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">04-结构型-装饰器-适配器</span>
@@ -369,7 +369,7 @@
     
       
       
-        <a href="/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元"
+        <a href="/myblogs/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">05-结构型-门面-组合-享元</span>
@@ -378,7 +378,7 @@
     
       
       
-        <a href="/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/" title="06-行为型-观察者-模板"
+        <a href="/myblogs/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/" title="06-行为型-观察者-模板"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">06-行为型-观察者-模板</span>
@@ -387,7 +387,7 @@
     
       
       
-        <a href="/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链"
+        <a href="/myblogs/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">07-行为型-策略-职责链</span>
@@ -396,7 +396,7 @@
     
       
       
-        <a href="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器"
+        <a href="/myblogs/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">08-行为型-状态-迭代器</span>
@@ -405,7 +405,7 @@
     
       
       
-        <a href="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/" title="09-行为型-命令-解释器-中介"
+        <a href="/myblogs/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/" title="09-行为型-命令-解释器-中介"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">09-行为型-命令-解释器-中介</span>
@@ -414,7 +414,7 @@
     
       
       
-        <a href="/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者"
+        <a href="/myblogs/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">10-行为型-备忘录-访问者</span>
@@ -423,7 +423,7 @@
     
       
       
-        <a href="/2022/09/21/she-ji-mo-shi-gai-shu/" title="设计模式概述"
+        <a href="/myblogs/2022/09/21/she-ji-mo-shi-gai-shu/" title="设计模式概述"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">设计模式概述</span>
@@ -461,7 +461,7 @@
 <li>要求在扩展新的咖啡种类时，具有良好的扩展性、改动方便、维护方便</li>
 <li>使用 OO 的来计算不同种类咖啡的费用: 客户可以点单品咖啡，也可以单品咖啡+调料组合。</li>
 </ol>
-<h3 id="2、方案一"><a href="#2、方案一" class="headerlink" title="2、方案一"></a>2、方案一</h3><p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165413830.png" srcset="/img/loading.gif" lazyload alt="方案1"></p>
+<h3 id="2、方案一"><a href="#2、方案一" class="headerlink" title="2、方案一"></a>2、方案一</h3><p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165413830.png" srcset="/myblogs/img/loading.gif" lazyload alt="方案1"></p>
 <ol>
 <li>Drink 是一个抽象类，表示饮料</li>
 <li>des就是对咖啡的描述, 比如咖啡的名字 </li>
@@ -471,7 +471,7 @@
 <li><code>问题</code>：这样设计，会有很多类，当我们增加一个单品咖啡，或者一个新的调料， 类的数量就会倍增，就会出现类爆炸</li>
 </ol>
 <h3 id="3、方案二"><a href="#3、方案二" class="headerlink" title="3、方案二"></a>3、方案二</h3><p>前面分析到方案 1 因为咖啡单品+调料组合会造成类的倍增，因此可以做改进，将调料内置到 Drink 类，这样就不会造成类数量过多。从而提高项目的维护性(如图)</p>
-<p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165735491.png" srcset="/img/loading.gif" lazyload alt="方案2"></p>
+<p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926165735491.png" srcset="/myblogs/img/loading.gif" lazyload alt="方案2"></p>
 <ol>
 <li>方案 2 可以控制类的数量，不至于造成很多的类</li>
 <li>在增加或者删除调料种类时，代码的维护量很大</li>
@@ -481,7 +481,7 @@
 <blockquote>
 <p>注意：装饰器模式是对功能的增强，而不是附加新的功能。代理模式才是附加新的功能。</p>
 </blockquote>
-<h3 id="4、装饰器模式代码"><a href="#4、装饰器模式代码" class="headerlink" title="4、装饰器模式代码"></a>4、装饰器模式代码</h3><p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926170746201.png" srcset="/img/loading.gif" lazyload alt="装饰器模式"></p>
+<h3 id="4、装饰器模式代码"><a href="#4、装饰器模式代码" class="headerlink" title="4、装饰器模式代码"></a>4、装饰器模式代码</h3><p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926170746201.png" srcset="/myblogs/img/loading.gif" lazyload alt="装饰器模式"></p>
 <h4 id="1、Drink【抽象类-主体Component】"><a href="#1、Drink【抽象类-主体Component】" class="headerlink" title="1、Drink【抽象类-主体Component】"></a>1、Drink【抽象类-主体Component】</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Drink</span> &#123;<br><br>   <span class="hljs-keyword">public</span> String des; <span class="hljs-comment">// 描述</span><br>   <span class="hljs-keyword">private</span> <span class="hljs-type">float</span> <span class="hljs-variable">price</span> <span class="hljs-operator">=</span> <span class="hljs-number">0.0f</span>;<br>   <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getDes</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-keyword">return</span> des;<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setDes</span><span class="hljs-params">(String des)</span> &#123;<br>      <span class="hljs-built_in">this</span>.des = des;<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-title function_">getPrice</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-keyword">return</span> price;<br>   &#125;<br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">setPrice</span><span class="hljs-params">(<span class="hljs-type">float</span> price)</span> &#123;<br>      <span class="hljs-built_in">this</span>.price = price;<br>   &#125;<br>   <br>   <span class="hljs-comment">//计算费用的抽象方法</span><br>   <span class="hljs-comment">//子类来实现</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-type">float</span> <span class="hljs-title function_">cost</span><span class="hljs-params">()</span>;<br>   <br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h4 id="2、Decorator"><a href="#2、Decorator" class="headerlink" title="2、Decorator"></a>2、Decorator</h4><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Decorator</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">Drink</span> &#123;<br>   <span class="hljs-keyword">private</span> Drink obj;<br>   <br>   <span class="hljs-keyword">public</span> <span class="hljs-title function_">Decorator</span><span class="hljs-params">(Drink obj)</span> &#123; <span class="hljs-comment">//组合</span><br>      <span class="hljs-comment">// TODO Auto-generated constructor stub</span><br>      <span class="hljs-built_in">this</span>.obj = obj;<br>   &#125;<br>   <br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> <span class="hljs-type">float</span> <span class="hljs-title function_">cost</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      <span class="hljs-comment">// getPrice 自己价格</span><br>      <span class="hljs-keyword">return</span> <span class="hljs-built_in">super</span>.getPrice() + obj.cost();<br>   &#125;<br>   <br>   <span class="hljs-meta">@Override</span><br>   <span class="hljs-keyword">public</span> String <span class="hljs-title function_">getDes</span><span class="hljs-params">()</span> &#123;<br>      <span class="hljs-comment">// TODO Auto-generated method stub</span><br>      <span class="hljs-comment">// obj.getDes() 输出被装饰者的信息</span><br>      <span class="hljs-keyword">return</span> des + <span class="hljs-string">&quot; &quot;</span> + getPrice() + <span class="hljs-string">&quot; &amp;&amp; &quot;</span> + obj.getDes();<br>   &#125;<br>   <br>&#125;<br></code></pre></td></tr></table></figure>
@@ -551,8 +551,8 @@
 </tr>
 </tbody></table>
 <p>针对不同的读取和写入场景，Java IO 又在这四个父类基础之上，扩展出了很多子类。具体如下所示：</p>
-<p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926174459489.png" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926175005022.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926174459489.png" srcset="/myblogs/img/loading.gif" lazyload></p>
+<p><img src="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/image-20220926175005022.png" srcset="/myblogs/img/loading.gif" lazyload></p>
 <blockquote>
 <p>说明</p>
 <ol>
@@ -697,7 +697,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">设计模式</a>
+  <a href="/myblogs/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">设计模式</a>
   
   
 
@@ -712,13 +712,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        <a href="/myblogs/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
       
-        <a href="/tags/%E7%BB%93%E6%9E%84%E5%9E%8B/">#结构型</a>
+        <a href="/myblogs/tags/%E7%BB%93%E6%9E%84%E5%9E%8B/">#结构型</a>
       
-        <a href="/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/">#装饰器</a>
+        <a href="/myblogs/tags/%E8%A3%85%E9%A5%B0%E5%99%A8/">#装饰器</a>
       
-        <a href="/tags/%E9%80%82%E9%85%8D%E5%99%A8/">#适配器</a>
+        <a href="/myblogs/tags/%E9%80%82%E9%85%8D%E5%99%A8/">#适配器</a>
       
     </div>
   
@@ -731,7 +731,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>04-结构型-装饰器-适配器</div>
-      <div>https://bigotry-zb.github.io.git/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/</div>
+      <div>https://bigotry-zb.gitee.io/myblogs/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/</div>
     </div>
     <div class="license-meta">
       
@@ -775,7 +775,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元">
+                      <a href="/myblogs/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">05-结构型-门面-组合-享元</span>
                         <span class="visible-mobile">上一篇</span>
@@ -785,7 +785,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接">
+                      <a href="/myblogs/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接">
                         <span class="hidden-mobile">03-结构型-代理-桥接</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -904,7 +904,7 @@
       <span class="beian-police">
         
           <span style="visibility: hidden; width: 0">|</span>
-          <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
+          <img src="/myblogs/img/police_beian.png" srcset="/myblogs/img/loading.gif" lazyload alt="police-icon"/>
         
         <span class="beian-police">陕ICP备2022012442号 - 1</span>
       </span>
@@ -934,8 +934,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/js/events.js" ></script>
-<script  src="/js/plugins.js" ></script>
+<script  src="/myblogs/js/events.js" ></script>
+<script  src="/myblogs/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -957,7 +957,7 @@
 
 
   
-    <script  src="/js/img-lazyload.js" ></script>
+    <script  src="/myblogs/js/img-lazyload.js" ></script>
   
 
 
@@ -1056,7 +1056,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/js/local-search.js" ></script>
+  <script  src="/myblogs/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -1064,7 +1064,7 @@
 
 
   
-<script src="/js/diy/timeDate.js"></script>
+<script src="/myblogs/js/diy/timeDate.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
@@ -1073,7 +1073,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/js/boot.js" ></script>
+<script  src="/myblogs/js/boot.js" ></script>
 
 
   
