@@ -19,28 +19,28 @@
     <meta name="description" content="1、运行时数据区概述及线程 1、概述 运行时数据区，也就是下图这部分，它是在类加载完成后的阶段  当我们通过前面的：类的加载 –&gt; 验证 –&gt; 准备 –&gt; 解析 –&gt; 初始化，这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区  类比一下也就是大厨做饭，我们把大厨后面的东西（切好的菜，刀，调料），比作是运行时数据区。而厨师可以类比于">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM-03-运行时数据区">
-<meta property="og:url" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/index.html">
+<meta property="og:url" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="1、运行时数据区概述及线程 1、概述 运行时数据区，也就是下图这部分，它是在类加载完成后的阶段  当我们通过前面的：类的加载 –&gt; 验证 –&gt; 准备 –&gt; 解析 –&gt; 初始化，这几个阶段完成后，就会用到执行引擎对我们的类进行使用，同时执行引擎将会使用到我们运行时数据区  类比一下也就是大厨做饭，我们把大厨后面的东西（切好的菜，刀，调料），比作是运行时数据区。而厨师可以类比于">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165118280.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165152827.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027170903919.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171302313.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171346233.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194012157.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194401567.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194950557.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195119590.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195216420.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165118280.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165152827.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027170903919.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171302313.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027171346233.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194012157.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194401567.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027194950557.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195119590.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027195216420.png">
 <meta property="article:published_time" content="2022-10-27T08:46:51.000Z">
 <meta property="article:modified_time" content="2022-10-27T12:32:43.604Z">
 <meta property="article:author" content="Zbiao">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
+<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/image-20221027165103294.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -89,7 +89,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -540,7 +540,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JVM-03-运行时数据区</div>
-      <div>https://bigotry-zb.gitee.io/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/</div>
+      <div>https://bigotry-zb.github.io.git/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/</div>
     </div>
     <div class="license-meta">
       

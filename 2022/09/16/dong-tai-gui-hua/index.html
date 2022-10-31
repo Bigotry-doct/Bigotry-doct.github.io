@@ -19,24 +19,24 @@
     <meta name="description" content="动态规划动态规划通俗来讲就是由上一个状态推导出来的 状态转移公式 一般解题步骤有以下五步：  确定dp数组（dp table）以及下标的含义 确定递推公式 dp数组如何初始化 确定遍历顺序 举例推导dp数组  动态规划Debug 先确定状态转移公式，做到心中有数；若没通过，打印出来，看看与自己心中所想是否一样；若是一样的，那就是递推公式、初始化或者遍历顺序有问题了。 &#x3D;&#x3D;问题要问的专业&#x3D;&#x3D; 斐波那">
 <meta property="og:type" content="article">
 <meta property="og:title" content="动态规划">
-<meta property="og:url" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/index.html">
+<meta property="og:url" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="动态规划动态规划通俗来讲就是由上一个状态推导出来的 状态转移公式 一般解题步骤有以下五步：  确定dp数组（dp table）以及下标的含义 确定递推公式 dp数组如何初始化 确定遍历顺序 举例推导dp数组  动态规划Debug 先确定状态转移公式，做到心中有数；若没通过，打印出来，看看与自己心中所想是否一样；若是一样的，那就是递推公式、初始化或者遍历顺序有问题了。 &#x3D;&#x3D;问题要问的专业&#x3D;&#x3D; 斐波那">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220624112625495.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220627101912530.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220628110720342.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220628112932740.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220629111108557.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220708113513360.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220708113521374.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220708113529354.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220624112625495.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220627101912530.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220628110720342.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220628112932740.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220629111108557.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220708113513360.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220708113521374.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220708113529354.png">
 <meta property="article:published_time" content="2022-09-16T09:42:49.000Z">
 <meta property="article:modified_time" content="2022-10-22T10:59:00.964Z">
 <meta property="article:author" content="Zbiao">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220624112625495.png">
+<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/Typora文件/Typora图片/image-20220624112625495.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -85,7 +85,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -1165,7 +1165,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>动态规划</div>
-      <div>https://bigotry-zb.gitee.io/2022/09/16/dong-tai-gui-hua/</div>
+      <div>https://bigotry-zb.github.io.git/2022/09/16/dong-tai-gui-hua/</div>
     </div>
     <div class="license-meta">
       

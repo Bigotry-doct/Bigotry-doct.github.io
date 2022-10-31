@@ -19,20 +19,20 @@
     <meta name="description" content="回溯算法回溯通常隐藏在递归函数的下面 &#x3D;&#x3D;for循环横向遍历，递归纵向遍历&#x3D;&#x3D; 回溯法是一个纯暴力搜索，并不是高效的算法 适用于：  组合问题 切割问题 子集问题 排列问题 棋盘问题  回溯法可以抽象为一个树形结构（n叉树） 回溯法模板12345678910111213void backtracking(参数) &amp;#123;    if (终止条件) &amp;#123;        存放结果;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="回溯算法">
-<meta property="og:url" content="https://bigotry-zb.gitee.io/2022/09/16/hui-su-suan-fa/index.html">
+<meta property="og:url" content="https://bigotry-zb.github.io.git/2022/09/16/hui-su-suan-fa/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="回溯算法回溯通常隐藏在递归函数的下面 &#x3D;&#x3D;for循环横向遍历，递归纵向遍历&#x3D;&#x3D; 回溯法是一个纯暴力搜索，并不是高效的算法 适用于：  组合问题 切割问题 子集问题 排列问题 棋盘问题  回溯法可以抽象为一个树形结构（n叉树） 回溯法模板12345678910111213void backtracking(参数) &amp;#123;    if (终止条件) &amp;#123;        存放结果;">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220607093535686.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220610103125075.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220610151529520.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220613104412019.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220607093535686.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220610103125075.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220610151529520.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220613104412019.png">
 <meta property="article:published_time" content="2022-09-16T09:51:19.000Z">
 <meta property="article:modified_time" content="2022-10-19T03:34:17.425Z">
 <meta property="article:author" content="Zbiao">
 <meta property="article:tag" content="java">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bigotry-zb.gitee.io/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220607093535686.png">
+<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2022/09/16/hui-su-suan-fa/Typora文件/Typora图片/image-20220607093535686.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -81,7 +81,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -681,7 +681,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>回溯算法</div>
-      <div>https://bigotry-zb.gitee.io/2022/09/16/hui-su-suan-fa/</div>
+      <div>https://bigotry-zb.github.io.git/2022/09/16/hui-su-suan-fa/</div>
     </div>
     <div class="license-meta">
       

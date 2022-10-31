@@ -19,16 +19,16 @@
     <meta name="description" content="一、命令模式命令模式(Command Pattern)：将一个请求封装为一个对象，从而让我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。 命令模式通俗点来讲，举个例子，司令员下令让士兵去干件事情，从整个事情的角度来考虑，司令员的作用是，发出口令，口令经过传递，传">
 <meta property="og:type" content="article">
 <meta property="og:title" content="09-行为型-命令-解释器-中介">
-<meta property="og:url" content="https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/index.html">
+<meta property="og:url" content="https://bigotry-zb.github.io.git/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="一、命令模式命令模式(Command Pattern)：将一个请求封装为一个对象，从而让我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。 命令模式通俗点来讲，举个例子，司令员下令让士兵去干件事情，从整个事情的角度来考虑，司令员的作用是，发出口令，口令经过传递，传">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019183821026.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019184910429.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019205702816.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019212125724.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019213747108.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019212554026.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019183821026.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019184910429.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019205702816.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019212125724.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019213747108.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019212554026.png">
 <meta property="article:published_time" content="2022-10-19T08:47:39.000Z">
 <meta property="article:modified_time" content="2022-10-19T13:41:05.432Z">
 <meta property="article:author" content="Zbiao">
@@ -37,7 +37,7 @@
 <meta property="article:tag" content="解释器">
 <meta property="article:tag" content="中介">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019183821026.png">
+<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019183821026.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -86,7 +86,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -614,7 +614,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>09-行为型-命令-解释器-中介</div>
-      <div>https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/</div>
+      <div>https://bigotry-zb.github.io.git/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/</div>
     </div>
     <div class="license-meta">
       

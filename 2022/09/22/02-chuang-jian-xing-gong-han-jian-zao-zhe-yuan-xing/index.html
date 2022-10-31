@@ -19,17 +19,17 @@
     <meta name="description" content="一、工厂模式【常用】 一般情况下，工厂模式分为三种更加细分的类型：简单工厂、工厂方法和抽象工厂。不过，在 GoF 的《设计模式》一书中，它将简单工厂模式看作是工厂方法模式的一种特例，所以工厂模式只被分成了工厂方法和抽象工厂两类。实际上，前面一种分类方法更加常见，所以，在今天的讲解中，我们沿用第一种分类方法。 在这三种细分的工厂模式中，简单工厂、工厂方法原理比较简单，在实际的项目中也比较常用。而抽象">
 <meta property="og:type" content="article">
 <meta property="og:title" content="02-创建型-工厂&amp;建造者&amp;原型">
-<meta property="og:url" content="https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/index.html">
+<meta property="og:url" content="https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="一、工厂模式【常用】 一般情况下，工厂模式分为三种更加细分的类型：简单工厂、工厂方法和抽象工厂。不过，在 GoF 的《设计模式》一书中，它将简单工厂模式看作是工厂方法模式的一种特例，所以工厂模式只被分成了工厂方法和抽象工厂两类。实际上，前面一种分类方法更加常见，所以，在今天的讲解中，我们沿用第一种分类方法。 在这三种细分的工厂模式中，简单工厂、工厂方法原理比较简单，在实际的项目中也比较常用。而抽象">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923155455175.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923164243728.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923165539504.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923165730368.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923171124069.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923171203280.png">
-<meta property="og:image" content="https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923171227022.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923155455175.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923164243728.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923165539504.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923165730368.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923171124069.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923171203280.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923171227022.png">
 <meta property="article:published_time" content="2022-09-22T08:40:35.000Z">
 <meta property="article:modified_time" content="2022-10-19T03:35:18.023Z">
 <meta property="article:author" content="Zbiao">
@@ -38,7 +38,7 @@
 <meta property="article:tag" content="建造者">
 <meta property="article:tag" content="原型">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923155455175.png">
+<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/image-20220923155455175.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -87,7 +87,7 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
@@ -784,7 +784,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>02-创建型-工厂&amp;建造者&amp;原型</div>
-      <div>https://bigotry-zb.gitee.io/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/</div>
+      <div>https://bigotry-zb.github.io.git/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/</div>
     </div>
     <div class="license-meta">
       
