@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblogs/img/fluid5.png">
-  <link rel="icon" href="/myblogs/img/fluid5.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid5.png">
+  <link rel="icon" href="/img/fluid5.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="JVM系列参考了尚硅谷的JVM视频教程，以及风祁的时光录的个人博客  是否遇到过这些问题？  运行着的线上系统突然卡死，系统无法访问，甚至直接OOM！ 想解决线上JVM GC问题，但却无从下手。 新项目上线，对各种JVM参数设置一脸茫然，直接默认吧然后就JJ了。 每次面试之前都要重新背一遍JVM的一些原理概念性的东西，然而面试官却经常问你在实际项目中如何调优VM参数，如何解决GC、OOM等问题，">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM-01-JVM与Java体系结构">
-<meta property="og:url" content="https://bigotry-zb.gitee.io/myblogs/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/index.html">
+<meta property="og:url" content="https://bigotry-zb.gitee.io/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="JVM系列参考了尚硅谷的JVM视频教程，以及风祁的时光录的个人博客  是否遇到过这些问题？  运行着的线上系统突然卡死，系统无法访问，甚至直接OOM！ 想解决线上JVM GC问题，但却无从下手。 新项目上线，对各种JVM参数设置一脸茫然，直接默认吧然后就JJ了。 每次面试之前都要重新背一遍JVM的一些原理概念性的东西，然而面试官却经常问你在实际项目中如何调优VM参数，如何解决GC、OOM等问题，">
 <meta property="og:locale" content="zh_CN">
@@ -71,12 +71,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblogs/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblogs/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblogs/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -90,15 +90,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/myblogs/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblogs/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblogs/js/utils.js" ></script>
-  <script  src="/myblogs/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
   
@@ -130,7 +130,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblogs/">
+    <a class="navbar-brand" href="/">
       <strong>ZBiao&#39;s Blog</strong>
     </a>
 
@@ -149,7 +149,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -161,7 +161,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -173,7 +173,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -185,7 +185,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -197,7 +197,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -226,7 +226,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblogs/img/default3.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -338,7 +338,7 @@
     
       
       
-        <a href="/myblogs/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构"
+        <a href="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">JVM-01-JVM与Java体系结构</span>
@@ -347,7 +347,7 @@
     
       
       
-        <a href="/myblogs/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统"
+        <a href="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JVM-02-类加载子系统</span>
@@ -356,7 +356,7 @@
     
       
       
-        <a href="/myblogs/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/" title="JVM-03-运行时数据区"
+        <a href="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/" title="JVM-03-运行时数据区"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JVM-03-运行时数据区</span>
@@ -398,9 +398,9 @@
 <li>每次面试之前都要重新背一遍JVM的一些原理概念性的东西，然而面试官却经常问你在实际项目中如何调优VM参数，如何解决GC、OOM等问题，一脸懵逼。</li>
 </ol>
 <h2 id="1、Java及JVM简介">1、Java及JVM简介</h2>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162119621.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162119621.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>如果我们把核心类库的API比做数学公式的话，那么Java虚拟机的知识就好比公式的推导过程。</p>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162207599.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162207599.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>计算机系统体系对我们来说越来越远，在不了解底层实现方式的前提下，通过高级语言很容易编写程序代码。但事实上计算机并不认识高级语言。</p>
 <p>So，架构师每天都在思考什么？</p>
 <ol>
@@ -410,16 +410,16 @@
 <h3 id="1、推荐书目">1、推荐书目</h3>
 <p><strong>官方文档</strong></p>
 <p><strong>英文文档规范</strong>：<a target="_blank" rel="noopener" href="https://docs.oracle.com/javase/specs/index.html">https://docs.oracle.com/javase/specs/index.html</a></p>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162737446.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162737446.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>中文书籍：</strong></p>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162826232.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162848622.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162826232.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162848622.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3 id="2、Java-VS-C">2、Java VS C++</h3>
 <ol>
 <li>垃圾收集机制为我们打理了很多繁琐的工作，大大提高了开发的效率，但是，垃圾收集也不是万能的，懂得JVM内部的内存结构、工作机制，是设计高扩展性应用和诊断运行时问题的基础，也是Java工程师进阶的必备能力。</li>
 <li>C++语言需要程序员自己来分配内存和回收内存，对于高手来说可能更加舒服，但是对于普通开发者，如果技术实力不够，很容易造成内存泄漏。而Java全部交给JVM进行内存分配和回收，这也是一种趋势，减少程序员的工作量。</li>
 </ol>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162556628.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021162556628.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3 id="3、Java生态圈">3、Java生态圈</h3>
 <p>Java是目前应用最为广泛的软件开发平台之一。随着Java以及Java社区的不断壮大Java 也早已不再是简简单单的一门计算机语言了，它更是一个平台、一种文化、一个社区。</p>
 <ol>
@@ -440,11 +440,11 @@
 <p>Java-跨平台的语言</p>
 </blockquote>
 <p>下面这张图就很形象</p>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021163236035.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021163236035.png" srcset="/img/loading.gif" lazyload alt></p>
 <blockquote>
 <p>JVM-跨语言的平台</p>
 </blockquote>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021163440775.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021163440775.png" srcset="/img/loading.gif" lazyload alt></p>
 <ul>
 <li>随着Java7的正式发布，Java虚拟机的设计者们通过JSR-292规范基本实现<code>在Java虚拟机平台上运行非Java语言编写的程序</code>。</li>
 <li>Java虚拟机根本不关心运行在其内部的程序到底是使用何种编程语言编写的，它<code>只关心“字节码”文件</code>。也就是说Java虚拟机拥有语言无关性，并不会单纯地与Java语言“终身绑定”，只要其他编程语言的编译结果满足并包含Java虚拟机的内部指令集、符号表以及其他的辅助信息，它就是一个有效的字节码文件，就能够被虚拟机所识别并装载运行。</li>
@@ -467,7 +467,7 @@
 <blockquote>
 <p>Java代码执行流程</p>
 </blockquote>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021165300594.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021165300594.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3 id="4、虚拟机">4、虚拟机</h3>
 <h4 id="1、虚拟机概念">1、虚拟机概念</h4>
 <ul>
@@ -501,9 +501,9 @@
 <li>自动垃圾回收功能</li>
 </ol>
 <h3 id="5、JVM位置及整体架构">5、JVM位置及整体架构</h3>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021164330033.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021164330033.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>JVM是运行在操作系统之上的，它与硬件没有直接的交互</p>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021164401275.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021164401275.png" srcset="/img/loading.gif" lazyload alt></p>
 <ol>
 <li>HotSpot VM是目前市面上高性能虚拟机的代表作之一。</li>
 <li>它采用解释器与即时编译器并存的架构。</li>
@@ -512,7 +512,7 @@
 <blockquote>
 <p>下面这张图要会画</p>
 </blockquote>
-<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021164535409.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/image-20221021164535409.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3 id="6、JVM的架构模型">6、JVM的架构模型</h3>
 <p>Java编译器输入的指令流基本上是一种<strong>基于栈的指令集架构</strong>，另外一种指令集架构则是<strong>基于寄存器的指令集架构</strong>。</p>
 <blockquote>
@@ -703,7 +703,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblogs/categories/JVM/" class="category-chain-item">JVM</a>
+  <a href="/categories/JVM/" class="category-chain-item">JVM</a>
   
   
 
@@ -718,9 +718,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/myblogs/tags/java/">#java</a>
+        <a href="/tags/java/">#java</a>
       
-        <a href="/myblogs/tags/JVM/">#JVM</a>
+        <a href="/tags/JVM/">#JVM</a>
       
     </div>
   
@@ -733,7 +733,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JVM-01-JVM与Java体系结构</div>
-      <div>https://bigotry-zb.gitee.io/myblogs/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/</div>
+      <div>https://bigotry-zb.gitee.io/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/</div>
     </div>
     <div class="license-meta">
       
@@ -777,7 +777,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblogs/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统">
+                      <a href="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">JVM-02-类加载子系统</span>
                         <span class="visible-mobile">上一篇</span>
@@ -787,7 +787,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblogs/2022/10/20/z-liu-xing-de-yun/" title="Z-《流行的云》">
+                      <a href="/2022/10/20/z-liu-xing-de-yun/" title="Z-《流行的云》">
                         <span class="hidden-mobile">Z-《流行的云》</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -906,7 +906,7 @@
       <span class="beian-police">
         
           <span style="visibility: hidden; width: 0">|</span>
-          <img src="/myblogs/img/police_beian.png" srcset="/myblogs/img/loading.gif" lazyload alt="police-icon"/>
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
         
         <span class="beian-police">陕ICP备2022012442号 - 1</span>
       </span>
@@ -936,8 +936,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblogs/js/events.js" ></script>
-<script  src="/myblogs/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -959,7 +959,7 @@
 
 
   
-    <script  src="/myblogs/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1058,7 +1058,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblogs/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -1066,7 +1066,7 @@
 
 
   
-<script src="/myblogs/js/diy/timeDate.js"></script>
+<script src="/js/diy/timeDate.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
@@ -1075,7 +1075,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblogs/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

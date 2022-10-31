@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblogs/img/fluid5.png">
-  <link rel="icon" href="/myblogs/img/fluid5.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid5.png">
+  <link rel="icon" href="/img/fluid5.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="一、命令模式命令模式(Command Pattern)：将一个请求封装为一个对象，从而让我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。 命令模式通俗点来讲，举个例子，司令员下令让士兵去干件事情，从整个事情的角度来考虑，司令员的作用是，发出口令，口令经过传递，传">
 <meta property="og:type" content="article">
 <meta property="og:title" content="09-行为型-命令-解释器-中介">
-<meta property="og:url" content="https://bigotry-zb.gitee.io/myblogs/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/index.html">
+<meta property="og:url" content="https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="一、命令模式命令模式(Command Pattern)：将一个请求封装为一个对象，从而让我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。 命令模式通俗点来讲，举个例子，司令员下令让士兵去干件事情，从整个事情的角度来考虑，司令员的作用是，发出口令，口令经过传递，传">
 <meta property="og:locale" content="zh_CN">
@@ -67,12 +67,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblogs/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblogs/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblogs/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -86,15 +86,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/myblogs/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblogs/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblogs/js/utils.js" ></script>
-  <script  src="/myblogs/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
   
@@ -126,7 +126,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblogs/">
+    <a class="navbar-brand" href="/">
       <strong>ZBiao&#39;s Blog</strong>
     </a>
 
@@ -145,7 +145,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -157,7 +157,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -169,7 +169,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -181,7 +181,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -193,7 +193,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -222,7 +222,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblogs/img/default3.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -334,7 +334,7 @@
     
       
       
-        <a href="/myblogs/2022/09/21/01-chuang-jian-xing-dan-li/" title="01-创建型-单例"
+        <a href="/2022/09/21/01-chuang-jian-xing-dan-li/" title="01-创建型-单例"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">01-创建型-单例</span>
@@ -343,7 +343,7 @@
     
       
       
-        <a href="/myblogs/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/" title="02-创建型-工厂&amp;建造者&amp;原型"
+        <a href="/2022/09/22/02-chuang-jian-xing-gong-han-jian-zao-zhe-yuan-xing/" title="02-创建型-工厂&amp;建造者&amp;原型"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">02-创建型-工厂&amp;建造者&amp;原型</span>
@@ -352,7 +352,7 @@
     
       
       
-        <a href="/myblogs/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接"
+        <a href="/2022/09/23/03-jie-gou-xing-dai-li-qiao-jie/" title="03-结构型-代理-桥接"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">03-结构型-代理-桥接</span>
@@ -361,7 +361,7 @@
     
       
       
-        <a href="/myblogs/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/" title="04-结构型-装饰器-适配器"
+        <a href="/2022/09/23/04-jie-gou-xing-zhuang-shi-qi-gua-pei-qi/" title="04-结构型-装饰器-适配器"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">04-结构型-装饰器-适配器</span>
@@ -370,7 +370,7 @@
     
       
       
-        <a href="/myblogs/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元"
+        <a href="/2022/09/27/05-jie-gou-xing-men-mian-zu-he-xiang-yuan/" title="05-结构型-门面-组合-享元"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">05-结构型-门面-组合-享元</span>
@@ -379,7 +379,7 @@
     
       
       
-        <a href="/myblogs/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/" title="06-行为型-观察者-模板"
+        <a href="/2022/09/27/06-xing-wei-xing-guan-cha-zhe-mo-ban/" title="06-行为型-观察者-模板"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">06-行为型-观察者-模板</span>
@@ -388,7 +388,7 @@
     
       
       
-        <a href="/myblogs/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链"
+        <a href="/2022/10/11/07-xing-wei-xing-ce-lue-zhi-ze-lian/" title="07-行为型-策略-职责链"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">07-行为型-策略-职责链</span>
@@ -397,7 +397,7 @@
     
       
       
-        <a href="/myblogs/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器"
+        <a href="/2022/10/12/08-xing-wei-xing-zhuang-tai-die-dai-qi/" title="08-行为型-状态-迭代器"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">08-行为型-状态-迭代器</span>
@@ -406,7 +406,7 @@
     
       
       
-        <a href="/myblogs/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/" title="09-行为型-命令-解释器-中介"
+        <a href="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/" title="09-行为型-命令-解释器-中介"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">09-行为型-命令-解释器-中介</span>
@@ -415,7 +415,7 @@
     
       
       
-        <a href="/myblogs/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者"
+        <a href="/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">10-行为型-备忘录-访问者</span>
@@ -424,7 +424,7 @@
     
       
       
-        <a href="/myblogs/2022/09/21/she-ji-mo-shi-gai-shu/" title="设计模式概述"
+        <a href="/2022/09/21/she-ji-mo-shi-gai-shu/" title="设计模式概述"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">设计模式概述</span>
@@ -458,7 +458,7 @@
                 <h1 id="一、命令模式"><a href="#一、命令模式" class="headerlink" title="一、命令模式"></a>一、命令模式</h1><p>命令模式(Command Pattern)：将一个请求封装为一个对象，从而让我们可用不同的请求对客户进行参数化；对请求排队或者记录请求日志，以及支持可撤销的操作。命令模式是一种对象行为型模式，其别名为动作(Action)模式或事务(Transaction)模式。</p>
 <p>命令模式通俗点来讲，举个例子，司令员下令让士兵去干件事情，从整个事情的角度来考虑，司令员的作用是，发出口令，口令经过传递，传到了士兵耳朵里，士兵去执行。这个过程好在，三者相互解耦，任何一方都不用去依赖其他人，只需要做好自己的事儿就行，司令员要的是结果，不会去关注到底士兵是怎么实现的。</p>
 <p>关系图如下：</p>
-<p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019183821026.png" srcset="/myblogs/img/loading.gif" lazyload></p>
+<p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019183821026.png" srcset="/img/loading.gif" lazyload></p>
 <ul>
 <li><strong>Command</strong>  一个具体命令的抽象接口。</li>
 <li><strong>ConcreteCommand</strong>  就是其具体的一个实现，你可以有多个<code>Command</code>接口的实现。具体命令本身并不实现具体的业务命令， 而是会将调用委派给一个业务逻辑对象去执行。</li>
@@ -489,7 +489,7 @@
 <p>上面的形式比较单一、有限，如果形式变化非常多，这就不符合要求，因为加法和减法运算，两个运算符与数值可以有无限种组合方式。比如 1+2+3+4+5、1+2+3-4等等。</p>
 <p>现在需要一种翻译识别机器，能够解析由数字以及 + - 符号构成的合法的运算序列。如果把运算符和数字都看作节点的话，能够逐个节点的进行读取解析运算，这就是解释器模式的思维。</p>
 <p>类图：</p>
-<p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019184910429.png" srcset="/myblogs/img/loading.gif" lazyload></p>
+<p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019184910429.png" srcset="/img/loading.gif" lazyload></p>
 <p>解释器的主要角色：</p>
 <ul>
 <li>抽象解释器(AbstractExpression/Expression)：声明一个所有具体表达式都要实现的抽象接口（或者抽象类），接口中主要是一个interpret()方法，称为解释操作。具体解释任务由它的各个实现类来完成，具体的解释器分别由终结符解释器TerminalExpression和非终结符解释器NonterminalExpression完成。</li>
@@ -514,7 +514,7 @@
 
 <h3 id="8、Application"><a href="#8、Application" class="headerlink" title="8、Application"></a>8、Application</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Application</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Context</span> <span class="hljs-variable">context</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Context</span>();<br>        context.addValue(<span class="hljs-string">&quot;a&quot;</span>, <span class="hljs-number">6</span>);<br>        context.addValue(<span class="hljs-string">&quot;b&quot;</span>, <span class="hljs-number">9</span>);<br>        context.addValue(<span class="hljs-string">&quot;c&quot;</span>, <span class="hljs-number">1</span>);<br><br>        <span class="hljs-type">Variable</span> <span class="hljs-variable">a</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Variable</span>(<span class="hljs-string">&quot;a&quot;</span>);<br>        <span class="hljs-type">Variable</span> <span class="hljs-variable">b</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Variable</span>(<span class="hljs-string">&quot;b&quot;</span>);<br>        <span class="hljs-type">Variable</span> <span class="hljs-variable">c</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Variable</span>(<span class="hljs-string">&quot;c&quot;</span>);<br><br>        <span class="hljs-type">AbstractExpression</span> <span class="hljs-variable">multiplyValue</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Multiply</span>(a, b);<br>        <span class="hljs-type">AbstractExpression</span> <span class="hljs-variable">subtractValue</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Subtract</span>(a, b);<br>        <span class="hljs-type">AbstractExpression</span> <span class="hljs-variable">addValue</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Add</span>(subtractValue, c);<br>        <span class="hljs-type">AbstractExpression</span> <span class="hljs-variable">divisionValue</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Division</span>(multiplyValue, addValue);<br><br>        log.info(<span class="hljs-string">&quot;&#123;&#125;&quot;</span>, context.getValueMap());<br>        log.info(<span class="hljs-string">&quot;(a*b)/(a-b+c) = &#123;&#125;&quot;</span>, divisionValue.interpreter(context));<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="9、结果"><a href="#9、结果" class="headerlink" title="9、结果"></a>9、结果</h3><p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019205702816.png" srcset="/myblogs/img/loading.gif" lazyload></p>
+<h3 id="9、结果"><a href="#9、结果" class="headerlink" title="9、结果"></a>9、结果</h3><p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019205702816.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="2、解释器模式使用场景"><a href="#2、解释器模式使用场景" class="headerlink" title="2、解释器模式使用场景"></a>2、解释器模式使用场景</h2><ul>
 <li>当语言的文法较为简单，且执行效率不是关键问题时。</li>
 <li>当问题重复出现，且可以用一种简单的语言来进行表达时。</li>
@@ -528,10 +528,10 @@
 </ol>
 <h1 id="三、中介模式"><a href="#三、中介模式" class="headerlink" title="三、中介模式"></a>三、中介模式</h1><p>中介者模式(Mediator Pattern)：用一个中介对象（中介者）来封装一系列的对象交互，中介者使各对象不需要显式地相互引用，从而使其耦合松散，而且可以独立地改变它们之间的交互。中介者模式又称为调停者模式，它是一种对象行为型模式。</p>
 <p>下面的图可以更好的理解中介模式。</p>
-<p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019212125724.png" srcset="/myblogs/img/loading.gif" lazyload></p>
+<p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019212125724.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="1、Demo案例-租房问题"><a href="#1、Demo案例-租房问题" class="headerlink" title="1、Demo案例-租房问题"></a>1、Demo案例-租房问题</h2><p>现在租房基本都是通过房屋中介，房主将房屋托管给房屋中介，而租房者从房屋中介获取房屋信息。房屋中介充当租房者与房屋所有者之间的中介者</p>
 <p>类图如下：</p>
-<p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019213747108.png" srcset="/myblogs/img/loading.gif" lazyload></p>
+<p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019213747108.png" srcset="/img/loading.gif" lazyload></p>
 <h3 id="1、Mediator"><a href="#1、Mediator" class="headerlink" title="1、Mediator"></a>1、Mediator</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Mediator</span> &#123;<br>    <span class="hljs-comment">//声明一个联络方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">constact</span><span class="hljs-params">(String message, Person person)</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <h3 id="2、Person"><a href="#2、Person" class="headerlink" title="2、Person"></a>2、Person</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">abstract</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Person</span> &#123;<br>    <span class="hljs-keyword">protected</span> String name;<br>    <span class="hljs-keyword">protected</span> Mediator mediator;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Person</span><span class="hljs-params">(String name, Mediator mediator)</span> &#123;<br>        <span class="hljs-built_in">this</span>.name = name;<br>        <span class="hljs-built_in">this</span>.mediator = mediator;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -544,7 +544,7 @@
 
 <h3 id="6、Client"><a href="#6、Client" class="headerlink" title="6、Client"></a>6、Client</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Client</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-comment">//房主 租房者 中介机构</span><br>        <span class="hljs-type">MediatorStructure</span> <span class="hljs-variable">mediator</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">MediatorStructure</span>();<br><br>        <span class="hljs-comment">//房主和租房者只需要知道中介机构即可</span><br>        <span class="hljs-type">HouseOwner</span> <span class="hljs-variable">houseOwner</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">HouseOwner</span>(<span class="hljs-string">&quot;张三&quot;</span>, mediator);<br>        <span class="hljs-type">Tenant</span> <span class="hljs-variable">tenant</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Tenant</span>(<span class="hljs-string">&quot;李四&quot;</span>, mediator);<br><br>        <span class="hljs-comment">//中介机构需要知道房主和租房者</span><br>        mediator.setHouseOwner(houseOwner);<br>        mediator.setTenant(tenant);<br><br>        tenant.constact(<span class="hljs-string">&quot;需要租一间房子&quot;</span>);<br>        houseOwner.constact(<span class="hljs-string">&quot;我有一间房子，你要租吗？？？&quot;</span>);<br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
-<h3 id="7、结果"><a href="#7、结果" class="headerlink" title="7、结果"></a>7、结果</h3><p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019212554026.png" srcset="/myblogs/img/loading.gif" lazyload></p>
+<h3 id="7、结果"><a href="#7、结果" class="headerlink" title="7、结果"></a>7、结果</h3><p><img src="/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/image-20221019212554026.png" srcset="/img/loading.gif" lazyload></p>
 <h2 id="2、优缺点"><a href="#2、优缺点" class="headerlink" title="2、优缺点"></a>2、优缺点</h2><p><strong>优点：</strong></p>
 <ul>
 <li>中介者模式简化了对象之间的交互，它用中介者和同事的一对多交互代替了原来同事之间的多对多交互，一对多关系更容易理解、维护和扩展，将原本难以理解的网状结构转换成相对简单的星型结构。</li>
@@ -580,7 +580,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblogs/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">设计模式</a>
+  <a href="/categories/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/" class="category-chain-item">设计模式</a>
   
   
 
@@ -595,13 +595,13 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/myblogs/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
+        <a href="/tags/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F/">#设计模式</a>
       
-        <a href="/myblogs/tags/%E5%91%BD%E4%BB%A4/">#命令</a>
+        <a href="/tags/%E5%91%BD%E4%BB%A4/">#命令</a>
       
-        <a href="/myblogs/tags/%E8%A7%A3%E9%87%8A%E5%99%A8/">#解释器</a>
+        <a href="/tags/%E8%A7%A3%E9%87%8A%E5%99%A8/">#解释器</a>
       
-        <a href="/myblogs/tags/%E4%B8%AD%E4%BB%8B/">#中介</a>
+        <a href="/tags/%E4%B8%AD%E4%BB%8B/">#中介</a>
       
     </div>
   
@@ -614,7 +614,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>09-行为型-命令-解释器-中介</div>
-      <div>https://bigotry-zb.gitee.io/myblogs/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/</div>
+      <div>https://bigotry-zb.gitee.io/2022/10/19/09-xing-wei-xing-ming-ling-jie-shi-qi-zhong-jie/</div>
     </div>
     <div class="license-meta">
       
@@ -658,7 +658,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblogs/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者">
+                      <a href="/2022/10/19/10-xing-wei-xing-bei-wang-lu-fang-wen-zhe/" title="10-行为型-备忘录-访问者">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">10-行为型-备忘录-访问者</span>
                         <span class="visible-mobile">上一篇</span>
@@ -668,7 +668,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblogs/2022/10/18/nohup-shi-me-dong-xi/" title="nohup什么东西？">
+                      <a href="/2022/10/18/nohup-shi-me-dong-xi/" title="nohup什么东西？">
                         <span class="hidden-mobile">nohup什么东西？</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -787,7 +787,7 @@
       <span class="beian-police">
         
           <span style="visibility: hidden; width: 0">|</span>
-          <img src="/myblogs/img/police_beian.png" srcset="/myblogs/img/loading.gif" lazyload alt="police-icon"/>
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
         
         <span class="beian-police">陕ICP备2022012442号 - 1</span>
       </span>
@@ -817,8 +817,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblogs/js/events.js" ></script>
-<script  src="/myblogs/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -840,7 +840,7 @@
 
 
   
-    <script  src="/myblogs/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -939,7 +939,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblogs/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -947,7 +947,7 @@
 
 
   
-<script src="/myblogs/js/diy/timeDate.js"></script>
+<script src="/js/diy/timeDate.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
@@ -956,7 +956,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblogs/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   

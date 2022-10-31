@@ -7,8 +7,8 @@
 
 <head>
   <meta charset="UTF-8">
-  <link rel="apple-touch-icon" sizes="76x76" href="/myblogs/img/fluid5.png">
-  <link rel="icon" href="/myblogs/img/fluid5.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid5.png">
+  <link rel="icon" href="/img/fluid5.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   
@@ -19,7 +19,7 @@
     <meta name="description" content="1、类加载子系统 1、内存结构概述 1、简图  2、详细图 英文版  中文版  2、类加载器子系统 1、类加载器子系统的作用  类加载器子系统负责从文件系统或者网络中加载Class文件，class文件在文件开头有特定的文件标识。 ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine（执行引擎）决定。 （比如：别人给你介绍对象，能不能成另说。其中">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM-02-类加载子系统">
-<meta property="og:url" content="https://bigotry-zb.gitee.io/myblogs/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/index.html">
+<meta property="og:url" content="https://bigotry-zb.gitee.io/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="1、类加载子系统 1、内存结构概述 1、简图  2、详细图 英文版  中文版  2、类加载器子系统 1、类加载器子系统的作用  类加载器子系统负责从文件系统或者网络中加载Class文件，class文件在文件开头有特定的文件标识。 ClassLoader只负责class文件的加载，至于它是否可以运行，则由Execution Engine（执行引擎）决定。 （比如：别人给你介绍对象，能不能成另说。其中">
 <meta property="og:locale" content="zh_CN">
@@ -81,12 +81,12 @@
 <link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
 
 
-<link  rel="stylesheet" href="/myblogs/css/main.css" />
+<link  rel="stylesheet" href="/css/main.css" />
 
 
-  <link id="highlight-css" rel="stylesheet" href="/myblogs/css/highlight.css" />
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/myblogs/css/highlight-dark.css" />
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
   
 
 
@@ -100,15 +100,15 @@
   <script id="fluid-configs">
     var Fluid = window.Fluid || {};
     Fluid.ctx = Object.assign({}, Fluid.ctx)
-    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/myblogs/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/myblogs/local-search.xml"};
+    var CONFIG = {"hostname":"bigotry-zb.gitee.io","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
 
     if (CONFIG.web_analytics.follow_dnt) {
       var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
       Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
     }
   </script>
-  <script  src="/myblogs/js/utils.js" ></script>
-  <script  src="/myblogs/js/color-schema.js" ></script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
   
 
   
@@ -140,7 +140,7 @@
 <div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
-    <a class="navbar-brand" href="/myblogs/">
+    <a class="navbar-brand" href="/">
       <strong>ZBiao&#39;s Blog</strong>
     </a>
 
@@ -159,7 +159,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/">
+              <a class="nav-link" href="/">
                 <i class="iconfont icon-home-fill"></i>
                 首页
               </a>
@@ -171,7 +171,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/archives/">
+              <a class="nav-link" href="/archives/">
                 <i class="iconfont icon-archive-fill"></i>
                 归档
               </a>
@@ -183,7 +183,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/categories/">
+              <a class="nav-link" href="/categories/">
                 <i class="iconfont icon-category-fill"></i>
                 分类
               </a>
@@ -195,7 +195,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/tags/">
+              <a class="nav-link" href="/tags/">
                 <i class="iconfont icon-tags-fill"></i>
                 标签
               </a>
@@ -207,7 +207,7 @@
           
           
             <li class="nav-item">
-              <a class="nav-link" href="/myblogs/about/">
+              <a class="nav-link" href="/about/">
                 <i class="iconfont icon-user-fill"></i>
                 关于
               </a>
@@ -236,7 +236,7 @@
   
 
 <div id="banner" class="banner" parallax=true
-     style="background: url('/myblogs/img/default3.png') no-repeat center center; background-size: cover;">
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
   <div class="full-bg-img">
     <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
       <div class="banner-text text-center fade-in-up">
@@ -348,7 +348,7 @@
     
       
       
-        <a href="/myblogs/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构"
+        <a href="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JVM-01-JVM与Java体系结构</span>
@@ -357,7 +357,7 @@
     
       
       
-        <a href="/myblogs/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统"
+        <a href="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">JVM-02-类加载子系统</span>
@@ -366,7 +366,7 @@
     
       
       
-        <a href="/myblogs/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/" title="JVM-03-运行时数据区"
+        <a href="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/" title="JVM-03-运行时数据区"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JVM-03-运行时数据区</span>
@@ -400,12 +400,12 @@
                 <h2 id="1、类加载子系统">1、类加载子系统</h2>
 <h3 id="1、内存结构概述">1、内存结构概述</h3>
 <h4 id="1、简图">1、简图</h4>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024163558872.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024163558872.png" srcset="/img/loading.gif" lazyload alt></p>
 <h4 id="2、详细图">2、详细图</h4>
 <p>英文版</p>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024164417433.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024164417433.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>中文版</p>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024164544639.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024164544639.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3 id="2、类加载器子系统">2、类加载器子系统</h3>
 <h4 id="1、类加载器子系统的作用">1、类加载器子系统的作用</h4>
 <ol>
@@ -414,16 +414,16 @@
 （比如：别人给你介绍对象，能不能成另说。其中ClassLoader只负责别人介绍对象，能不能成全看你）</li>
 <li><strong>加载的类信息存放于一块称为方法区的内存空间</strong>。除了类的信息外，方法区中还会存放运行时常量池信息，可能还包括字符串字面量和数字常量（这部分常量信息是Class文件中常量池部分的内存映射）</li>
 </ol>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024164911148.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024164911148.png" srcset="/img/loading.gif" lazyload alt></p>
 <h4 id="2、类加载器ClassLoader角色">2、类加载器ClassLoader角色</h4>
 <ol>
 <li>class file（在下图中就是Car.class文件）存在于本地硬盘上，可以理解为设计师画在纸上的模板，而最终这个模板在执行的时候是要加载到JVM当中来根据这个文件实例化出n个一模一样的实例。</li>
 <li>class file加载到JVM中，被称为DNA元数据模板（在下图中就是内存中的Car Class），放在方法区。</li>
 <li>在.class文件–&gt;JVM–&gt;最终成为元数据模板，此过程就要一个运输工具（类装载器Class Loader），扮演一个快递员的角色。</li>
 </ol>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024165223695.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024165223695.png" srcset="/img/loading.gif" lazyload alt></p>
 <h3 id="3、类加载过程">3、类加载过程</h3>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024165836131.png" srcset="/myblogs/img/loading.gif" lazyload alt="类加载过程"></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024165836131.png" srcset="/img/loading.gif" lazyload alt="类加载过程"></p>
 <h4 id="1、Demo">1、Demo</h4>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">HelloLoader</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;谢谢ClassLoader加载我....&quot;</span>);<br>        System.out.println(<span class="hljs-string">&quot;你的大恩大德，我下辈子再报！&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>加载过程如下：</p>
@@ -432,7 +432,7 @@
 <li>加载成功，则进行链接、初始化等操作。完成后调用 HelloLoader 类中的静态方法 main</li>
 <li>加载失败则抛出异常</li>
 </ol>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024170014984.png" srcset="/myblogs/img/loading.gif" lazyload alt="类加载过程示意图"></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024170014984.png" srcset="/img/loading.gif" lazyload alt="类加载过程示意图"></p>
 <h4 id="2、加载（Loading）">2、加载（Loading）</h4>
 <p>加载：</p>
 <ol>
@@ -459,7 +459,7 @@
 <li>主要包括四种验证，文件格式验证，元数据验证，字节码验证，符号引用验证。</li>
 </ol>
 <p>使用 BinaryViewer软件查看字节码文件，其开头均为 CAFE BABE （java），如果出现不合法的字节码文件，那么将会验证不通过。</p>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024171040995.png" srcset="/myblogs/img/loading.gif" lazyload alt=".class文件"></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024171040995.png" srcset="/img/loading.gif" lazyload alt=".class文件"></p>
 <h5 id="2、准备-Prepare">2、准备(Prepare)</h5>
 <ol>
 <li>为类变量（static变量）分配内存并且设置该类变量的默认初始值，即零值</li>
@@ -481,7 +481,7 @@
 <blockquote>
 <p>符号引用：反编译 class 文件后可以查看符号引用，下面带# 的就是符号引用</p>
 </blockquote>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024182616267.png" srcset="/myblogs/img/loading.gif" lazyload alt="查看符号引用"></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024182616267.png" srcset="/img/loading.gif" lazyload alt="查看符号引用"></p>
 <h4 id="4、初始化（Initialization）">4、初始化（Initialization）</h4>
 <p>类的初始化时机：</p>
 <ol>
@@ -508,7 +508,7 @@
 </blockquote>
 <h5 id="1、有static变量">1、有static变量</h5>
 <p>查看下面这个代码的字节码，可以发现有一个<code>&lt;clinit&gt;()</code>方法。</p>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024185101090.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024185101090.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClassInitTest</span> &#123;<br>   <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">num</span> <span class="hljs-operator">=</span> <span class="hljs-number">1</span>;<br><br>   <span class="hljs-keyword">static</span>&#123;<br>       num = <span class="hljs-number">2</span>;<br>       number = <span class="hljs-number">20</span>;<br>       System.out.println(num);<br>       <span class="hljs-comment">//System.out.println(number);//报错：非法的前向引用。</span><br>   &#125;<br><br>   <span class="hljs-comment">/**</span><br><span class="hljs-comment">    * 1、linking之prepare: number = 0 --&gt; initial: 20 --&gt; 10</span><br><span class="hljs-comment">    * 2、这里因为静态代码块出现在声明变量语句前面，所以之前被准备阶段为0的number变量会</span><br><span class="hljs-comment">    * 首先被初始化为20，再接着被初始化成10（这也是面试时常考的问题哦）</span><br><span class="hljs-comment">    *</span><br><span class="hljs-comment">    */</span><br>   <span class="hljs-keyword">private</span> <span class="hljs-keyword">static</span> <span class="hljs-type">int</span> <span class="hljs-variable">number</span> <span class="hljs-operator">=</span> <span class="hljs-number">10</span>;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(ClassInitTest.num);<span class="hljs-comment">//2</span><br>        System.out.println(ClassInitTest.number);<span class="hljs-comment">//10</span><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>&lt;clint字节码&gt;：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-number">0</span> iconst_1<br> <span class="hljs-number">1</span> putstatic #<span class="hljs-number">3</span> &lt;com/atguigu/java/ClassInitTest.num&gt;<br> <span class="hljs-number">4</span> iconst_2<br> <span class="hljs-number">5</span> putstatic #<span class="hljs-number">3</span> &lt;com/atguigu/java/ClassInitTest.num&gt;<br> <span class="hljs-number">8</span> bipush <span class="hljs-number">20</span>	 <span class="hljs-comment">//先赋20</span><br><span class="hljs-number">10</span> putstatic #<span class="hljs-number">5</span> &lt;com/atguigu/java/ClassInitTest.number&gt;<br><span class="hljs-number">13</span> getstatic #<span class="hljs-number">2</span> &lt;java/lang/System.out&gt;<br><span class="hljs-number">16</span> getstatic #<span class="hljs-number">3</span> &lt;com/atguigu/java/ClassInitTest.num&gt;<br><span class="hljs-number">19</span> invokevirtual #<span class="hljs-number">4</span> &lt;java/io/PrintStream.println&gt;<br><span class="hljs-number">22</span> bipush <span class="hljs-number">10</span>	<span class="hljs-comment">//再赋10</span><br><span class="hljs-number">24</span> putstatic #<span class="hljs-number">5</span> &lt;com/atguigu/java/ClassInitTest.number&gt;<br><span class="hljs-number">27</span> <span class="hljs-keyword">return</span><br></code></pre></td></tr></table></figure>
@@ -516,10 +516,10 @@
 <p>当我们代码中包含static变量的时候，就会有clinit方法</p>
 </blockquote>
 <h5 id="2、无-static-变量">2、无 static 变量</h5>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024185305810.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024185305810.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>没有clinit是因为没有static变量</p>
 <h5 id="3、构造器">3、构造器</h5>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024185513790.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024185513790.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>构造器对应的是右边的init()</p>
 <p>在构造器中：</p>
 <ul>
@@ -528,7 +528,7 @@
 </ul>
 <h5 id="4、拥有父类的类">4、拥有父类的类</h5>
 <p>若该类具有父类，JVM会保证子类的<code>&lt;clinit&gt;()</code>执行前，父类的<code>&lt;clinit&gt;()</code>已经执行完毕</p>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024185655011.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024185655011.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>如上代码，加载流程如下：</p>
 <ul>
 <li>首先，执行 main() 方法需要加载 ClinitTest1 类</li>
@@ -553,12 +553,12 @@
 <li>从概念上来讲，自定义类加载器一般指的是程序中由开发人员自定义的一类类加载器，但是Java虚拟机规范却没有这么定义，而是<strong>将所有派生于抽象类ClassLoader的类加载器都划分为自定义类加载器</strong></li>
 <li>无论类加载器的类型如何划分，在程序中我们最常见的类加载器始终只有3个，如下所示</li>
 </ol>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024191612814.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024191612814.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>Optional四者之间的关系是包含关系。不是上层下层，也不是子父类的 继承关系。</p>
 <p><strong>ExtClassLoader</strong></p>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024191738052.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024191738052.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>AppClassLoader</strong></p>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024191755771.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221024191755771.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClassLoaderTest</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br><br>        <span class="hljs-comment">//获取系统类加载器</span><br>        <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">systemClassLoader</span> <span class="hljs-operator">=</span> ClassLoader.getSystemClassLoader();<br>        System.out.println(systemClassLoader); <span class="hljs-comment">//sun.misc.Launcher$AppClassLoader@18b4aac2</span><br><br>        <span class="hljs-comment">//获取其上层：扩展类加载器</span><br>        <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">extClassLoader</span> <span class="hljs-operator">=</span> systemClassLoader.getParent();<br>        System.out.println(extClassLoader);<span class="hljs-comment">//sun.misc.Launcher$ExtClassLoader@1540e19d</span><br><br>        <span class="hljs-comment">//获取其上层：获取不到引导类加载器</span><br>        <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">bootstrapClassLoader</span> <span class="hljs-operator">=</span> extClassLoader.getParent();<br>        System.out.println(bootstrapClassLoader);<span class="hljs-comment">//null</span><br><br>        <span class="hljs-comment">//对于用户自定义类来说：默认使用系统类加载器进行加载</span><br>        <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">classLoader</span> <span class="hljs-operator">=</span> ClassLoaderTest.class.getClassLoader();<br>        System.out.println(classLoader);<span class="hljs-comment">//sun.misc.Launcher$AppClassLoader@18b4aac2</span><br><br>        <span class="hljs-comment">//String类使用引导类加载器进行加载的。---&gt; Java的核心类库都是使用引导类加载器进行加载的。</span><br>        <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">classLoader1</span> <span class="hljs-operator">=</span> String.class.getClassLoader();<br>        System.out.println(classLoader1);<span class="hljs-comment">//null</span><br><br><br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <ul>
 <li>我们尝试获取引导类加载器，获取到的值为 null ，这并不代表引导类加载器不存在，<strong>因为引导类加载器右 C/C++ 语言，我们获取不到</strong></li>
@@ -614,13 +614,13 @@
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">CustomClassLoader</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_">ClassLoader</span> &#123;<br>    <span class="hljs-meta">@Override</span><br>    <span class="hljs-keyword">protected</span> Class&lt;?&gt; findClass(String name) <span class="hljs-keyword">throws</span> ClassNotFoundException &#123;<br><br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-type">byte</span>[] result = getClassFromCustomPath(name);<br>            <span class="hljs-keyword">if</span> (result == <span class="hljs-literal">null</span>) &#123;<br>                <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">FileNotFoundException</span>();<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-comment">//defineClass和findClass搭配使用</span><br>                <span class="hljs-keyword">return</span> defineClass(name, result, <span class="hljs-number">0</span>, result.length);<br>            &#125;<br>        &#125; <span class="hljs-keyword">catch</span> (FileNotFoundException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br><br>        <span class="hljs-keyword">throw</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">ClassNotFoundException</span>(name);<br>    &#125;<br>	<span class="hljs-comment">//自定义流的获取方式</span><br>    <span class="hljs-keyword">private</span> <span class="hljs-type">byte</span>[] getClassFromCustomPath(String name) &#123;<br>        <span class="hljs-comment">//从自定义路径中加载指定类:细节略</span><br>        <span class="hljs-comment">//如果指定路径的字节码文件进行了加密，则需要在此方法中进行解密操作。</span><br>        <span class="hljs-keyword">return</span> <span class="hljs-literal">null</span>;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">CustomClassLoader</span> <span class="hljs-variable">customClassLoader</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">CustomClassLoader</span>();<br>        <span class="hljs-keyword">try</span> &#123;<br>            Class&lt;?&gt; clazz = Class.forName(<span class="hljs-string">&quot;One&quot;</span>, <span class="hljs-literal">true</span>, customClassLoader);<br>            <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> clazz.newInstance();<br>            System.out.println(obj.getClass().getClassLoader());<br>        &#125; <span class="hljs-keyword">catch</span> (Exception e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <h4 id="4、ClassLoader">4、ClassLoader</h4>
 <p>ClassLoader类，它是一个抽象类，其后所有的类加载器都继承自ClassLoader（不包括启动类加载器）</p>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025162137614.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025162137614.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>sun.misc.Launcher 它是一个java虚拟机的入口应用</p>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025162203691.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025162203691.png" srcset="/img/loading.gif" lazyload alt></p>
 <blockquote>
 <p>获取ClassLoader途径</p>
 </blockquote>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025162252275.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025162252275.png" srcset="/img/loading.gif" lazyload alt></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ClassLoaderTest2</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-keyword">try</span> &#123;<br>            <span class="hljs-comment">//1.</span><br>            <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">classLoader</span> <span class="hljs-operator">=</span> Class.forName(<span class="hljs-string">&quot;java.lang.String&quot;</span>).getClassLoader();<br>            System.out.println(classLoader);<br>            <span class="hljs-comment">//2.</span><br>            <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">classLoader1</span> <span class="hljs-operator">=</span> Thread.currentThread().getContextClassLoader();<br>            System.out.println(classLoader1);<br><br>            <span class="hljs-comment">//3.</span><br>            <span class="hljs-type">ClassLoader</span> <span class="hljs-variable">classLoader2</span> <span class="hljs-operator">=</span> ClassLoader.getSystemClassLoader().getParent();<br>            System.out.println(classLoader2);<br><br>        &#125; <span class="hljs-keyword">catch</span> (ClassNotFoundException e) &#123;<br>            e.printStackTrace();<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 <p>结果如下：</p>
 <figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs awk">null<br>sun.misc.Launcher<span class="hljs-variable">$AppClassLoader</span>@<span class="hljs-number">18</span>b4aac2<br>sun.misc.Launcher<span class="hljs-variable">$ExtClassLoader</span>@<span class="hljs-number">1540</span>e19d<br><br>Process finished with <span class="hljs-keyword">exit</span> code <span class="hljs-number">0</span><br></code></pre></td></tr></table></figure>
@@ -633,7 +633,7 @@
 <li>如果父类加载器可以完成类加载任务，就成功返回，倘若父类加载器无法完成此加载任务，子加载器才会尝试自己去加载，这就是双亲委派模式。</li>
 <li>父类加载器一层一层往下分配任务，如果子类加载器能加载，则加载此类，如果将加载任务分配至系统类加载器也无法加载此类，则抛出异常</li>
 </ol>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025163844593.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025163844593.png" srcset="/img/loading.gif" lazyload alt></p>
 <blockquote>
 <p>举个通俗的例子：小孩有一个苹果，问妈妈说吃不吃，妈妈一看奶奶还在，就问奶奶吃不吃苹果；奶奶一看苹果有点硬，咬不动于是说不吃，给了妈妈，妈妈一看说苹果有点酸，又给了小孩，小孩说我正好喜欢吃又酸又硬的，于是小孩吃了。</p>
 </blockquote>
@@ -649,7 +649,7 @@
 <p>程序并没有输出我们静态代码块中的内容，说明仍然加载的是 JDK 自带的 String 类。</p>
 <p>把刚刚的类改一下</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> java.lang;<br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">String</span> &#123;<br>    <span class="hljs-comment">//</span><br>    <span class="hljs-keyword">static</span>&#123;<br>        System.out.println(<span class="hljs-string">&quot;我是自定义的String类的静态代码块&quot;</span>);<br>    &#125;<br>    <span class="hljs-comment">//错误: 在类 java.lang.String 中找不到 main 方法</span><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;hello,String&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025164730203.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025164730203.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>由于双亲委派机制一直找父类，所以最后找到了Bootstrap ClassLoader，Bootstrap ClassLoader找到的是 JDK 自带的 String 类，在那个String类中并没有 main() 方法，所以就报了上面的错误。</p>
 <h5 id="2、Demo2">2、Demo2</h5>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">package</span> java.lang;<br><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ShkStart</span> &#123;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;hello!&quot;</span>);<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
@@ -665,7 +665,7 @@
 <li>第三方的jar包中的类属于系统类加载器来加载</li>
 <li>从这里面就可以看到SPI核心接口由引导类加载器来加载，SPI具体实现类由系统类加载器来加载</li>
 </ol>
-<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025164859134.png" srcset="/myblogs/img/loading.gif" lazyload alt></p>
+<p><img src="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/image-20221025164859134.png" srcset="/img/loading.gif" lazyload alt></p>
 <h4 id="3、双亲委派机制的优势">3、双亲委派机制的优势</h4>
 <ol>
 <li>避免类的重复加载</li>
@@ -710,7 +710,7 @@
     
       <span class="category-chain">
         
-  <a href="/myblogs/categories/JVM/" class="category-chain-item">JVM</a>
+  <a href="/categories/JVM/" class="category-chain-item">JVM</a>
   
   
 
@@ -725,9 +725,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/myblogs/tags/java/">#java</a>
+        <a href="/tags/java/">#java</a>
       
-        <a href="/myblogs/tags/JVM/">#JVM</a>
+        <a href="/tags/JVM/">#JVM</a>
       
     </div>
   
@@ -740,7 +740,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JVM-02-类加载子系统</div>
-      <div>https://bigotry-zb.gitee.io/myblogs/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/</div>
+      <div>https://bigotry-zb.gitee.io/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/</div>
     </div>
     <div class="license-meta">
       
@@ -784,7 +784,7 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/myblogs/2022/10/25/emoji/" title="emoji">
+                      <a href="/2022/10/25/emoji/" title="emoji">
                         <i class="iconfont icon-arrowleft"></i>
                         <span class="hidden-mobile">emoji</span>
                         <span class="visible-mobile">上一篇</span>
@@ -794,7 +794,7 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/myblogs/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构">
+                      <a href="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构">
                         <span class="hidden-mobile">JVM-01-JVM与Java体系结构</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
@@ -913,7 +913,7 @@
       <span class="beian-police">
         
           <span style="visibility: hidden; width: 0">|</span>
-          <img src="/myblogs/img/police_beian.png" srcset="/myblogs/img/loading.gif" lazyload alt="police-icon"/>
+          <img src="/img/police_beian.png" srcset="/img/loading.gif" lazyload alt="police-icon"/>
         
         <span class="beian-police">陕ICP备2022012442号 - 1</span>
       </span>
@@ -943,8 +943,8 @@
 
 <script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
 <script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
-<script  src="/myblogs/js/events.js" ></script>
-<script  src="/myblogs/js/plugins.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
 
 
   <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
@@ -966,7 +966,7 @@
 
 
   
-    <script  src="/myblogs/js/img-lazyload.js" ></script>
+    <script  src="/js/img-lazyload.js" ></script>
   
 
 
@@ -1065,7 +1065,7 @@
 
   <script>Fluid.plugins.imageCaption();</script>
 
-  <script  src="/myblogs/js/local-search.js" ></script>
+  <script  src="/js/local-search.js" ></script>
 
   <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
 
@@ -1073,7 +1073,7 @@
 
 
   
-<script src="/myblogs/js/diy/timeDate.js"></script>
+<script src="/js/diy/timeDate.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
 <script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
@@ -1082,7 +1082,7 @@
 
 <!-- 主题的启动项，将它保持在最底部 -->
 <!-- the boot of the theme, keep it at the bottom -->
-<script  src="/myblogs/js/boot.js" ></script>
+<script  src="/js/boot.js" ></script>
 
 
   
