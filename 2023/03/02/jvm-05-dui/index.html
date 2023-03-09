@@ -19,32 +19,32 @@
     <meta name="description" content="1、堆核心概念 1、堆与进程  堆针对一个JVM进程来说是唯一的。也就是一个进程只有一个JVM实例，一个JVM实例中就有一个运行时数据区，一个运行时数据区只有一个堆和一个方法区。 但是进程包含多个线程，他们是共享同一堆空间的。    一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域。 Java堆区在JVM启动的时候即被创建，其空间大小也就确定了，堆是JVM管理的最大一块内存空间，并">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JVM-05-堆">
-<meta property="og:url" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/index.html">
+<meta property="og:url" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/index.html">
 <meta property="og:site_name" content="Zbiao | 多吃一点">
 <meta property="og:description" content="1、堆核心概念 1、堆与进程  堆针对一个JVM进程来说是唯一的。也就是一个进程只有一个JVM实例，一个JVM实例中就有一个运行时数据区，一个运行时数据区只有一个堆和一个方法区。 但是进程包含多个线程，他们是共享同一堆空间的。    一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域。 Java堆区在JVM启动的时候即被创建，其空间大小也就确定了，堆是JVM管理的最大一块内存空间，并">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307161451258.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307161839235.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307162126163.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307162148776.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307163255074.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307163440208.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307163511112.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307163734381.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307163754046.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307164848420.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307164938386.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307164956348.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307171308196.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230308102834660.png">
-<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230308102930735.png">
-<meta property="article:published_time" content="2023-03-07T08:09:09.000Z">
-<meta property="article:modified_time" content="2023-03-08T05:14:18.866Z">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307161451258.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307161839235.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307162126163.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307162148776.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307163255074.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307163440208.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307163511112.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307163734381.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307163754046.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307164848420.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307164938386.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307164956348.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307171308196.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230308102834660.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230308102930735.png">
+<meta property="article:published_time" content="2023-03-02T08:09:09.000Z">
+<meta property="article:modified_time" content="2023-03-09T06:09:27.900Z">
 <meta property="article:author" content="Zbiao">
 <meta property="article:tag" content="java">
 <meta property="article:tag" content="JVM">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/image-20230307161451258.png">
+<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/image-20230307161451258.png">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
@@ -246,8 +246,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-03-07 16:09" pubdate>
-          2023年3月7日 下午
+        <time datetime="2023-03-02 16:09" pubdate>
+          2023年3月2日 下午
         </time>
       </span>
     
@@ -327,7 +327,7 @@
         aria-expanded="true"
       >
         JVM
-        <span class="list-group-count">(6)</span>
+        <span class="list-group-count">(8)</span>
         <i class="iconfont icon-arrowright"></i>
       </a>
       
@@ -377,7 +377,7 @@
     
       
       
-        <a href="/2023/03/07/jvm-05-dui/" title="JVM-05-堆"
+        <a href="/2023/03/02/jvm-05-dui/" title="JVM-05-堆"
            class="list-group-item list-group-item-action
            active">
           <span class="category-post">JVM-05-堆</span>
@@ -386,10 +386,28 @@
     
       
       
-        <a href="/2023/03/08/jvm-06-fang-fa-qu/" title="JVM-06-方法区"
+        <a href="/2023/03/03/jvm-06-fang-fa-qu/" title="JVM-06-方法区"
            class="list-group-item list-group-item-action
            ">
           <span class="category-post">JVM-06-方法区</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/" title="JVM-07-对象的实例化内存布局与访问定位"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-07-对象的实例化内存布局与访问定位</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/03/05/jvm-08-zhi-xing-yin-qing/" title="JVM-08-执行引擎"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-08-执行引擎</span>
         </a>
       
     
@@ -423,7 +441,7 @@
 <li>堆针对一个JVM进程来说是唯一的。也就是<strong>一个进程只有一个JVM实例</strong>，一个JVM实例中就有一个运行时数据区，一个运行时数据区只有一个堆和一个方法区。</li>
 <li>但是<strong>进程包含多个线程，他们是共享同一堆空间的</strong>。</li>
 </ol>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307161451258.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307161451258.png" srcset="/img/loading.gif" lazyload alt></p>
 <ol>
 <li>一个JVM实例只存在一个堆内存，堆也是Java内存管理的核心区域。</li>
 <li>Java堆区在JVM启动的时候即被创建，其空间大小也就确定了，堆是JVM管理的最大一块内存空间，并且堆内存的大小是可以调节的。</li>
@@ -444,7 +462,7 @@
 <li><strong>堆，是GC（Garbage Collection，垃圾收集器）执行垃圾回收的重点区域。</strong></li>
 </ol>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">SimpleHeap</span> &#123;<br>    <span class="hljs-keyword">private</span> <span class="hljs-type">int</span> id;<span class="hljs-comment">//属性、成员变量</span><br><br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">SimpleHeap</span><span class="hljs-params">(<span class="hljs-type">int</span> id)</span> &#123;<br>        <span class="hljs-built_in">this</span>.id = id;<br>    &#125;<br><br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">show</span><span class="hljs-params">()</span> &#123;<br>        System.out.println(<span class="hljs-string">&quot;My ID is &quot;</span> + id);<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">SimpleHeap</span> <span class="hljs-variable">sl</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleHeap</span>(<span class="hljs-number">1</span>);<br>        <span class="hljs-type">SimpleHeap</span> <span class="hljs-variable">s2</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">SimpleHeap</span>(<span class="hljs-number">2</span>);<br><br>        <span class="hljs-type">int</span>[] arr = <span class="hljs-keyword">new</span> <span class="hljs-title class_">int</span>[<span class="hljs-number">10</span>];<br><br>        Object[] arr1 = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>[<span class="hljs-number">10</span>];<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307161839235.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307161839235.png" srcset="/img/loading.gif" lazyload alt></p>
 <h2 id="2、堆内存细分">2、堆内存细分</h2>
 <p>现代垃圾收集器大部分都基于分代收集理论设计，堆空间细分为：</p>
 <ol>
@@ -469,9 +487,9 @@
 </ol>
 <p>约定：新生区 &lt;–&gt; 新生代 &lt;–&gt; 年轻代 、 养老区 &lt;–&gt; 老年区 &lt;–&gt; 老年代、 永久区 &lt;–&gt; 永久代</p>
 <p>jdk7：</p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307162126163.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307162126163.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>jdk8：</p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307162148776.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307162148776.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1>2、设置堆内存大小与OOM</h1>
 <h2 id="1、设置堆内存">1、设置堆内存</h2>
 <ol>
@@ -506,7 +524,7 @@
 <p>输出结果：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs java">-Xms : 123M<br>-Xmx : 1794M<br>系统内存大小为：<span class="hljs-number">7.</span>6875G<br>系统内存大小为：<span class="hljs-number">7.</span>0078125G<br></code></pre></td></tr></table></figure>
 <p>二者不一样</p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307163255074.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307163255074.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>jps：查看java进程</p>
 <p>jstat：查看某进程内存使用情况</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><code class="hljs java">SOC: S0区总共容量<br>S1C: S1区总共容量<br>S0U: S0区使用的量<br>S1U: S1区使用的量<br>EC: 伊甸园区总共容量<br>EU: 伊甸园区使用的量<br>OC: 老年代总共容量<br>OU: 老年代使用的量<br></code></pre></td></tr></table></figure>
@@ -518,16 +536,16 @@
 <p>输出结果：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java">Exception in thread <span class="hljs-string">&quot;main&quot;</span> java.lang.OutOfMemoryError: Java heap space<br>	at com.atguigu.java.Picture.&lt;init&gt;(OOMTest.java:<span class="hljs-number">29</span>)<br>	at com.atguigu.java.OOMTest.main(OOMTest.java:<span class="hljs-number">20</span>)<br><br>Process finished with exit code <span class="hljs-number">1</span><br></code></pre></td></tr></table></figure>
 <p>堆内存变化图</p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307163440208.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307163440208.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>大对象导致堆内存溢出</p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307163511112.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307163511112.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1>3、年轻代与老年代</h1>
 <p>1、存储在JVM中的Java对象可以被划分为两类：</p>
 <figure class="highlight asciidoc"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs asciidoc"><span class="hljs-bullet">- </span>一类是生命周期较短的瞬时对象，这类对象的创建和消亡都非常迅速<br><span class="hljs-bullet">- </span>另外一类对象的生命周期却非常长，在某些极端的情况下还能够与JVM的生命周期保持一致<br></code></pre></td></tr></table></figure>
 <p>2、Java堆区进一步细分的话，可以划分为年轻代（YoungGen）和老年代（oldGen）</p>
 <p>3、其中年轻代又可以划分为Eden空间、Survivor0空间和Survivor1空间（有时也叫做from区、to区）</p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307163734381.png" srcset="/img/loading.gif" lazyload alt></p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307163754046.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307163734381.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307163754046.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1>4、图解对象分配过程</h1>
 <p>为新对象分配内存是一件非常严谨和复杂的任务，JVM的设计者们不仅需要考虑内存如何分配、在哪里分配等问题，并且由于内存分配算法与内存回收算法密切相关，所以还需要考虑GC执行完内存回收后是否会在内存空间中产生内存碎片。</p>
 <p><strong>具体过程</strong></p>
@@ -543,7 +561,7 @@
 </ol>
 <h2 id="1、图解对象分配">1、图解对象分配</h2>
 <p>1、我们创建的对象，一般都是存放在Eden区的，<strong>当我们Eden区满了后，就会触发GC操作</strong>，一般被称为 YGC / Minor GC操作</p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307164848420.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307164848420.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>2、当我们进行一次垃圾收集后，红色的对象将会被回收，而绿色的独享还被占用着，存放在S0(Survivor From)区。同时我们给每个对象设置了一个年龄计数器，经过一次回收后还存在的对象，将其年龄加 1。</p>
 <p>3、同时Eden区继续存放对象，当Eden区再次存满的时候，又会触发一个MinorGC操作，此时GC将会把 Eden和Survivor From中的对象进行一次垃圾收集，把存活的对象放到 Survivor To（S1）区，同时让存活的对象年龄 + 1</p>
 <blockquote>
@@ -552,9 +570,9 @@
 <p>2、这一次的s1区则成为下一次GC的S0区</p>
 <p>3、也就是说s0区和s1区在互相转换。</p>
 </blockquote>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307164938386.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307164938386.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>4、我们继续不断的进行对象生成和垃圾回收，当Survivor中的对象的年龄达到15的时候，将会触发一次 Promotion 晋升的操作，也就是将年轻代中的对象晋升到老年代中</p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307164956348.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307164956348.png" srcset="/img/loading.gif" lazyload alt></p>
 <p><strong>关于垃圾回收：频繁在新生区收集，很少在养老区收集，几乎不在永久区/元空间收集。</strong></p>
 <h2 id="2、特殊情况">2、特殊情况</h2>
 <p><strong>对象分配的特殊情况</strong></p>
@@ -635,7 +653,7 @@
 <li>新生代：有Eden、两块大小相同的survivor（又称为from/to或s0/s1）构成，to总为空。</li>
 <li>老年代：存放新生代中经历多次GC仍然存活的对象。</li>
 </ul>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230307171308196.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230307171308196.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>其实不分代完全可以，分代的唯一理由就是优化GC性能。</p>
 <ul>
 <li>
@@ -673,7 +691,7 @@
 <li>多线程同时分配内存时，使用TLAB可以避免一系列的非线程安全问题，同时还能够提升内存分配的吞吐量，因此我们可以将这种内存分配方式称之为<strong>快速分配策略</strong>。</li>
 <li>所有OpenJDK衍生出来的JVM都提供了TLAB的设计。</li>
 </ol>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230308102834660.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230308102834660.png" srcset="/img/loading.gif" lazyload alt></p>
 <p>每个线程都有一个TLAB空间，当一个线程的TLAB存满时，可以使用公共区域（蓝色）的</p>
 <ol>
 <li>尽管不是所有的对象实例都能够在TLAB中成功分配内存，但<strong>JVM确实是将TLAB作为内存分配的首选</strong>。</li>
@@ -682,7 +700,7 @@
 <li>一旦对象在TLAB空间分配内存失败时，JVM就会尝试着通过<strong>使用加锁机制确保数据操作的原子性</strong>，从而直接在Eden空间中分配内存。</li>
 </ol>
 <p><strong>TLAB 分配过程</strong></p>
-<p><img src="/2023/03/07/jvm-05-dui/image-20230308102930735.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><img src="/2023/03/02/jvm-05-dui/image-20230308102930735.png" srcset="/img/loading.gif" lazyload alt></p>
 <h1>9、堆空间参数</h1>
 <p><strong>堆常见参数</strong>：</p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试堆空间常用的jvm参数：</span><br><span class="hljs-comment"> * -XX:+PrintFlagsInitial : 查看所有的参数的默认初始值</span><br><span class="hljs-comment"> * -XX:+PrintFlagsFinal  ：查看所有的参数的最终值（可能会存在修改，不再是初始值）</span><br><span class="hljs-comment"> *      具体查看某个参数的指令： jps：查看当前运行中的进程</span><br><span class="hljs-comment"> *                             jinfo -flag SurvivorRatio 进程id</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> * -Xms：初始堆空间内存 （默认为物理内存的1/64）</span><br><span class="hljs-comment"> * -Xmx：最大堆空间内存（默认为物理内存的1/4）</span><br><span class="hljs-comment"> * -Xmn：设置新生代的大小。(初始值及最大值)</span><br><span class="hljs-comment"> * -XX:NewRatio：配置新生代与老年代在堆结构的占比</span><br><span class="hljs-comment"> * -XX:SurvivorRatio：设置新生代中Eden和S0/S1空间的比例</span><br><span class="hljs-comment"> * -XX:MaxTenuringThreshold：设置新生代垃圾的最大年龄</span><br><span class="hljs-comment"> * -XX:+PrintGCDetails：输出详细的GC处理日志</span><br><span class="hljs-comment"> * 打印gc简要信息：① -XX:+PrintGC   ② -verbose:gc</span><br><span class="hljs-comment"> * -XX:HandlePromotionFailure：是否设置空间分配担保</span><br><span class="hljs-comment"> */</span><br></code></pre></td></tr></table></figure>
@@ -837,7 +855,7 @@
   <div class="license-box my-3">
     <div class="license-title">
       <div>JVM-05-堆</div>
-      <div>https://bigotry-zb.github.io.git/2023/03/07/jvm-05-dui/</div>
+      <div>https://bigotry-zb.github.io.git/2023/03/02/jvm-05-dui/</div>
     </div>
     <div class="license-meta">
       
@@ -849,7 +867,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年3月7日</div>
+          <div>2023年3月2日</div>
         </div>
       
       
@@ -881,9 +899,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/03/08/pai-xu/" title="排序">
+                      <a href="/2023/03/03/jvm-06-fang-fa-qu/" title="JVM-06-方法区">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">排序</span>
+                        <span class="hidden-mobile">JVM-06-方法区</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -891,8 +909,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/03/07/mongodb/" title="MongoDB">
-                        <span class="hidden-mobile">MongoDB</span>
+                      <a href="/2023/03/02/zookeeper/" title="ZooKeeper">
+                        <span class="hidden-mobile">ZooKeeper</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

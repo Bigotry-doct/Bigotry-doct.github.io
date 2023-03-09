@@ -1,0 +1,936 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" data-default-color-scheme=auto>
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid5.png">
+  <link rel="icon" href="/img/fluid5.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="Zbiao">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1、对象的实例化 美团：  对象在JVM中是怎么存储的？ 对象头信息里面有哪些东西？  蚂蚁金服： 二面：java对象头里有什么  1、对象的创建方式  new：最常见的方式、单例类中调用getInstance的静态类方法，XXXFactory的静态方法 Class的newInstance方法：在JDK9里面被标记为过时的方法，因为只能调用空参构造器，并且权限必须为 public Construc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JVM-07-对象的实例化内存布局与访问定位">
+<meta property="og:url" content="https://bigotry-zb.github.io.git/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/index.html">
+<meta property="og:site_name" content="Zbiao | 多吃一点">
+<meta property="og:description" content="1、对象的实例化 美团：  对象在JVM中是怎么存储的？ 对象头信息里面有哪些东西？  蚂蚁金服： 二面：java对象头里有什么  1、对象的创建方式  new：最常见的方式、单例类中调用getInstance的静态类方法，XXXFactory的静态方法 Class的newInstance方法：在JDK9里面被标记为过时的方法，因为只能调用空参构造器，并且权限必须为 public Construc">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309132026897.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140051200.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140341181.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140430859.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140543980.png">
+<meta property="og:image" content="https://bigotry-zb.github.io.git/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140625930.png">
+<meta property="article:published_time" content="2023-03-04T05:19:21.000Z">
+<meta property="article:modified_time" content="2023-03-09T06:09:48.055Z">
+<meta property="article:author" content="Zbiao">
+<meta property="article:tag" content="java">
+<meta property="article:tag" content="JVM">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://bigotry-zb.github.io.git/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309132026897.png">
+  
+  
+    <meta name="referrer" content="no-referrer-when-downgrade">
+  
+  
+  <title>JVM-07-对象的实例化内存布局与访问定位 - Zbiao | 多吃一点</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
+  
+
+
+
+  
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/toubudaziji.css">
+<link rel="stylesheet" href="//cdn.jsdelivr.net/gh/bynotes/texiao/source/css/gundongtiao.css# 滚动条颜色.css">
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"bigotry-zb.github.io.git","root":"/","version":"1.9.3","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":true,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"TEXT"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":true,"follow_dnt":true,"baidu":null,"google":null,"gtag":null,"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml"};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+
+
+  
+<meta name="generator" content="Hexo 5.4.2"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>ZBiao&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/">
+                <i class="iconfont icon-home-fill"></i>
+                首页
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/">
+                <i class="iconfont icon-archive-fill"></i>
+                归档
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/">
+                <i class="iconfont icon-category-fill"></i>
+                分类
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/">
+                <i class="iconfont icon-tags-fill"></i>
+                标签
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/">
+                <i class="iconfont icon-user-fill"></i>
+                关于
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              &nbsp;<i class="iconfont icon-search"></i>&nbsp;
+            </a>
+          </li>
+          
+        
+        
+          <li class="nav-item" id="color-toggle-btn">
+            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">&nbsp;<i
+                class="iconfont icon-dark" id="color-toggle-icon"></i>&nbsp;</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default3.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="JVM-07-对象的实例化内存布局与访问定位"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2023-03-04 13:19" pubdate>
+          2023年3月4日 下午
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          3.6k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          30 分钟
+        
+      </span>
+    
+
+    
+    
+      
+        <span id="busuanzi_container_page_pv" style="display: none">
+          <i class="iconfont icon-eye" aria-hidden="true"></i>
+          <span id="busuanzi_value_page_pv"></span> 次
+        </span>
+        
+      
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar category-bar" style="margin-right: -1rem">
+    
+
+
+
+
+
+<div class="category-list">
+  
+  
+    
+    
+    
+    <div class="category row nomargin-x">
+      <a class="category-item 
+          list-group-item category-item-action col-10 col-md-11 col-xm-11" title="JVM"
+        id="heading-18b5a217c4dad25662d3a05edb0e39d7" role="tab" data-toggle="collapse" href="#collapse-18b5a217c4dad25662d3a05edb0e39d7"
+        aria-expanded="true"
+      >
+        JVM
+        <span class="list-group-count">(8)</span>
+        <i class="iconfont icon-arrowright"></i>
+      </a>
+      
+      <div class="category-collapse collapse show" id="collapse-18b5a217c4dad25662d3a05edb0e39d7"
+           role="tabpanel" aria-labelledby="heading-18b5a217c4dad25662d3a05edb0e39d7">
+        
+        
+          
+  <div class="category-post-list">
+    
+    
+      
+      
+        <a href="/2022/10/21/jvm-01-jvm-yu-java-ti-xi-jie-gou/" title="JVM-01-JVM与Java体系结构"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-01-JVM与Java体系结构</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/24/jvm-02-lei-jia-zai-zi-xi-tong/" title="JVM-02-类加载子系统"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-02-类加载子系统</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/27/jvm-03-yun-xing-shi-shu-ju-qu/" title="JVM-03-运行时数据区"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-03-运行时数据区</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2022/10/31/jvm-04-xu-ni-ji-zhan/" title="JVM-04-虚拟机栈"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-04-虚拟机栈</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/03/02/jvm-05-dui/" title="JVM-05-堆"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-05-堆</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/03/03/jvm-06-fang-fa-qu/" title="JVM-06-方法区"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-06-方法区</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/" title="JVM-07-对象的实例化内存布局与访问定位"
+           class="list-group-item list-group-item-action
+           active">
+          <span class="category-post">JVM-07-对象的实例化内存布局与访问定位</span>
+        </a>
+      
+    
+      
+      
+        <a href="/2023/03/05/jvm-08-zhi-xing-yin-qing/" title="JVM-08-执行引擎"
+           class="list-group-item list-group-item-action
+           ">
+          <span class="category-post">JVM-08-执行引擎</span>
+        </a>
+      
+    
+  </div>
+
+        
+      </div>
+    </div>
+  
+</div>
+
+
+  </aside>
+
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <!-- SEO header -->
+            <h1 style="display: none">JVM-07-对象的实例化内存布局与访问定位</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h2 id="1、对象的实例化">1、对象的实例化</h2>
+<p>美团：</p>
+<ol>
+<li>对象在<code>JVM</code>中是怎么存储的？</li>
+<li>对象头信息里面有哪些东西？</li>
+</ol>
+<p>蚂蚁金服：</p>
+<p>二面：<code>java</code>对象头里有什么</p>
+<p><img src="/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309132026897.png" srcset="/img/loading.gif" lazyload alt></p>
+<h3 id="1、对象的创建方式">1、对象的创建方式</h3>
+<ul>
+<li>new：最常见的方式、单例类中调用getInstance的静态类方法，XXXFactory的静态方法</li>
+<li>Class的newInstance方法：在JDK9里面被标记为过时的方法，因为只能调用空参构造器，并且权限必须为 public</li>
+<li>Constructor的newInstance(Xxxx)：反射的方式，可以调用空参的，或者带参的构造器</li>
+<li>使用clone()：不调用任何的构造器，要求当前的类需要实现Cloneable接口中的clone方法</li>
+<li>使用序列化：从文件中，从网络中获取一个对象的二进制流，序列化一般用于Socket的网络传输</li>
+<li>第三方库 Objenesis</li>
+</ul>
+<h3 id="2、对象的创建步骤">2、对象的创建步骤</h3>
+<blockquote>
+<p><strong>从字节码看待对象的创建过程</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">ObjectTest</span> &#123;<br>    <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Object</span> <span class="hljs-variable">obj</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Object</span>();<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs code"> public static void main(java.lang.String[]);<br>    descriptor: ([Ljava/lang/String;)V<br>    flags: ACC_PUBLIC, ACC_STATIC<br>    Code:<br>      stack=2, locals=2, args_size=1<br>         0: new           #2                  // class java/lang/Object<br>         3: dup           <br>         4: invokespecial #1                  // Method java/lang/Object.&quot;&lt;init&gt;&quot;:()V<br>         7: astore_1<br>         8: return<br>      LineNumberTable:<br>        line 9: 0<br>        line 10: 8<br>      LocalVariableTable:<br>        Start  Length  Slot  Name   Signature<br>            0       9     0  args   [Ljava/lang/String;<br>            8       1     1   obj   Ljava/lang/Object;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>1、判断对象对应的类是否加载、链接、初始化</strong></p>
+<ol>
+<li>虚拟机遇到一条new指令，首先去检查这个指令的参数能否在Metaspace的常量池中定位到一个类的符号引用，并且检查这个符号引用代表的类是否已经被加载，解析和初始化。（即判断类元信息是否存在）。</li>
+<li>如果该类没有加载，那么在双亲委派模式下，使用当前类加载器以ClassLoader + 包名 + 类名为key进行查找对应的.class文件，如果没有找到文件，则抛出ClassNotFoundException异常，如果找到，则进行类加载，并生成对应的Class对象。</li>
+</ol>
+<p><strong>2、为对象分配内存</strong></p>
+<p>首先计算对象占用空间的大小，接着在堆中划分一块内存给新对象。如果实例成员变量是引用变量，仅分配引用变量空间即可，即4个字节大小</p>
+<ol>
+<li>如果内存规整：采用指针碰撞分配内存
+<ul>
+<li>如果内存是规整的，那么虚拟机将采用的是<strong>指针碰撞法</strong>（Bump The Point）来为对象分配内存。意思是所有用过的内存在一边，空闲的内存放另外一边，中间放着一个指针作为分界点的指示器，分配内存就仅仅是把指针往空闲内存那边挪动一段与对象大小相等的距离罢了。</li>
+<li>如果垃圾收集器选择的是Serial ，ParNew这种基于压缩算法的，虚拟机采用这种分配方式。一般使用带Compact（整理）过程的收集器时，使用指针碰撞。</li>
+<li>标记压缩（整理）算法会整理内存碎片，堆内存一存对象，另一边为空闲区域</li>
+</ul>
+</li>
+<li>如果内存不规整
+<ul>
+<li>如果内存不是规整的，已使用的内存和未使用的内存相互交错，那么虚拟机将采用的是<strong>空闲列表</strong>来为对象分配内存。意思是虚拟机维护了一个列表，记录上哪些内存块是可用的，再分配的时候从列表中找到一块足够大的空间划分给对象实例，并更新列表上的内容。这种分配方式成为了 “空闲列表（Free List）”</li>
+<li><strong>选择哪种分配方式由Java堆是否规整所决定，而Java堆是否规整又由所采用的垃圾收集器是否带有压缩整理功能决定</strong></li>
+<li>标记清除算法清理过后的堆内存，就会存在很多内存碎片。</li>
+</ul>
+</li>
+</ol>
+<p><strong>3、处理并发问题</strong></p>
+<ol>
+<li>采用CAS+失败重试保证更新的原子性</li>
+<li>每个线程预先分配TLAB - 通过设置 -XX:+UseTLAB参数来设置（区域加锁机制）</li>
+<li>在Eden区给每个线程分配一块区域</li>
+</ol>
+<p><strong>4、初始化分配到的空间</strong></p>
+<ul>
+<li>所有属性设置默认值，保证对象实例字段在不赋值可以直接使用</li>
+<li>给对象属性赋值的顺序：</li>
+</ul>
+<ol>
+<li>属性的默认值初始化</li>
+<li>显示初始化/代码块初始化（并列关系，谁先谁后看代码编写的顺序）</li>
+<li>构造器初始化</li>
+</ol>
+<p><strong>5、设置对象的对象头</strong></p>
+<p>将对象的所属类（即类的元数据信息）、对象的HashCode和对象的GC信息、锁信息等数据存储在对象的对象头中。这个过程的具体设置方式取决于JVM实现。</p>
+<p><strong>6、执行init方法进行初始化</strong></p>
+<ol>
+<li>在Java程序的视角看来，初始化才正式开始。初始化成员变量，执行实例化代码块，调用类的构造方法，并把堆内对象的首地址赋值给引用变量</li>
+<li>因此一般来说（由字节码中跟随invokespecial指令所决定），new指令之后会接着就是执行init方法，把对象按照程序员的意愿进行初始化，这样一个真正可用的对象才算完成创建出来。</li>
+</ol>
+<blockquote>
+<p><strong>从字节码角度看 init 方法</strong></p>
+</blockquote>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-comment">/**</span><br><span class="hljs-comment"> * 测试对象实例化的过程</span><br><span class="hljs-comment"> *  ① 加载类元信息 - ② 为对象分配内存 - ③ 处理并发问题  - ④ 属性的默认初始化（零值初始化）</span><br><span class="hljs-comment"> *  - ⑤ 设置对象头的信息 - ⑥ 属性的显式初始化、代码块中初始化、构造器中初始化</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> *</span><br><span class="hljs-comment"> *  给对象的属性赋值的操作：</span><br><span class="hljs-comment"> *  ① 属性的默认初始化 - ② 显式初始化 / ③ 代码块中初始化 - ④ 构造器中初始化</span><br><span class="hljs-comment"> */</span><br><br><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Customer</span>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> <span class="hljs-number">1001</span>;<br>    String name;<br>    Account acct;<br><br>    &#123;<br>        name = <span class="hljs-string">&quot;匿名客户&quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Customer</span><span class="hljs-params">()</span>&#123;<br>        acct = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>();<br>    &#125;<br><br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Account</span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>Customer类的字节码</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><code class="hljs java"> <span class="hljs-number">0</span> aload_0<br> <span class="hljs-number">1</span> invokespecial #<span class="hljs-number">1</span> &lt;java/lang/Object.&lt;init&gt;&gt;<br> <span class="hljs-number">4</span> aload_0<br> <span class="hljs-number">5</span> sipush <span class="hljs-number">1001</span><br> <span class="hljs-number">8</span> putfield #<span class="hljs-number">2</span> &lt;com/atguigu/java/Customer.id&gt;<br><span class="hljs-number">11</span> aload_0<br><span class="hljs-number">12</span> ldc #<span class="hljs-number">3</span> &lt;匿名客户&gt;<br><span class="hljs-number">14</span> putfield #<span class="hljs-number">4</span> &lt;com/atguigu/java/Customer.name&gt;<br><span class="hljs-number">17</span> aload_0<br><span class="hljs-number">18</span> <span class="hljs-keyword">new</span> #<span class="hljs-number">5</span> &lt;com/atguigu/java/Account&gt;<br><span class="hljs-number">21</span> dup<br><span class="hljs-number">22</span> invokespecial #<span class="hljs-number">6</span> &lt;com/atguigu/java/Account.&lt;init&gt;&gt;<br><span class="hljs-number">25</span> putfield #<span class="hljs-number">7</span> &lt;com/atguigu/java/Customer.acct&gt;<br><span class="hljs-number">28</span> <span class="hljs-keyword">return</span><br></code></pre></td></tr></table></figure>
+<p>init() 方法的字节码指令：</p>
+<ul>
+<li>属性的默认值初始化：<code>id = 1001;</code></li>
+<li>显示初始化/代码块初始化：<code>name = &quot;匿名客户&quot;;</code></li>
+<li>构造器初始化：<code>acct = new Account();</code></li>
+</ul>
+<h2 id="2、对象的内存布局">2、对象的内存布局</h2>
+<p><img src="/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140051200.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>举例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs java"><span class="hljs-keyword">public</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">Customer</span>&#123;<br>    <span class="hljs-type">int</span> <span class="hljs-variable">id</span> <span class="hljs-operator">=</span> <span class="hljs-number">1001</span>;<br>    String name;<br>    Account acct;<br><br>    &#123;<br>        name = <span class="hljs-string">&quot;匿名客户&quot;</span>;<br>    &#125;<br>    <span class="hljs-keyword">public</span> <span class="hljs-title function_">Customer</span><span class="hljs-params">()</span>&#123;<br>        acct = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Account</span>();<br>    &#125;<br>	<span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-keyword">void</span> <span class="hljs-title function_">main</span><span class="hljs-params">(String[] args)</span> &#123;<br>        <span class="hljs-type">Customer</span> <span class="hljs-variable">cust</span> <span class="hljs-operator">=</span> <span class="hljs-keyword">new</span> <span class="hljs-title class_">Customer</span>();<br>    &#125;<br>&#125;<br><span class="hljs-keyword">class</span> <span class="hljs-title class_">Account</span>&#123;<br><br>&#125;<br></code></pre></td></tr></table></figure>
+<p>分配布局</p>
+<p><img src="/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140341181.png" srcset="/img/loading.gif" lazyload alt></p>
+<h2 id="3、对象的访问定位">3、对象的访问定位</h2>
+<p><strong>JVM如何通过栈帧中的对象引用访问到其内部的对象实例？</strong></p>
+<p><img src="/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140430859.png" srcset="/img/loading.gif" lazyload alt></p>
+<p>通过栈上reference访问</p>
+<p><strong>对象的两种访问方式：句柄访问和直接指针</strong></p>
+<p><strong>1、句柄访问</strong></p>
+<ol>
+<li>缺点：在堆空间中开辟了一块空间作为句柄池，句柄池本身也会占用空间；通过两次指针访问才能访问到堆中的对象，效率低</li>
+<li>优点：reference中存储稳定句柄地址，对象被移动（垃圾收集时移动对象很普遍）时只会改变句柄中实例数据指针即可，reference本身不需要被修改</li>
+</ol>
+<p><img src="/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140543980.png" srcset="/img/loading.gif" lazyload alt></p>
+<p><strong>2、直接指针（HotSpot采用）</strong></p>
+<ol>
+<li>优点：直接指针是局部变量表中的引用，直接指向堆中的实例，在对象实例中有类型指针，指向的是方法区中的对象类型数据</li>
+<li>缺点：对象被移动（垃圾收集时移动对象很普遍）时需要修改 reference 的值</li>
+</ol>
+<p><img src="/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/image-20230309140625930.png" srcset="/img/loading.gif" lazyload alt></p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+    <div class="post-meta mr-3 d-flex align-items-center">
+      <i class="iconfont icon-category"></i>
+      
+
+<span class="category-chains">
+  
+  
+    
+      <span class="category-chain">
+        
+  <a href="/categories/JVM/" class="category-chain-item">JVM</a>
+  
+  
+
+      </span>
+    
+  
+</span>
+
+    </div>
+  
+  
+    <div class="post-meta">
+      <i class="iconfont icon-tags"></i>
+      
+        <a href="/tags/java/">#java</a>
+      
+        <a href="/tags/JVM/">#JVM</a>
+      
+    </div>
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>JVM-07-对象的实例化内存布局与访问定位</div>
+      <div>https://bigotry-zb.github.io.git/2023/03/04/jvm-07-dui-xiang-de-shi-li-hua-nei-cun-bu-ju-yu-fang-wen-ding-wei/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>Zbiao</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2023年3月4日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2023/03/05/jvm-08-zhi-xing-yin-qing/" title="JVM-08-执行引擎">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">JVM-08-执行引擎</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2023/03/03/jvm-06-fang-fa-qu/" title="JVM-06-方法区">
+                        <span class="hidden-mobile">JVM-06-方法区</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header"><i class="iconfont icon-list"></i>&nbsp;目录</p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <span>Copyright © 2022</span> <i class="iconfont icon-love"></i> <span>ZBiao’s Blog</span>
+
+    </div>
+  
+  
+    <div class="statistics">
+  
+  
+
+  
+    
+      <span id="busuanzi_container_site_pv" style="display: none">
+        总访问量 
+        <span id="busuanzi_value_site_pv"></span>
+         次
+      </span>
+    
+    
+      <span id="busuanzi_container_site_uv" style="display: none">
+        总访客数 
+        <span id="busuanzi_value_site_uv"></span>
+         人
+      </span>
+    
+    
+  
+</div>
+
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.0/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.18.2/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  <script  src="/js/local-search.js" ></script>
+
+  <script defer src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" ></script>
+
+
+
+
+  
+<script src="/js/diy/timeDate.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/jingtaisidai.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiantiao.js"></script>
+<script src="//cdn.jsdelivr.net/gh/bynotes/texiao/source/js/xiaoxingxing.js"></script>
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
